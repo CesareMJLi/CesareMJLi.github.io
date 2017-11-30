@@ -15,8 +15,8 @@
 
   <!--Description-->
   
-      <meta name="description" content="#Description of 8-queens ProblemHere is the description of 8-QUEEN PROBLEM.
-The n-queens puzzle is the problem of placing n queens on an n×n chessboar">
+      <meta name="description" content="Description of 8-queens ProblemHere is the description of 8-QUEEN PROBLEM.
+The n-queens puzzle is the problem of placing n queens on an n×n chessboard">
   
 
   <!--Author-->
@@ -88,13 +88,35 @@ The n-queens puzzle is the problem of placing n queens on an n×n chessboar">
   <h1>A Simple Python Depth First Search</h1>
 </div>
 <div class="col-lg-8 col-12 pt-lg-3 mb-4 pl-lg-5 px-lg-0 px-4 portfolio-content">
-  <p>#Description of 8-queens Problem<br>Here is the description of <a href="https://leetcode.com/problems/n-queens/description/" target="_blank" rel="noopener">8-QUEEN PROBLEM</a>.</p>
+  <h1 id="Description-of-8-queens-Problem"><a href="#Description-of-8-queens-Problem" class="headerlink" title="Description of 8-queens Problem"></a>Description of 8-queens Problem</h1><p>Here is the description of <a href="https://leetcode.com/problems/n-queens/description/" target="_blank" rel="noopener">8-QUEEN PROBLEM</a>.</p>
 <p>The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.</p>
 <p>Given an integer n, return all distinct solutions to the n-queens puzzle.</p>
 <p>Each solution contains a distinct board configuration of the n-queens’ placement, where ‘Q’ and ‘.’ both indicate a queen and an empty space respectively</p>
-<p>#Solution(in python - DFS)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">solveNQueens</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: List[List[str]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">DFS</span><span class="params">(queens, xy_dif,xy_sum)</span>:</span></span><br><span class="line">            l=len(queens)</span><br><span class="line">            <span class="keyword">if</span> l==n:</span><br><span class="line">                result.append(queens)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">            <span class="keyword">for</span> p <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="keyword">if</span> p <span class="keyword">not</span> <span class="keyword">in</span> queens <span class="keyword">and</span> l-p <span class="keyword">not</span> <span class="keyword">in</span> xy_dif <span class="keyword">and</span> l+p <span class="keyword">not</span> <span class="keyword">in</span> xy_sum:</span><br><span class="line">                    DFS(queens+[p],xy_dif+[l-p],xy_sum+[l+p])</span><br><span class="line">        result=[]</span><br><span class="line">        DFS([],[],[])</span><br><span class="line">        <span class="keyword">print</span> result</span><br><span class="line">        <span class="keyword">return</span> [[<span class="string">'.'</span>*i+<span class="string">'Q'</span>+<span class="string">'.'</span>*(n-i<span class="number">-1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> sol]<span class="keyword">for</span> sol <span class="keyword">in</span> result]</span><br></pre></td></tr></table></figure></p>
-<p>##Author Cesare Nov 30 2017</p>
-
+<img src="/2017/11/30/A-Simple-Python-Depth-First-Search/example.png" title="This is an example image">
+<blockquote>
+<p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,<br>consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</p>
+<blockquote>
+<p>And Here is a nested quote block.</p>
+</blockquote>
+<p>Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</p>
+<p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse<br>id sem consectetuer libero luctus adipiscing.</p>
+</blockquote>
+<ul>
+<li><p>This is a list item with two paragraphs.</p>
+<p>This is the second paragraph in the list item. You’re<br>only required to indent the first line. Lorem ipsum dolor<br>sit amet, consectetuer adipiscing elit.</p>
+</li>
+<li><p>Another item in the same list.</p>
+<blockquote>
+<p>This is a quote.</p>
+</blockquote>
+</li>
+</ul>
+<p><em>single asterisks</em></p>
+<p><em>single underscores</em></p>
+<p><strong>double asterisks</strong></p>
+<p><strong>double underscores</strong></p>
+<h1 id="Solution-in-python-DFS"><a href="#Solution-in-python-DFS" class="headerlink" title="Solution(in python - DFS)"></a>Solution(in python - DFS)</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">solveNQueens</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: List[List[str]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">DFS</span><span class="params">(queens, xy_dif,xy_sum)</span>:</span></span><br><span class="line">            l=len(queens)</span><br><span class="line">            <span class="keyword">if</span> l==n:</span><br><span class="line">                result.append(queens)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">            <span class="keyword">for</span> p <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="keyword">if</span> p <span class="keyword">not</span> <span class="keyword">in</span> queens <span class="keyword">and</span> l-p <span class="keyword">not</span> <span class="keyword">in</span> xy_dif <span class="keyword">and</span> l+p <span class="keyword">not</span> <span class="keyword">in</span> xy_sum:</span><br><span class="line">                    DFS(queens+[p],xy_dif+[l-p],xy_sum+[l+p])</span><br><span class="line">        result=[]</span><br><span class="line">        DFS([],[],[])</span><br><span class="line">        <span class="keyword">print</span> result</span><br><span class="line">        <span class="keyword">return</span> [[<span class="string">'.'</span>*i+<span class="string">'Q'</span>+<span class="string">'.'</span>*(n-i<span class="number">-1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> sol]<span class="keyword">for</span> sol <span class="keyword">in</span> result]</span><br></pre></td></tr></table></figure>
+<h2 id="Author-Cesare-Nov-30-2017"><a href="#Author-Cesare-Nov-30-2017" class="headerlink" title="Author Cesare Nov 30 2017"></a>Author Cesare Nov 30 2017</h2>
 </div>
 
 
