@@ -3,6 +3,51 @@
   
     
     <entry>
+      <title><![CDATA[Python List]]></title>
+      <url>/2017/12/09/Python-List/</url>
+      <content type="html"><![CDATA[<p>This journal aims to describe a problem of PYTHON LIST. </p>
+<p>The decription of the problem could be found <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/description/" target="_blank" rel="noopener">here</a> from LEETCODE.</p>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.</p>
+<p>For example,<br>Given 1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5, return 1-&gt;2-&gt;5.<br>Given 1-&gt;1-&gt;1-&gt;2-&gt;3, return 2-&gt;3.</p>
+<h1 id="CODE"><a href="#CODE" class="headerlink" title="CODE"></a>CODE</h1><pre><code># Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def deleteDuplicates(self, head):
+        &quot;&quot;&quot;
+        :type head: ListNode
+        :rtype: ListNode
+        &quot;&quot;&quot;
+        dummyHead=ListNode(0)
+        dummyHead.next=head
+        curNode=dummyHead
+
+        while curNode!=None:
+            nextNode=curNode.next
+            if nextNode!=None and nextNode.next!=None and nextNode.val==nextNode.next.val:
+                while nextNode!=None and nextNode.next!=None and nextNode.val==nextNode.next.val:
+                    nextNode=nextNode.next
+                # lastNode.next=nextNode.next
+                curNode.next=nextNode.next;
+            else:
+                curNode=curNode.next
+
+        return dummyHead.next
+</code></pre>]]></content>
+      
+        
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Unity Development Journal]]></title>
       <url>/2017/12/03/Unity-Development-Journal/</url>
       <content type="html"><![CDATA[<p>This journal aims to record the interesting methods and functions used in the <strong>Unity Game Development</strong>.</p>

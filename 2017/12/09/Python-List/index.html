@@ -8,12 +8,16 @@
 
   <!-- Title -->
   
-  <title>Cesare</title>
+  <title>Python List - Cesare</title>
 
   <!--Favicon-->
   <link rel="icon" href="favicon/favicon.ico">
 
   <!--Description-->
+  
+      <meta name="description" content="This journal aims to describe a problem of PYTHON LIST. 
+The decription of the problem could be found here from LEETCODE.
+DescriptionGiven a sorted li">
   
 
   <!--Author-->
@@ -70,30 +74,46 @@
 
 
   		<div class="row">
-  			
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2017/12/09/Python-List/">
-      <img class="img-fluid portfolio-img" src="/images/pythonList.jpg" alt="Python List">
-      <div class="overlay">
-        <span class="overlay-text">Python List</span>
-      </div>
-    </a>
-  </div>
+  			<div class="col-12 mb-4">
+  <img class="img-fluid project-img" src="/images/pythonList.jpg" alt="Python List">
 </div>
-
-
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2017/12/03/Unity-Development-Journal/">
-      <img class="img-fluid portfolio-img" src="/images/unityjournal.png" alt="Unity Development Journal">
-      <div class="overlay">
-        <span class="overlay-text">Unity Development Journal</span>
-      </div>
-    </a>
-  </div>
+<div class="col-lg-4 col-12 pt-3 px-4 pr-lg-5">
+  <h1>Python List</h1>
 </div>
+<div class="col-lg-8 col-12 pt-lg-3 mb-4 pl-lg-5 px-lg-0 px-4 portfolio-content">
+  <p>This journal aims to describe a problem of PYTHON LIST. </p>
+<p>The decription of the problem could be found <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/description/" target="_blank" rel="noopener">here</a> from LEETCODE.</p>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.</p>
+<p>For example,<br>Given 1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5, return 1-&gt;2-&gt;5.<br>Given 1-&gt;1-&gt;1-&gt;2-&gt;3, return 2-&gt;3.</p>
+<h1 id="CODE"><a href="#CODE" class="headerlink" title="CODE"></a>CODE</h1><pre><code># Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
 
+class Solution(object):
+    def deleteDuplicates(self, head):
+        &quot;&quot;&quot;
+        :type head: ListNode
+        :rtype: ListNode
+        &quot;&quot;&quot;
+        dummyHead=ListNode(0)
+        dummyHead.next=head
+        curNode=dummyHead
+
+        while curNode!=None:
+            nextNode=curNode.next
+            if nextNode!=None and nextNode.next!=None and nextNode.val==nextNode.next.val:
+                while nextNode!=None and nextNode.next!=None and nextNode.val==nextNode.next.val:
+                    nextNode=nextNode.next
+                # lastNode.next=nextNode.next
+                curNode.next=nextNode.next;
+            else:
+                curNode=curNode.next
+
+        return dummyHead.next
+</code></pre>
+</div>
 
 
       </div>
