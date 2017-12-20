@@ -8,12 +8,17 @@
 
   <!-- Title -->
   
-  <title>Cesare</title>
+  <title>Binary Trees - Cesare</title>
 
   <!--Favicon-->
   <link rel="icon" href="favicon/favicon.ico">
 
   <!--Description-->
+  
+      <meta name="description" content="Description of the binary tree problemsPreorder Traversals
+Count the node whenever it is the first time you reach it
+Inorder Traversals
+Count the node">
   
 
   <!--Author-->
@@ -70,42 +75,43 @@
 
 
   		<div class="row">
-  			
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2017/12/19/Binary-Trees/">
-      <img class="img-fluid portfolio-img" src="/images/binary_trees.jpg" alt="Binary Trees">
-      <div class="overlay">
-        <span class="overlay-text">Binary Trees</span>
-      </div>
-    </a>
-  </div>
+  			<div class="col-12 mb-4">
+  <img class="img-fluid project-img" src="/images/binary_trees.jpg" alt="Binary Trees">
 </div>
-
-
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2017/12/09/Python-List/">
-      <img class="img-fluid portfolio-img" src="/images/pythonList.jpg" alt="Python List">
-      <div class="overlay">
-        <span class="overlay-text">Python List</span>
-      </div>
-    </a>
-  </div>
+<div class="col-lg-4 col-12 pt-3 px-4 pr-lg-5">
+  <h1>Binary Trees</h1>
 </div>
+<div class="col-lg-8 col-12 pt-lg-3 mb-4 pl-lg-5 px-lg-0 px-4 portfolio-content">
+  <h1 id="Description-of-the-binary-tree-problems"><a href="#Description-of-the-binary-tree-problems" class="headerlink" title="Description of the binary tree problems"></a>Description of the binary tree problems</h1><p><strong>Preorder Traversals</strong></p>
+<p>Count the node whenever it is the first time you reach it</p>
+<p><strong>Inorder Traversals</strong></p>
+<p>Count the node in the order just like spanning all the nodes in the horizontal plane</p>
+<ul>
+<li>an algorithm in the inorder search<br>```python<h1 id="Definition-for-a-binary-tree-node"><a href="#Definition-for-a-binary-tree-node" class="headerlink" title="Definition for a binary tree node."></a>Definition for a binary tree node.</h1><h1 id="class-TreeNode-object"><a href="#class-TreeNode-object" class="headerlink" title="class TreeNode(object):"></a>class TreeNode(object):</h1><h1 id="def-init-self-x"><a href="#def-init-self-x" class="headerlink" title="def init(self, x):"></a>def <strong>init</strong>(self, x):</h1><h1 id="self-val-x"><a href="#self-val-x" class="headerlink" title="self.val = x"></a>self.val = x</h1><h1 id="self-left-None"><a href="#self-left-None" class="headerlink" title="self.left = None"></a>self.left = None</h1><h1 id="self-right-None"><a href="#self-right-None" class="headerlink" title="self.right = None"></a>self.right = None</h1></li>
+</ul>
+<p>class Solution(object):<br>    def inorderTraversal(self, root):<br>        “””<br>        :type root: TreeNode<br>        :rtype: List[int]<br>        “””</p>
+<pre><code>    # curNode=root
+    res=[1]
+    curNode=root
+    while curNode!=None:
+        if curNode.left==None:
+            res.append(curNode.val)
+            print curNode.val
+            curNode=curNode.right
+        else:
+            thisNode=curNode
+            curNode=curNode.left
+            nextNode=curNode
+            while nextNode.right!=None:
+                nextNode=nextNode.right
+            nextNode.right=thisNode
+            thisNode.left=None
+    return res[1:]
+</code></pre><p>```</p>
+<p><strong>Postorder Traversals</strong></p>
+<p>Count the node whenever it is the last time  you leave it</p>
 
-
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2017/12/03/Unity-Development-Journal/">
-      <img class="img-fluid portfolio-img" src="/images/unityjournal.png" alt="Unity Development Journal">
-      <div class="overlay">
-        <span class="overlay-text">Unity Development Journal</span>
-      </div>
-    </a>
-  </div>
 </div>
-
 
 
       </div>

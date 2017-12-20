@@ -3,6 +3,48 @@
   
     
     <entry>
+      <title><![CDATA[Binary Trees]]></title>
+      <url>/2017/12/19/Binary-Trees/</url>
+      <content type="html"><![CDATA[<h1 id="Description-of-the-binary-tree-problems"><a href="#Description-of-the-binary-tree-problems" class="headerlink" title="Description of the binary tree problems"></a>Description of the binary tree problems</h1><p><strong>Preorder Traversals</strong></p>
+<p>Count the node whenever it is the first time you reach it</p>
+<p><strong>Inorder Traversals</strong></p>
+<p>Count the node in the order just like spanning all the nodes in the horizontal plane</p>
+<ul>
+<li>an algorithm in the inorder search<br>```python<h1 id="Definition-for-a-binary-tree-node"><a href="#Definition-for-a-binary-tree-node" class="headerlink" title="Definition for a binary tree node."></a>Definition for a binary tree node.</h1><h1 id="class-TreeNode-object"><a href="#class-TreeNode-object" class="headerlink" title="class TreeNode(object):"></a>class TreeNode(object):</h1><h1 id="def-init-self-x"><a href="#def-init-self-x" class="headerlink" title="def init(self, x):"></a>def <strong>init</strong>(self, x):</h1><h1 id="self-val-x"><a href="#self-val-x" class="headerlink" title="self.val = x"></a>self.val = x</h1><h1 id="self-left-None"><a href="#self-left-None" class="headerlink" title="self.left = None"></a>self.left = None</h1><h1 id="self-right-None"><a href="#self-right-None" class="headerlink" title="self.right = None"></a>self.right = None</h1></li>
+</ul>
+<p>class Solution(object):<br>    def inorderTraversal(self, root):<br>        “””<br>        :type root: TreeNode<br>        :rtype: List[int]<br>        “””</p>
+<pre><code>    # curNode=root
+    res=[1]
+    curNode=root
+    while curNode!=None:
+        if curNode.left==None:
+            res.append(curNode.val)
+            print curNode.val
+            curNode=curNode.right
+        else:
+            thisNode=curNode
+            curNode=curNode.left
+            nextNode=curNode
+            while nextNode.right!=None:
+                nextNode=nextNode.right
+            nextNode.right=thisNode
+            thisNode.left=None
+    return res[1:]
+</code></pre><p>```</p>
+<p><strong>Postorder Traversals</strong></p>
+<p>Count the node whenever it is the last time  you leave it</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Python, Bianry Trees </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Python List]]></title>
       <url>/2017/12/09/Python-List/</url>
       <content type="html"><![CDATA[<p>This journal aims to describe a problem of PYTHON LIST. </p>
