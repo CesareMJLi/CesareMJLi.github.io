@@ -87,27 +87,38 @@ Count the node">
 <p><strong>Inorder Traversals</strong></p>
 <p>Count the node in the order just like spanning all the nodes in the horizontal plane</p>
 <ul>
-<li>an algorithm in the inorder search<br>```python<h1 id="Definition-for-a-binary-tree-node"><a href="#Definition-for-a-binary-tree-node" class="headerlink" title="Definition for a binary tree node."></a>Definition for a binary tree node.</h1><h1 id="class-TreeNode-object"><a href="#class-TreeNode-object" class="headerlink" title="class TreeNode(object):"></a>class TreeNode(object):</h1><h1 id="def-init-self-x"><a href="#def-init-self-x" class="headerlink" title="def init(self, x):"></a>def <strong>init</strong>(self, x):</h1><h1 id="self-val-x"><a href="#self-val-x" class="headerlink" title="self.val = x"></a>self.val = x</h1><h1 id="self-left-None"><a href="#self-left-None" class="headerlink" title="self.left = None"></a>self.left = None</h1><h1 id="self-right-None"><a href="#self-right-None" class="headerlink" title="self.right = None"></a>self.right = None</h1></li>
+<li>an algorithm in the inorder search</li>
 </ul>
-<p>class Solution(object):<br>    def inorderTraversal(self, root):<br>        “””<br>        :type root: TreeNode<br>        :rtype: List[int]<br>        “””</p>
-<pre><code>    # curNode=root
-    res=[1]
-    curNode=root
-    while curNode!=None:
-        if curNode.left==None:
-            res.append(curNode.val)
-            print curNode.val
-            curNode=curNode.right
-        else:
-            thisNode=curNode
-            curNode=curNode.left
-            nextNode=curNode
-            while nextNode.right!=None:
-                nextNode=nextNode.right
-            nextNode.right=thisNode
-            thisNode.left=None
-    return res[1:]
-</code></pre><p>```</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">TreeNode</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>val <span class="token operator">=</span> x
+        self<span class="token punctuation">.</span>left <span class="token operator">=</span> None
+        self<span class="token punctuation">.</span>right <span class="token operator">=</span> None
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">inorderTraversal</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> root<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""
+        :type root: TreeNode
+        :rtype: List[int]
+        """</span>
+        <span class="token comment" spellcheck="true"># curNode=root</span>
+        res<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+        curNode<span class="token operator">=</span>root
+        <span class="token keyword">while</span> curNode<span class="token operator">!=</span>None<span class="token punctuation">:</span>
+            <span class="token keyword">if</span> curNode<span class="token punctuation">.</span>left<span class="token operator">==</span>None<span class="token punctuation">:</span>
+                res<span class="token punctuation">.</span>append<span class="token punctuation">(</span>curNode<span class="token punctuation">.</span>val<span class="token punctuation">)</span>
+                <span class="token keyword">print</span> curNode<span class="token punctuation">.</span>val
+                curNode<span class="token operator">=</span>curNode<span class="token punctuation">.</span>right
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                thisNode<span class="token operator">=</span>curNode
+                curNode<span class="token operator">=</span>curNode<span class="token punctuation">.</span>left
+                nextNode<span class="token operator">=</span>curNode
+                <span class="token keyword">while</span> nextNode<span class="token punctuation">.</span>right<span class="token operator">!=</span>None<span class="token punctuation">:</span>
+                    nextNode<span class="token operator">=</span>nextNode<span class="token punctuation">.</span>right
+                nextNode<span class="token punctuation">.</span>right<span class="token operator">=</span>thisNode
+                thisNode<span class="token punctuation">.</span>left<span class="token operator">=</span>None
+        <span class="token keyword">return</span> res<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+</code></pre>
 <p><strong>Postorder Traversals</strong></p>
 <p>Count the node whenever it is the last time  you leave it</p>
 
