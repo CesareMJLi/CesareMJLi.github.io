@@ -49,7 +49,9 @@
         
         <tags>
             
-            <tag> Python, Bianry Trees </tag>
+            <tag> Python </tag>
+            
+            <tag> Binary Trees </tag>
             
         </tags>
         
@@ -95,6 +97,8 @@ class Solution(object):
         <tags>
             
             <tag> Python </tag>
+            
+            <tag> List </tag>
             
         </tags>
         
@@ -380,7 +384,9 @@ void Awake () </span><span class="token punctuation">{</span>
         
         <tags>
             
-            <tag> Python Algorithm </tag>
+            <tag> Python </tag>
+            
+            <tag> Depth First Search </tag>
             
         </tags>
         
