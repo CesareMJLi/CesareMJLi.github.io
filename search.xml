@@ -3,46 +3,140 @@
   
     
     <entry>
+      <title><![CDATA[Hexo Writing Formulation]]></title>
+      <url>/2017/12/28/Hexo-Writing-Formulation/</url>
+      <content type="html"><![CDATA[<p>This is a writing test for HEXO under the theme of material</p>
+<h1 id="Block-Quote"><a href="#Block-Quote" class="headerlink" title="Block Quote"></a>Block Quote</h1><ul>
+<li>Block without source<pre><code>{% blockquote %}
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.
+    {% endblockquote %}
+</code></pre><blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>Block with source<pre><code>{% blockquote David Levithan, Wide Awake %}
+    Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.
+    {% endblockquote %}
+</code></pre><blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
+<footer><strong>David Levithan</strong><cite>Wide Awake</cite></footer></blockquote>
+</li>
+</ul>
+<h1 id="Quote-from-Twitter"><a href="#Quote-from-Twitter" class="headerlink" title="Quote from Twitter"></a>Quote from Twitter</h1><pre><code>    {% blockquote @DevDocs https://twitter.com/devdocs/status/356095192085962752 %}
+    NEW: DevDocs now comes with syntax highlighting. http://devdocs.io
+    {% endblockquote %}
+</code></pre><blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a href="http://devdocs.io" target="_blank" rel="noopener">http://devdocs.io</a></p>
+<footer><strong>@DevDocs</strong><cite><a href="https://twitter.com/devdocs/status/356095192085962752" target="_blank" rel="noopener">twitter.com/devdocs/status/356095192085962752</a></cite></footer></blockquote>
+<h1 id="Quote-from-other-resource"><a href="#Quote-from-other-resource" class="headerlink" title="Quote from other resource"></a>Quote from other resource</h1><pre><code>    {% blockquote Seth Godin http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html Welcome to Island Marketing %}
+    Every interaction is both precious and an opportunity to delight.
+    {% endblockquote %}
+</code></pre><blockquote><p>Every interaction is both precious and an opportunity to delight.</p>
+<footer><strong>Seth Godin</strong><cite><a href="http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html" target="_blank" rel="noopener">Welcome to Island Marketing</a></cite></footer></blockquote>
+<h1 id="Quote-an-Image-from-default-path"><a href="#Quote-an-Image-from-default-path" class="headerlink" title="Quote an Image from default path"></a>Quote an Image from default path</h1><pre><code>{% asset_img example.png This is an example image %}
+</code></pre><img src="/2017/12/28/Hexo-Writing-Formulation/example.png" title="This is an example image">
+<h1 id="Paragraph"><a href="#Paragraph" class="headerlink" title="Paragraph"></a>Paragraph</h1><pre><code>&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+&gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+&gt;
+&gt; &gt; And Here is a nested quote block.
+&gt;
+&gt; Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+&gt; 
+&gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+&gt; id sem consectetuer libero luctus adipiscing.
+</code></pre><blockquote>
+<p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,<br>consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</p>
+<blockquote>
+<p>And Here is a nested quote block.</p>
+</blockquote>
+<p>Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</p>
+<p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse<br>id sem consectetuer libero luctus adipiscing.</p>
+</blockquote>
+<h1 id="Unorder-List-Item"><a href="#Unorder-List-Item" class="headerlink" title="Unorder List Item"></a>Unorder List Item</h1><pre><code>*   This is a list item with two paragraphs.
+
+    This is the second paragraph in the list item. You&#39;re
+only required to indent the first line. Lorem ipsum dolor
+sit amet, consectetuer adipiscing elit.
+
+*   Another item in the same list.
+
+    &gt; This is a quote.
+</code></pre><ul>
+<li><p>This is a list item with two paragraphs.</p>
+<p>This is the second paragraph in the list item. You’re<br>only required to indent the first line. Lorem ipsum dolor<br>sit amet, consectetuer adipiscing elit.</p>
+</li>
+<li><p>Another item in the same list.</p>
+<blockquote>
+<p>This is a quote.</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="Strongthen-text"><a href="#Strongthen-text" class="headerlink" title="Strongthen text"></a>Strongthen text</h1><pre><code>*single asterisks*
+
+_single underscores_
+
+**double asterisks**
+
+__double underscores__
+</code></pre><p><em>single asterisks</em></p>
+<p><em>single underscores</em></p>
+<p><strong>double asterisks</strong></p>
+<p><strong>double underscores</strong></p>
+<h1 id="Attach-a-link"><a href="#Attach-a-link" class="headerlink" title="Attach a link"></a>Attach a link</h1><pre><code>[Cesare&#39;s Homepage](https://cesaremjli.github.io/)
+</code></pre><p><a href="https://cesaremjli.github.io/" target="_blank" rel="noopener">Cesare’s Homepage</a></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Markdown Language </tag>
+            
+            <tag> HEXO </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Binary Trees]]></title>
       <url>/2017/12/19/Binary-Trees/</url>
-      <content type="html"><![CDATA[<h1 id="Description-of-the-binary-tree-problems"><a href="#Description-of-the-binary-tree-problems" class="headerlink" title="Description of the binary tree problems"></a>Description of the binary tree problems</h1><p><strong>Preorder Traversals</strong></p>
+      <content type="html"><![CDATA[<p>A short introduction of binary trees and its use in Python.</p>
+<h1 id="Description-of-the-binary-tree-problems"><a href="#Description-of-the-binary-tree-problems" class="headerlink" title="Description of the binary tree problems"></a>Description of the binary tree problems</h1><p><strong>Preorder Traversals</strong></p>
 <p>Count the node whenever it is the first time you reach it</p>
 <p><strong>Inorder Traversals</strong></p>
 <p>Count the node in the order just like spanning all the nodes in the horizontal plane</p>
 <ul>
 <li>an algorithm in the inorder search</li>
 </ul>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">TreeNode</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>val <span class="token operator">=</span> x
-        self<span class="token punctuation">.</span>left <span class="token operator">=</span> None
-        self<span class="token punctuation">.</span>right <span class="token operator">=</span> None
+<pre><code>class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
-<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">inorderTraversal</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> root<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""
+class Solution(object):
+    def inorderTraversal(self, root):
+        &quot;&quot;&quot;
         :type root: TreeNode
         :rtype: List[int]
-        """</span>
-        <span class="token comment" spellcheck="true"># curNode=root</span>
-        res<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
-        curNode<span class="token operator">=</span>root
-        <span class="token keyword">while</span> curNode<span class="token operator">!=</span>None<span class="token punctuation">:</span>
-            <span class="token keyword">if</span> curNode<span class="token punctuation">.</span>left<span class="token operator">==</span>None<span class="token punctuation">:</span>
-                res<span class="token punctuation">.</span>append<span class="token punctuation">(</span>curNode<span class="token punctuation">.</span>val<span class="token punctuation">)</span>
-                <span class="token keyword">print</span> curNode<span class="token punctuation">.</span>val
-                curNode<span class="token operator">=</span>curNode<span class="token punctuation">.</span>right
-            <span class="token keyword">else</span><span class="token punctuation">:</span>
-                thisNode<span class="token operator">=</span>curNode
-                curNode<span class="token operator">=</span>curNode<span class="token punctuation">.</span>left
-                nextNode<span class="token operator">=</span>curNode
-                <span class="token keyword">while</span> nextNode<span class="token punctuation">.</span>right<span class="token operator">!=</span>None<span class="token punctuation">:</span>
-                    nextNode<span class="token operator">=</span>nextNode<span class="token punctuation">.</span>right
-                nextNode<span class="token punctuation">.</span>right<span class="token operator">=</span>thisNode
-                thisNode<span class="token punctuation">.</span>left<span class="token operator">=</span>None
-        <span class="token keyword">return</span> res<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
-</code></pre>
-<p><strong>Postorder Traversals</strong></p>
+        &quot;&quot;&quot;
+        # curNode=root
+        res=[1]
+        curNode=root
+        while curNode!=None:
+            if curNode.left==None:
+                res.append(curNode.val)
+                print curNode.val
+                curNode=curNode.right
+            else:
+                thisNode=curNode
+                curNode=curNode.left
+                nextNode=curNode
+                while nextNode.right!=None:
+                    nextNode=nextNode.right
+                nextNode.right=thisNode
+                thisNode.left=None
+        return res[1:]
+</code></pre><p><strong>Postorder Traversals</strong></p>
 <p>Count the node whenever it is the last time  you leave it</p>
 ]]></content>
       
@@ -306,80 +400,32 @@ void Awake () </span><span class="token punctuation">{</span>
     </entry>
     
     <entry>
-      <title><![CDATA[Text Test]]></title>
-      <url>/2017/11/30/Text-Test/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
-      
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[A Simple Python Depth First Search]]></title>
       <url>/2017/11/30/A-Simple-Python-Depth-First-Search/</url>
-      <content type="html"><![CDATA[<h1 id="Description-of-8-queens-Problem"><a href="#Description-of-8-queens-Problem" class="headerlink" title="Description of 8-queens Problem"></a>Description of 8-queens Problem</h1><p>Here is the description of <a href="https://leetcode.com/problems/n-queens/description/" target="_blank" rel="noopener">8-QUEEN PROBLEM</a>.</p>
+      <content type="html"><![CDATA[<p>Depth First Search in some real problems.</p>
+<h1 id="Description-of-8-queens-Problem"><a href="#Description-of-8-queens-Problem" class="headerlink" title="Description of 8-queens Problem"></a>Description of 8-queens Problem</h1><p>Here is the description of <a href="https://leetcode.com/problems/n-queens/description/" target="_blank" rel="noopener">8-QUEEN PROBLEM</a>.</p>
 <p>The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.</p>
 <p>Given an integer n, return all distinct solutions to the n-queens puzzle.</p>
 <p>Each solution contains a distinct board configuration of the n-queens’ placement, where ‘Q’ and ‘.’ both indicate a queen and an empty space respectively</p>
-<img src="/2017/11/30/A-Simple-Python-Depth-First-Search/example.png" title="This is an example image">
-<blockquote>
-<p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,<br>consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</p>
-<blockquote>
-<p>And Here is a nested quote block.</p>
-</blockquote>
-<p>Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</p>
-<p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse<br>id sem consectetuer libero luctus adipiscing.</p>
-</blockquote>
-<ul>
-<li><p>This is a list item with two paragraphs.</p>
-<p>This is the second paragraph in the list item. You’re<br>only required to indent the first line. Lorem ipsum dolor<br>sit amet, consectetuer adipiscing elit.</p>
-</li>
-<li><p>Another item in the same list.</p>
-<blockquote>
-<p>This is a quote.</p>
-</blockquote>
-</li>
-</ul>
-<p><em>single asterisks</em></p>
-<p><em>single underscores</em></p>
-<p><strong>double asterisks</strong></p>
-<p><strong>double underscores</strong></p>
-<h1 id="Solution-in-python-DFS"><a href="#Solution-in-python-DFS" class="headerlink" title="Solution(in python - DFS)"></a>Solution(in python - DFS)</h1><pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">solveNQueens</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""
-        :type n: int
-        :rtype: List[List[str]]
-        """</span>
-        <span class="token keyword">def</span> <span class="token function">DFS</span><span class="token punctuation">(</span>queens<span class="token punctuation">,</span> xy_dif<span class="token punctuation">,</span>xy_sum<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            l<span class="token operator">=</span>len<span class="token punctuation">(</span>queens<span class="token punctuation">)</span>
-            <span class="token keyword">if</span> l<span class="token operator">==</span>n<span class="token punctuation">:</span>
-                result<span class="token punctuation">.</span>append<span class="token punctuation">(</span>queens<span class="token punctuation">)</span>
-                <span class="token keyword">return</span> None
-            <span class="token keyword">for</span> p <span class="token keyword">in</span> range<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-                <span class="token keyword">if</span> p <span class="token operator">not</span> <span class="token keyword">in</span> queens <span class="token operator">and</span> l<span class="token operator">-</span>p <span class="token operator">not</span> <span class="token keyword">in</span> xy_dif <span class="token operator">and</span> l<span class="token operator">+</span>p <span class="token operator">not</span> <span class="token keyword">in</span> xy_sum<span class="token punctuation">:</span>
-                    DFS<span class="token punctuation">(</span>queens<span class="token operator">+</span><span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">,</span>xy_dif<span class="token operator">+</span><span class="token punctuation">[</span>l<span class="token operator">-</span>p<span class="token punctuation">]</span><span class="token punctuation">,</span>xy_sum<span class="token operator">+</span><span class="token punctuation">[</span>l<span class="token operator">+</span>p<span class="token punctuation">]</span><span class="token punctuation">)</span>
-        result<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
-        DFS<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-        <span class="token keyword">print</span> result
-        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'.'</span><span class="token operator">*</span>i<span class="token operator">+</span><span class="token string">'Q'</span><span class="token operator">+</span><span class="token string">'.'</span><span class="token operator">*</span><span class="token punctuation">(</span>n<span class="token operator">-</span>i<span class="token number">-1</span><span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> sol<span class="token punctuation">]</span><span class="token keyword">for</span> sol <span class="token keyword">in</span> result<span class="token punctuation">]</span>
-</code></pre>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">10</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h2 id="Author-Cesare-Nov-30-2017"><a href="#Author-Cesare-Nov-30-2017" class="headerlink" title="Author Cesare Nov 30 2017"></a>Author Cesare Nov 30 2017</h2>]]></content>
+<h1 id="Solution-in-python-DFS"><a href="#Solution-in-python-DFS" class="headerlink" title="Solution(in python - DFS)"></a>Solution(in python - DFS)</h1><pre><code>    class Solution(object):
+        def solveNQueens(self, n):
+            &quot;&quot;&quot;
+            :type n: int
+            :rtype: List[List[str]]
+            &quot;&quot;&quot;
+            def DFS(queens, xy_dif,xy_sum):
+                l=len(queens)
+                if l==n:
+                    result.append(queens)
+                    return None
+                for p in range(n):
+                    if p not in queens and l-p not in xy_dif and l+p not in xy_sum:
+                        DFS(queens+[p],xy_dif+[l-p],xy_sum+[l+p])
+            result=[]
+            DFS([],[],[])
+            print result
+            return [[&#39;.&#39;*i+&#39;Q&#39;+&#39;.&#39;*(n-i-1) for i in sol]for sol in result]
+</code></pre>]]></content>
       
         
         <tags>
@@ -389,22 +435,6 @@ void Awake () </span><span class="token punctuation">{</span>
             <tag> Depth First Search </tag>
             
         </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Edinburgh Journal]]></title>
-      <url>/2017/11/30/Edinburgh-Journal/</url>
-      <content type="html"><![CDATA[<p>This is a writing test for HEXO</p>
-<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</p>
-</blockquote>
-<blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
-<footer><strong>David Levithan</strong><cite>Wide Awake</cite></footer></blockquote>
-<blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a href="http://devdocs.io" target="_blank" rel="noopener">http://devdocs.io</a></p>
-<footer><strong>@DevDocs</strong><cite><a href="https://twitter.com/devdocs/status/356095192085962752" target="_blank" rel="noopener">twitter.com/devdocs/status/356095192085962752</a></cite></footer></blockquote>
-<blockquote><p>Every interaction is both precious and an opportunity to delight.</p>
-<footer><strong>Seth Godin</strong><cite><a href="http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html" target="_blank" rel="noopener">Welcome to Island Marketing</a></cite></footer></blockquote>]]></content>
-      
         
     </entry>
     
