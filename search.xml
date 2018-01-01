@@ -104,9 +104,15 @@ __double underscores__
 <p>Count the node whenever it is the first time you reach it</p>
 <p><strong>Inorder Traversals</strong></p>
 <p>Count the node in the order just like spanning all the nodes in the horizontal plane</p>
+<blockquote>
+<p><a href="https://leetcode.com/problems/binary-tree-inorder-traversal/description/" target="_blank" rel="noopener">Description of one situation</a>:</p>
+<blockquote>
+<p>Given a binary tree, return the inorder traversal of its nodes’ values.</p>
 <ul>
-<li>an algorithm in the inorder search</li>
+<li>algorithm</li>
 </ul>
+</blockquote>
+</blockquote>
 <pre><code>class TreeNode(object):
     def __init__(self, x):
         self.val = x
@@ -136,6 +142,43 @@ class Solution(object):
                 nextNode.right=thisNode
                 thisNode.left=None
         return res[1:]
+</code></pre><blockquote>
+<p><a href="https://leetcode.com/problems/validate-binary-search-tree/description/" target="_blank" rel="noopener">Description of another situation</a>:</p>
+<blockquote>
+<p>Given a binary tree, determine if it is a valid binary search tree (BST).<br>Assume a BST is defined as follows:</p>
+<ul>
+<li>The left subtree of a node contains only nodes with keys less than the node’s key.</li>
+<li>The right subtree of a node contains only nodes with keys greater than the node’s key.</li>
+<li>Both the left and right subtrees must also be binary search trees.</li>
+<li>algorithm</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code>class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
+class Solution(object):
+    def isValidBST(self, root):
+        &quot;&quot;&quot;
+        :type root: TreeNode
+        :rtype: bool
+        &quot;&quot;&quot;
+        stack=[]
+        pre=None
+        cur=root
+        while stack or cur:
+            while cur:
+                stack.append(cur)
+                cur=cur.left
+            top=stack.pop()
+            if pre is not None and pre&gt;=top.val:
+                return False
+            pre=top.val
+            cur=top.right
+        return True
 </code></pre><p><strong>Postorder Traversals</strong></p>
 <p>Count the node whenever it is the last time  you leave it</p>
 ]]></content>
