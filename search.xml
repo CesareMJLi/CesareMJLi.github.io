@@ -3,6 +3,225 @@
   
     
     <entry>
+      <title><![CDATA[Linear Programming]]></title>
+      <url>/2018/01/10/Linear-Programming/</url>
+      <content type="html"><![CDATA[<h1 id="Linear-Progarmming"><a href="#Linear-Progarmming" class="headerlink" title="Linear Progarmming"></a>Linear Progarmming</h1><p>Algorithm in Primal Dual Simplex</p>
+<pre><code>Procedure Simplex_Primal_Dual(A,b,c,x,unbounded,y) 
+    {A:input matrix // b:known term vector}
+    {c: cost vector // x: feasible solution}
+    {y: optimal solution of D}
+    //////////
+    begin
+    optimal:=false; unbounded:=false;
+    I:={i: Aix=bi};
+    {Select the active constraints}
+    if I==None then grow_along(c,x,I,unbounded); 
+    while not optimal or not unbounded do 
+        begin
+        {g means yita and e means yipxilun}
+        if {gAI=c} has no solution then 
+            begin compute e&lt;: AIe=0, ce=1; grow_along(e,x,I,unbounded); end;
+        else if {gAI=c} has a solution and exists h: gh&lt;0 then 
+            begin compute e: AIe=uh; grow_along(e,x,I,unbounded); end;
+        else optimal:=true; 
+        {the dual system has a solution: gAI=c, g&gt;=0} 
+        end;
+    end.
+</code></pre>]]></content>
+      
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Graphs and Network Flows]]></title>
+      <url>/2018/01/09/Graphs-and-Network-Flows/</url>
+      <content type="html"><![CDATA[<h1 id="Defination"><a href="#Defination" class="headerlink" title="Defination"></a>Defination</h1><ul>
+<li>G=(N,A)</li>
+<li>Path</li>
+<li>Closed Path</li>
+<li>Simple Path: path with no repeated arcs</li>
+<li>Elementary path: a path with no repeated nodes</li>
+<li>Cycle</li>
+<li>Hamilton Cycle: a cycle having all nodes in the G(N,A)</li>
+<li>Eulerian Cycle: a cycle having all arcs in the G(N,A)</li>
+</ul>
+<h1 id="Undirected-graphs-spanning-tree-and-Hamiltonian-circuit"><a href="#Undirected-graphs-spanning-tree-and-Hamiltonian-circuit" class="headerlink" title="Undirected graphs: spanning tree and Hamiltonian circuit"></a>Undirected graphs: spanning tree and Hamiltonian circuit</h1><ul>
+<li><p>Spanning tree: formulation and a solution algorithm</p>
+<blockquote>
+<p>  The algorithm we are considering iteratively builds a solution starting from the empty one, and at each new step adds a new arc to the set of those that had been chosen. Two criteria must be established to guarantee the correct functioning of the algorithm: <em>i) the order according to which we should select the arcs to be put in the solution;</em> <em>ii) the criterion according to which we decide to add an arc to those already existing.</em></p>
+<p>  i) Considering the order, we are guided by arc weights. So we begin by considering the arcs with lighter weight and end with the heavier ones.</p>
+<p>  ii) An arc is added to the current solution only if the set of arcs, so augmented, can be part of a feasible solution. In the considered case this means that the arc added to the solution must not form cycles with the chosen arcs. Otherwise, we would come to a redundant solution.</p>
+</blockquote>
+</li>
+<li><p>Minimum cost Hamiltonian circuit</p>
+<blockquote>
+<p>  Traveling Salesperson Problem</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="Graph-connection-search-algorithm"><a href="#Graph-connection-search-algorithm" class="headerlink" title="Graph connection: search algorithm"></a>Graph connection: search algorithm</h1><p>Property: path or cut</p>
+<p>Let there be a digraph G=(N,A) with s and t∈N. Only one of the following statements is valid:</p>
+<p><em>i) there exists a path directed from s to t</em></p>
+<p><em>ii) there exists a cut (Ns, Nt) such that s∈Ns and t∈Nt, and there exist no arcs being in accordance with the cut, that is to say all arcs (i,j)∈A crossing the cut have i∈Nt and j∈Ns</em></p>
+<p>A simple but extremely important algorithm is the one performing the search of digraph G starting from a root node s. The algorithm restores a vector of predecessors. The predecessor P[i] of a node i provides the immediately preceding node i in the path directed from s to i. If at the end of the algorithm a node has predecessor equal to zero, this means that the node is not reachable from r.</p>
+<p>Algorithms</p>
+<pre><code>Procedure Search (G=(N,A),s,P): 
+    begin
+        for i := 1 to n do P[i] :=0; P[s] := s; Q := {s}; 
+        {initialization, s is the start point} 
+        repeat
+            select i from Q; Q:=Q\{i};     
+            {selection and removal of a node from Q} 
+            for each (i,j) ∈ FS(i) do
+                if P[j]=0
+                    then 
+                        begin P[j]:=i; 
+                        Q:=Q∪{j}
+                    end; 
+        until Q = ø
+    end
+</code></pre><h1 id="Shortest-Paths"><a href="#Shortest-Paths" class="headerlink" title="Shortest Paths"></a>Shortest Paths</h1><ul>
+<li>Shortest-path tree algorithm on acyclic graphs<blockquote>
+<p>  Let there be an acyclic weighted digraph G=(N,A). Note that both application examples seen above give rise to a graph of this type. In order to verify whether a graph is acyclic, we just need to check if it is possible to renumber the graph nodes so that <em>if (i,j)∈A then i&lt;j</em>.</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>  Algorithms</p>
+</blockquote>
+<pre><code>Procedure Topological_numbering(N,A,φ,x) 
+    begin
+        if ∃ i∈N: BS(i)=ø 
+            {i is the root node, with no BS}
+            then φ(i)=x; 
+            Topological_numbering(N\{i}, A\FS(i),x+1)
+        else if N≠ø 
+            then return(&quot;Non-acyclic graph&quot;) 
+    end.
+</code></pre><blockquote>
+<p>  From now on we assume G to be topologically numbered. Wishing to find the shortest-path tree with root 1, we can proceed by induction. We associate with each node i a label d[i] providing the length of the shortest path from 1 to i. A possible algorithm proceeds according to the following inductive rule:</p>
+<p>  d[1] = 0;</p>
+<p>  d[k] = min {d[i] + c_ik, i=1,…,k-1}, k=2,…,n.</p>
+</blockquote>
+<ul>
+<li>Shortest-path tree algorithm on acyclic graphs (II)<blockquote>
+<p>  A further and equivalent method visits the forward stars of each node. In this case, node labels are gradually updated as a better route is found. At the beginning, except for node 1 whose label is definitively fixed at value 0, labels are set equal to a very high value, such that any path from 1 to the node in question is shorter than that value.</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>  Algorithms</p>
+</blockquote>
+<pre><code>    Procedure SPT_Acyclic (P,d) 
+        begin
+            P[1]:=1; d[1]:=0; 
+            {P note the BS ndoe and d note the cost from root to this node}
+            for i:=2 to n 
+                do 
+                    begin 
+                        P[i]:=1; 
+                        d[i]:=M 
+                    end; 
+            {Initialization}
+
+            for i:=1 to n-1 do
+                for each (i,j)∈FS(i) 
+                    do
+                        if d[i]+cij &lt; d[j] 
+                            then 
+                                begin 
+                                    P[j]:=i; 
+                                    d[j]:=d[i]+cij 
+                                end
+        end
+</code></pre><ul>
+<li>Dijkstra’s algorithm<blockquote>
+<p>  We are now going to present an algorithm which, under appropriate hypotheses, behaves like SPT_Acyclic on non-acyclic graphs as well. The algorithm uses a set Q into which are introduced nodes whose forward star must be explored. <strong>Initially Q contains only the root node. Every time a node label is updated, the node, if not already there, is introduced into Q. The key instruction of the algorithm is the selection from Q of the node from which the graph search is to be continued. In the case of the SPT_Acyclic algorithm nodes were examined according to the topological ordering given by the numbering. In order to have the certainty of a similar behavior, and in particular the certainty that an examined node will never be introduced into Q again, the algorithm examines each time the node i having the smallest d[i] label.</strong></p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>  Algorithms</p>
+</blockquote>
+<pre><code>    Procedure SPT_Dijkstra (r,P,d) 
+        begin
+            for i:=1 to n 
+                do 
+                    begin 
+                        P[i]:=r; 
+                        d[i]:=M;
+                        {P note the BS node and d note the distance to this node}
+                        {M is a relative big value, to be more specific, infinite}
+                    end; 
+            d[r]:=0; Q:={r}; 
+            {initialization} 
+        repeat
+            select i from Q such that d[i]=min{d[h]: h∈Q}; 
+            {smallest label node is selected} 
+            Q:=Q\{i};
+            for each (i,j)∈FS(i) 
+                do
+                    if d[i]+cij &lt; d[j] 
+                        then
+                            begin 
+                                P[j]:=i; 
+                                d[j]:=d[i]+cij; 
+                                if j∈Q 
+                                    then Q:=Q∪{j} 
+                                end 
+        until Q=∅
+end.
+</code></pre><ul>
+<li>SPT_L (label correcting) algorithm<blockquote>
+<p>  If the graph is not acyclic and some of the lengths associated with arcs are negative, the properties seen above do not hold any more. In particular, it is not necessarily true that a node, once selected from  Q, cannot enter it again.</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>  Algorithms</p>
+</blockquote>
+<pre><code>    Procedure SPT_L (r,P,d) 
+        begin
+            for i:=1 to n 
+                do begin P[i]:=r; d[i]:=M end; d[r]:=0; 
+            {Initialization}
+            repeat
+                select i from Q; Q:=Q\{i}; 
+                {insertions into and selections from Q are performed according to a FIFO policy} 
+                {(Q is a queue)}
+                for each (i,j)∈FS(i) do
+                    if d[i]+cij &lt; d[j] then
+                        begin
+                            P[j]:=i; d[j]:=d[i]+cij; 
+                            Q:=Q∪{j} 
+                        end
+            until Q=∅ end.
+</code></pre><h1 id="Maximum-Flow"><a href="#Maximum-Flow" class="headerlink" title="Maximum Flow"></a>Maximum Flow</h1><p>Properties of flows and cuts</p>
+<p>A partition of the nodes into two subsets (Ns,Nt) such that s∈Ns, and t∈Nt, is called s-t cut. The arcs crossing the cut (having one endpoint in Ns and the other in Nt) are themselves partitioned into two subsets: the set of direct arcs A+(Ns,Nt)={(i,j)∈A: i∈Ns,j∈Nt}, and the set of inverse arcs A- (Ns,Nt)={(i j)∈A: i∈Nt,j∈Ns}.</p>
+<p>x(Ns,Nt)= ∑ xij((i,j)belongs to A+)– ∑ xij((i,j)belongs to A-).</p>
+<ul>
+<li>Augmenting path algorithm<br>We try to solve the problem incrementally: given a feasible flow, we test if it is improvable, i.e., if there exists a way of routing more flow from s to t. In order to discover if such flow augmentation is practicable, we introduce the residual graph of a flow x’. Given a graph G=(N,A) with capacity on the arcs u and a feasible flow x’, we define the residual graph GR(x’) = (N,A(x’)), where arcs are defined as follows:</li>
+</ul>
+<blockquote>
+<p>  A(x’) = A+(x’) ∪ A-(x’),</p>
+<p>  A+(x’) = {(i,j): (i,j)∈A, xij’&lt;uij}     // could increased</p>
+<p>  A-(x’) = {(i,j): (j,i)∈A, xji’&gt;0}.      // could decreased</p>
+</blockquote>
+<p>Given a feasible flow x’, consider the residual graph GR(x’). Searching for a path from s to t, corresponding to a possible flow augmentation, two exclusive cases may occur:</p>
+<p><em>i) there exists a path from s to t in GR(x’);</em></p>
+<p><em>ii) there exists a cut (Ns,Nt) in GR(x’) such that A-(x’)(Ns,Nt) = ∅.</em></p>
+<p>In the first case the flow x’ is not optimal and it can be increased by a strictly positive quantity, whereas in the second case x’ is optimal.</p>
+<p>In the first case we found an augmenting path (on which the flow can be varied without violating the capacity constraints). Let Pst be such path. Now we define the maximum quantity of flow θ that can be sent on the detected path and that is defined by the minimum of residual capacities of the corresponding arcs on the original graph:</p>
+<blockquote>
+<p>  θ is the minimum value of the uij-x’ij : (i,j)∈A + (x’) intersect with Pst and x’ij: (i,j)∈A-(x’) intersect with Pst</p>
+</blockquote>
+<h1 id="Minimum-Cost-Flow"><a href="#Minimum-Cost-Flow" class="headerlink" title="Minimum Cost Flow"></a>Minimum Cost Flow</h1><p>The minimum cost flow problem is a problem of optimization on networks of a more general kind: both the maximum flow problem and the shortest-path tree problem may be viewed as particular cases of the minimum cost flow problem. A network flow is specified by a digraph G=(N,A); with each node i∈N we associate a value bi (called balance of the node); with each arc (i,j) we associate the unit cost cij and a capacity uij limiting the maximum quantity of flow that can transit. Balances at nodes regulate the flow on the network.</p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Hexo Writing Formulation]]></title>
       <url>/2017/12/28/Hexo-Writing-Formulation/</url>
       <content type="html"><![CDATA[<p>This is a writing test for HEXO under the theme of material</p>
