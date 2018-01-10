@@ -30,6 +30,16 @@
 </code></pre>]]></content>
       
         
+        <tags>
+            
+            <tag> POLIMI </tag>
+            
+            <tag> Foundations of Operations Research </tag>
+            
+            <tag> Linear Programming </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -218,6 +228,20 @@ end.
 <h1 id="Minimum-Cost-Flow"><a href="#Minimum-Cost-Flow" class="headerlink" title="Minimum Cost Flow"></a>Minimum Cost Flow</h1><p>The minimum cost flow problem is a problem of optimization on networks of a more general kind: both the maximum flow problem and the shortest-path tree problem may be viewed as particular cases of the minimum cost flow problem. A network flow is specified by a digraph G=(N,A); with each node i∈N we associate a value bi (called balance of the node); with each arc (i,j) we associate the unit cost cij and a capacity uij limiting the maximum quantity of flow that can transit. Balances at nodes regulate the flow on the network.</p>
 ]]></content>
       
+        
+        <tags>
+            
+            <tag> Graphs </tag>
+            
+            <tag> Network Flows </tag>
+            
+            <tag> POLIMI </tag>
+            
+            <tag> Algorithms </tag>
+            
+            <tag> Foundations of Operations Research </tag>
+            
+        </tags>
         
     </entry>
     
