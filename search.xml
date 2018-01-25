@@ -3,6 +3,24 @@
   
     
     <entry>
+      <title><![CDATA[Wechat Game Development]]></title>
+      <url>/2018/01/25/Wechat-Game-Development/</url>
+      <content type="html"><![CDATA[<p>This is a development journal for a simple wechat game.</p>
+<p>Outside Link <a href="https://mp.weixin.qq.com/debug/wxagame/dev/i" target="_blank" rel="noopener">WECHAT HELPER DOCUMENT</a></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Wechat </tag>
+            
+            <tag> Game Development </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Linear Programming]]></title>
       <url>/2018/01/10/Linear-Programming/</url>
       <content type="html"><![CDATA[<h1 id="Linear-Progarmming"><a href="#Linear-Progarmming" class="headerlink" title="Linear Progarmming"></a>Linear Progarmming</h1><p>Algorithm in Primal Dual Simplex</p>
