@@ -3,6 +3,57 @@
   
     
     <entry>
+      <title><![CDATA[Jupyter Notebook of Machine Learning]]></title>
+      <url>/2018/03/12/Jupyter-Notebook-of-Machine-Learning/</url>
+      <content type="html"><![CDATA[<p>This is a studying ntoe in the process of the application of Jupyter Notebook in Machine Learning.</p>
+<p>Starting from a basic example of the Iris-Analysis</p>
+<pre><code>    # dataframe management
+    import pandas as pd
+
+    # numerical computation
+    import numpy as np
+
+    # visualization library
+    import seaborn as sns
+    sns.set(style=&quot;white&quot;, color_codes=True)
+    sns.set_context(rc={&quot;font.family&quot;:&#39;sans&#39;,&quot;font.size&quot;:24,&quot;axes.titlesize&quot;:24,&quot;axes.labelsize&quot;:24})
+
+
+    # import matplotlib and allow it to plot inline
+    import matplotlib.pyplot as plt
+    %matplotlib inline
+
+    # seaborn can generate several warnings, we ignore them
+    import warnings
+    warnings.filterwarnings(&quot;ignore&quot;)
+</code></pre><ul>
+<li><p><a href="https://pandas.pydata.org/" target="_blank" rel="noopener">Pandas</a> is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language.</p>
+<p>Generally speaking, the basic load of information could be done by pandas function</p>
+</li>
+<li><p><a href="http://www.numpy.org/" target="_blank" rel="noopener">NumPy</a>’s main object is the homogeneous multidimensional array. It is a table of elements (usually numbers), all of the same type, indexed by a tuple of positive integers. In NumPy dimensions are called axes. The number of axes is rank.</p>
+<p>For example NumPy could be used to return the max/min values of one column of values</p>
+</li>
+<li><p><a href="https://seaborn.pydata.org/" target="_blank" rel="noopener">Seaborn</a> is a Python visualization library based on matplotlib. It provides a high-level interface for drawing attractive statistical graphics.</p>
+</li>
+<li><p><a href="https://matplotlib.org/" target="_blank" rel="noopener">Matplotlib</a> is a Python 2D plotting library which produces publication quality figures in a variety of hardcopy formats and interactive environments across platforms. Matplotlib can be used in Python scripts, the Python and IPython shells, the Jupyter notebook, web application servers, and four graphical user interface toolkits.</p>
+</li>
+</ul>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> Machine Learning </tag>
+            
+            <tag> Jupyter Notebook </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Game Concept Art Design]]></title>
       <url>/2018/01/31/Game-Concept-Art-Design/</url>
       <content type="html"><![CDATA[<p>This is a general gallery for the art design I made, as a raw material for future use.</p>
@@ -84,11 +135,11 @@
         
         <tags>
             
-            <tag> Linear Programming </tag>
-            
             <tag> POLIMI </tag>
             
             <tag> Foundations of Operations Research </tag>
+            
+            <tag> Linear Programming </tag>
             
         </tags>
         
@@ -283,15 +334,15 @@ end.
         
         <tags>
             
-            <tag> POLIMI </tag>
-            
-            <tag> Foundations of Operations Research </tag>
-            
             <tag> Graphs </tag>
             
             <tag> Network Flows </tag>
             
+            <tag> POLIMI </tag>
+            
             <tag> Algorithms </tag>
+            
+            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
@@ -711,22 +762,6 @@ void Awake () </span><span class="token punctuation">{</span>
 </ol>
 </blockquote>
 <h2 id="Cesare-Dec-3-2017"><a href="#Cesare-Dec-3-2017" class="headerlink" title="Cesare Dec 3 2017"></a>Cesare Dec 3 2017</h2>]]></content>
-      
-        
-        <tags>
-            
-            <tag> Unity </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Picapicacuuu]]></title>
-      <url>/2017/11/30/Picapicacuuu/</url>
-      <content type="html"><![CDATA[<p>This is a basic idea of a unity Game</p>
-<p><em>A small doodle try to save his lover in a cell phone infected by a scary virsus. It transformed the GoogleMap, Photos, Facebook, instagram into enemies. Go throught all the APPs and reached the final destination, fight with the big bad virsus monster!</em></p>
-]]></content>
       
         
         <tags>
