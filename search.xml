@@ -3,6 +3,136 @@
   
     
     <entry>
+      <title><![CDATA[Algorithm and Complexity Analysis]]></title>
+      <url>/2018/03/14/Algorithm-and-Complexity-Analysis/</url>
+      <content type="html"><![CDATA[<p>EG: THe Problem of sorting</p>
+<p>Input: sequence (a1, a2, …, an) of numbers. </p>
+<p>Output: permutation (a’1, a’2, …, a’n) such<br>    that a’1 &lt;= a’2 &lt;= … &lt;= a’n.</p>
+<pre><code>///ONE SOLUTION: INSERTION SORT///
+
+void insertion_sort(std::vector&lt;int&gt; &amp;A)
+{
+    int i;
+    int j;
+    int value;
+    for(i=1; i&lt;A.size(); i++)
+    {
+       value = A[i];
+       j = i-1;
+       while(j&gt;=0 &amp;&amp; A[j]&gt;value)
+       {
+            A[j+1] = A[j];
+            j = j-1; 
+        }
+       A[j+1] = value;
+    }
+}
+</code></pre><ul>
+<li>Running Time</li>
+</ul>
+<p>The running time depends on the input: an already sorted sequence is easier to sort.</p>
+<p>Parameterize the running time by the size of the input, since short sequences are easier to sort than long ones.</p>
+<p>Generally, we seek upper bounds on the running time, because everybody likes a guarantee.</p>
+<ul>
+<li>Kinds of Analysis</li>
+</ul>
+<p>Worst-case: (usually)</p>
+<p>T(n) = maximum time of algorithm on any input of size n. </p>
+<p>Average-case: (sometimes)</p>
+<p>T(n) = expected time of algorithm over all inputs of size n.</p>
+<p>Need assumption of statistical distribution of inputs.</p>
+<p>Best-case: (bogus)</p>
+<p>Cheat with a slow algorithm that works fast on some input.</p>
+<ul>
+<li>Machine-Independent Time</li>
+</ul>
+<p>What is insertion sort’s worst-case time?</p>
+<p>It depends on the speed of our computer: </p>
+<p>relative speed (on the same machine),</p>
+<p>absolute speed (on different machines).</p>
+<p>BIG IDEA:</p>
+<p> Ignore machine-dependent constants. </p>
+<p> Look at growth of T(n) as n → ∞ .</p>
+<ul>
+<li>Q-notation</li>
+</ul>
+<p>MATH: Q(g(n)) = { f (n) :there exist positive constants c1, c2, and   n0 such that 0 &lt;= c1g(n) &lt;= f (n) &lt;= c2g(n) for all n &gt;= n0 }</p>
+<p>ENGINEERING: Drop low-order terms; ignore leading constants.Example: 3n^3 + 90n^2 – 5n + 6046 = Q(n^3)</p>
+<p>Here get back to the example of insertion analysis:<br>• Worst case: Input reverse sorted.<br>T(n)=Σ(j=2…n)Q(j)=Q(n^2</p>
+<p>While in the Merge-Sort<br>MERGE-SORT A[1 . . n] 1. </p>
+<ol>
+<li>If n = 1, done.</li>
+<li>Recursively sort A[ 1,…,[n/2] ] and A[ [n/2]+1,…,n ] .</li>
+<li>“Merge” the 2 sorted lists.</li>
+</ol>
+<pre><code>void merge_sort(std::vector&lt;int&gt; &amp;A)
+{
+    std::vector&lt;int&gt; A1;
+    std::vector&lt;int&gt; A2;
+    if (A.size()==1) return;
+    for(int i=0; i&lt;A.size()/2; i++)
+            A1.push_back(A[i]);
+    for(int i=A.size()/2; i&lt;A.size(); i++)
+            A2.push_back(A[i]);
+    merge_sort(A1); 
+    merge_sort(A2);
+    A = merge(A1,A2);
+}
+</code></pre><p>The complexity of merge sort is</p>
+<p>if n=1: T(n)=Q(1)</p>
+<p>if n&gt;1: T(n)=2T(n/2) + Q(n)</p>
+<p>Since there is lg(n) levels, and for eahc level the cost of merge is n so the total cost is nlg(n).</p>
+<ul>
+<li>O-Notation(Upper Bounds)</li>
+</ul>
+<p>We write f(n) = O(g(n)) if there exist constants c &gt; 0, n0 &gt; 0 such that 0 &lt;= f(n) &lt;= cg(n) for all n &gt;= n0.</p>
+<p>O(g(n)) = { f(n) : there exist constants c &gt; 0, n0 &gt; 0 such that 0 &lt;= f(n) &lt;= cg(n) for all n &gt;= n0 }</p>
+<p>[O(g(n)) noted a whole class of algorithms whos upper bound complexity  is O(g(n))]</p>
+<img src="/2018/03/14/Algorithm-and-Complexity-Analysis/Algorithms.jpg" title="This is an example for time complexity in O">
+<ul>
+<li>Marco Substitution</li>
+</ul>
+<p>Convention: A set in a formula represents an anonymous function in the set.</p>
+<pre><code>    EXAMPLE1:
+        f(n)=n^3+O(n^2)
+        MEANS
+        f(n)=n^3+h(n)
+        FOR SOME h(n) belongs to O(n^2)
+</code></pre><pre><code>    EXAMPLE2:
+        n^2+O(n)=O(n^2)
+        MEANS
+        FOR ANY f(n) belongs to O(n)
+            n^2+f(n)=h(n)
+            FOR SOME h(n) belongs to O(n^2)
+</code></pre><ul>
+<li>Omega-Notation</li>
+</ul>
+<p>Omega(g(n)) = { f(n) : there exist constants c &gt; 0, n0 &gt; 0 such that 0 &lt;= cg(n) &lt;= f(n) for all n &gt;= n0 }</p>
+<ul>
+<li>Boundary Conditions</li>
+</ul>
+<img src="/2018/03/14/Algorithm-and-Complexity-Analysis/BoundaryConditions.png">
+<ul>
+<li>Common Cases</li>
+</ul>
+<img src="/2018/03/14/Algorithm-and-Complexity-Analysis/CommonCase1.png">
+<img src="/2018/03/14/Algorithm-and-Complexity-Analysis/CommonCase2.png">
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Algorithm </tag>
+            
+            <tag> POLIMI </tag>
+            
+            <tag> Parallel Programming </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Jupyter Notebook of Machine Learning]]></title>
       <url>/2018/03/12/Jupyter-Notebook-of-Machine-Learning/</url>
       <content type="html"><![CDATA[<p>This is a studying ntoe in the process of the application of Jupyter Notebook in Machine Learning.</p>
@@ -334,11 +464,11 @@ end.
         
         <tags>
             
+            <tag> POLIMI </tag>
+            
             <tag> Graphs </tag>
             
             <tag> Network Flows </tag>
-            
-            <tag> POLIMI </tag>
             
             <tag> Algorithms </tag>
             
