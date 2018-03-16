@@ -3,6 +3,129 @@
   
     
     <entry>
+      <title><![CDATA[Cryptography Part II]]></title>
+      <url>/2018/03/16/Cryptography-Part-II/</url>
+      <content type="html"><![CDATA[<h1 id="Mar-5-Block-Ciphers-amp-Modes-of-Operation"><a href="#Mar-5-Block-Ciphers-amp-Modes-of-Operation" class="headerlink" title="Mar 5 Block Ciphers &amp; Modes of Operation"></a>Mar 5 Block Ciphers &amp; Modes of Operation</h1><h2 id="Design-of-Symmetric-key-Ciphers-Confusion-amp-Diffusion"><a href="#Design-of-Symmetric-key-Ciphers-Confusion-amp-Diffusion" class="headerlink" title="Design of Symmetric-key Ciphers: Confusion &amp; Diffusion"></a>Design of Symmetric-key Ciphers: Confusion &amp; Diffusion</h2><ul>
+<li><p>Confusion<br>  make the relation between the key, plaintext and ciphertext as complex as possible. Ideally, each digit of the key influences the correspondence between pxt and cxt letters in a non-predictable way</p>
+<blockquote>
+<p>Ciphers that do not offer effective confusion are vulnerable to frequency analysis</p>
+</blockquote>
+</li>
+<li><p>Diffusion<br>  Refers to the property that the statistical distribution of “groups of pxt letters” frequencies (due to the redundancy of the ptx language) should be dissipated, as much as possible, into flat distribution statistics, i.e. the ctx should appear as random data.</p>
+<blockquote>
+<p>Diffusion spreads (diffuse) the influence of a single plaintext letter over many (or every) cxt letters</p>
+<p>Ciphers suffering from poor diffusion can usually be broken by means of Known Plaintext Attacks (e.g., simple permutation ciphers) </p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Block-Ciphers"><a href="#Block-Ciphers" class="headerlink" title="Block Ciphers"></a>Block Ciphers</h2><p>Block ciphers operate on a block of plaintext m∈M (m = <m1, .="" ,="" mn="">, with m<sub>i</sub>∈{0, 1}), to produce a block of ciphertext (c = <c1, .="" ,="" cn=""> ∈ C, with c<sub>i</sub>∈{0, 1}) through a key-parametric transformation (either E<sub>k</sub> () or D<sub>k</sub> ())</c1,></m1,></p>
+<blockquote>
+<p>The block size n is in the [64, 256] bit range</p>
+<p>ptx size might not be multiple a of block size → PADDING</p>
+<p>For ptxs longer than a single block, the scheme used to apply E<sub>k</sub> () (or D<sub>k</sub> ()) is called mode of operation</p>
+</blockquote>
+<h2 id="Basic-Terminologies"><a href="#Basic-Terminologies" class="headerlink" title="Basic Terminologies"></a>Basic Terminologies</h2><p><strong>Cipher State</strong>: The result of each operation performed by the cipher (Initialized with the ptx; contains the ctx at the end of the computation)</p>
+<p><strong>Round</strong>: basic sequence of operations applied to the cipher state, a number of times (involves blending the key into the state)</p>
+<p><strong>Key Schedule</strong>: procedure expanding the original user key into key material to be used in each round</p>
+<h2 id="Modern-Block-Ciphers"><a href="#Modern-Block-Ciphers" class="headerlink" title="Modern Block Ciphers"></a>Modern Block Ciphers</h2><ul>
+<li><p>Feistel Networks</p>
+<p>  Invented by Horst Feistel (in ’50-’60), it splits the cipher state in two parts and acts on one of them per round</p>
+<p>  A Feistel network transforms an n-bit ptx block m=<l0, r0="">, into an n-bit ctx block c=<rr, lr=""> through an r-round process (r≥1); where the sub-blocks Li , Ri are n/2-bit long.</rr,></l0,></p>
+<pre><code>  Feistel(&lt;L, R&gt;, k)
+      1 for i ← 0 to r − 1
+      2   temp ← L
+      3   L ← R
+      4   R ← temp ⊕ F(ki, R) // Li = Ri−1, Ri = Li−1 ⊕ F(ki, Ri−1)
+      5 R ← R ⊕ F(kr, L)
+      6 return &lt;R, L&gt; // Note: the last round block halves are swapped
+</code></pre><blockquote>
+<p>Properties</p>
+<p>L<sub>i</sub> = R<sub>i-1</sub>, R<sub>i</sub> = L<sub>i-1</sub> ⊕ F(k<sub>i</sub> , R<sub>i-1</sub>)</p>
+<p>R<sub>i-1</sub> = L<sub>i</sub> , L<sub>i-1</sub> = R<sub>i</sub> ⊕ F(k<sub>i</sub>, L<sub>i</sub>)</p>
+</blockquote>
+  <img src="/2018/03/16/Cryptography-Part-II/Crypto.png">
+<blockquote>
+<p>Ciphers based on a Feistel Network</p>
+<p>DES, Blowfish, Twofish, CAST5</p>
+</blockquote>
+</li>
+<li><p>DES</p>
+<p>  16-round Feistel cryptosystem with 64-bit wide cipher state</p>
+  <img src="/2018/03/16/Cryptography-Part-II/Crypto2.png">
+<p>  <strong>DES round</strong>: F(ki, Ri−1) = P-box(S-box(ki ⊕ E-box(Ri−1))</p>
+<ol>
+<li><p>E-box(Ri−1) expands Ri−1 from 32 (4 <em> 8) into 48 (6 </em> 8) bits </p>
+</li>
+<li><p>Adds (XOR) the 48-bit round key ki </p>
+</li>
+<li><p>Map the 48-bit word into a 32-bit one via applying 8 fixed S-boxes. Each S-box map a 6 bit word to a 4 bit one</p>
+</li>
+<li><p>Apply a fixed bitwise permutation specified by the P-box</p>
+<p><strong>Weak Keys</strong>: Encrypting a ptx twice with a weak key k, yields the original ptx. DES(k, DES(k, m)) = m, ∀ m ∈ M</p>
+<p><strong>Semi-Weak Keys</strong>: Also a Semi-Weak key pair <k, k0=""> causes the composition of two DES encryptions employing k and k0 to compute the original ptx DES(k, DES(k 0, m)) = m, ∀ m ∈ M</k,></p>
+<p><strong>Not Closed</strong>: ∀m not exists k3 s.t. DES(k3, m) = DES(k2, DES(k1, m))</p>
+<blockquote>
+<p>The composition of two DES with distinct keys is still a permutation Sn, but in general it cannot be thought as computed by a DES with another key.</p>
+</blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/資料加密標準" target="_blank" rel="noopener">DES in wiki</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/DES%E8%A1%A5%E5%85%85%E6%9D%90%E6%96%99#%E6%89%A9%E5%BC%A0%E5%87%BD%E6%95%B0_(E%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">DES support material</a>)</p>
+</li>
+</ol>
+</li>
+<li><p>2DES</p>
+<p>  Double DES cipher consists of applying the DES primitive twice: c = 2DES(k1, k2, m) def as DES(k1, DES(k2, m))</p>
+</li>
+<li><p>Triple DES/TDES</p>
+<p>  c = 3DES(k1, k2, k3, m) def as = DES(k1, DES−1 (k2, DES(k3, m)))</p>
+<p>  m = 3DES−1(k1, k2, k3, m) def. = DES−1(k3, DES(k2, DES−1(k1, c)))</p>
+</li>
+<li><p>Substitution Permutation Networks (SPNs)</p>
+<blockquote>
+<p>The round of a SPN acts on the whole cipher state with:</p>
+<p>A “non-linear” function providing Confusion represented as a lookup table, a.k.a.: Substitution-Box (S-box)</p>
+<p>A “linear” function providing Diffusion, i.e., a bitwise permutation, or pairs of rotate &amp; xor operations The addition of a part of the key schedule</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Modes-of-Operation"><a href="#Modes-of-Operation" class="headerlink" title="Modes of Operation"></a>Modes of Operation</h2><p>A Mode of operation specifies the way to encrypt a message m∈M of arbitrary length through employing a block cipher</p>
+<p>Currently, there are modes of operations to guarantee </p>
+<ul>
+<li><p>Confidentiality of messages:</p>
+<p>  Electronic CodeBook mode (ECB)</p>
+<p>  Cipher Block Chaining mode (CBC)–most popular–not entirely secure</p>
+<p>  Output FeedBack mode (OFB)</p>
+<p>  Cipher FeedBack mode (CFB)</p>
+<p>  Counter mode (CTR)</p>
+</li>
+<li><p>Authentication of messages:<br>  CMAC</p>
+</li>
+<li><p>Both confidentiality and authentication:<br>  CCM and GCM</p>
+</li>
+</ul>
+<h2 id="CBC"><a href="#CBC" class="headerlink" title="CBC"></a>CBC</h2><p><strong>Encryption</strong></p>
+<p>c<sub>0</sub> = IV<br>c<sub>i</sub> = E<sub>k</sub> (m<sub>i</sub> ⊕ c<sub>i-1</sub>), for i ≥ 1</p>
+<blockquote>
+<p>The Initialization Vector (IV) ensures that two encryptions of the same ptx produce different ctxs</p>
+</blockquote>
+<p><strong>Decryption</strong></p>
+<p>m<sub>i</sub> = D<sub>k</sub> (c<sub>i</sub>) ⊕ c<sub>i-1</sub>, for i ≥ 1</p>
+<h2 id="Stream-Based-Models"><a href="#Stream-Based-Models" class="headerlink" title="Stream Based Models"></a>Stream Based Models</h2><p>Given a plaintext message m∈M as a sequence of blocks m=<m1, m2,="" .="" ,=""> the CFB, OFB and CTR modes of operation generate a key stream k1, k2, k3 . . . (each key has the size of a block) to mask the ptx m: ci = mi ⊕ ki , for i ≥ 1</m1,></p>
+<p>: Feistel structure, DES, 3DES, DES-X, Modes of Operation</p>
+<p>Design structures for block ciphers: Feistel Network (FN) and<br>Substitution &amp; Permutation Network (SPN)<br>The Feistel Network structure<br>Data Encryption Standard (DES)<br>Security of DES, Double-DES, Triple-DES, DES-X<br>Modes of Operation to guarantee Confidentiality: ECB, CBC, OFB,<br>CFB, CTR</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Cryptography </tag>
+            
+            <tag> Computer Security </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Cryptography Part I]]></title>
       <url>/2018/03/15/Cryptography-Part-I/</url>
       <content type="html"><![CDATA[<h1 id="Feb-26-Introduction-to-Cryptography"><a href="#Feb-26-Introduction-to-Cryptography" class="headerlink" title="Feb 26 Introduction to Cryptography"></a>Feb 26 Introduction to Cryptography</h1><h2 id="Instructor-Information"><a href="#Instructor-Information" class="headerlink" title="Instructor Information"></a>Instructor Information</h2><p>gerardo.pelosi@polimi.it</p>

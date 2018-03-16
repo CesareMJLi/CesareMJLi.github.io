@@ -43,7 +43,7 @@
     
     <title>
         
-            Game Concept Art Design | 
+            Cryptography Part II | 
         
         Cesare&#39;s Workshop
     </title>
@@ -54,7 +54,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)">
-    <meta name="keywords" content=",Game Development,Art Design">
+    <meta name="keywords" content=",Cryptography,Computer Security">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -220,7 +220,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Cesare&#39;s Workshop">
-    <meta name="msapplication-starturl" content="http://yoursite.com/2018/01/31/Game-Concept-Art-Design/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/03/16/Cryptography-Part-II/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Cesare&#39;s Workshop">
@@ -235,16 +235,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/2018/01/31/Game-Concept-Art-Design/">
+    <meta property="og:url" content="http://yoursite.com/2018/03/16/Cryptography-Part-II/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Game Concept Art Design | Cesare&#39;s Workshop">
+    <meta property="og:title" content="Cryptography Part II | Cesare&#39;s Workshop">
     <meta property="og:image" content="/img/star.png">
     <meta property="og:description" content="Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)">
-    <meta property="og:article:tag" content="Game Development"> <meta property="og:article:tag" content="Art Design"> 
+    <meta property="og:article:tag" content="Cryptography"> <meta property="og:article:tag" content="Computer Security"> 
 
     
-        <meta property="article:published_time" content="Wed Jan 31 2018 10:49:04 GMT+0100">
-        <meta property="article:modified_time" content="Mon Feb 26 2018 22:46:54 GMT+0100">
+        <meta property="article:published_time" content="Fri Mar 16 2018 08:13:14 GMT+0100">
+        <meta property="article:modified_time" content="Fri Mar 16 2018 11:19:50 GMT+0100">
     
 
     <!-- The Twitter Card protocol -->
@@ -252,7 +252,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/2018/01/31/Game-Concept-Art-Design/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2018/03/16/Cryptography-Part-II/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -264,10 +264,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yoursite.com/2018/01/31/Game-Concept-Art-Design/index.html",
-    "headline": "Game Concept Art Design",
-    "datePublished": "Wed Jan 31 2018 10:49:04 GMT+0100",
-    "dateModified": "Mon Feb 26 2018 22:46:54 GMT+0100",
+    "mainEntityOfPage": "http://yoursite.com/2018/03/16/Cryptography-Part-II/index.html",
+    "headline": "Cryptography Part II",
+    "datePublished": "Fri Mar 16 2018 08:13:14 GMT+0100",
+    "dateModified": "Fri Mar 16 2018 11:19:50 GMT+0100",
     "author": {
         "@type": "Person",
         "name": "Cesare (MINGJU LI)",
@@ -285,7 +285,7 @@
             "url": "/img/star.png"
         }
     },
-    "keywords": ",Game Development,Art Design",
+    "keywords": ",Cryptography,Computer Security",
     "description": "Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)",
 }
 </script>
@@ -345,6 +345,15 @@
     <!-- Left aligned menu below button -->
     
     
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Mar-5-Block-Ciphers-amp-Modes-of-Operation"><span class="post-toc-number">1.</span> <span class="post-toc-text">Mar 5 Block Ciphers & Modes of Operation</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Design-of-Symmetric-key-Ciphers-Confusion-amp-Diffusion"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Design of Symmetric-key Ciphers: Confusion & Diffusion</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Block-Ciphers"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Block Ciphers</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Basic-Terminologies"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Basic Terminologies</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Modern-Block-Ciphers"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Modern Block Ciphers</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Modes-of-Operation"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">Modes of Operation</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CBC"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">CBC</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Stream-Based-Models"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">Stream Based Models</span></a></li></ol></li></ol>
+    </ul>
+    
 
 
 
@@ -374,7 +383,7 @@
         
     
             <p class="article-headline-p">
-                Game Concept Art Design
+                Cryptography Part II
             </p>
         </div>
 
@@ -393,7 +402,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Cesare (MINGJU LI)</strong>
-        <span>Jan 31, 2018</span>
+        <span>Mar 16, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -417,7 +426,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Art-Design/">Art Design</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Game-Development/">Game Development</a>
+        <a class="post_tag-link" href="/tags/Computer-Security/">Computer Security</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Cryptography/">Cryptography</a>
     </ul>
     
 
@@ -434,7 +443,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Game Concept Art Design&url=http://yoursite.com/2018/01/31/Game-Concept-Art-Design/index.html&pic=http://yoursite.com/img/star.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Cryptography Part II&url=http://yoursite.com/2018/03/16/Cryptography-Part-II/index.html&pic=http://yoursite.com/img/star.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 Share to Weibo
             </li>
@@ -443,7 +452,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Game Concept Art Design&url=http://yoursite.com/2018/01/31/Game-Concept-Art-Design/index.html&via=Cesare (MINGJU LI)" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Cryptography Part II&url=http://yoursite.com/2018/03/16/Cryptography-Part-II/index.html&via=Cesare (MINGJU LI)" target="_blank">
             <li class="mdl-menu__item">
                 Share to Twitter
             </li>
@@ -452,7 +461,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/01/31/Game-Concept-Art-Design/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/03/16/Cryptography-Part-II/index.html" target="_blank">
             <li class="mdl-menu__item">
                 Share to Facebook
             </li>
@@ -461,7 +470,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/01/31/Game-Concept-Art-Design/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/03/16/Cryptography-Part-II/index.html" target="_blank">
             <li class="mdl-menu__item">
                 Share to Google+
             </li>
@@ -486,24 +495,113 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>This is a general gallery for the art design I made, as a raw material for future use.</p>
-<p>Photoshop Art Design<br>1.<br><img src="/2018/01/31/Game-Concept-Art-Design/ArtDesign1.jpg" title="practice on PS"></p>
-<p>2.<br><img src="/2018/01/31/Game-Concept-Art-Design/ArtDesign2.jpg" title="logo or Scarlet Games"></p>
-<p>Paper Art Design<br>1.<br><img src="/2018/01/31/Game-Concept-Art-Design/1.jpg" title="A hero and his company, a girl called Vanillla"></p>
-<p>2.<br><img src="/2018/01/31/Game-Concept-Art-Design/2.jpg" title="Ugly Princess"></p>
-<p>3.<br><img src="/2018/01/31/Game-Concept-Art-Design/3.jpg" title="Monster, Shank, and Clap-Trap-Source"></p>
-<p>4.<br><img src="/2018/01/31/Game-Concept-Art-Design/4.jpg" title="Cazio and Sir Lione"></p>
-<p>5.<br><img src="/2018/01/31/Game-Concept-Art-Design/5.jpg" title="Porry Hatter and Ginaruto"></p>
-<p>6.<br><img src="/2018/01/31/Game-Concept-Art-Design/6.jpg" title="Black Dragon"></p>
-<p>7.<br><img src="/2018/01/31/Game-Concept-Art-Design/7.jpg" title="Frankeinstana"></p>
-<p>8.<br><img src="/2018/01/31/Game-Concept-Art-Design/8.jpg" title="Captain Pissoff and King Kong"></p>
-<p>9.<br><img src="/2018/01/31/Game-Concept-Art-Design/9.jpg" title="Blizzardtrooper and General Noface"></p>
-<p>10.<br><img src="/2018/01/31/Game-Concept-Art-Design/10.jpg" title="WUKONG"></p>
-<p>11.<br><img src="/2018/01/31/Game-Concept-Art-Design/11.jpg" title="Mr Li and Cowboy"></p>
-<p>12.<br><img src="/2018/01/31/Game-Concept-Art-Design/12.jpg" title="SpongePOP"></p>
-<p>13.<br><img src="/2018/01/31/Game-Concept-Art-Design/13.jpg" title="Skeleton Monster and Super bad bad bad bad bad loli"></p>
-<p>14.<br><img src="/2018/01/31/Game-Concept-Art-Design/14.jpg" title="Middle Age Crysis"></p>
-<p>15.<br><img src="/2018/01/31/Game-Concept-Art-Design/15.jpg" title="Background"></p>
+        <h1 id="Mar-5-Block-Ciphers-amp-Modes-of-Operation"><a href="#Mar-5-Block-Ciphers-amp-Modes-of-Operation" class="headerlink" title="Mar 5 Block Ciphers &amp; Modes of Operation"></a>Mar 5 Block Ciphers &amp; Modes of Operation</h1><h2 id="Design-of-Symmetric-key-Ciphers-Confusion-amp-Diffusion"><a href="#Design-of-Symmetric-key-Ciphers-Confusion-amp-Diffusion" class="headerlink" title="Design of Symmetric-key Ciphers: Confusion &amp; Diffusion"></a>Design of Symmetric-key Ciphers: Confusion &amp; Diffusion</h2><ul>
+<li><p>Confusion<br>  make the relation between the key, plaintext and ciphertext as complex as possible. Ideally, each digit of the key influences the correspondence between pxt and cxt letters in a non-predictable way</p>
+<blockquote>
+<p>Ciphers that do not offer effective confusion are vulnerable to frequency analysis</p>
+</blockquote>
+</li>
+<li><p>Diffusion<br>  Refers to the property that the statistical distribution of “groups of pxt letters” frequencies (due to the redundancy of the ptx language) should be dissipated, as much as possible, into flat distribution statistics, i.e. the ctx should appear as random data.</p>
+<blockquote>
+<p>Diffusion spreads (diffuse) the influence of a single plaintext letter over many (or every) cxt letters</p>
+<p>Ciphers suffering from poor diffusion can usually be broken by means of Known Plaintext Attacks (e.g., simple permutation ciphers) </p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Block-Ciphers"><a href="#Block-Ciphers" class="headerlink" title="Block Ciphers"></a>Block Ciphers</h2><p>Block ciphers operate on a block of plaintext m∈M (m = <m1, .="" ,="" mn="">, with m<sub>i</sub>∈{0, 1}), to produce a block of ciphertext (c = <c1, .="" ,="" cn=""> ∈ C, with c<sub>i</sub>∈{0, 1}) through a key-parametric transformation (either E<sub>k</sub> () or D<sub>k</sub> ())</c1,></m1,></p>
+<blockquote>
+<p>The block size n is in the [64, 256] bit range</p>
+<p>ptx size might not be multiple a of block size → PADDING</p>
+<p>For ptxs longer than a single block, the scheme used to apply E<sub>k</sub> () (or D<sub>k</sub> ()) is called mode of operation</p>
+</blockquote>
+<h2 id="Basic-Terminologies"><a href="#Basic-Terminologies" class="headerlink" title="Basic Terminologies"></a>Basic Terminologies</h2><p><strong>Cipher State</strong>: The result of each operation performed by the cipher (Initialized with the ptx; contains the ctx at the end of the computation)</p>
+<p><strong>Round</strong>: basic sequence of operations applied to the cipher state, a number of times (involves blending the key into the state)</p>
+<p><strong>Key Schedule</strong>: procedure expanding the original user key into key material to be used in each round</p>
+<h2 id="Modern-Block-Ciphers"><a href="#Modern-Block-Ciphers" class="headerlink" title="Modern Block Ciphers"></a>Modern Block Ciphers</h2><ul>
+<li><p>Feistel Networks</p>
+<p>  Invented by Horst Feistel (in ’50-’60), it splits the cipher state in two parts and acts on one of them per round</p>
+<p>  A Feistel network transforms an n-bit ptx block m=<l0, r0="">, into an n-bit ctx block c=<rr, lr=""> through an r-round process (r≥1); where the sub-blocks Li , Ri are n/2-bit long.</rr,></l0,></p>
+<pre><code>  Feistel(&lt;L, R&gt;, k)
+      1 for i ← 0 to r − 1
+      2   temp ← L
+      3   L ← R
+      4   R ← temp ⊕ F(ki, R) // Li = Ri−1, Ri = Li−1 ⊕ F(ki, Ri−1)
+      5 R ← R ⊕ F(kr, L)
+      6 return &lt;R, L&gt; // Note: the last round block halves are swapped
+</code></pre><blockquote>
+<p>Properties</p>
+<p>L<sub>i</sub> = R<sub>i-1</sub>, R<sub>i</sub> = L<sub>i-1</sub> ⊕ F(k<sub>i</sub> , R<sub>i-1</sub>)</p>
+<p>R<sub>i-1</sub> = L<sub>i</sub> , L<sub>i-1</sub> = R<sub>i</sub> ⊕ F(k<sub>i</sub>, L<sub>i</sub>)</p>
+</blockquote>
+  <img src="/2018/03/16/Cryptography-Part-II/Crypto.png">
+<blockquote>
+<p>Ciphers based on a Feistel Network</p>
+<p>DES, Blowfish, Twofish, CAST5</p>
+</blockquote>
+</li>
+<li><p>DES</p>
+<p>  16-round Feistel cryptosystem with 64-bit wide cipher state</p>
+  <img src="/2018/03/16/Cryptography-Part-II/Crypto2.png">
+<p>  <strong>DES round</strong>: F(ki, Ri−1) = P-box(S-box(ki ⊕ E-box(Ri−1))</p>
+<ol>
+<li><p>E-box(Ri−1) expands Ri−1 from 32 (4 <em> 8) into 48 (6 </em> 8) bits </p>
+</li>
+<li><p>Adds (XOR) the 48-bit round key ki </p>
+</li>
+<li><p>Map the 48-bit word into a 32-bit one via applying 8 fixed S-boxes. Each S-box map a 6 bit word to a 4 bit one</p>
+</li>
+<li><p>Apply a fixed bitwise permutation specified by the P-box</p>
+<p><strong>Weak Keys</strong>: Encrypting a ptx twice with a weak key k, yields the original ptx. DES(k, DES(k, m)) = m, ∀ m ∈ M</p>
+<p><strong>Semi-Weak Keys</strong>: Also a Semi-Weak key pair <k, k0=""> causes the composition of two DES encryptions employing k and k0 to compute the original ptx DES(k, DES(k 0, m)) = m, ∀ m ∈ M</k,></p>
+<p><strong>Not Closed</strong>: ∀m not exists k3 s.t. DES(k3, m) = DES(k2, DES(k1, m))</p>
+<blockquote>
+<p>The composition of two DES with distinct keys is still a permutation Sn, but in general it cannot be thought as computed by a DES with another key.</p>
+</blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/資料加密標準" target="_blank" rel="noopener">DES in wiki</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/DES%E8%A1%A5%E5%85%85%E6%9D%90%E6%96%99#%E6%89%A9%E5%BC%A0%E5%87%BD%E6%95%B0_(E%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">DES support material</a>)</p>
+</li>
+</ol>
+</li>
+<li><p>2DES</p>
+<p>  Double DES cipher consists of applying the DES primitive twice: c = 2DES(k1, k2, m) def as DES(k1, DES(k2, m))</p>
+</li>
+<li><p>Triple DES/TDES</p>
+<p>  c = 3DES(k1, k2, k3, m) def as = DES(k1, DES−1 (k2, DES(k3, m)))</p>
+<p>  m = 3DES−1(k1, k2, k3, m) def. = DES−1(k3, DES(k2, DES−1(k1, c)))</p>
+</li>
+<li><p>Substitution Permutation Networks (SPNs)</p>
+<blockquote>
+<p>The round of a SPN acts on the whole cipher state with:</p>
+<p>A “non-linear” function providing Confusion represented as a lookup table, a.k.a.: Substitution-Box (S-box)</p>
+<p>A “linear” function providing Diffusion, i.e., a bitwise permutation, or pairs of rotate &amp; xor operations The addition of a part of the key schedule</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Modes-of-Operation"><a href="#Modes-of-Operation" class="headerlink" title="Modes of Operation"></a>Modes of Operation</h2><p>A Mode of operation specifies the way to encrypt a message m∈M of arbitrary length through employing a block cipher</p>
+<p>Currently, there are modes of operations to guarantee </p>
+<ul>
+<li><p>Confidentiality of messages:</p>
+<p>  Electronic CodeBook mode (ECB)</p>
+<p>  Cipher Block Chaining mode (CBC)–most popular–not entirely secure</p>
+<p>  Output FeedBack mode (OFB)</p>
+<p>  Cipher FeedBack mode (CFB)</p>
+<p>  Counter mode (CTR)</p>
+</li>
+<li><p>Authentication of messages:<br>  CMAC</p>
+</li>
+<li><p>Both confidentiality and authentication:<br>  CCM and GCM</p>
+</li>
+</ul>
+<h2 id="CBC"><a href="#CBC" class="headerlink" title="CBC"></a>CBC</h2><p><strong>Encryption</strong></p>
+<p>c<sub>0</sub> = IV<br>c<sub>i</sub> = E<sub>k</sub> (m<sub>i</sub> ⊕ c<sub>i-1</sub>), for i ≥ 1</p>
+<blockquote>
+<p>The Initialization Vector (IV) ensures that two encryptions of the same ptx produce different ctxs</p>
+</blockquote>
+<p><strong>Decryption</strong></p>
+<p>m<sub>i</sub> = D<sub>k</sub> (c<sub>i</sub>) ⊕ c<sub>i-1</sub>, for i ≥ 1</p>
+<h2 id="Stream-Based-Models"><a href="#Stream-Based-Models" class="headerlink" title="Stream Based Models"></a>Stream Based Models</h2><p>Given a plaintext message m∈M as a sequence of blocks m=<m1, m2,="" .="" ,=""> the CFB, OFB and CTR modes of operation generate a key stream k1, k2, k3 . . . (each key has the size of a block) to mask the ptx m: ci = mi ⊕ ki , for i ≥ 1</m1,></p>
+<p>: Feistel structure, DES, 3DES, DES-X, Modes of Operation</p>
+<p>Design structures for block ciphers: Feistel Network (FN) and<br>Substitution &amp; Permutation Network (SPN)<br>The Feistel Network structure<br>Data Encryption Standard (DES)<br>Security of DES, Double-DES, Triple-DES, DES-X<br>Modes of Operation to guarantee Confidentiality: ECB, CBC, OFB,<br>CFB, CTR</p>
 
         
     
@@ -524,21 +622,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/03/12/Jupyter-Notebook-of-Machine-Learning/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Newer
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2018/01/25/Wechat-Game-Development/" id="post_nav-older" class="next-content">
+        <a href="/2018/03/15/Cryptography-Part-I/" id="post_nav-older" class="next-content">
             Older
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
