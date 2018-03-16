@@ -110,8 +110,6 @@
 <p><strong>Decryption</strong></p>
 <p>m<sub>i</sub> = D<sub>k</sub> (c<sub>i</sub>) ⊕ c<sub>i-1</sub>, for i ≥ 1</p>
 <h2 id="Stream-Based-Models"><a href="#Stream-Based-Models" class="headerlink" title="Stream Based Models"></a>Stream Based Models</h2><p>Given a plaintext message m∈M as a sequence of blocks m=<m1, m2,="" .="" ,=""> the CFB, OFB and CTR modes of operation generate a key stream k1, k2, k3 . . . (each key has the size of a block) to mask the ptx m: ci = mi ⊕ ki , for i ≥ 1</m1,></p>
-<p>: Feistel structure, DES, 3DES, DES-X, Modes of Operation</p>
-<p>Design structures for block ciphers: Feistel Network (FN) and<br>Substitution &amp; Permutation Network (SPN)<br>The Feistel Network structure<br>Data Encryption Standard (DES)<br>Security of DES, Double-DES, Triple-DES, DES-X<br>Modes of Operation to guarantee Confidentiality: ECB, CBC, OFB,<br>CFB, CTR</p>
 ]]></content>
       
         
@@ -655,9 +653,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
             
             <tag> POLIMI </tag>
             
-            <tag> Foundations of Operations Research </tag>
-            
             <tag> Linear Programming </tag>
+            
+            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
@@ -854,13 +852,13 @@ end.
             
             <tag> POLIMI </tag>
             
+            <tag> Foundations of Operations Research </tag>
+            
             <tag> Graphs </tag>
             
             <tag> Network Flows </tag>
             
             <tag> Algorithms </tag>
-            
-            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
