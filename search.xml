@@ -3,6 +3,175 @@
   
     
     <entry>
+      <title><![CDATA[Cryptography Part III]]></title>
+      <url>/2018/03/16/Cryptography-Part-III/</url>
+      <content type="html"><![CDATA[<h1 id="Mar-12-SPN-amp-AES"><a href="#Mar-12-SPN-amp-AES" class="headerlink" title="Mar 12 SPN &amp; AES"></a>Mar 12 SPN &amp; AES</h1><h2 id="SPN"><a href="#SPN" class="headerlink" title="SPN"></a><a href="https://en.wikipedia.org/wiki/Substitution%E2%80%93permutation_network" target="_blank" rel="noopener">SPN</a></h2><p>SPN are built along <a href="https://en.wikipedia.org/wiki/Confusion_and_diffusion" target="_blank" rel="noopener">Shannon’s criteria of confusion and diffusion</a></p>
+<ul>
+<li><p>Confusion: obtained from the key mixing and substitution phase</p>
+<blockquote>
+<p>make the relationship between the key and cipher text as complicated as possible. Which means given cipher text it is hard to derive the key</p>
+</blockquote>
+</li>
+<li><p>Diffusion: obtained through the permutation of linear diffusion phase</p>
+<blockquote>
+<p>dissipating the statistical structure of plaintext over the bulk of ciphertext. Which means the attacker could not break the system by statistic methods</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="AES"><a href="#AES" class="headerlink" title="AES"></a><a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank" rel="noopener">AES</a></h2><ul>
+<li>128-bit block size (thought as a 4×4 byte matrix)</li>
+<li><p>3 key sizes (128/192/256-bits)</p>
+<blockquote>
+<p>Round Structure: Given a 4*4 byte matrix as input</p>
+<ol>
+<li><p>A Substitution layer in the form of 16 S-boxes, 8-to-8 bit</p>
+</li>
+<li><p>A Permutation layer implemented via a bytewise rotation (ShiftRows) and a xor-linear operation among state bytes (MixColumn)</p>
+</li>
+<li><p>A key addition: bitwise ⊕, with 128 bits of expanded key material</p>
+</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h2 id="Steam-Ciphers"><a href="#Steam-Ciphers" class="headerlink" title="Steam Ciphers"></a>Steam Ciphers</h2><p>In a Stream Cipher, we would like to </p>
+<ol>
+<li><p>use short keys k ∈ K to encrypt long messages </p>
+</li>
+<li><p>use algorithmically generated pseudo-random values for the keystream instead of truly random ones </p>
+</li>
+<li><p>be sure that the same keystream sequence is repeated only after a very long sequence of messages has been encrypted (. . . a practical value for infinity)</p>
+</li>
+</ol>
+<blockquote>
+<p>Synchronous Stream Ciphers</p>
+<p>The keystream is generated as a function of the cipher key and of the memory elements, independently of any previous ptx or ctx digit, i.e. ki=f(k,s0,s1,…)</p>
+<p>Asynchronous Stream Ciphers</p>
+<p>The keystream is generated as a function of the cipher key and a finite number of previous ctxs. </p>
+<p>Given a key k and an initial state S0 = ⟨sL−1, . . . , s0⟩ the keystream is composedas: ki =f(k,Si,Si−1,…)with Si =⟨ci+L−1,ci+L−2,…,ci+1,ci⟩</p>
+</blockquote>
+<h2 id="LFSR-Linear-Feedback-Shift-Registers"><a href="#LFSR-Linear-Feedback-Shift-Registers" class="headerlink" title="LFSR/Linear Feedback Shift Registers"></a>LFSR/Linear Feedback Shift Registers</h2><p><a href="https://www.youtube.com/watch?v=sKUhFpVxNWc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=sKUhFpVxNWc</a></p>
+<h1 id="Mar-15-Hybrid-Cryptosystems"><a href="#Mar-15-Hybrid-Cryptosystems" class="headerlink" title="Mar 15 Hybrid Cryptosystems"></a>Mar 15 Hybrid Cryptosystems</h1><h2 id="Hybrid-cryptosystems"><a href="#Hybrid-cryptosystems" class="headerlink" title="Hybrid cryptosystems"></a>Hybrid cryptosystems</h2><p>Encryption: Alice generates a random symmetric key k, encrypts the message with it, and encrypts k with kB<sub>pub</sub></p>
+<p>Decryption: Bob decrypts k using kB<sub>pri</sub>, and uses it to decrypt the message, after which he may discards k.</p>
+<p>Signature: Alice should sign something smaller than the whole message, although uniquely bound to it in some way</p>
+<blockquote>
+<p>Solving the efficient signature problem requires a new cryptographic primitive, the cryptographic hash</p>
+</blockquote>
+<h2 id="Cryptographic-Hash"><a href="#Cryptographic-Hash" class="headerlink" title="Cryptographic Hash"></a>Cryptographic Hash</h2><p>A hash is a deterministic function from arbitrary length message m, to fixed length output h = H(m) (Practically used to obtain a fixed-length “label” h for a digital object)</p>
+<blockquote>
+<p>The same value of h may be the hash of different messages (no such thing as bijective arbitrary size → fixed size compression)</p>
+<p>Property</p>
+<ol>
+<li><p>Given h, hard to find m such that H(m)=h</p>
+</li>
+<li><p>Given m, hard to find m’ such that H(m)=H(m’)</p>
+</li>
+<li><p>Hard to find m’ and m’’ such that H(m’)=H(m’’)</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="Public-Key-Authentication-证明公钥匙是谁的"><a href="#Public-Key-Authentication-证明公钥匙是谁的" class="headerlink" title="Public Key Authentication[证明公钥匙是谁的]"></a>Public Key Authentication[证明公钥匙是谁的]</h2><p>To prevent impersonation attack on publich key cryptosystems.(Pretend to be someone you are not and steal the information). Here rises the need of <strong>DIGITAL CERTIFICATE of authenticity of public keys</strong></p>
+<h2 id="Digital-Certificate"><a href="#Digital-Certificate" class="headerlink" title="Digital Certificate"></a>Digital Certificate</h2><p>Our purpose is to authenticate the binding of a public key to the identity of someone/some company</p>
+<p>举个例子方便大家理解，假设我们公司”ABC Company”花了1000块钱，向一个证书发布机构”SecureTrust CA”为我们自己的公司”ABC Company”申请了一张证书，注意，这个证书发布机构”SecureTrust CA”是一个大家公认并被一些权威机构接受的证书发布机构，我们的操作系统里面已经安装了”SecureTrust CA”的证书。”SecureTrust CA”在给我们发布证书时，把Issuer,Public key,Subject,Valid from,Valid to等信息以明文的形式写到证书里面，然后用一个指纹算法计算出这些数字证书内容的一个指纹，并把指纹和指纹算法用自己的私钥进行加密，然后和证书的内容一起发布，同时”SecureTrust CA”还会给一个我们公司”ABC Company”的私钥给到我们。我们花了1000块钱买的这个证书的内容如下：</p>
+<p>×××××××××××××××证书内容开始×××××××××××××××××</p>
+<p>Issuer : SecureTrust CA</p>
+<p>Subject : ABC Company</p>
+<p>Valid from ： 某个日期</p>
+<p>Valid to： 某个日期</p>
+<p>Public Key : 一串很长的数字</p>
+<p>…… 其它的一些证书内容……</p>
+<p>{证书的指纹和计算指纹所使用的指纹算法}[SecureTrust CA的私钥|RSA]</p>
+<p>//这个部分验证了消息的完整性，确定这个消息没有被人中途修改过      </p>
+<p>//这个就是”SecureTrust CA”对这个证书的一个数字签名，表示这个证书确实是他发布的，有什么问题他会负责(收了我们1000块，出了问题肯定要负责任的)</p>
+<p>×××××××××××××××证书内容结束×××××××××××××××××</p>
+<p>//{} 表示RSA加密后的内容，[ | ]表示用什么密钥和算法进行加密</p>
+<blockquote>
+<ol>
+<li><p>首先当用户收到了来自一个服务器的一个安全证书，他会检查是否CA是这个用户信任的CA</p>
+</li>
+<li><p>其次用户会检查这个安全证书是否是权威的，也就是通过CA公布的公钥来验证CA的数字签名</p>
+</li>
+<li><p>如果用户确认了这一消息（该证书由一个可信赖的CA颁发并且内容没有修改过），那么这份安全证书就可以被信任</p>
+</li>
+</ol>
+</blockquote>
+<p>A keypair can be compromised (e.g. by theft, blackmail)。 Revocation of a certificate could be done by CRLs, or OCSP.</p>
+<h2 id="Who-Signs-The-Certificate"><a href="#Who-Signs-The-Certificate" class="headerlink" title="Who Signs The Certificate"></a>Who Signs The Certificate</h2><p><strong>PKI/Public Key Infrastructure</strong>: A centralized, tree structured<br>architecture of entities which sign certificates of their subsiders. The root authorities are implicitly trusted</p>
+<pre><code>Root CAs are a single point of failure for the whole infrastructure: if a Root CA gets its key compromised, all the certificates issued from offspring CAs become forgeable.
+</code></pre><blockquote>
+<p>ACME Control</p>
+</blockquote>
+<p><strong>WoT/Web-of-Trust</strong>: A distributed architecture relying on the “small world assumption” where everyone can sign certificates. The trust on the authenticity of a certificate is established depending on the trust on the authenticity of its signers</p>
+<ul>
+<li><p><strong>Users</strong>: The only actor of the scheme are users, they : </p>
+<p>  Encrypt/sign/verify a digital object (file/mail message)</p>
+<p>  Acts as a CA signing someone else’s key/id pair</p>
+<p>  Keep a local key/id keyring where all the certificates are kept </p>
+<p>  Choose which users they trust to be acting as a CA</p>
+</li>
+<li><p><strong>Keyservers</strong>: Provide a globally synchronized, trusted archive of public certificates.</p>
+<p>  Public lookup is provided via either key ID or user ID</p>
+<p>  The archive is append only, no practical removal is possible </p>
+<p>  Anyone can run a keyserver, provided he has enough resources.</p>
+</li>
+<li><p><strong>Trust Levels</strong>:</p>
+<p>  The default trust levels in the WoT scheme are :</p>
+<ul>
+<li><p>ultimate: It’s the user’s own key trust level. Every key you sign with an “ultimate” trusted key becomes authentic.</p>
+</li>
+<li><p>complete: One signature by a key with this level of trust makes the key/id pair authentic.</p>
+</li>
+<li><p>marginal: At least 2 keys with marginal trust have to sign a key/id pair to make it authentic.</p>
+</li>
+<li><p>untrusted: Untrusted key signatures do not contribute to mark a key/id pair as authentic</p>
+<blockquote>
+<p>This based on the assuming that before a certificate is signed, each user would be careful enough to verify the corresponding identity.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>Certification Authority (CA): An entity (typically a firm) which takes care of signing the certificates, and distributes its public key to all the users in a trusted manner</p>
+<blockquote>
+<ol>
+<li><p>The CA creates its own keypair and fills in the fields of its certificate</p>
+</li>
+<li><p>We assume, for the sake of clarity, that we are describing a root CA, i.e. one sitting at the top of the PKI hierarchy The CA self-signs its own certificate, and stores its own private key in a tightly guarded place (at least,hopefully)</p>
+</li>
+<li><p>The CA takes care to distribute its self-signed public key certificate in a safe manner to the largest possible user-base</p>
+</li>
+</ol>
+</blockquote>
+</li>
+<li><p>Registration Authority (RA): An entity (again, usually a firm) which takes care of verifying the actual authenticity of a certificate, gathering data on the user (physically checking his/her identity and certificate hash). Very often, it coincides with the CA</p>
+</li>
+<li><p>User: Asks the CA to sign his certificate, or employs the CA public keys to verify the authenticity of the certificates for another user.</p>
+</li>
+</ul>
+<h2 id="Mail-Protocol-PGP-GPG"><a href="#Mail-Protocol-PGP-GPG" class="headerlink" title="Mail Protocol PGP/GPG"></a>Mail Protocol PGP/GPG</h2><p>Possible to encrypt and sign any file, the most typical use is to encrypt and sign e-mail messages</p>
+<p>PGP/GPG messages encrypted and signed with an hybrid symmetric+asymmetric scheme for efficiency</p>
+<blockquote>
+<p>This method is the typical hybrid system. Sender generates a symmetric key to encrypt files and send the symmetric key encrypted in the reciever’s public key.</p>
+</blockquote>
+<h1 id="Useful-Links"><a href="#Useful-Links" class="headerlink" title="Useful Links"></a>Useful Links</h1><ol>
+<li><p><a href="https://www.zhihu.com/question/52493697" target="_blank" rel="noopener">https://www.zhihu.com/question/52493697</a></p>
+</li>
+<li><p><a href="http://www.cnblogs.com/JeffreySun/archive/2010/06/24/1627247.html" target="_blank" rel="noopener">http://www.cnblogs.com/JeffreySun/archive/2010/06/24/1627247.html</a></p>
+</li>
+</ol>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Cryptography </tag>
+            
+            <tag> Computer Security </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Cryptography Part II]]></title>
       <url>/2018/03/16/Cryptography-Part-II/</url>
       <content type="html"><![CDATA[<h1 id="Mar-5-Block-Ciphers-amp-Modes-of-Operation"><a href="#Mar-5-Block-Ciphers-amp-Modes-of-Operation" class="headerlink" title="Mar 5 Block Ciphers &amp; Modes of Operation"></a>Mar 5 Block Ciphers &amp; Modes of Operation</h1><h2 id="Design-of-Symmetric-key-Ciphers-Confusion-amp-Diffusion"><a href="#Design-of-Symmetric-key-Ciphers-Confusion-amp-Diffusion" class="headerlink" title="Design of Symmetric-key Ciphers: Confusion &amp; Diffusion"></a>Design of Symmetric-key Ciphers: Confusion &amp; Diffusion</h2><ul>
@@ -653,9 +822,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
             
             <tag> POLIMI </tag>
             
-            <tag> Linear Programming </tag>
-            
             <tag> Foundations of Operations Research </tag>
+            
+            <tag> Linear Programming </tag>
             
         </tags>
         
@@ -852,13 +1021,13 @@ end.
             
             <tag> POLIMI </tag>
             
-            <tag> Foundations of Operations Research </tag>
-            
             <tag> Graphs </tag>
             
             <tag> Network Flows </tag>
             
             <tag> Algorithms </tag>
+            
+            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
