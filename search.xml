@@ -742,23 +742,34 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
       <title><![CDATA[Game Concept Art Design]]></title>
       <url>/2018/01/31/Game-Concept-Art-Design/</url>
       <content type="html"><![CDATA[<p>This is a general gallery for the art design I made, as a raw material for future use.</p>
-<p>Photoshop Art Design<br>1.<br><img src="/2018/01/31/Game-Concept-Art-Design/ArtDesign1.jpg" title="practice on PS"></p>
-<p>2.<br><img src="/2018/01/31/Game-Concept-Art-Design/ArtDesign2.jpg" title="logo or Scarlet Games"></p>
-<p>Paper Art Design<br>1.<br><img src="/2018/01/31/Game-Concept-Art-Design/1.jpg" title="A hero and his company, a girl called Vanillla"></p>
-<p>2.<br><img src="/2018/01/31/Game-Concept-Art-Design/2.jpg" title="Ugly Princess"></p>
-<p>3.<br><img src="/2018/01/31/Game-Concept-Art-Design/3.jpg" title="Monster, Shank, and Clap-Trap-Source"></p>
-<p>4.<br><img src="/2018/01/31/Game-Concept-Art-Design/4.jpg" title="Cazio and Sir Lione"></p>
-<p>5.<br><img src="/2018/01/31/Game-Concept-Art-Design/5.jpg" title="Porry Hatter and Ginaruto"></p>
-<p>6.<br><img src="/2018/01/31/Game-Concept-Art-Design/6.jpg" title="Black Dragon"></p>
-<p>7.<br><img src="/2018/01/31/Game-Concept-Art-Design/7.jpg" title="Frankeinstana"></p>
-<p>8.<br><img src="/2018/01/31/Game-Concept-Art-Design/8.jpg" title="Captain Pissoff and King Kong"></p>
-<p>9.<br><img src="/2018/01/31/Game-Concept-Art-Design/9.jpg" title="Blizzardtrooper and General Noface"></p>
-<p>10.<br><img src="/2018/01/31/Game-Concept-Art-Design/10.jpg" title="WUKONG"></p>
-<p>11.<br><img src="/2018/01/31/Game-Concept-Art-Design/11.jpg" title="Mr Li and Cowboy"></p>
-<p>12.<br><img src="/2018/01/31/Game-Concept-Art-Design/12.jpg" title="SpongePOP"></p>
-<p>13.<br><img src="/2018/01/31/Game-Concept-Art-Design/13.jpg" title="Skeleton Monster and Super bad bad bad bad bad loli"></p>
-<p>14.<br><img src="/2018/01/31/Game-Concept-Art-Design/14.jpg" title="Middle Age Crysis"></p>
-<p>15.<br><img src="/2018/01/31/Game-Concept-Art-Design/15.jpg" title="Background"></p>
+<ul>
+<li>Photoshop Art Design</li>
+</ul>
+<ol>
+<li><img src="/2018/01/31/Game-Concept-Art-Design/ArtDesign1.jpg" title="practice on PS">
+</li>
+<li><img src="/2018/01/31/Game-Concept-Art-Design/ArtDesign2.jpg" title="logo od Scarlet Games">
+</li>
+<li><img src="/2018/01/31/Game-Concept-Art-Design/ArtDesign3.png" title="Date Masamune">
+</li>
+</ol>
+<ul>
+<li>Paper Art Design</li>
+</ul>
+<ol>
+<li><img src="/2018/01/31/Game-Concept-Art-Design/1.jpg">
+</li>
+<li><img src="/2018/01/31/Game-Concept-Art-Design/2.jpg">
+</li>
+<li><img src="/2018/01/31/Game-Concept-Art-Design/3.jpg">
+</li>
+<li><img src="/2018/01/31/Game-Concept-Art-Design/4.jpg">
+</li>
+<li><img src="/2018/01/31/Game-Concept-Art-Design/5.jpg">
+</li>
+<li><img src="/2018/01/31/Game-Concept-Art-Design/6.jpg">
+</li>
+</ol>
 ]]></content>
       
         
@@ -822,9 +833,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
             
             <tag> POLIMI </tag>
             
-            <tag> Foundations of Operations Research </tag>
-            
             <tag> Linear Programming </tag>
+            
+            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
@@ -1021,13 +1032,13 @@ end.
             
             <tag> POLIMI </tag>
             
+            <tag> Foundations of Operations Research </tag>
+            
             <tag> Graphs </tag>
             
             <tag> Network Flows </tag>
             
             <tag> Algorithms </tag>
-            
-            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
