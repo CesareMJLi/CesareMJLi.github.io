@@ -3,6 +3,154 @@
   
     
     <entry>
+      <title><![CDATA[NP Complete Problems]]></title>
+      <url>/2018/03/24/NP-Complete-Problems/</url>
+      <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>迄今为止，几乎大部分算法都是多项式时间算法，也就是对于规模为n的输入，在最坏情况下的运行时间为O（n^k），其中k为某个常数，然而并不是所有的问题都能在多项式时间内解决，如著名的“停机问题”。</p>
+<p>“NP完全”（NP-complete）问题的状态是未知的，既没有人找到这类问题的多项式时间算法，也没有人证明这类问题的多项式时间算法不存在。</p>
+<blockquote>
+<p>一个NPC不一定是无法解决的，但是他的算法可能复杂度是O（2^n）等等，总之是无法在多项式时间内解决。</p>
+</blockquote>
+<p>在本文档中介绍三类问题</p>
+<ul>
+<li><p>P：在多项式时间内可以解决的问题</p>
+</li>
+<li><p>NP：在多项式时间内可以验证的问题，在问题输入的规模的多项式时间内，可以验证某一个结果是否是正确的（不难看出，P⊆NP）</p>
+</li>
+<li><p>NPC：如果一个问题属于NP，并且与NP中的任何一个问题是一样难的，那么这个问题属于NPC，也就是说他是NP完全的</p>
+</li>
+</ul>
+<blockquote>
+<p>如果任何NPC问题可以在多项式时间内解决，那么每一个NPC问题都有一个多项式时间算法</p>
+</blockquote>
+<p>在证明一个问题是NPC问题的时候，我们需要的证明方式往往是去陈述它是一个多么困难的问题，而不是去证明存在某个算法与否。</p>
+<h1 id="关键概念"><a href="#关键概念" class="headerlink" title="关键概念"></a>关键概念</h1><h2 id="判定问题与最优化问题"><a href="#判定问题与最优化问题" class="headerlink" title="判定问题与最优化问题"></a>判定问题与最优化问题</h2><p>NPC并不适用于最优化问题，但适用于判定问题，尽管证明一个问题是NPC问题会将我们的目光局限于判定问题，但是在最优化问题和判定问题之间有很方便的联系。</p>
+<p>当我们在证明某一个最优化问题是一个困难的问题的时候，我们可以利用这个问题所对应的判定问题，<strong>因为从某种意义上来讲，判定问题会容易一些，或者至少不会更难。</strong></p>
+<p>因此，加入我们能够提供证据表明某个判定问题是个困难问题的话，我们也提供了证据表明其相关的最优化问题也是困难的。</p>
+<h2 id="归约"><a href="#归约" class="headerlink" title="归约"></a>归约</h2><p>对于一个判定问题A，我们希望在多项式时间内解决该问题，称这个问题的输入为该问题的一个实例，假设我们有另一个不同的判定问题B，我们知道如何在多项式时间内解决它，并且假设有一个过程，可以将A的任何实例转化成B的实例，并且这个转化的过程具有如下的性质：</p>
+<ul>
+<li><p>转换操作需要多项式时间</p>
+</li>
+<li><p>两个实例的答案是相同的</p>
+</li>
+</ul>
+<p>那么我们称这个转化的过程为多项式时间的归约算法。因此可以将问题A的求解归约为B的求解（<strong>因为如果B的算法是多项式时间，转换过程为多项式时间，那么A也可以在多项式时间内解决</strong>）。</p>
+<blockquote>
+<p>第一个NPC问题，<strong>电路可满足性问题</strong>，已知一个布尔组合电路，由AND，OR和NOT组成，我们希望知道这个电路是否存在一组布尔输入，使得电路的输出为1，检查这个电路是否是可满足的，除了尝试去测试每一组输入输出之外，没有别的好办法，而这样的办法的复杂度为O（2^n）</p>
+</blockquote>
+<h1 id="多项式时间"><a href="#多项式时间" class="headerlink" title="多项式时间"></a>多项式时间</h1><p>我们形式化的定义一下多项式时间可解问题，这些问题通常都被看作是容易处理的。</p>
+<h2 id="抽象问题"><a href="#抽象问题" class="headerlink" title="抽象问题"></a>抽象问题</h2><p>问了理解多项式时间可解问题，我们形式化定义“问题”这个概念：</p>
+<ul>
+<li>定义抽象问题Q为在问题实例集合I和问题解法集合S上的一个二元关系</li>
+</ul>
+<p>而为了简单起见，因为我们只讨论NPC问题中的判定问题，我们可以把抽象的判定问题看作是实例集I映射到解集{0，1}上的一个函数。如在一个最短路径问题中，我们的输入是一个实例i=<g,u,v,k>，那么如果从u到v最短路径长度为k，则PATH（i）=1，否则PATH（i）=0</g,u,v,k></p>
+<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p>使用计算机解决问题，任何多边形，图，函数，有序对都可以编码成二进制串。</p>
+<p>我们把实例集为二进制串的集合的问题成为<strong>具体问题</strong>，如果一个问题实例的长度为n=|i|，算法可以在O（T（n））内产生问题的解，那么我们说算法在这个时间内解决了该问题。</p>
+<p>因此，如果给定一个抽象判定问题Q，其映射为实例集合I到{0,1}，通过某种编码e：I-&gt;{0,1}可以导出与问题相关的具体判定问题。</p>
+<blockquote>
+<p>通常情况下，编码的方式并不会影响问题的计算难度，然而在实践中并不是这样，我们需要假设采用标准编码的二进制串。</p>
+</blockquote>
+<h2 id="形式语言体系"><a href="#形式语言体系" class="headerlink" title="形式语言体系"></a>形式语言体系</h2><p>形式语言体系可以表述判定问题和求解算法之间的联系，如果给定输入x，算法输出A（x）=1，我们说算法A<strong>接受</strong>串x，如果A（x）=0，我们说算法A<strong>拒绝</strong>串x。<strong>被算法A接受的语言L={x belongs to {0,1}*: A(x)=1}</strong></p>
+<p>如果对于L中每个x，要么被A接受要么被拒绝（不存在拒绝该x但是永远循环下去的情况，这种情况说A<strong>接受</strong>L），我们说L由A<strong>判定</strong>。</p>
+<h1 id="多项式时间的验证"><a href="#多项式时间的验证" class="headerlink" title="多项式时间的验证"></a>多项式时间的验证</h1><h2 id="Hamilton-Cycle"><a href="#Hamilton-Cycle" class="headerlink" title="Hamilton Cycle"></a>Hamilton Cycle</h2><p>我们先使用形式语言来定义Hamilton Cycle问题</p>
+<p>HAM-CYCLE={<g>:G is a Hamilton Cycle}</g></p>
+<p>如何使用算法来判定Hamilton Cycle问题，已知一个问题实例<g>，一种办法就是列出G定点的全部排列，然后对于每一种排列进行检查，那么这个算法的运行时间为<strong>Omega（2^(n^1/2)）</strong></g></p>
+<p>不难看出，如果有一个人说对于一个问题实例<g>,他说这个图是一个Hamilton Cycle并给出了一个回路排列来证明，我们很容易来验证这个答案是否是正确的。</g></p>
+<h2 id="NP问题"><a href="#NP问题" class="headerlink" title="NP问题"></a>NP问题</h2><p>从上面的问题可以看出，HAM-CYCLE属于NP，因为他能在多项式时间内被验证。</p>
+<h1 id="NP完全性与可归约性"><a href="#NP完全性与可归约性" class="headerlink" title="NP完全性与可归约性"></a>NP完全性与可归约性</h1><blockquote>
+<p>HAM-CYCLE就是一个NPC问题</p>
+</blockquote>
+<h2 id="可归约性"><a href="#可归约性" class="headerlink" title="可归约性"></a>可归约性</h2><p>一个问题Q可以被归约为另一个问题Q‘，如果Q的任何实例都可以被容易的（<strong>在多项式时间内</strong>）表述为Q’的实例，并且Q‘实例的解也是Q的实例的解，<strong>因此，如果一个问题Q可以归约成Q’，则从某种意义上来说Q不比Q‘更难解决</strong></p>
+<p>回归到形式语言体系中，也可也表述为L1可以在多项式时间内归约为语言L2，记作L1&lt;=pL2。</p>
+<blockquote>
+<p>如果L1&lt;=pL2，则L2属于P蕴含着L1属于P</p>
+</blockquote>
+<h2 id="NP完全性"><a href="#NP完全性" class="headerlink" title="NP完全性"></a>NP完全性</h2><p>通过以上对于可归约性的定义，我们可以定义NPC的集合</p>
+<p>语言L属于NPC，如果：</p>
+<ol>
+<li><p>L属于NP</p>
+</li>
+<li><p>对于每个L‘属于NP，有L’&lt;=pL</p>
+</li>
+</ol>
+<p>如果一种语言满足2，但不一定满足1，我们称这种语言是NP-Hard</p>
+<blockquote>
+<p>如果任何NP问题是多项式时间可以求解的，那么P=NP，等价的，如果NP中的任何问题不是多项式时间可以求解的，那么任何NP完全问题都不是多项式时间可以求解的。</p>
+</blockquote>
+<h1 id="NPC完全性的证明"><a href="#NPC完全性的证明" class="headerlink" title="NPC完全性的证明"></a>NPC完全性的证明</h1><h2 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h2><p>如果L是一种对于某个L‘属于NPC，有L’&lt;=pL的语言，则L是NP难度的，此外如果L属于NP，则L属于NPC。</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> NP Complete </tag>
+            
+            <tag> Algorithms Analysis </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Computer Infrastructures Basic Parameters]]></title>
+      <url>/2018/03/20/Computer-Infrastructures-Basic-Parameters/</url>
+      <content type="html"><![CDATA[<h1 id="BASIC-PARAMETERS"><a href="#BASIC-PARAMETERS" class="headerlink" title="BASIC PARAMETERS"></a>BASIC PARAMETERS</h1><p><strong>T</strong> the length of time we observed the system</p>
+<p><strong>A</strong> the number of request arrivals we observed</p>
+<p><strong>C</strong> the number of request completions we observed</p>
+<p><strong>Workload intensity/arrival rate Lamda</strong> the rate at which the customers arrive (eg 0.5 customers/second)  Lamda = A/T</p>
+<p><strong>Throughput X</strong> the rate at which customers pass through the service center (0.5 customers/second) X = C/T</p>
+<p><strong>N</strong> the average number of requests in the system (customer population) N = W/T</p>
+<p><strong>Residence time R</strong> the average time spent at the service center by a customer, both queueing and receiving service R=W/C</p>
+<p><strong>Queue length</strong> the average number of customers at the service center both waiting and receiving service (1.67 customers)</p>
+<p><strong>B</strong> the length of time that the resource was obeserved to be busy</p>
+<p><strong>Utilization U</strong> the proportion of time the server is busy (eg 0.625/62.5%)   U = B/T</p>
+<p><strong>S</strong> the average service requirement of a customer (eg 1.25 seconds) S = B/C</p>
+<p><strong>Z</strong> think time of a terminal user</p>
+<p><strong>Dk</strong> Service demand at resource k Dk=VkSk</p>
+<h1 id="BASIC-LAWS"><a href="#BASIC-LAWS" class="headerlink" title="BASIC LAWS"></a>BASIC LAWS</h1><p><strong>The Utilization Law</strong> U=X*S</p>
+<p><strong>Little’s Law</strong> N=X*R</p>
+<p><strong>The Response Time Law</strong> R=N/X-Z </p>
+<p><strong>The Forced Flow Law</strong> Xi=Vi*X</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> POLIMI </tag>
+            
+            <tag> Computer Infrastructures </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Cryptography Part IV]]></title>
+      <url>/2018/03/19/Cryptography-Part-IV/</url>
+      <content type="html"><![CDATA[<h1 id="Mar-19-Block-Cipher-Cryptanalyses-Linear-Cryptanalysis"><a href="#Mar-19-Block-Cipher-Cryptanalyses-Linear-Cryptanalysis" class="headerlink" title="Mar 19 Block Cipher Cryptanalyses: Linear Cryptanalysis"></a>Mar 19 Block Cipher Cryptanalyses: Linear Cryptanalysis</h1><h1 id="Block-Cipher-Cryptanalysis"><a href="#Block-Cipher-Cryptanalysis" class="headerlink" title="Block Cipher Cryptanalysis"></a>Block Cipher Cryptanalysis</h1><p>Modern block cipher cryptanalysis aims at either recovering the key with an effort smaller than bruteforce</p>
+<p>Block cipher cryptanalyses are usually split into two families: </p>
+<ul>
+<li><p>algebraic </p>
+</li>
+<li><p>statistical</p>
+</li>
+</ul>
+<h1 id="Algebraic-Analysis"><a href="#Algebraic-Analysis" class="headerlink" title="Algebraic Analysis"></a>Algebraic Analysis</h1><h1 id="Statistical-Analysis"><a href="#Statistical-Analysis" class="headerlink" title="Statistical Analysis"></a>Statistical Analysis</h1><p>All the computationally secure ones produce a ctx where the probability that a bit is either one or zero is biased (= 1 ± ε) by the 2 ptx value</p>
+<p><strong>Goal</strong>: find such relations between ptx and ctx, and exploit the statistical biases to extract a portion of the key</p>
+<h1 id="The-“TRIVIAL”-Cipher"><a href="#The-“TRIVIAL”-Cipher" class="headerlink" title="The “TRIVIAL” Cipher"></a>The “TRIVIAL” Cipher</h1><h1 id="S-Boxes"><a href="#S-Boxes" class="headerlink" title="S-Boxes"></a>S-Boxes</h1><p>Without S-Boxes, the linear relations between ptx and ctx bits are always hold( i.e. with probability = 1)</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Cryptography </tag>
+            
+            <tag> Computer Security </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Cryptography Part III]]></title>
       <url>/2018/03/16/Cryptography-Part-III/</url>
       <content type="html"><![CDATA[<h1 id="Mar-12-SPN-amp-AES"><a href="#Mar-12-SPN-amp-AES" class="headerlink" title="Mar 12 SPN &amp; AES"></a>Mar 12 SPN &amp; AES</h1><h2 id="SPN"><a href="#SPN" class="headerlink" title="SPN"></a><a href="https://en.wikipedia.org/wiki/Substitution%E2%80%93permutation_network" target="_blank" rel="noopener">SPN</a></h2><p>SPN are built along <a href="https://en.wikipedia.org/wiki/Confusion_and_diffusion" target="_blank" rel="noopener">Shannon’s criteria of confusion and diffusion</a></p>
@@ -560,7 +708,7 @@
     <entry>
       <title><![CDATA[Algorithm and Complexity Analysis]]></title>
       <url>/2018/03/14/Algorithm-and-Complexity-Analysis/</url>
-      <content type="html"><![CDATA[<p>EG: THe Problem of sorting</p>
+      <content type="html"><![CDATA[<p>EG: The Problem of sorting</p>
 <p>Input: sequence (a1, a2, …, an) of numbers. </p>
 <p>Output: permutation (a’1, a’2, …, a’n) such<br>    that a’1 &lt;= a’2 &lt;= … &lt;= a’n.</p>
 <pre><code>///ONE SOLUTION: INSERTION SORT///
@@ -614,11 +762,15 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
 <p>MATH: Q(g(n)) = { f (n) :there exist positive constants c1, c2, and   n0 such that 0 &lt;= c1g(n) &lt;= f (n) &lt;= c2g(n) for all n &gt;= n0 }</p>
 <p>ENGINEERING: Drop low-order terms; ignore leading constants.Example: 3n^3 + 90n^2 – 5n + 6046 = Q(n^3)</p>
 <p>Here get back to the example of insertion analysis:<br>• Worst case: Input reverse sorted.<br>T(n)=Σ(j=2…n)Q(j)=Q(n^2</p>
-<p>While in the Merge-Sort<br>MERGE-SORT A[1 . . n] 1. </p>
+<p>While in the Merge-Sort</p>
+<p>MERGE-SORT A[1 . . n] 1. </p>
 <ol>
-<li>If n = 1, done.</li>
-<li>Recursively sort A[ 1,…,[n/2] ] and A[ [n/2]+1,…,n ] .</li>
-<li>“Merge” the 2 sorted lists.</li>
+<li><p>If n = 1, done.</p>
+</li>
+<li><p>Recursively sort A[ 1,…,[n/2] ] and A[ [n/2]+1,…,n ]</p>
+</li>
+<li><p>“Merge” the 2 sorted lists.</p>
+</li>
 </ol>
 <pre><code>void merge_sort(std::vector&lt;int&gt; &amp;A)
 {
@@ -833,9 +985,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
             
             <tag> POLIMI </tag>
             
-            <tag> Linear Programming </tag>
-            
             <tag> Foundations of Operations Research </tag>
+            
+            <tag> Linear Programming </tag>
             
         </tags>
         
@@ -1032,13 +1184,13 @@ end.
             
             <tag> POLIMI </tag>
             
-            <tag> Foundations of Operations Research </tag>
-            
             <tag> Graphs </tag>
             
             <tag> Network Flows </tag>
             
             <tag> Algorithms </tag>
+            
+            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
