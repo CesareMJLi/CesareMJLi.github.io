@@ -18,6 +18,10 @@
 <h1 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h1><p><a href="https://www.zhihu.com/question/21094489" target="_blank" rel="noopener">ZHIHU</a></p>
 <p><a href="https://www.youtube.com/watch?v=3liCbRZPrZA" target="_blank" rel="noopener">YOUTUBE</a></p>
 <p><a href="https://www.zhihu.com/question/24627666" target="_blank" rel="noopener">KERNEL METHOD</a></p>
+<h1 id="Decision-Tree"><a href="#Decision-Tree" class="headerlink" title="Decision Tree"></a>Decision Tree</h1><p><a href="https://blog.csdn.net/xbinworld/article/details/44660339" target="_blank" rel="noopener">CSDN</a></p>
+<p><a href="http://www.cnblogs.com/leoo2sk/archive/2010/09/19/decision-tree.html" target="_blank" rel="noopener">CNBLOG</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/26703300" target="_blank" rel="noopener">ZHIHU</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/26760551" target="_blank" rel="noopener">ZHIHU</a></p>
 ]]></content>
       
         
@@ -1036,9 +1040,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
             
             <tag> POLIMI </tag>
             
-            <tag> Foundations of Operations Research </tag>
-            
             <tag> Linear Programming </tag>
+            
+            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
@@ -1235,13 +1239,13 @@ end.
             
             <tag> POLIMI </tag>
             
+            <tag> Foundations of Operations Research </tag>
+            
             <tag> Graphs </tag>
             
             <tag> Network Flows </tag>
             
             <tag> Algorithms </tag>
-            
-            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
