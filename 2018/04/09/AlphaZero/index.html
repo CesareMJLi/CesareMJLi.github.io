@@ -43,7 +43,7 @@
     
     <title>
         
-            Cryptography Part IV | 
+            AlphaZero | 
         
         Cesare&#39;s Workshop
     </title>
@@ -54,7 +54,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)">
-    <meta name="keywords" content=",Cryptography,Computer Security">
+    <meta name="keywords" content=",AlphaGo,Reinforcement Learning,Artificial Neural Network,Machine Learning">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -220,7 +220,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Cesare&#39;s Workshop">
-    <meta name="msapplication-starturl" content="http://yoursite.com/2018/03/19/Cryptography-Part-IV/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/04/09/AlphaZero/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Cesare&#39;s Workshop">
@@ -235,16 +235,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/2018/03/19/Cryptography-Part-IV/">
+    <meta property="og:url" content="http://yoursite.com/2018/04/09/AlphaZero/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Cryptography Part IV | Cesare&#39;s Workshop">
+    <meta property="og:title" content="AlphaZero | Cesare&#39;s Workshop">
     <meta property="og:image" content="/img/star.png">
     <meta property="og:description" content="Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)">
-    <meta property="og:article:tag" content="Cryptography"> <meta property="og:article:tag" content="Computer Security"> 
+    <meta property="og:article:tag" content="AlphaGo"> <meta property="og:article:tag" content="Reinforcement Learning"> <meta property="og:article:tag" content="Artificial Neural Network"> <meta property="og:article:tag" content="Machine Learning"> 
 
     
-        <meta property="article:published_time" content="Mon Mar 19 2018 16:19:48 GMT+0100">
-        <meta property="article:modified_time" content="Mon Mar 19 2018 18:54:13 GMT+0100">
+        <meta property="article:published_time" content="Mon Apr 09 2018 19:17:27 GMT+0200">
+        <meta property="article:modified_time" content="Mon Apr 09 2018 22:31:56 GMT+0200">
     
 
     <!-- The Twitter Card protocol -->
@@ -252,7 +252,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/2018/03/19/Cryptography-Part-IV/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2018/04/09/AlphaZero/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -264,10 +264,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yoursite.com/2018/03/19/Cryptography-Part-IV/index.html",
-    "headline": "Cryptography Part IV",
-    "datePublished": "Mon Mar 19 2018 16:19:48 GMT+0100",
-    "dateModified": "Mon Mar 19 2018 18:54:13 GMT+0100",
+    "mainEntityOfPage": "http://yoursite.com/2018/04/09/AlphaZero/index.html",
+    "headline": "AlphaZero",
+    "datePublished": "Mon Apr 09 2018 19:17:27 GMT+0200",
+    "dateModified": "Mon Apr 09 2018 22:31:56 GMT+0200",
     "author": {
         "@type": "Person",
         "name": "Cesare (MINGJU LI)",
@@ -285,7 +285,7 @@
             "url": "/img/star.png"
         }
     },
-    "keywords": ",Cryptography,Computer Security",
+    "keywords": ",AlphaGo,Reinforcement Learning,Artificial Neural Network,Machine Learning",
     "description": "Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)",
 }
 </script>
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Mar-19-Block-Cipher-Cryptanalyses-Linear-Cryptanalysis"><span class="post-toc-number">1.</span> <span class="post-toc-text">Mar 19 Block Cipher Cryptanalyses: Linear Cryptanalysis</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Block-Cipher-Cryptanalysis"><span class="post-toc-number">2.</span> <span class="post-toc-text">Block Cipher Cryptanalysis</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Algebraic-Analysis"><span class="post-toc-number">3.</span> <span class="post-toc-text">Algebraic Analysis</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Statistical-Analysis"><span class="post-toc-number">4.</span> <span class="post-toc-text">Statistical Analysis</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#The-“TRIVIAL”-Cipher"><span class="post-toc-number">5.</span> <span class="post-toc-text">The “TRIVIAL” Cipher</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#S-Boxes"><span class="post-toc-number">6.</span> <span class="post-toc-text">S-Boxes</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Mastering-the-game-of-Go-without-human-knowledge"><span class="post-toc-number">1.</span> <span class="post-toc-text">Mastering the game of Go without human knowledge</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#AlphaGo-Fan-AlphaGo-Lee"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">AlphaGo Fan/AlphaGo Lee</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#AlphaGo-Zero"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">AlphaGo Zero</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Reinforcement-learning-in-AlphaGo-Zero"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Reinforcement learning in AlphaGo Zero</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Neural-Network"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">Neural Network</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Empirical-Analysis-of-AlphaGo-Zero-Training"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Empirical Analysis of AlphaGo Zero Training</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Knowledge-learned-by-AlphaGo-Zero"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">Knowledge learned by AlphaGo Zero</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Final-performance-of-AlphaGo-Zero"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">Final performance of AlphaGo Zero</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Conclusion"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">Conclusion</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Mastering-Chess-and-Shogi-by-Self-Play-with-a-General-Reinforcement-Learning-Algorithm"><span class="post-toc-number">2.</span> <span class="post-toc-text">Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Introduction"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Introduction</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Method"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Method</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Differences-between-AlphaZero-and-AlphaGo-Zero"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">Differences between AlphaZero and AlphaGo Zero</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -383,7 +383,7 @@
         
     
             <p class="article-headline-p">
-                Cryptography Part IV
+                AlphaZero
             </p>
         </div>
 
@@ -402,7 +402,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Cesare (MINGJU LI)</strong>
-        <span>Mar 19, 2018</span>
+        <span>Apr 09, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -426,7 +426,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Computer-Security/">Computer Security</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Cryptography/">Cryptography</a>
+        <a class="post_tag-link" href="/tags/AlphaGo/">AlphaGo</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Artificial-Neural-Network/">Artificial Neural Network</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Reinforcement-Learning/">Reinforcement Learning</a>
     </ul>
     
 
@@ -443,7 +443,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Cryptography Part IV&url=http://yoursite.com/2018/03/19/Cryptography-Part-IV/index.html&pic=http://yoursite.com/img/star.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=AlphaZero&url=http://yoursite.com/2018/04/09/AlphaZero/index.html&pic=http://yoursite.com/img/star.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 Share to Weibo
             </li>
@@ -452,7 +452,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Cryptography Part IV&url=http://yoursite.com/2018/03/19/Cryptography-Part-IV/index.html&via=Cesare (MINGJU LI)" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=AlphaZero&url=http://yoursite.com/2018/04/09/AlphaZero/index.html&via=Cesare (MINGJU LI)" target="_blank">
             <li class="mdl-menu__item">
                 Share to Twitter
             </li>
@@ -461,7 +461,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/03/19/Cryptography-Part-IV/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/04/09/AlphaZero/index.html" target="_blank">
             <li class="mdl-menu__item">
                 Share to Facebook
             </li>
@@ -470,7 +470,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/03/19/Cryptography-Part-IV/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/04/09/AlphaZero/index.html" target="_blank">
             <li class="mdl-menu__item">
                 Share to Google+
             </li>
@@ -495,17 +495,76 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="Mar-19-Block-Cipher-Cryptanalyses-Linear-Cryptanalysis"><a href="#Mar-19-Block-Cipher-Cryptanalyses-Linear-Cryptanalysis" class="headerlink" title="Mar 19 Block Cipher Cryptanalyses: Linear Cryptanalysis"></a>Mar 19 Block Cipher Cryptanalyses: Linear Cryptanalysis</h1><h1 id="Block-Cipher-Cryptanalysis"><a href="#Block-Cipher-Cryptanalysis" class="headerlink" title="Block Cipher Cryptanalysis"></a>Block Cipher Cryptanalysis</h1><p>Modern block cipher cryptanalysis aims at either recovering the key with an effort smaller than bruteforce</p>
-<p>Block cipher cryptanalyses are usually split into two families: </p>
-<ul>
-<li><p>algebraic </p>
+        <p>This is a reading notes based on the thesis <a href="https://www.nature.com/articles/nature24270.pdf" target="_blank" rel="noopener">Mastering the game of Go without human knowledge</a> and <a href="https://arxiv.org/pdf/1712.01815.pdf" target="_blank" rel="noopener">Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm</a></p>
+<h1 id="Mastering-the-game-of-Go-without-human-knowledge"><a href="#Mastering-the-game-of-Go-without-human-knowledge" class="headerlink" title="Mastering the game of Go without human knowledge"></a>Mastering the game of Go without human knowledge</h1><h2 id="AlphaGo-Fan-AlphaGo-Lee"><a href="#AlphaGo-Fan-AlphaGo-Lee" class="headerlink" title="AlphaGo Fan/AlphaGo Lee"></a>AlphaGo Fan/AlphaGo Lee</h2><p>AlphaGo was the first program to achieve superhuman performance in Go. The published version12, which we refer to as AlphaG Fan, defeated the European champion Fan Hui in October 2015. </p>
+<p>AlphaGo Fan used two deep neural networks: a <strong>policy network</strong> that outputs move probabilities and a <strong>value network</strong> that outputs a position evaluation.</p>
+<p>The policy network was trained initially by supervised learning to accurately predict human expert moves, and was subsequently refined by policy-gradient reinforcement learning. </p>
+<p>The value network was trained to predict the winner of games played by the policy network against itself. </p>
+<p>Once trained, these networks were combined with a Monte Carlo tree search (MCTS) to provide a lookahead search, using the policy network to narrow down the search to high-probability moves, and using the value network (in conjunction with Monte Carlo rollouts using a fast rollout policy) to evaluate positions in the tree.</p>
+<p>A subsequent version, which we refer to as AlphaGo Lee, used a similar approach, and defeated Lee Sedol, the winner of 18 international titles, in March 2016.</p>
+<h2 id="AlphaGo-Zero"><a href="#AlphaGo-Zero" class="headerlink" title="AlphaGo Zero"></a>AlphaGo Zero</h2><p>AlphaGo Zero, differs from AlphaGo Fan and AlphaGo Lee in several important aspects</p>
+<blockquote>
+<ol>
+<li><p>It is trained solely by self-play reinforcement learning, starting from random play, without any supervision or use of human data.</p>
 </li>
-<li><p>statistical</p>
+<li><p>It uses only the black and white stones from the board as input features.</p>
+</li>
+<li><p>Third, it uses a single neural network, rather than separate policy and value networks. </p>
+</li>
+<li><p>Finally, it uses a simpler tree search that relies upon<br>this single neural network to evaluate positions and sample moves,<br>without performing any Monte Carlo rollouts</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="Reinforcement-learning-in-AlphaGo-Zero"><a href="#Reinforcement-learning-in-AlphaGo-Zero" class="headerlink" title="Reinforcement learning in AlphaGo Zero"></a>Reinforcement learning in AlphaGo Zero</h2><h3 id="Neural-Network"><a href="#Neural-Network" class="headerlink" title="Neural Network"></a>Neural Network</h3><p>f<sub>θ</sub>(s)=(p,v)</p>
+<p>f<sub>θ</sub>: neural network with parameter θ</p>
+<p>s: raw board representation, representing current game state</p>
+<p>p: vector of move probabilities, represents the probability of selecting <strong>each move/action a</strong>, p<sub>a</sub>=Pr(a|s)</p>
+<p>v: scalar evaluation, estimating the probability of current player winning from state s</p>
+<blockquote>
+<p>Combine the policy network and value network</p>
+</blockquote>
+<ul>
+<li><p>Training:<br>  The neural network in AlphaGo Zero is trained from games of selfplay by a novel reinforcement learning algorithm. </p>
+<p>  In each position s, an MCTS search is executed, guided by the neural network f<sub>θ</sub>. The MCTS search <strong>outputs probabilities π of playing each move</strong>.</p>
+<blockquote>
+<p>Here π is a vector! Stores the Probability for each action a.</p>
+</blockquote>
+<p>  These search probabilities usually select much stronger moves than the raw move probabilities p of the neural network fθ(s).</p>
+<p>  MCTS may therefore be viewed as a powerful <strong>policy improvement operator</strong>. Self-play with search—using the improved MCTS-based policy to select each move, then using the <strong>game winner z</strong> as a sample of the value—may be viewed as a powerful <strong>policy evaluation operator</strong>. </p>
+<p>  The main idea of our reinforcement learning algorithm is to use these search operators repeatedly in a policy iteration procedure: the neural network’s parameters are updated to make the move probabilities and value (p,v)= f<sub>θ</sub>(s) more closely match the improved search probabilities and selfplay winner (π, z); these new parameters are used in the next iteration of self-play to make the search even stronger.</p>
+<blockquote>
+<p>对于每一手（每一个当前状态），进行蒙特卡洛树搜索α<sub>θ<sub>，根节点为当前状态，蒙特卡洛树搜索是一种经验方法，可以根据之前的经验进行选择，我们在每个node s向下蔓延的edge a中选择，每个edge包含【prior probability P(s,a)/visit cound N(s,a)/ action value Q(s,a)】,<strong>在每一个node选择一个最大的（Q+U），， 当前选择的最大的Q+U不存在一个对应的node时，可以通过神经网络f<sub>θ</sub>生成他的子树（而不是使用Monte Carlo Rollout），产生对应的p和v，然后向root进行back propagate更新树的值（Q等）</strong>，并不断重复以上加粗字体过程，当搜索结束后，可以发挥一个search probabilities π，</sub></sub></p>
+</blockquote>
+<p>  At each time-step t, an MCTS search π = α<sub>θ of last step</sub>(s<sub>t</sub>) is executed using the previous iteration of neural network, and a move is played by sampling the search probabilities πt.</p>
+<p>  A game terminates at step T when both players pass, when the search value drops below a resignation threshold or when the game exceeds a maximum length; the game is then scored to give a final reward of r<sub>T</sub>∈ {−1,+1}. </p>
+<p>  The data for each time-step t is stored as (s<sub>t</sub>, π<sub>t</sub>, z<sub>t</sub>), where z<sub>t</sub>= ±r<sub>T</sub> is the game winner from the perspective of the current player at step t. </p>
+<p>  In parallel, new network parameters θ<sub>i</sub> are trained from data (s, π, z) sampled uniformly among all time-steps of the last iteration(s) of self-play. The neural network f<sub>θ</sub> is adjusted to <strong>minimize the error between the predicted value v and the self-play winner z</strong>, and to <strong>maximize the similarity of the neural network move probabilities p to the search probabilities π</strong>.</p>
+<blockquote>
+<p>f<sub>θ</sub>(s)=(p,v)</p>
+<p>loss function l = (z-v)<sup>2</sup> - π<sup>T</sup>logp + c||θ||<sup>2</sup></p>
+</blockquote>
 </li>
 </ul>
-<h1 id="Algebraic-Analysis"><a href="#Algebraic-Analysis" class="headerlink" title="Algebraic Analysis"></a>Algebraic Analysis</h1><h1 id="Statistical-Analysis"><a href="#Statistical-Analysis" class="headerlink" title="Statistical Analysis"></a>Statistical Analysis</h1><p>All the computationally secure ones produce a ctx where the probability that a bit is either one or zero is biased (= 1 ± ε) by the 2 ptx value</p>
-<p><strong>Goal</strong>: find such relations between ptx and ctx, and exploit the statistical biases to extract a portion of the key</p>
-<h1 id="The-“TRIVIAL”-Cipher"><a href="#The-“TRIVIAL”-Cipher" class="headerlink" title="The “TRIVIAL” Cipher"></a>The “TRIVIAL” Cipher</h1><h1 id="S-Boxes"><a href="#S-Boxes" class="headerlink" title="S-Boxes"></a>S-Boxes</h1><p>Without S-Boxes, the linear relations between ptx and ctx bits are always hold( i.e. with probability = 1)</p>
+<h2 id="Empirical-Analysis-of-AlphaGo-Zero-Training"><a href="#Empirical-Analysis-of-AlphaGo-Zero-Training" class="headerlink" title="Empirical Analysis of AlphaGo Zero Training"></a>Empirical Analysis of AlphaGo Zero Training</h2><p>Surprisingly, AlphaGo Zero outperformed AlphaGo Lee after just 36h. In comparison, AlphaGo Lee was trained over several months. </p>
+<h2 id="Knowledge-learned-by-AlphaGo-Zero"><a href="#Knowledge-learned-by-AlphaGo-Zero" class="headerlink" title="Knowledge learned by AlphaGo Zero"></a>Knowledge learned by AlphaGo Zero</h2><p>AlphaGo Zero discovered a remarkable level of Go knowledge during its self-play training process. This included not only fundamental elements of human Go knowledge but also non-standard strategies beyond the scope of traditional Go knowledge.</p>
+<h2 id="Final-performance-of-AlphaGo-Zero"><a href="#Final-performance-of-AlphaGo-Zero" class="headerlink" title="Final performance of AlphaGo Zero"></a>Final performance of AlphaGo Zero</h2><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><h1 id="Mastering-Chess-and-Shogi-by-Self-Play-with-a-General-Reinforcement-Learning-Algorithm"><a href="#Mastering-Chess-and-Shogi-by-Self-Play-with-a-General-Reinforcement-Learning-Algorithm" class="headerlink" title="Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm"></a>Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>The AlphaGo Zero program recently achieved superhuman performance in the game of Go, by tabula rasa reinforcement learning from games of self-play. In this paper, we generalise this approach into a single AlphaZero algorithm that can achieve, tabula rasa, superhuman performance in many challenging domains, starting from random play, and given no domain knowledge except the game rules.</p>
+<p>The AlphaGo Zero algorithm achieved superhuman performance in the game of Go, by representing Go knowledge using <strong>deep convolutional neural networks</strong>, trained solely by reinforcement learning from games of self-play.</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><p>Instead of a handcrafted evaluation function and move ordering heuristics, <strong>AlphaZero</strong> utilises a deep neural network (p, v) = f<sub>θ</sub>(s) with parameters θ. This neural network takes the board position s as an input and outputs a vector of move probabilities p with components p<sub>a</sub> = Pr(a|s) [the probability of each move a under the state s] for each action a, and a scalar value v estimating the expected outcome z from position s, v ≈ E[z|s]. AlphaZero learns these move probabilities and value estimates entirely from selfplay; these are then used to guide its search.</p>
+<p>AlphaZero uses a generalpurpose Monte-Carlo tree search (MCTS) algorithm. Each search consists of a series of simulated games of self-play that traverse a tree from root s<sub>root</sub> to leaf. Each simulation proceeds by selecting in each state s a move a with low visit count, high move probability and high value<br>(<em>averaged over the leaf states of simulations that selected a from s</em>) according to the current neural network f<sub>θ</sub>. The search returns a vector π representing a probability distribution over moves, either proportionally or greedily with respect to the visit counts at the root state.</p>
+<p>The parameters θ of the deep neural network in AlphaZero are trained by self-play reinforcement learning, starting from randomly initialised parameters θ. Games are played by selecting moves for both players by MCTS, a<sub>t</sub> ∼ π<sub>t</sub>. At the end of the game, the terminal position s<sub>T</sub> is scored according to the rules of the game to compute the game outcome z: −1 for a loss, 0 for a draw, and +1 for a win. The neural network parameters θ are updated so as to minimise the error between the predicted outcome v<sub>t</sub> and the game outcome z, and to maximise the similarity of the policy vector p<sub>t</sub><br>to the search probabilities π<sub>t</sub>. Specifically, the parameters θ are adjusted by gradient descent on a loss function l that sums over mean-squared error and cross-entropy losses respectively</p>
+<blockquote>
+<p>f<sub>θ</sub>(s)=(p,v)</p>
+<p>loss function l = (z-v)<sup>2</sup> - π<sup>T</sup>logp + c||θ||<sup>2</sup></p>
+</blockquote>
+<p>where c is a parameter controlling the level of L2 weight regularisation. The updated parameters are used in subsequent games of self-play.</p>
+<h2 id="Differences-between-AlphaZero-and-AlphaGo-Zero"><a href="#Differences-between-AlphaZero-and-AlphaGo-Zero" class="headerlink" title="Differences between AlphaZero and AlphaGo Zero"></a>Differences between AlphaZero and AlphaGo Zero</h2><ol>
+<li><p>AlphaGo Zero estimates and optimises the probability of winning, assuming binary win/loss outcomes. AlphaZero instead estimates and optimises the expected outcome, taking account of draws or potentially other outcomes.</p>
+</li>
+<li><p>The rules of Go are invariant to rotation and reflection. This fact was exploited in AlphaGo and AlphaGo Zero in several ways.</p>
+</li>
+<li><p>In AlphaGo Zero, self-play games were generated by the best player from all previous iterations. After each iteration of training, the performance of the new player was measured against the best player; if it won by a margin of 55% then it replaced the best player and self-play games were subsequently generated by this new player. In contrast, AlphaZero simply maintains a single neural network that is updated continually, rather than waiting for an iteration to complete.</p>
+</li>
+</ol>
 
         
     
@@ -526,21 +585,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/03/20/Computer-Infrastructures-Basic-Parameters/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Newer
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2018/03/16/Cryptography-Part-III/" id="post_nav-older" class="next-content">
+        <a href="/2018/04/07/Deep-Learning-II-Calculation-Basic-Methods/" id="post_nav-older" class="next-content">
             Older
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
