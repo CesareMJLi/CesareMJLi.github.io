@@ -3,6 +3,56 @@
   
     
     <entry>
+      <title><![CDATA[Deep Learning III Deep Feedforward Network & Regularization]]></title>
+      <url>/2018/04/10/Deep-Learning-III-Deep-Feedforward-Network-Regularization/</url>
+      <content type="html"><![CDATA[<h1 id="深度前馈网络-Deep-Feedforward-Network"><a href="#深度前馈网络-Deep-Feedforward-Network" class="headerlink" title="深度前馈网络 Deep Feedforward Network"></a>深度前馈网络 Deep Feedforward Network</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><strong>深度前馈网络(deep feedforward network)</strong>,也叫作 前馈神经网络(feedforward neural network)或者 多层感知机(multilayer perceptron, MLP),是典型的深度学习模型。前馈网络的目标是近似某个函数 f<sup>∗</sup>。例如,对于分类器y=f<sup>∗</sup>(x) 将输入 x 映射到一个类别 y。</p>
+<p>前馈网络定义了一个映射 y = f(x;θ),并且学习参数 θ 的值,使它能够得到最佳的函数近似。</p>
+<p>这种模型被称为 前向(feedforward)的,是因为信息流过 x 的函数,流经用于定义 f 的中间计算过程,最终到达输出 y。在模型的输出和模型本身之间没有 反馈(feedback)连接。当前馈神经网络被扩展成包含反馈连接时,它们被称为 循环神经网络(recurrent neural network),在第十章介绍。</p>
+<blockquote>
+<p>Example</p>
+<p>f(x)=f3(f2(f1(x)))</p>
+</blockquote>
+<p>这个名字。前馈网络的最后一层被称为<strong>输出层(output layer)</strong>。在神经网络训练的过程中,我们让 f(x) 去匹配 f<sup>∗</sup>(x)的值(也就是真实函数的值)。训练数据为我们提供了在不同训练点上取值的、含有噪声的f<sup>∗</sup>(x) 的近似实例。每个样本 x 都伴随着一个标签 y ≈ f<sup>∗</sup>(x)。</p>
+<p>训练样本直接指明了输出层在每一点 x 上必须做什么;它必须产生一个接近 y 的值。但是训练数据并没有直接指明其他层应该怎么做。学习算法必须决定如何使用这些层来产生想要的输出,但是训练数据并没有说每个单独的层应该做什么。相反,学习算法必须决定如何使用这些层来最好地实现f<sup>∗</sup> 的近似。因为训练数据并没有给出这些层中的每一层所需的输出,所以这些层被称为<strong>隐藏层(hidden layer)</strong>。</p>
+<p>为了扩展线性模型来表示 x 的非线性函数,我们可以不把线性模型用于 x 本身,而是用在一个变换后的输入φ(x) 上,这里 φ 是一个非线性变换。同样,我们可以使用核技巧,来得到一个基于隐含地使用 φ 映射的非线性学习算法。我们可以认为 φ 提供了一组描述 x 的特征,或者认为它提供了 x 的一个新的表示。</p>
+<p>那么如何定义φ？深度学习的策略是去学习φ。在这种方法中,我们有一个模型 y = f(x; θ, w)=φ(x; θ)<sup>⊤</sup>w。我们现在有两种参数:用于从一大类函数中学习φ的参数 θ,以及用于将 φ(x) 映射到所需的输出的参数w</p>
+<blockquote>
+<p>  注意！φ不是参数</p>
+</blockquote>
+<h2 id="XOR"><a href="#XOR" class="headerlink" title="XOR"></a>XOR</h2><h2 id="基于梯度学习"><a href="#基于梯度学习" class="headerlink" title="基于梯度学习"></a>基于梯度学习</h2><p>我们到目前为止看到的线性模型和神经网络的最大区别,在于神经网络的非线性导致大多数我们感兴趣的代价函数都变得非凸（在多项式函数中的每一个函数都是凸的，如x^2,x^3,…）。这将会导致我们通过迭代的基于梯度的优化只能让代价函数达到一个很小的值而不一定是最小值，而训练算法也依然是基于梯度来使函数下降。</p>
+<h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3><p>在大多数情况下,我们的参数模型定义了一个分布p(y|x;θ)并且我们简单地使用最大似然原理。这意味着我们使用训练数据和模型预测间的交叉熵作为代价函数。</p>
+<blockquote>
+<p>使用最大似然学习条件分布</p>
+</blockquote>
+<h3 id="输出单元"><a href="#输出单元" class="headerlink" title="输出单元"></a>输出单元</h3><blockquote>
+<p>sigmoid function</p>
+<p>softmax function</p>
+</blockquote>
+<h2 id="隐藏单元"><a href="#隐藏单元" class="headerlink" title="隐藏单元"></a>隐藏单元</h2><p>大多数的隐藏单元都可以描述为接受输入向量x，计算仿射变换 z=W<sup>⊤</sup>x+b，然后使用一个逐元素的非线性函数g(z)。大多数隐藏单元的区别 仅仅在于激活函数g(z)的形式</p>
+<blockquote>
+<p>整流线型单元 g(z)=max{0,z}</p>
+<p>logistic sigmoid function/双曲正切激活函数</p>
+<p>其他隐藏单元</p>
+</blockquote>
+<h2 id="架构设计"><a href="#架构设计" class="headerlink" title="架构设计"></a>架构设计</h2><h2 id="万能近似性质"><a href="#万能近似性质" class="headerlink" title="万能近似性质"></a>万能近似性质</h2><p>乍一看，我们可能认为学习非线性函数需要为我们想要学习的那种非线性专 门设计一类模型族。幸运的是，具有隐藏层的前馈网络提供了一种万能近似框架。 具体来说， 万能近似定理(universal approximation theorem)(Hornik et al., 1989; Cybenko, 1989) 表明，一个前馈神经网络如果具有线性输出层和至少一层具有任何 一种 ‘‘挤压’’ 性质的激活函数(例如logistic sigmoid激活函数)的隐藏层，只要给予 网络足够数量的隐藏单元，它可以以任意的精度来近似任何从一个有限维空间到另 一个有限维空间的 Borel 可测函数。</p>
+<p>万能近似定理意味着无论我们试图学习什么函数，我们知道一个大的MLP一定能够表示这个函数。然而，我们不能保证训练算法能够学得这个函数。即使MLP能够表示该函数，学习也可能因两个不同的原因而失败。<strong>首先，用于训练的优化算法可能找不到用于期望函数的参数值。其次，训练算法可能由于过拟合而选择了错误的函数</strong>。</p>
+<p>具有单层的前馈网络足以表示任何函数，但是网络层可能大得不可实现， 并且可能无法正确地学习和泛化。在很多情况下，使用更深的模型能够减少表示期望函数所需的单元的数量，并且可以减少泛化误差。</p>
+<h2 id="反向传播和其他微分算法"><a href="#反向传播和其他微分算法" class="headerlink" title="反向传播和其他微分算法"></a>反向传播和其他微分算法</h2>]]></content>
+      
+        
+        <tags>
+            
+            <tag> Deep Learning </tag>
+            
+            <tag> Deep Feedforward Network </tag>
+            
+            <tag> Regularization </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[AlphaZero]]></title>
       <url>/2018/04/09/AlphaZero/</url>
       <content type="html"><![CDATA[<p>This is a reading notes based on the thesis <a href="https://www.nature.com/articles/nature24270.pdf" target="_blank" rel="noopener">Mastering the game of Go without human knowledge</a> and <a href="https://arxiv.org/pdf/1712.01815.pdf" target="_blank" rel="noopener">Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm</a></p>
@@ -80,13 +130,13 @@
         
         <tags>
             
+            <tag> Machine Learning </tag>
+            
             <tag> AlphaGo </tag>
             
             <tag> Reinforcement Learning </tag>
             
             <tag> Artificial Neural Network </tag>
-            
-            <tag> Machine Learning </tag>
             
         </tags>
         
@@ -1258,9 +1308,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
             
             <tag> POLIMI </tag>
             
-            <tag> Foundations of Operations Research </tag>
-            
             <tag> Linear Programming </tag>
+            
+            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
@@ -1457,13 +1507,13 @@ end.
             
             <tag> POLIMI </tag>
             
+            <tag> Foundations of Operations Research </tag>
+            
             <tag> Graphs </tag>
             
             <tag> Network Flows </tag>
             
             <tag> Algorithms </tag>
-            
-            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
