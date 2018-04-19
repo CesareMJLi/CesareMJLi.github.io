@@ -5,8 +5,44 @@
     <entry>
       <title><![CDATA[Deep Learning IV Optimization & CNN]]></title>
       <url>/2018/04/19/Deep-Learning-IV-Optimization-CNN/</url>
-      <content type="html"></content>
+      <content type="html"><![CDATA[<h1 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h1><p>本章主要关注这一类特定的优化问题:寻找神经网络上的一组参数θ，它能显著地降低代价函数J(θ)，该代价函数通常包括整个训练集上的性能评估和额外的正则化项。</p>
+<h2 id="学习和纯优化"><a href="#学习和纯优化" class="headerlink" title="学习和纯优化"></a>学习和纯优化</h2><img src="/2018/04/19/Deep-Learning-IV-Optimization-CNN/1.png">
+<p>J<sup>*</sup>这个式子可以这样去理解，(x,y)是关于p<sub>data的分布，L表示Loss Function，计算模型f根据输入x和当前参数θ得到的输出y‘与真实y之前的差，这个式子整体上表示了当前model的loss在真实x～y分布下的期望。</sub></p>
+<p>机器学习算法和一般优化算法不同的一点是，机器学习算法的目标函数通常可 以分解为训练样本上的求和。机器学习中的优化算法在计算参数的每一次更新时通 常仅使用整个代价函数中一部分项来估计代价函数的期望值。</p>
+<img src="/2018/04/19/Deep-Learning-IV-Optimization-CNN/2.png">
+<p>使用整个训练集的优化算法被称为 批量(batch)或 确定性(deterministic)梯 度算法，因为它们会在一个大批量中同时处理所有样本。这个术语可能有点令人困 惑，因为这个词 “批量’’ 也经常被用来描述小批量随机梯度下降算法中用到的小批 量样本。通常，术语 “批量梯度下降’’ 指使用全部训练集，而术语 “批量’’ 单独出现 时指一组样本。例如，我们普遍使用术语 “批量大小’’ 表示小批量的大小。</p>
+<p>每次只使用单个样本的优化算法有时被称为 随机(stochastic)或者 在线(on- line)算法。术语 “在线’’ 通常是指从连续产生样本的数据流中抽取样本的情况，而 不是从一个固定大小的训练集中遍历多次采样的情况。</p>
+<p>大多数用于深度学习的算法介于以上两者之间，使用一个以上，而又不是全部 的训练样本。传统上，这些会被称为 小批量(minibatch)或 小批量随机(minibatch stochastic)方法，现在通常将它们简单地称为 随机(stochastic)方法。</p>
+<h2 id="优化的挑战"><a href="#优化的挑战" class="headerlink" title="优化的挑战"></a>优化的挑战</h2><blockquote>
+<p>病态</p>
+<p>局部最小值</p>
+<p>鞍点</p>
+<p>悬崖和梯度爆炸</p>
+<p>长期依赖</p>
+</blockquote>
+<h2 id="随机梯度下降方法"><a href="#随机梯度下降方法" class="headerlink" title="随机梯度下降方法"></a>随机梯度下降方法</h2><pre><code>Require: 学习率 ε&lt;sub&gt;k&lt;/sub&gt;
+Require: 初始参数 θ
+    while 停止准则未满足 do
+        从训练集中采包含 m 个样本 {x(1),...,x(m)} 的小批量，其中 x(i) 对应目标为y(i)。
+        计算梯度估计:gˆ ← + 1/m ∇&lt;sub&gt;θ&lt;/sub&gt; ∑ L(f(x(i); θ), y(i))
+        应用更新:θ ← θ − εgˆ
+    end while
+</code></pre><p>SGD 算法中的一个关键参数是学习率。之前，我们介绍的 SGD 使用固定的学 习率。在实践中，有必要随着时间的推移逐渐降低学习率，因此我们将第k步迭代 的学习率记作 ε<sub>k</sub>。</p>
+<h2 id="动量方法"><a href="#动量方法" class="headerlink" title="动量方法"></a>动量方法</h2><p>从形式上看，动量算法引入了变量 v 充当速度角色——它代表参数在参数空间 移动的方向和速率。速度被设为负梯度的指数衰减平均。名称 动量(momentum) 来自物理类比，根据牛顿运动定律，负梯度是移动参数空间中粒子的力。动量在物 理学上定义为质量乘以速度。在动量学习算法中，我们假设是单位质量，因此速度 向量 v 也可以看作是粒子的动量。超参数α ∈ [0, 1)决定了之前梯度的贡献衰减得有多快。更新规则如下:</p>
+<img src="/2018/04/19/Deep-Learning-IV-Optimization-CNN/3.png">
+<p>之前，步长只是梯度范数乘以学习率。现在，步长取决于梯度序列的大小和排 列。当许多连续的梯度指向相同的方向时，步长最大。如果动量算法总是观测到梯 度 g，那么它会在方向 −g 上不停加速，直到达到最终速度。</p>
+<h2 id="Nesterov动量"><a href="#Nesterov动量" class="headerlink" title="Nesterov动量"></a>Nesterov动量</h2><h2 id="参数初始化策略"><a href="#参数初始化策略" class="headerlink" title="参数初始化策略"></a>参数初始化策略</h2><h2 id="自适应学习率算法"><a href="#自适应学习率算法" class="headerlink" title="自适应学习率算法"></a>自适应学习率算法</h2><h1 id="CNN"><a href="#CNN" class="headerlink" title="CNN"></a>CNN</h1>]]></content>
       
+        
+        <tags>
+            
+            <tag> Deep Learning </tag>
+            
+            <tag> CNN </tag>
+            
+            <tag> Optimization </tag>
+            
+        </tags>
         
     </entry>
     
