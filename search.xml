@@ -3,6 +3,53 @@
   
     
     <entry>
+      <title><![CDATA[Deep Learning V Recurrent Neural Network & Other Methods]]></title>
+      <url>/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/</url>
+      <content type="html"><![CDATA[<h1 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h1><h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>循环神经网络(recurrent neural network)或 RNN (Rumelhart et al., 1986c) 是一类用于处理序列数据的神经网络。就像卷积网络是专门用于处理网格化数据 X (如一个图像)的神经网络，循环神经网络是专门用于处理序列 x(1),…,x(τ) 的神 经网络。正如卷积网络可以很容易地扩展到具有很大宽度和高度的图像，以及处理 大小可变的图像，循环网络可以扩展到更长的序列(比不基于序列的特化网络长得多)。大多数循环网络也能处理可变长度的序列。</p>
+<h2 id="展开计算图"><a href="#展开计算图" class="headerlink" title="展开计算图"></a>展开计算图</h2><img src="/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/1.png">
+<p>当训练循环网络根据过去预测未来时，网络通常要学会使用 h(t) 作为过去序列 (直到 t)与任务相关方面的有损摘要。此摘要一般而言一定是有损的，因为其映射 任意长度的序列 (x(t), x(t−1), x(t−2), . . . , x(2), x(1)) 到一固定长度的向量 h(t)。根据不 同的训练准则，摘要可能选择性地精确保留过去序列的某些方面。例如，如果在统 计语言建模中使用的 RNN，通常给定前一个词预测下一个词，可能没有必要存储时 刻 t 前输入序列中的所有信息;而仅仅存储足够预测句子其余部分的信息。最苛刻 的情况是我们要求 h(t) 足够丰富，并能大致恢复输入序列。</p>
+<img src="/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/2.png">
+<h2 id="循环神经网络"><a href="#循环神经网络" class="headerlink" title="循环神经网络"></a>循环神经网络</h2><blockquote>
+<p>通用设计模式</p>
+<p>其中h表示激活函数，其中包含了输入的加权过程，o表示非标准化对数概率，y表示标准化输出</p>
+<img src="/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/6.png">
+<ol>
+<li>每个时间步都有输出，并且隐藏单元之间有循环连接的循环网络</li>
+</ol>
+<img src="/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/3.png">
+<ol>
+<li>每个时间步都产生一个输出，只有当前时刻的输出到下个时刻的隐藏单元之间有循环连接的循环网络</li>
+</ol>
+<img src="/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/4.png">
+<ol>
+<li>隐藏单元之间存在循环连接，但读取整个序列后产生单个输出的循环网络</li>
+</ol>
+<img src="/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/5.png">
+</blockquote>
+<p>通常情况下设计模式1为最常用的设计模式。</p>
+<h3 id="导师驱动过程和输出循环网络（设计模式2）"><a href="#导师驱动过程和输出循环网络（设计模式2）" class="headerlink" title="导师驱动过程和输出循环网络（设计模式2）"></a>导师驱动过程和输出循环网络（设计模式2）</h3><img src="/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/7.png">
+<p>这种方式使训练过程可以并行的进行，因为我们不需要每次都将上次的train得到的o输入到下一层，而是将正确的y输入，故很大程度的减小了梯度下降的难度。</p>
+<h3 id="神经网络梯度计算"><a href="#神经网络梯度计算" class="headerlink" title="神经网络梯度计算"></a>神经网络梯度计算</h3><h2 id="双向RNN"><a href="#双向RNN" class="headerlink" title="双向RNN"></a>双向RNN</h2><img src="/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/8.png">
+<h2 id="基于编码-解码的序列到序列架构"><a href="#基于编码-解码的序列到序列架构" class="headerlink" title="基于编码-解码的序列到序列架构"></a>基于编码-解码的序列到序列架构</h2><p>我们经常将RNN的输入称为”上下文”。我们希望产生此上下文的表示C。这个上下文C可能是一个概括输入序列 X = (x(1) , . . . , x(n)) 的向量或者向量序列。</p>
+<img src="/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/9.png">
+<h2 id="深度循环网络"><a href="#深度循环网络" class="headerlink" title="深度循环网络"></a>深度循环网络</h2><h2 id="递归神经网络"><a href="#递归神经网络" class="headerlink" title="递归神经网络"></a>递归神经网络</h2><h1 id="实践方法论"><a href="#实践方法论" class="headerlink" title="实践方法论"></a>实践方法论</h1><h2 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h2><h2 id="默认基准模型"><a href="#默认基准模型" class="headerlink" title="默认基准模型"></a>默认基准模型</h2><h2 id="更多数据？"><a href="#更多数据？" class="headerlink" title="更多数据？"></a>更多数据？</h2><h2 id="超参数选择"><a href="#超参数选择" class="headerlink" title="超参数选择"></a>超参数选择</h2><h1 id="相关应用"><a href="#相关应用" class="headerlink" title="相关应用"></a>相关应用</h1>]]></content>
+      
+        
+        <tags>
+            
+            <tag> Deep Learning </tag>
+            
+            <tag> Recurrent Neural Network </tag>
+            
+            <tag> RNN </tag>
+            
+            <tag> Machine Learning Methods </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Deep Learning IV Optimization & CNN]]></title>
       <url>/2018/04/19/Deep-Learning-IV-Optimization-CNN/</url>
       <content type="html"><![CDATA[<h1 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h1><p>本章主要关注这一类特定的优化问题:寻找神经网络上的一组参数θ，它能显著地降低代价函数J(θ)，该代价函数通常包括整个训练集上的性能评估和额外的正则化项。</p>
