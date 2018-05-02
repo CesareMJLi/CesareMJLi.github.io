@@ -3,6 +3,61 @@
   
     
     <entry>
+      <title><![CDATA[EyePhone]]></title>
+      <url>/2018/05/02/Papers-EyePhone/</url>
+      <content type="html"><![CDATA[<p>This blog aims to record some relative information about EYEPHONE.</p>
+<h1 id="What’s-EyePhone"><a href="#What’s-EyePhone" class="headerlink" title="What’s EyePhone"></a>What’s EyePhone</h1><p>EyePhone is a personal built project, aims to help blind people with their cellphone to detect the obstacles on the road. EyePhone focus on the common road scenes in the city. It has a quite simple use - “Hold the phone, whenever there is a obstacle in the road, remind the user.”</p>
+<blockquote>
+<p>Obstacles could have following categrories: Stairs, Bicycle, Street Lights, Cars, Other People, and other obstacles.</p>
+</blockquote>
+<p>There are some basic idea of how to build this babe:)</p>
+<ol>
+<li><p><strong>Pure empirical method of CNN</strong>: We trust our CNN methods, and offer tons of data (input: images output: obstacles detected y/n) to train it, and later given specific input it could make a decision.</p>
+</li>
+<li><p><strong>Combine Machine Learning with Prior Knowledge</strong>: We have some prior knowledge in the obstacle detection, like when something is far it would be small in our sight, while close make it bigger in the sights. </p>
+</li>
+<li><p><strong>Combine CNN with RNN</strong>: This is a very promising idea while I have no idea of where to start now. I found one interesting fact occasionally, that in a badly scaled picture, sometimes it is hard even for human to find what’s in the picture. While it all the pictures are played fast, it would be easily found! (Imagine watching a badly scaled .gif picture!). So maybe we could combine CNN and RNN and contribute to a better performance. </p>
+</li>
+</ol>
+<h1 id="Papers"><a href="#Papers" class="headerlink" title="Papers"></a>Papers</h1><p>In this part, I would noted some useful information I found in some papers and their inspiration on this project. </p>
+<h2 id="Paper-Object-Detection-from-Video-Tubelets-with-Convolutional-Neural-Networks"><a href="#Paper-Object-Detection-from-Video-Tubelets-with-Convolutional-Neural-Networks" class="headerlink" title="Paper: Object Detection from Video Tubelets with Convolutional Neural Networks"></a>Paper: Object Detection from Video Tubelets with Convolutional Neural Networks</h2><p><a href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/app/S04-07.pdf" target="_blank" rel="noopener">Click here for the orginal text</a></p>
+<h3 id="INTRO"><a href="#INTRO" class="headerlink" title="INTRO"></a>INTRO</h3><p>Method1: Detect obstacles frame by frame</p>
+<p>Method2: Combine Method1 with object tracking</p>
+<p>The framework consists of two main modules: 1)a tubelet proposal module that combines object detection and object tracking for tubelet object proposal; 2) a tubelet classification and re-scoring module that performs spatial max-pooling for robust box scoring and temporal convolution for incorporating temporal consistency.</p>
+<h3 id="METHOD"><a href="#METHOD" class="headerlink" title="METHOD"></a>METHOD</h3><p>Objects in videos show temporal and spatial consistency. The same object in adjacent frames has similar appearances and locations. Using either (object detectors or object trackers) existing object detection methods or object tracking methods alone cannot effectively solve the VID problem.</p>
+<p>The combined model has the discriminative ability from object detectors and the temporal consistency from object trackers. </p>
+<ol>
+<li>The tubelet proposal module has 3 major steps: </li>
+</ol>
+<blockquote>
+<p>1) image object proposal - <strong>(每一帧都进行分析，通过一个算法，将总共可能出现的object的种类从一个很大的类缩减到一个小范围)</strong> </p>
+<p>2) object proposal scoring  - <strong>（对于每个proposal进行分析，根据他们的confidence从几百个proposal进一步削减到几十个proposal）</strong></p>
+<p>3) high-confidence object tracking <strong>（对于每一个高confidence的proposal，我们以某一帧为anchor，向前和向后进行track，为了防止track的物体漂移到别的物体或者背景上，当confidence低于某个threshold后停止tracking）</strong>.</p>
+</blockquote>
+<ol>
+<li>Tubelet classification and rescoring has 2 steps: </li>
+</ol>
+<blockquote>
+<p>1) Tubelet box perturbation and max-pooling <strong>（使用这种方法将多个tubelet box进行pooling得到某一帧的boxes）</strong></p>
+<p>2) Temporal convolution and re-scoring <strong>（建立一个时序的temporal convolution network 每一个输入x为每一个tubelet box在不同时间【连续输入】的一个三维向量（detection score,tracking score,anchor offset）得到该tubelet box的prediction scores）</strong>.</p>
+</blockquote>
+<h2 id="Paper-Object-Detection-in-Videos-with-Tubelet-Proposal-Networks"><a href="#Paper-Object-Detection-in-Videos-with-Tubelet-Proposal-Networks" class="headerlink" title="Paper: Object Detection in Videos with Tubelet Proposal Networks"></a>Paper: Object Detection in Videos with Tubelet Proposal Networks</h2><p><a href="http://openaccess.thecvf.com/content_cvpr_2017/papers/Kang_Object_Detection_in_CVPR_2017_paper.pdf" target="_blank" rel="noopener">Click here for the orginal text</a></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Machine Learning </tag>
+            
+            <tag> CNN </tag>
+            
+            <tag> EyePhone </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Deep Learning V Recurrent Neural Network & Other Methods]]></title>
       <url>/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/</url>
       <content type="html"><![CDATA[<h1 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h1><h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>循环神经网络(recurrent neural network)或 RNN (Rumelhart et al., 1986c) 是一类用于处理序列数据的神经网络。就像卷积网络是专门用于处理网格化数据 X (如一个图像)的神经网络，循环神经网络是专门用于处理序列 x(1),…,x(τ) 的神 经网络。正如卷积网络可以很容易地扩展到具有很大宽度和高度的图像，以及处理 大小可变的图像，循环网络可以扩展到更长的序列(比不基于序列的特化网络长得多)。大多数循环网络也能处理可变长度的序列。</p>
