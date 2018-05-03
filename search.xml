@@ -25,23 +25,43 @@
 <p>Method2: Combine Method1 with object tracking</p>
 <p>The framework consists of two main modules: 1)a tubelet proposal module that combines object detection and object tracking for tubelet object proposal; 2) a tubelet classification and re-scoring module that performs spatial max-pooling for robust box scoring and temporal convolution for incorporating temporal consistency.</p>
 <h3 id="METHOD"><a href="#METHOD" class="headerlink" title="METHOD"></a>METHOD</h3><p>Objects in videos show temporal and spatial consistency. The same object in adjacent frames has similar appearances and locations. Using either (object detectors or object trackers) existing object detection methods or object tracking methods alone cannot effectively solve the VID problem.</p>
-<p>The combined model has the discriminative ability from object detectors and the temporal consistency from object trackers. </p>
-<ol>
+<p>The combined model has the discriminative ability from object detectors and the temporal consistency from object trackers. It has 2 following </p>
+<ul>
 <li>The tubelet proposal module has 3 major steps: </li>
-</ol>
+</ul>
 <blockquote>
 <p>1) image object proposal <strong>(每一帧都进行分析，通过一个算法，将总共可能出现的object的种类从一个很大的类缩减到一个小范围)</strong> </p>
 <p>2) object proposal scoring <strong>（对于每个proposal进行分析，根据他们的confidence从几百个proposal进一步削减到几十个proposal）</strong></p>
 <p>3) high-confidence object tracking <strong>（对于每一个高confidence的proposal，我们以某一帧为anchor，向前和向后进行track，为了防止track的物体漂移到别的物体或者背景上，当confidence低于某个threshold后停止tracking）</strong>.</p>
 </blockquote>
-<ol>
+<ul>
 <li>Tubelet classification and rescoring has 2 steps: </li>
-</ol>
+</ul>
 <blockquote>
 <p>1) Tubelet box perturbation and max-pooling <strong>（使用这种方法将多个tubelet box进行pooling得到某一帧的boxes）</strong></p>
 <p>2) Temporal convolution and re-scoring <strong>（建立一个时序的temporal convolution network 每一个输入x为每一个tubelet box在不同时间【连续输入】的一个三维向量（detection score,tracking score,anchor offset）得到该tubelet box的prediction scores）</strong>.</p>
 </blockquote>
 <h2 id="Paper-Object-Detection-in-Videos-with-Tubelet-Proposal-Networks"><a href="#Paper-Object-Detection-in-Videos-with-Tubelet-Proposal-Networks" class="headerlink" title="Paper: Object Detection in Videos with Tubelet Proposal Networks"></a>Paper: Object Detection in Videos with Tubelet Proposal Networks</h2><p><a href="http://openaccess.thecvf.com/content_cvpr_2017/papers/Kang_Object_Detection_in_CVPR_2017_paper.pdf" target="_blank" rel="noopener">Click here for the orginal text</a></p>
+<h3 id="INTRO-1"><a href="#INTRO-1" class="headerlink" title="INTRO"></a>INTRO</h3><p>The contribution of this paper is that it propose a new deep learning framework that combines tubelet proposal generation and temporal classification with visual-temporal features. An efficient tubelet proposal generation algorithm is developed to generate tubelet proposals that capture spatiotemporal locations of objects in videos. A temporal LSTM model is adopted for classifying tubelet proposals with both visual features and temporal features. Such high-level temporal features are generally ignored by existing detection systems but are crucial for object detection in videos.</p>
+<h3 id="Tubelet-proposal-networks-TPN"><a href="#Tubelet-proposal-networks-TPN" class="headerlink" title="Tubelet proposal networks TPN"></a>Tubelet proposal networks TPN</h3><ul>
+<li>Preliminaries on ROI-pooling for regression</li>
+</ul>
+<p>FAST R-CNN/ROI POOLING</p>
+<p>The object of this part is to use ROI-pooling finding the for a <em>t</em>, the corresponding b<sup>i</sup>=(x<sup>i</sup>,y<sup>i</sup>,w<sup>i</sup>,t<sup>i</sup>) denoting the ith box proposal(what could it be!) at time t, where x, y, w and h represent the two coordinates of the box center, width and height of the box proposal.</p>
+<ul>
+<li>Static object proposals as spatial anchors</li>
+</ul>
+<p>Let b<sup>i</sup>1 denote a static proposal of interest at time t =1. Particularly, to generate a tubelet proposal starting at b<sup>i</sup>1, visual features within the w-frame temporal window from frame 1 to w are pooled at the same location b<sup>i</sup>1 as r<sup>i</sup>1,r<sup>i</sup>2,…,r<sup>i</sup>w in order to generate the tubelet proposal. We call b<sup>i</sup>1 a “spatial anchor”.</p>
+<p>The reason why we are able to pool multi-frame features from the same spatial location for tubelet proposals is that CNN feature maps at higher layers usually have large receptive fields. Even if visual features are pooled from a small bounding box, its visual context is far greater than the bounding box itself. Pooling at the same box locations across time is therefore capable of capturing large possible movements of objects.</p>
+<ul>
+<li>Supervisions for tubelet proposal generation</li>
+</ul>
+<p>Our goal is to generate tubelet proposals that have high object recall rates at each frame and can accurately track objects. Based on the pooled visual features r<sup>i</sup>1,r<sup>i</sup>2,…,r<sup>i</sup>w at box locations b<sup>i</sup>t, we train a regression network R(·) that effectively estimates the relative movements w.r.t. the spatial anchors.</p>
+<p>Once we obtain such relative movements, the actual box locations of the tubelet could be easily inferred. Our key assumption is that the tubelet proposals should have consistent movement patterns with the ground-truth objects.</p>
+<ul>
+<li>Initialization for multi-frame regression layer</li>
+</ul>
+<h2 id="Paper-Fast-R-CNN"><a href="#Paper-Fast-R-CNN" class="headerlink" title="Paper: Fast R-CNN"></a>Paper: Fast R-CNN</h2><p><a href="https://arxiv.org/pdf/1504.08083.pdf" target="_blank" rel="noopener">Click here for the orginal text</a></p>
 ]]></content>
       
         
