@@ -91,23 +91,42 @@
 </ul>
 <p>In the previous segmentation research, there are some approaches by segmenting and recognizing objects in parts. They first generate a set of part hypotheses using a grouping method based on Arbelaez. Each part hypothesis is described by both appearance and shape features. Then, an object is recognized and carefully delineated by using its parts, achieving good results for shape recognition.</p>
 <p>In their work, the segmentation is hierarchical and yields segments at all scales. However, they use a single grouping strategy whose power of discovering parts or objects is left unevaluated. In this work, we use multiple complementary strategies to deal with as many image conditions as possible.</p>
-<h3 id="Selective-Search"><a href="#Selective-Search" class="headerlink" title="Selective Search"></a>Selective Search</h3><ul>
+<h3 id="Selective-Search"><a href="#Selective-Search" class="headerlink" title="Selective Search"></a>Selective Search</h3><blockquote>
+<p>the selective search should fulfill 3 considerations</p>
+<p><strong>捕获全部scale上的Objects</strong>：因为一个object可能在一张图片上的任意scale出现，甚至有些objects可能会具有模糊的边界。【通过using a hierachical algorithm解决】</p>
+<p><strong>多样化</strong>：不存在一种最好的策略将不同的region进行group。每个区域可能通过颜色，纹理等等形成一个object，所以与其采用一种在大部分情况下都行得通的单一的策略，我们想找到一系列策略来对应全部的情形。</p>
+<p><strong>易于计算</strong></p>
+</blockquote>
+<ul>
 <li>Selective Search by Hierarchical Grouping</li>
 </ul>
+<p>Bottom-up grouping is a popular approach to segmentation, hence we adapt it for selective search. This is a hierarchicalmethods, which means that we could naturally generate locations at all scales by continueing the grouping process until the whole image becomes a single region.</p>
 <img src="/2018/05/02/Papers-EyePhone/1.png">
 <p>Bottom-up grouping is a popular approach to segmentation, we use this to get the initial regions</p>
+<p>输入为一张照片，首先通过the fast method of Felzenszwalb and Huttenlocher创建initial regions R，然后我们使用贪心算法迭代的将regions组合起来，具体的过程为首先，【<em>建立一个空集合S，首先对于每一对region pair，我们计算similarity，然后将他们的相似性放在集合S中</em>】，然后【<em>从S中取出最高的相似性的region pair，将两个融合成为新的region，并且移除与久的region有关的相似性并且计算新的region和它的周围的部分的相似性</em>】，重复第二个步直到S成为空集。</p>
+<blockquote>
+<p>在计算相似性的时候，我们必须保证新的r的特章必须可以通过原来的r计算得到而不需要回到pixel level重新计算。</p>
+</blockquote>
 <ul>
 <li>Diversification Strategies</li>
 </ul>
-<p>Create a set of complementary strategies whose locations are combined afterwards. Some popular strategies are (1) by using a variety of colour spaces with different invariance properties, (2) by using different similarity measures s<sub>ij</sub>, and (3) by varying our starting regions.</p>
+<p>Create <strong>a set of complementary strategies</strong> whose locations are combined afterwards. Some popular strategies are (1) by using a variety of colour spaces with different invariance properties, (2) by using different similarity measures s<sub>ij</sub>, and (3) by varying our starting regions.</p>
+<blockquote>
+<p>Complementary Colour Spaces</p>
+<p>Complementary Similarity Measures(s<sub>colour</sub>,s<sub>texture</sub>,s<sub>size</sub>,s<sub>fill</sub>)</p>
+<p>Complemenetart Starting Regions</p>
+</blockquote>
+<ul>
+<li>Combining Locations</li>
+</ul>
 ]]></content>
       
         
         <tags>
             
-            <tag> CNN </tag>
-            
             <tag> Machine Learning </tag>
+            
+            <tag> CNN </tag>
             
             <tag> EyePhone </tag>
             
@@ -390,13 +409,13 @@ Require: 初始参数 θ
         
         <tags>
             
-            <tag> Machine Learning </tag>
-            
             <tag> AlphaGo </tag>
             
             <tag> Reinforcement Learning </tag>
             
             <tag> Artificial Neural Network </tag>
+            
+            <tag> Machine Learning </tag>
             
         </tags>
         
