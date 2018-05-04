@@ -62,6 +62,32 @@
 <li>Initialization for multi-frame regression layer</li>
 </ul>
 <h2 id="Paper-Fast-R-CNN"><a href="#Paper-Fast-R-CNN" class="headerlink" title="Paper: Fast R-CNN"></a>Paper: Fast R-CNN</h2><p><a href="https://arxiv.org/pdf/1504.08083.pdf" target="_blank" rel="noopener">Click here for the orginal text</a></p>
+<h2 id="Paper-R-CNN"><a href="#Paper-R-CNN" class="headerlink" title="Paper: R-CNN"></a>Paper: R-CNN</h2><p><a href="https://www.cv-foundation.org/openaccess/content_cvpr_2014/papers/Girshick_Rich_Feature_Hierarchies_2014_CVPR_paper.pdf?spm=5176.100239.blogcont55892.8.pm8zm1&amp;file=Girshick_Rich_Feature_Hierarchies_2014_CVPR_paper.pdf" target="_blank" rel="noopener">Click here for the orginal text</a></p>
+<h3 id="INTRO-2"><a href="#INTRO-2" class="headerlink" title="INTRO"></a>INTRO</h3><p>Combine the object detection and image classification together</p>
+<blockquote>
+<p>Object detection is what is needed in EyePhone</p>
+</blockquote>
+<h3 id="Objection-Detection"><a href="#Objection-Detection" class="headerlink" title="Objection Detection"></a>Objection Detection</h3><p>Our object detection system consists of three modules. </p>
+<blockquote>
+<p>The first generates category-independent region proposals. These proposals define the set of candidate detections available to our detector. </p>
+<p>The second module is a large convolutional neural network that extracts a fixed-length feature vector from each region. </p>
+<p>The third module is a set of classspecific linear SVMs.</p>
+</blockquote>
+<p>使用Seletive Search找到region proposals，然后对于每一个region，把他转化成一个固定大小的CNN输入。</p>
+<p>对于一个test sample，通过Selective Search得到约2000个region proposals，然后每一个region proposal通过forwad propagation通过一个CNN，在得到每一个region的score之后，我们基于贪心算法，当一个region和另一个region重合，并且那个新的region的score高于某一个threshold，那么选择那个新的region代替两个region。</p>
+<h2 id="Paper-Selective-Search"><a href="#Paper-Selective-Search" class="headerlink" title="Paper: Selective Search"></a>Paper: Selective Search</h2><p><a href="https://koen.me/research/pub/uijlings-ijcv2013-draft.pdf" target="_blank" rel="noopener">Click here for the orginal text</a></p>
+<p>由于该篇文章和本工程的相关性，该篇论文的注释将会用中文进行。</p>
+<h3 id="INTRO-3"><a href="#INTRO-3" class="headerlink" title="INTRO"></a>INTRO</h3><p>在图片的物体识别领域，我们发现很难用一种统一的方法对所有的图片进行分类，我们需要考虑纹理，颜色以及这个物体的真实属性（一个轮子是单独的么？还是说这个轮子属于一辆车？），而且还有一个问题是，往往我们用分割的方法很难得到一个正确的结论，比如一个桌子上有若干个杯子，杯子里放着乒乓球或者羽毛球，我们需要考虑的是一个hierachical的模型。</p>
+<p>一个解决方案是穷举法，显而易见这种方法几乎是computatianal impossible，在这篇文章中提出的selective search的方法结合了segmentation和exhausive search，通过Bottom up segmentation获取图片的结构和每个object的位置，通过exhausive search捕捉每一个可能的object的位置信息。</p>
+<h3 id="Selective-Search"><a href="#Selective-Search" class="headerlink" title="Selective Search"></a>Selective Search</h3><ul>
+<li>Selective Search by Hierarchical Grouping</li>
+</ul>
+<img src="/2018/05/02/Papers-EyePhone/1.png">
+<p>Bottom-up grouping is a popular approach to segmentation, we use this to get the initial regions</p>
+<ul>
+<li>Diversification Strategies</li>
+</ul>
+<p>Create a set of complementary strategies whose locations are combined afterwards. Some popular strategies are (1) by using a variety of colour spaces with different invariance properties, (2) by using different similarity measures s<sub>ij</sub>, and (3) by varying our starting regions.</p>
 ]]></content>
       
         
