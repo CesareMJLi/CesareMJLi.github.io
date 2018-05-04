@@ -244,7 +244,7 @@
 
     
         <meta property="article:published_time" content="Mon Apr 09 2018 19:17:27 GMT+0200">
-        <meta property="article:modified_time" content="Mon Apr 09 2018 22:31:56 GMT+0200">
+        <meta property="article:modified_time" content="Fri May 04 2018 08:32:35 GMT+0200">
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://yoursite.com/2018/04/09/AlphaZero/index.html",
     "headline": "AlphaZero",
     "datePublished": "Mon Apr 09 2018 19:17:27 GMT+0200",
-    "dateModified": "Mon Apr 09 2018 22:31:56 GMT+0200",
+    "dateModified": "Fri May 04 2018 08:32:35 GMT+0200",
     "author": {
         "@type": "Person",
         "name": "Cesare (MINGJU LI)",
@@ -533,7 +533,7 @@
 <p>  MCTS may therefore be viewed as a powerful <strong>policy improvement operator</strong>. Self-play with search—using the improved MCTS-based policy to select each move, then using the <strong>game winner z</strong> as a sample of the value—may be viewed as a powerful <strong>policy evaluation operator</strong>. </p>
 <p>  The main idea of our reinforcement learning algorithm is to use these search operators repeatedly in a policy iteration procedure: the neural network’s parameters are updated to make the move probabilities and value (p,v)= f<sub>θ</sub>(s) more closely match the improved search probabilities and selfplay winner (π, z); these new parameters are used in the next iteration of self-play to make the search even stronger.</p>
 <blockquote>
-<p>对于每一手（每一个当前状态），进行蒙特卡洛树搜索α<sub>θ<sub>，根节点为当前状态，蒙特卡洛树搜索是一种经验方法，可以根据之前的经验进行选择，我们在每个node s向下蔓延的edge a中选择，每个edge包含【prior probability P(s,a)/visit cound N(s,a)/ action value Q(s,a)】,<strong>在每一个node选择一个最大的（Q+U），， 当前选择的最大的Q+U不存在一个对应的node时，可以通过神经网络f<sub>θ</sub>生成他的子树（而不是使用Monte Carlo Rollout），产生对应的p和v，然后向root进行back propagate更新树的值（Q等）</strong>，并不断重复以上加粗字体过程，当搜索结束后，可以发挥一个search probabilities π，</sub></sub></p>
+<p>对于每一手（每一个当前状态），进行蒙特卡洛树搜索α<sub>θ</sub>，根节点为当前状态，蒙特卡洛树搜索是一种经验方法，可以根据之前的经验进行选择，我们在每个node s向下蔓延的edge a中选择，每个edge包含【prior probability P(s,a)/visit cound N(s,a)/ action value Q(s,a)】,<strong>在每一个node选择一个最大的（Q+U），当前选择的最大的Q+U不存在一个对应的node时，可以通过神经网络f<sub>θ</sub>生成他的子树（而不是使用Monte Carlo Rollout），产生对应的p和v，然后向root进行back propagate更新树的值（Q等）</strong>，并不断重复以上加粗字体过程，当搜索结束后，可以发挥一个search probabilities π，</p>
 </blockquote>
 <p>  At each time-step t, an MCTS search π = α<sub>θ of last step</sub>(s<sub>t</sub>) is executed using the previous iteration of neural network, and a move is played by sampling the search probabilities πt.</p>
 <p>  A game terminates at step T when both players pass, when the search value drops below a resignation threshold or when the game exceeds a maximum length; the game is then scored to give a final reward of r<sub>T</sub>∈ {−1,+1}. </p>
