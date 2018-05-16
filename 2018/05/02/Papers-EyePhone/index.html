@@ -54,7 +54,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)">
-    <meta name="keywords" content=",Machine Learning,CNN,EyePhone">
+    <meta name="keywords" content=",CNN,Machine Learning,EyePhone">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -240,11 +240,11 @@
     <meta property="og:title" content="EyePhone | Cesare&#39;s Workshop">
     <meta property="og:image" content="/img/star.png">
     <meta property="og:description" content="Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)">
-    <meta property="og:article:tag" content="Machine Learning"> <meta property="og:article:tag" content="CNN"> <meta property="og:article:tag" content="EyePhone"> 
+    <meta property="og:article:tag" content="CNN"> <meta property="og:article:tag" content="Machine Learning"> <meta property="og:article:tag" content="EyePhone"> 
 
     
         <meta property="article:published_time" content="Wed May 02 2018 10:00:53 GMT+0200">
-        <meta property="article:modified_time" content="Mon May 07 2018 10:32:33 GMT+0200">
+        <meta property="article:modified_time" content="Thu May 10 2018 09:46:14 GMT+0200">
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://yoursite.com/2018/05/02/Papers-EyePhone/index.html",
     "headline": "EyePhone",
     "datePublished": "Wed May 02 2018 10:00:53 GMT+0200",
-    "dateModified": "Mon May 07 2018 10:32:33 GMT+0200",
+    "dateModified": "Thu May 10 2018 09:46:14 GMT+0200",
     "author": {
         "@type": "Person",
         "name": "Cesare (MINGJU LI)",
@@ -285,7 +285,7 @@
             "url": "/img/star.png"
         }
     },
-    "keywords": ",Machine Learning,CNN,EyePhone",
+    "keywords": ",CNN,Machine Learning,EyePhone",
     "description": "Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)",
 }
 </script>
@@ -518,6 +518,10 @@
 </li>
 </ol>
 <p>Generally speaking, according to the previous papers, it takes more or less 40 seconds to detect some obstacles in the picture. While here it is more promising to use the method with a low precision image and continous temporal information. It we could combine the knowledge of the conteinous temporal information into some sharing information, it would require a far more less computation.</p>
+<p>Updated at 2018.5.10 - Maybe a detection will be good enought to get the Regions of Interests in the picture, and we could only train it to get the ability of distance detection.</p>
+<ol>
+<li><strong>Analysis based on SS</strong>: use machine learning methods train the model the ability of distance detection, hence there are two conditions we have to reach first. First, we have to make sure Select Search method is good enough to extract all the important information in the picture. Second, this method would have the advantages that it may need less information to train, this scale is handlable in a personal computer, while we have to make sure that we only analysis the RoI of greater weights. (Could we use a neural method to guide the selective search like we do in the AlphaZero?)</li>
+</ol>
 <h1 id="Papers"><a href="#Papers" class="headerlink" title="Papers"></a>Papers</h1><p>In this part, I would noted some useful information I found in some papers and their inspiration on this project. </p>
 <h2 id="Paper-Object-Detection-from-Video-Tubelets-with-Convolutional-Neural-Networks"><a href="#Paper-Object-Detection-from-Video-Tubelets-with-Convolutional-Neural-Networks" class="headerlink" title="Paper: Object Detection from Video Tubelets with Convolutional Neural Networks"></a>Paper: Object Detection from Video Tubelets with Convolutional Neural Networks</h2><p><a href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/app/S04-07.pdf" target="_blank" rel="noopener">Click here for the orginal text</a></p>
 <h3 id="INTRO"><a href="#INTRO" class="headerlink" title="INTRO"></a>INTRO</h3><p>Method1: Detect obstacles frame by frame</p>
@@ -765,7 +769,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/05/">May 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">April 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">March 2018<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/01/">January 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">December 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">November 2017<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/05/">May 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">April 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">March 2018<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/01/">January 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">December 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">November 2017<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -807,7 +811,7 @@
         <li>
             <a href="/archives">
                 Number of articles
-                <span class="sidebar-badge">26</span>
+                <span class="sidebar-badge">27</span>
             </a>
         </li>
         

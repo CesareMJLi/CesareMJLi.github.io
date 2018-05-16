@@ -3,6 +3,106 @@
   
     
     <entry>
+      <title><![CDATA[Advanced Computer Architectures]]></title>
+      <url>/2018/05/16/Advanced-Computer-Architectures/</url>
+      <content type="html"><![CDATA[<h1 id="L00-Intro"><a href="#L00-Intro" class="headerlink" title="L00 Intro"></a>L00 Intro</h1><h1 id="L01-Pipelining-Basic-Concepts"><a href="#L01-Pipelining-Basic-Concepts" class="headerlink" title="L01 Pipelining: Basic Concepts"></a>L01 Pipelining: Basic Concepts</h1><h2 id="MIPS"><a href="#MIPS" class="headerlink" title="MIPS"></a>MIPS</h2><ul>
+<li>ALU Instructions: add $s1, $s2, $s3</li>
+<li>Load/Store Instructions: lw/sw $s1 offset($s2)</li>
+<li>Branch Instructions: beq/bne $s1, $s2, L1</li>
+</ul>
+<p>R-Format for Instructions</p>
+<img src="/2018/05/16/Advanced-Computer-Architectures/1.png">
+<p>Phase of execution of MIPS Instructions:</p>
+<ol>
+<li>Instruction Fetch</li>
+<li>Instruction Decode and Register Read</li>
+<li>Execution</li>
+<li>Memory Access</li>
+<li>Write Back Cycle</li>
+</ol>
+<p>Different type of Instructions(R/I/J) may require different execution phase. In an ALU R-Instruction, there is no needs for the memory access.</p>
+<h2 id="Pipelining"><a href="#Pipelining" class="headerlink" title="Pipelining"></a>Pipelining</h2><p><strong>Basic idea</strong>: The execution of an instruction is divided into different phases (pipelines stages), requiring a fraction of the time necessary to complete the instruction.</p>
+<blockquote>
+<p><strong>The pipeline stages must besynchronized</strong>: the duration of a clock cycle is defined by the time requested by the slower stage of the pipeline.The goal is to balance the length of each pipeline stage.</p>
+<p>一个MIPS Instruction可能需要8ns，但是为了在宏观上实现pipelining，我们把5个阶段分开，并且将最长事件的阶段作为一个clock cycle，虽然每一个Instruction花费的时间变多了，但是由于pipelining，整体的output提高了。</p>
+</blockquote>
+<img src="/2018/05/16/Advanced-Computer-Architectures/2.png">
+<h2 id="Pipeline-Hazards"><a href="#Pipeline-Hazards" class="headerlink" title="Pipeline Hazards"></a>Pipeline Hazards</h2><ol>
+<li>Structural Hazards: Use the same resource from different instructions simultaneously</li>
+<li>Data Hazards: Attempt to use a result before it is ready</li>
+<li>Control Hazards: Attempt to make a decision on the next instruction to execute before the condition is evaluated.</li>
+</ol>
+<blockquote>
+<p>No s-hazards in MIPS<br>While d-hazard in very possible (RAW)<br>WAW/WAR occur more easily when instructions are executed out-of-order.</p>
+</blockquote>
+<p>Data Hazards Solution:</p>
+<ol>
+<li>Insertion of nop</li>
+<li>Rescheduling to avoid correlating instruction too close</li>
+<li>Insertion of stalls</li>
+<li>data forward or bypassing (uses temporary results stored in the pipeline registers instead of waiting for the write back of results in the RF)</li>
+</ol>
+<blockquote>
+<p>The differnce between nop and stalls is that nop is an instruction, while stalls is only stalled for one clk</p>
+<p>Forwarding Paths<br>EX/EX path<br>MEM/EX path<br>MEM/ID path<br>MEM/MEM path (for load/stores)</p>
+<p>To avoid the read/write RF in one clk, we assume the RF read occurs in the second half of clock cycle and the RF write in the first half of clock cycle.</p>
+</blockquote>
+<h2 id="Performance-Metrics-in-Pipelining"><a href="#Performance-Metrics-in-Pipelining" class="headerlink" title="Performance Metrics in Pipelining"></a>Performance Metrics in Pipelining</h2><p>IC = Instruction Cound</p>
+<p>Clk Cycles = IC + #Stalls + 4</p>
+<p>CPI = Clk Cycles/IC</p>
+<p>MIPS = f<sub>clock</sub>/(CPI*10<sup>6</sup>)</p>
+<p>The ideal CPI on a pipelined processor would be 1, but stalls cause the pipeline performance to degrade form the ideal performance.</p>
+<h1 id="L02-Branch-Prediction-Techiniques"><a href="#L02-Branch-Prediction-Techiniques" class="headerlink" title="L02 Branch Prediction Techiniques"></a>L02 Branch Prediction Techiniques</h1><p>Control hazards: Attempt to make a decision on the next instruction to fetch before the branch condition is evaluated.</p>
+<h2 id="Branch-Hazards-Solution"><a href="#Branch-Hazards-Solution" class="headerlink" title="Branch Hazards Solution"></a>Branch Hazards Solution</h2><p><strong>Conservative Assumption</strong>: stall the pipeline until the branch decision is taken, and then fetch the correct instruction.</p>
+<p><strong>Conservative Assumption with Forwarding</strong></p>
+<p><strong>Early Evaluation of the PC</strong>: get the result of the branch prediction in the end of ID state.</p>
+<h2 id="Branch-Prediction-Techniques"><a href="#Branch-Prediction-Techniques" class="headerlink" title="Branch Prediction Techniques"></a>Branch Prediction Techniques</h2><h3 id="Static-Branch-Prediction-Techniques"><a href="#Static-Branch-Prediction-Techniques" class="headerlink" title="Static Branch Prediction Techniques"></a>Static Branch Prediction Techniques</h3><p>The actions for a branch are fixed for each branch during the entire execution. The actions are fixed at compile time.</p>
+<ol>
+<li>Branch Always Not Taken: if the branch is actually taken, make the fetched instruction a nop.</li>
+<li>Branch Always Taken</li>
+<li>Backward Taken Forward Not Taken: backward-going branches are predicted as taken, while forward-going branches are predicted as not taken.</li>
+<li>Profile-Driven Prediction</li>
+<li>Delayed Branch: The MIPS compiler always schedules a branch independent instruction after the branch. (there are 4 ways in Delayed Branch: From Before/From Target/From fall-throuogh/From After)</li>
+</ol>
+<h3 id="Dynamic-Branch-Prediction-Techniques"><a href="#Dynamic-Branch-Prediction-Techniques" class="headerlink" title="Dynamic Branch Prediction Techniques"></a>Dynamic Branch Prediction Techniques</h3><p>The decision causing the branch prediction can dynamically change during the program execution.</p>
+<p>Schemes:</p>
+<blockquote>
+<p>Branch Outcome Predictor<br>Branch Target Predictor/Branch Target Buffer</p>
+</blockquote>
+<ol>
+<li>Branch History Table</li>
+<li>Correlating Branch Predictor: Branch predictors that use the behavior of other branches to make a prediction are called Correlating Predictors or 2-level Predictors.</li>
+<li>Two-level Adaptive Branch Predictor: The first level history is recorded in one (or more) k-bit shift register called Branch History Register (BHR), which records the outcomes of the k most recent branches. The second level history is recorded in one (or more) tables called Pattern History Table (PHT) of two-bit saturating counters.</li>
+<li>Branch Target Buffer</li>
+</ol>
+<h1 id="L03-Instruction-Level-Parallelism-Part-I-Introduction"><a href="#L03-Instruction-Level-Parallelism-Part-I-Introduction" class="headerlink" title="L03 Instruction Level Parallelism Part I - Introduction"></a>L03 Instruction Level Parallelism Part I - Introduction</h1><h2 id="Dependencies"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies</h2><ol>
+<li>Data Dependencies(True Data Dependences): RAW-data dependence/WAR-anti dependence/WAW-output dependence</li>
+<li>Name Dependencies: 2 instructions use the same register or memory location, but there are no flow of data between the instruction associated with that name.</li>
+<li>Control Dependencies</li>
+</ol>
+<h2 id="Multi-cycles-Basic-Assumptions"><a href="#Multi-cycles-Basic-Assumptions" class="headerlink" title="Multi-cycles: Basic Assumptions"></a>Multi-cycles: Basic Assumptions</h2><ul>
+<li>We consider single-issue processors.</li>
+<li>Instructions are then issued in-order.</li>
+<li>Execution stage might require multiple cycles, depending on the operation type.</li>
+<li>Memory stage might require multiple cycles access time due to data cache misses.</li>
+</ul>
+<blockquote>
+<p>ILP = Exploit potential overlap of execution among unrelated instructions<br>While overlapping possible only if: NO structural/RAW/WAR/WAW/Control hazards</p>
+</blockquote>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> POLIMI </tag>
+            
+            <tag> Advanced Computer Architectures </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[SVM]]></title>
       <url>/2018/05/06/SVM/</url>
       <content type="html"><![CDATA[<p>This is a note of SVM. The original reading material is <a href="https://blog.csdn.net/v_july_v/article/details/7624837" target="_blank" rel="noopener">here</a></p>
@@ -50,6 +150,10 @@
 </li>
 </ol>
 <p>Generally speaking, according to the previous papers, it takes more or less 40 seconds to detect some obstacles in the picture. While here it is more promising to use the method with a low precision image and continous temporal information. It we could combine the knowledge of the conteinous temporal information into some sharing information, it would require a far more less computation.</p>
+<p>Updated at 2018.5.10 - Maybe a detection will be good enought to get the Regions of Interests in the picture, and we could only train it to get the ability of distance detection.</p>
+<ol>
+<li><strong>Analysis based on SS</strong>: use machine learning methods train the model the ability of distance detection, hence there are two conditions we have to reach first. First, we have to make sure Select Search method is good enough to extract all the important information in the picture. Second, this method would have the advantages that it may need less information to train, this scale is handlable in a personal computer, while we have to make sure that we only analysis the RoI of greater weights. (Could we use a neural method to guide the selective search like we do in the AlphaZero?)</li>
+</ol>
 <h1 id="Papers"><a href="#Papers" class="headerlink" title="Papers"></a>Papers</h1><p>In this part, I would noted some useful information I found in some papers and their inspiration on this project. </p>
 <h2 id="Paper-Object-Detection-from-Video-Tubelets-with-Convolutional-Neural-Networks"><a href="#Paper-Object-Detection-from-Video-Tubelets-with-Convolutional-Neural-Networks" class="headerlink" title="Paper: Object Detection from Video Tubelets with Convolutional Neural Networks"></a>Paper: Object Detection from Video Tubelets with Convolutional Neural Networks</h2><p><a href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/app/S04-07.pdf" target="_blank" rel="noopener">Click here for the orginal text</a></p>
 <h3 id="INTRO"><a href="#INTRO" class="headerlink" title="INTRO"></a>INTRO</h3><p>Method1: Detect obstacles frame by frame</p>
@@ -176,9 +280,9 @@
         
         <tags>
             
-            <tag> Machine Learning </tag>
-            
             <tag> CNN </tag>
+            
+            <tag> Machine Learning </tag>
             
             <tag> EyePhone </tag>
             
@@ -461,13 +565,13 @@ Require: 初始参数 θ
         
         <tags>
             
+            <tag> Machine Learning </tag>
+            
             <tag> AlphaGo </tag>
             
             <tag> Reinforcement Learning </tag>
             
             <tag> Artificial Neural Network </tag>
-            
-            <tag> Machine Learning </tag>
             
         </tags>
         
@@ -1463,9 +1567,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> Algorithm </tag>
-            
             <tag> POLIMI </tag>
+            
+            <tag> Algorithm </tag>
             
             <tag> Parallel Programming </tag>
             
