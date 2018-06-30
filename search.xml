@@ -3,6 +3,84 @@
   
     
     <entry>
+      <title><![CDATA[Computer Security - Web&Network]]></title>
+      <url>/2018/06/30/Computer-Security-Web-Network/</url>
+      <content type="html"><![CDATA[<h1 id="Web-Application-Security"><a href="#Web-Application-Security" class="headerlink" title="Web Application Security"></a>Web Application Security</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>3 Tier Web Application Architecture: HTTP Client -&gt; HTTP Server -&gt; Application Server (Business logic) -&gt; Database Server</p>
+<p>Untrustworthy Client: The golden rule of web application security is that <strong>the client is never trust worthy</strong>.</p>
+<p>Conflicting requirements:</p>
+<ol>
+<li>Functional Requirement: we need to mix code with data(blog comments)</li>
+<li>Security Requirement: never mix code with data</li>
+</ol>
+<h2 id="Validation"><a href="#Validation" class="headerlink" title="Validation"></a>Validation</h2><ul>
+<li>Whitelisting: Effective but limited.</li>
+<li>Blacklisting: Good but not safe enough.</li>
+<li>Escaping: Transform some special char into something else.</li>
+</ul>
+<h2 id="Cross-Site-Scripting-XSS"><a href="#Cross-Site-Scripting-XSS" class="headerlink" title="Cross Site Scripting[XSS]"></a>Cross Site Scripting[XSS]</h2><p>Cross site scripting is a vulnerability by means of which client-side code can be injected in a page.</p>
+<blockquote>
+<p>Cookie theft or session hijack</p>
+<p>Manipulation of a session and execution of fraudulent transaction</p>
+<p>Snooping on private information</p>
+<p>Effectively bypasses the same-origin policy</p>
+<p>Drive by Download</p>
+</blockquote>
+<ol>
+<li>Stored XSS: The attacker input is stored on the target server, such as in a database, in a message forum, visitor log, comment field, etc.</li>
+<li>Reflected XSS:</li>
+<li>DOM Based XSS:</li>
+</ol>
+<pre><code>SXSS
+&lt;script&gt;
+   alert(&#39;JavaScript Executed&#39;);
+&lt;/script&gt;
+</code></pre><pre><code>DBXSS
+&lt;script&gt;
+    document.write(&quot;&lt;b&gt;Current URL&lt;/b&gt; : &quot; + document.baseURI);
+&lt;/script&gt;
+</code></pre><blockquote>
+<p>Same Origin Policy: all client-side code (e.g., JavaScript) loaded from origin A should only be able to access data from origin A[Origin = <protocol, host,="" port="">]</protocol,></p>
+</blockquote>
+<h2 id="Solution-of-XSS"><a href="#Solution-of-XSS" class="headerlink" title="Solution of XSS"></a>Solution of XSS</h2><h3 id="Blacklisting-BAD"><a href="#Blacklisting-BAD" class="headerlink" title="Blacklisting: BAD"></a>Blacklisting: BAD</h3><h3 id="Escaping"><a href="#Escaping" class="headerlink" title="Escaping"></a>Escaping</h3><h3 id="CSP"><a href="#CSP" class="headerlink" title="CSP"></a>CSP</h3><h2 id="SQL-Injection"><a href="#SQL-Injection" class="headerlink" title="SQL Injection"></a>SQL Injection</h2><pre><code>SELECT * FROM Users WHERE username=&#39;cesare&#39; AND password=&#39;secret;)&#39;;
+</code></pre><p>But in SQL ‘–’ means comment! We could have username as <strong>cesare’;–</strong></p>
+<pre><code>SELECT * FROM Users WHERE username=&#39;cesare&#39;;--&#39; AND password=&#39;&#39;;
+</code></pre><p>Or even without a user name, we insert into username of <strong>‘ OR ‘1’=’1’;–</strong></p>
+<pre><code>SELECT * FROM Users WHERE username=&#39;&#39; OR &#39;1&#39;=&#39;1&#39;;--&#39; AND password=&#39;&#39;;
+</code></pre><p>Even Retrive more!</p>
+<pre><code>SELECT name, phone, address FROM Users WHERE Id=&#39;&#39; UNION ALL SELECT name, creditCardNumber,CCV2 from CreditCardTable;--&#39;;
+</code></pre><p>Or Insert! Here in the username we fill in <strong>cesare’, ‘30L’)–</strong></p>
+<pre><code>INSERT INTO results VALUES (NULL, &#39;cesare&#39;, &#39;30L&#39;)--&#39;, &#39;18&#39;)
+</code></pre><h2 id="Solution-of-SQL-Injection"><a href="#Solution-of-SQL-Injection" class="headerlink" title="Solution of SQL Injection"></a>Solution of SQL Injection</h2><h3 id="Filering-could-be-a-bad-for-the-password-field"><a href="#Filering-could-be-a-bad-for-the-password-field" class="headerlink" title="Filering: could be a bad for the password field"></a>Filering: could be a bad for the password field</h3><h2 id="URL-Tampering"><a href="#URL-Tampering" class="headerlink" title="URL Tampering"></a>URL Tampering</h2><p>Do the hacking by changing the url. Like insert a path in the url.</p>
+<h2 id="Password-Security"><a href="#Password-Security" class="headerlink" title="Password Security"></a>Password Security</h2><h2 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h2><p>Cookies Store the client information.</p>
+<blockquote>
+<p>Original Idea: Site Customization</p>
+<p>Abuse: Privacy Violations</p>
+<p>Dangeous Idea: User Authentication and sessions</p>
+</blockquote>
+<img src="/2018/06/30/Computer-Security-Web-Network/1.png">
+<p>Since HTTP is stateless, hijacking can occur:</p>
+<ul>
+<li>By stealing a cookie with an XSS attack </li>
+<li>By brute forcing a weak session id parameter</li>
+</ul>
+<h2 id="Cross-Site-Request-Forgery-CSRF"><a href="#Cross-Site-Request-Forgery-CSRF" class="headerlink" title="Cross-Site Request Forgery (CSRF)"></a>Cross-Site Request Forgery (CSRF)</h2><p>Forces an user to execute unwanted actions (state-changing action) on a web application in which he is currently authenticated (e.g., with cookies).</p>
+<p>Key Concept: malicious requests (e.g., crafted links) are routed to the vulnerable web application through the victim’s browser: Websites cannot distinguish if the requests coming from authenticated users have been originated by an explicit user interaction or not.</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Computer Securit </tag>
+            
+            <tag> Web Application </tag>
+            
+            <tag> Network Security </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Advanced Computer Architectures]]></title>
       <url>/2018/05/16/Advanced-Computer-Architectures/</url>
       <content type="html"><![CDATA[<p>A note for the course of <em>Advanced Computer Architectures</em>.</p>
