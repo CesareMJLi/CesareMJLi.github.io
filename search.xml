@@ -26,9 +26,10 @@
 <p>Drive by Download</p>
 </blockquote>
 <ol>
-<li>Stored XSS: The attacker input is stored on the target server, such as in a database, in a message forum, visitor log, comment field, etc.</li>
-<li>Reflected XSS:</li>
-<li>DOM Based XSS:</li>
+<li>Stored XSS: The attacker input is stored on the target server, such as in a database, in a message forum, visitor log, comment field, etc.存储型XSS，又称持久型XSS，他和反射型XSS最大的不同就是，攻击脚本将被永久地存放在目标服务器的数据库和文件中。这种攻击多见于论坛，攻击者在发帖的过程中，将恶意脚本连同正常信息一起注入到帖子的内容之中。随着帖子被论坛服务器存储下来，恶意脚本也永久地被存放在论坛服务器的后端存储器中。当其它用户浏览这个被注入了恶意脚本的帖子的时候，恶意脚本则会在他们的浏览器中得到执行，从而受到了攻击。比如用<code>&lt;script&gt;</code>镶嵌恶意脚本在某帖子，浏览者均会中招。可以看到，存储型XSS的攻击方式能够将恶意代码永久地嵌入一个页面当中，所有访问这个页面的用户都将成为受害者。如果我们能够谨慎对待不明链接，那么反射型的XSS攻击将没有多大作为，而存储型XSS则不同，由于它注入的往往是一些我们所信任的页面，因此无论我们多么小心，都难免会受到攻击。可以说，存储型XSS更具有隐蔽性，带来的危害也更大，除非服务器能完全阻止注入，否则任何人都很有可能受到攻击。</li>
+<li>Reflected XSS:反射型XSS，又称非持久型XSS。之所以称为反射型XSS，则是因为这种攻击方式的注入代码是从目标服务器通过错误信息、搜索结果等等方式“反射”回来的。而称为非持久型XSS，则是因为这种攻击方式具有一次性。攻击者通过电子邮件等方式将包含注入脚本的恶意链接发送给受害者，当受害者点击该链接时，注入脚本被传输到目标服务器上，然后服务器将注入脚本“反射”到受害者的浏览器上，从而在该浏览器上执行了这段脚本。比如攻击者将如下链接发送给受害者： <code>http://www.targetserver.com/search.asp?input=&lt;script&gt;alert(document.cookie);&lt;/script&gt;</code>当受害者点击这个链接的时候，注入的脚本被当作搜索的关键词发送到目标服务器的search.asp页面中，则在搜索结果的返回页面中，这段脚本将被当作搜索的关键词而嵌入。这样，当用户得到搜索结果页面后，这段脚本也得到了执行。这就是反射型XSS攻击的原理，可以看到，攻击者巧妙地通过反射型XSS的攻击方式，达到了在受害者的浏览器上执行脚本的目的。由于代码注入的是一个动态产生的页面而不是永久的页面，因此这种攻击方式只在点击链接的时候才产生作用，这也是它被称为非持久型XSS的原因。</li>
+<li>DOM Based XSS:通常这个页面作为用户欢迎页面, 例如:<code>http://www.vulnerable.site/welcome.html?name=Joe</code>,然而，如下的一个请求: <code>http://www.vulnerable.site/welcome.html?name=&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code>将产生xss条件。让我们看看为什么：受害者的浏览器接收到这个链接，发送HTTP请求到www.vulnerable.site并且接受到上面的HTML页。受害者的浏览器开始解析这个HTML为DOM，DOM包含一个对象叫document，document里面有个URL属性，这个属性里填充着当前页面的URL。当解析器到达javascript代码，它会执行它并且修改你的HTML页面。倘若代码中引用了document.URL，那么，这部分字符串将会在解析时嵌入到HTML中，然后立即解析，同时，javascript代码会找到(alert(…))并且在同一个页面执行它，这就产生了xss的条件。\</li>
+<li>CSRF:登录受信任网站A，并在本地生成Cookie。然后在不登出A的情况下，访问危险网站B。There should be state-changing action in the page that needs to be protected against CSRF.</li>
 </ol>
 <pre><code>SXSS
 &lt;script&gt;
@@ -1872,9 +1873,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> POLIMI </tag>
-            
             <tag> Algorithm </tag>
+            
+            <tag> POLIMI </tag>
             
             <tag> Parallel Programming </tag>
             
@@ -2048,9 +2049,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
             
             <tag> POLIMI </tag>
             
-            <tag> Foundations of Operations Research </tag>
-            
             <tag> Linear Programming </tag>
+            
+            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
@@ -2247,13 +2248,13 @@ end.
             
             <tag> POLIMI </tag>
             
+            <tag> Foundations of Operations Research </tag>
+            
             <tag> Graphs </tag>
             
             <tag> Network Flows </tag>
             
             <tag> Algorithms </tag>
-            
-            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
