@@ -110,7 +110,7 @@
 <li>The attacker makes a recursive query to the victim DNS server: it will contact the authoritative server.</li>
 <li>The attacker spoofs the answer impersonating the authoritative DNS server. And the server will trust it</li>
 </ol>
-<h2 id="DHCP-Poisoning"><a href="#DHCP-Poisoning" class="headerlink" title="DHCP Poisoning"></a>DHCP Poisoning</h2><p>The attacker can intercept requests, be the first to answer, and client will believe that answer.</p>
+<h2 id="DHCP-Poisoning"><a href="#DHCP-Poisoning" class="headerlink" title="DHCP Poisoning"></a>DHCP Poisoning</h2><p>The attacker can intercept requests, be the first to answer, and client will believe that answer. It’s a denial of service attack, an attacker sends forged DHCP requests to the server and leases all the available IP’s thus the legitimate clients will not get an IP assigned; or the Attacker may send bogus request/replies luring the client to connect to attacker’s machine instead of valid DHCP server. It happens because the DHCP protocol does not support authentication, the client must blindly believe any DHCP offer that it sees; thus, an arbitrary client can race (and win) against the real DHCP Server.</p>
 <h2 id="ICMP-Redirect"><a href="#ICMP-Redirect" class="headerlink" title="ICMP Redirect"></a>ICMP Redirect</h2><p>Tells an host that a better route exists for a given destination, and gives the gateway for that route.</p>
 <p>The attacker can forge an ICMP redirect packet to elect his/her computer as the gateway.</p>
 <h1 id="Secure-Network-Architectures"><a href="#Secure-Network-Architectures" class="headerlink" title="Secure Network Architectures"></a>Secure Network Architectures</h1><h2 id="Firewall"><a href="#Firewall" class="headerlink" title="Firewall"></a>Firewall</h2><p>Firewall is network access control system that verifies all the packets(traffic) flowing through it. It has to be the ONLY point between a network and outside network. It has two functions usually: <strong>IP Packet Filtering</strong>, <strong>Network Address Translation</strong>.</p>
@@ -1038,9 +1038,9 @@ Require: 初始参数 θ
             
             <tag> Machine Learning </tag>
             
-            <tag> KNN </tag>
-            
             <tag> SVM </tag>
+            
+            <tag> KNN </tag>
             
         </tags>
         
@@ -1873,9 +1873,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> Algorithm </tag>
-            
             <tag> POLIMI </tag>
+            
+            <tag> Algorithm </tag>
             
             <tag> Parallel Programming </tag>
             
@@ -2049,9 +2049,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
             
             <tag> POLIMI </tag>
             
-            <tag> Linear Programming </tag>
-            
             <tag> Foundations of Operations Research </tag>
+            
+            <tag> Linear Programming </tag>
             
         </tags>
         
@@ -2248,13 +2248,13 @@ end.
             
             <tag> POLIMI </tag>
             
-            <tag> Foundations of Operations Research </tag>
-            
             <tag> Graphs </tag>
             
             <tag> Network Flows </tag>
             
             <tag> Algorithms </tag>
+            
+            <tag> Foundations of Operations Research </tag>
             
         </tags>
         

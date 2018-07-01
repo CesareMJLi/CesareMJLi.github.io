@@ -244,7 +244,7 @@
 
     
         <meta property="article:published_time" content="Sat Jun 30 2018 11:48:08 GMT+0200">
-        <meta property="article:modified_time" content="Sun Jul 01 2018 15:12:56 GMT+0200">
+        <meta property="article:modified_time" content="Sun Jul 01 2018 17:22:33 GMT+0200">
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://yoursite.com/2018/06/30/Computer-Security-Web-Network/index.html",
     "headline": "Computer Security - Web&Network",
     "datePublished": "Sat Jun 30 2018 11:48:08 GMT+0200",
-    "dateModified": "Sun Jul 01 2018 15:12:56 GMT+0200",
+    "dateModified": "Sun Jul 01 2018 17:22:33 GMT+0200",
     "author": {
         "@type": "Person",
         "name": "Cesare (MINGJU LI)",
@@ -600,7 +600,7 @@
 <li>The attacker makes a recursive query to the victim DNS server: it will contact the authoritative server.</li>
 <li>The attacker spoofs the answer impersonating the authoritative DNS server. And the server will trust it</li>
 </ol>
-<h2 id="DHCP-Poisoning"><a href="#DHCP-Poisoning" class="headerlink" title="DHCP Poisoning"></a>DHCP Poisoning</h2><p>The attacker can intercept requests, be the first to answer, and client will believe that answer.</p>
+<h2 id="DHCP-Poisoning"><a href="#DHCP-Poisoning" class="headerlink" title="DHCP Poisoning"></a>DHCP Poisoning</h2><p>The attacker can intercept requests, be the first to answer, and client will believe that answer. It’s a denial of service attack, an attacker sends forged DHCP requests to the server and leases all the available IP’s thus the legitimate clients will not get an IP assigned; or the Attacker may send bogus request/replies luring the client to connect to attacker’s machine instead of valid DHCP server. It happens because the DHCP protocol does not support authentication, the client must blindly believe any DHCP offer that it sees; thus, an arbitrary client can race (and win) against the real DHCP Server.</p>
 <h2 id="ICMP-Redirect"><a href="#ICMP-Redirect" class="headerlink" title="ICMP Redirect"></a>ICMP Redirect</h2><p>Tells an host that a better route exists for a given destination, and gives the gateway for that route.</p>
 <p>The attacker can forge an ICMP redirect packet to elect his/her computer as the gateway.</p>
 <h1 id="Secure-Network-Architectures"><a href="#Secure-Network-Architectures" class="headerlink" title="Secure Network Architectures"></a>Secure Network Architectures</h1><h2 id="Firewall"><a href="#Firewall" class="headerlink" title="Firewall"></a>Firewall</h2><p>Firewall is network access control system that verifies all the packets(traffic) flowing through it. It has to be the ONLY point between a network and outside network. It has two functions usually: <strong>IP Packet Filtering</strong>, <strong>Network Address Translation</strong>.</p>
