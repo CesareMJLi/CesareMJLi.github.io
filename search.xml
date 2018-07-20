@@ -581,7 +581,9 @@
 <ul>
 <li>Combining Locations</li>
 </ul>
-<h2 id="Felzenswalb-Algorithm-in-image-segmentation"><a href="#Felzenswalb-Algorithm-in-image-segmentation" class="headerlink" title="Felzenswalb Algorithm in image segmentation"></a>Felzenswalb Algorithm in image segmentation</h2>]]></content>
+<h2 id="Felzenswalb-Algorithm-in-image-segmentation"><a href="#Felzenswalb-Algorithm-in-image-segmentation" class="headerlink" title="Felzenswalb Algorithm in image segmentation"></a>Felzenswalb Algorithm in image segmentation</h2><p><a href="http://people.cs.uchicago.edu/~pff/papers/seg-ijcv.pdf" target="_blank" rel="noopener">Click here for the original paper text</a><br><a href="https://blog.csdn.net/ttransposition/article/details/38024557" target="_blank" rel="noopener">Click here for the Chinese comments</a></p>
+<p>本质上这种算法提供了图像分割的一种非AI的解决方法，对于图中的每一个像素进行考虑，设定超参数约束分割的granularity，然后得到一个分割后的图像，该算法的核心是图像中的颜色分布，所以就导致在其眼中分布是一块一块的，不能对一个对象进行有效的分割和识别。</p>
+]]></content>
       
         
         <tags>
@@ -2049,9 +2051,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
             
             <tag> POLIMI </tag>
             
-            <tag> Linear Programming </tag>
-            
             <tag> Foundations of Operations Research </tag>
+            
+            <tag> Linear Programming </tag>
             
         </tags>
         
@@ -2248,13 +2250,13 @@ end.
             
             <tag> POLIMI </tag>
             
-            <tag> Foundations of Operations Research </tag>
-            
             <tag> Graphs </tag>
             
             <tag> Network Flows </tag>
             
             <tag> Algorithms </tag>
+            
+            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
