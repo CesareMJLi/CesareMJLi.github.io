@@ -3,6 +3,22 @@
   
     
     <entry>
+      <title><![CDATA[Tensor Flow Session Run]]></title>
+      <url>/2018/07/27/Tensor-Flow-Session-Run/</url>
+      <content type="html"></content>
+      
+        
+        <tags>
+            
+            <tag> TensorFlow </tag>
+            
+            <tag> MachineLearning </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Computer Security - Web&Network]]></title>
       <url>/2018/06/30/Computer-Security-Web-Network/</url>
       <content type="html"><![CDATA[<h1 id="Web-Application-Security"><a href="#Web-Application-Security" class="headerlink" title="Web Application Security"></a>Web Application Security</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>3 Tier Web Application Architecture: HTTP Client -&gt; HTTP Server -&gt; Application Server (Business logic) -&gt; Database Server</p>
