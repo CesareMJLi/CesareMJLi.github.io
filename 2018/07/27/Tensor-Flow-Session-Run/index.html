@@ -244,7 +244,7 @@
 
     
         <meta property="article:published_time" content="Fri Jul 27 2018 18:42:54 GMT+0800">
-        <meta property="article:modified_time" content="Fri Jul 27 2018 18:43:56 GMT+0800">
+        <meta property="article:modified_time" content="Mon Jul 30 2018 17:20:37 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://yoursite.com/2018/07/27/Tensor-Flow-Session-Run/index.html",
     "headline": "Tensor Flow Session Run",
     "datePublished": "Fri Jul 27 2018 18:42:54 GMT+0800",
-    "dateModified": "Fri Jul 27 2018 18:43:56 GMT+0800",
+    "dateModified": "Mon Jul 30 2018 17:20:37 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Cesare (MINGJU LI)",
@@ -344,6 +344,15 @@
 
     <!-- Left aligned menu below button -->
     
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Session"><span class="post-toc-number">1.</span> <span class="post-toc-text">Session</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#feteches"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">feteches</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#feed-dict"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">feed_dict</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Placeholder"><span class="post-toc-number">2.</span> <span class="post-toc-text">Placeholder</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Variable"><span class="post-toc-number">3.</span> <span class="post-toc-text">Variable</span></a></li></ol>
+    </ul>
     
 
 
@@ -486,7 +495,17 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        
+        <p><a href="https://www.tensorflow.org/api_docs/python/tf/Session" target="_blank" rel="noopener">Origianl TensorFlow.Session</a></p>
+<img src="/2018/07/27/Tensor-Flow-Session-Run/1.png">
+<h1 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h1><p>一个TensorFLow代码可以氛围两个部分，<strong>定义</strong>和<strong>运行</strong>，我们通过tf.matmul()以及tf.constant()方法定义了graph，而不会立即执行，为了让Tensor流动起来我们创建一个Session，调用run方法。（在执行完毕后将其用close方法关闭）</p>
+<p>TensorFlow的run方法的参数如下：<em>run( fetches, feed_dict=None, options=None, run_metadata=None )</em></p>
+<h2 id="feteches"><a href="#feteches" class="headerlink" title="feteches"></a>feteches</h2><p>fetches表示了计算图中的一个node，每当我们调用run方法的时候，TensorFlow找到这个node所依赖的所有操作，并且计算出这个node的值。</p>
+<h2 id="feed-dict"><a href="#feed-dict" class="headerlink" title="feed_dict"></a>feed_dict</h2><img src="/2018/07/27/Tensor-Flow-Session-Run/2.png">
+<p>feed_dict的作用是替换前部分中的某一个tensor的值，我们可以通过使用feed_dict来设置graph的输入量</p>
+<h1 id="Placeholder"><a href="#Placeholder" class="headerlink" title="Placeholder"></a>Placeholder</h1><p>此处a并不是一个tensor而是一个placeholder，我们需要定义他的type和shape，但是毋需赋予他具体的值，而在后面的graph中我们可以把placeholder当成一个普通的tensor对象使用，并且只需要一个feed_dict的方法把具体的值提供给placeholder，达到了给graph提供input的目的。</p>
+<h1 id="Variable"><a href="#Variable" class="headerlink" title="Variable"></a>Variable</h1><img src="/2018/07/27/Tensor-Flow-Session-Run/3.png">
+<p>和之前不可改变的对象相比，我们可以通过tf.Variable()方法来建立一个变量，在机器学习中这个变量往往是我们需要优化的值，比如说weight w或者bias b，变量可以和Placeholder进行计算并且得到一个model，然后我们通过Optimize这个model来得到我们的目标模型。</p>
+
         
     
 

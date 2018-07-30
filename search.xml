@@ -5,7 +5,17 @@
     <entry>
       <title><![CDATA[Tensor Flow Session Run]]></title>
       <url>/2018/07/27/Tensor-Flow-Session-Run/</url>
-      <content type="html"></content>
+      <content type="html"><![CDATA[<p><a href="https://www.tensorflow.org/api_docs/python/tf/Session" target="_blank" rel="noopener">Origianl TensorFlow.Session</a></p>
+<img src="/2018/07/27/Tensor-Flow-Session-Run/1.png">
+<h1 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h1><p>一个TensorFLow代码可以氛围两个部分，<strong>定义</strong>和<strong>运行</strong>，我们通过tf.matmul()以及tf.constant()方法定义了graph，而不会立即执行，为了让Tensor流动起来我们创建一个Session，调用run方法。（在执行完毕后将其用close方法关闭）</p>
+<p>TensorFlow的run方法的参数如下：<em>run( fetches, feed_dict=None, options=None, run_metadata=None )</em></p>
+<h2 id="feteches"><a href="#feteches" class="headerlink" title="feteches"></a>feteches</h2><p>fetches表示了计算图中的一个node，每当我们调用run方法的时候，TensorFlow找到这个node所依赖的所有操作，并且计算出这个node的值。</p>
+<h2 id="feed-dict"><a href="#feed-dict" class="headerlink" title="feed_dict"></a>feed_dict</h2><img src="/2018/07/27/Tensor-Flow-Session-Run/2.png">
+<p>feed_dict的作用是替换前部分中的某一个tensor的值，我们可以通过使用feed_dict来设置graph的输入量</p>
+<h1 id="Placeholder"><a href="#Placeholder" class="headerlink" title="Placeholder"></a>Placeholder</h1><p>此处a并不是一个tensor而是一个placeholder，我们需要定义他的type和shape，但是毋需赋予他具体的值，而在后面的graph中我们可以把placeholder当成一个普通的tensor对象使用，并且只需要一个feed_dict的方法把具体的值提供给placeholder，达到了给graph提供input的目的。</p>
+<h1 id="Variable"><a href="#Variable" class="headerlink" title="Variable"></a>Variable</h1><img src="/2018/07/27/Tensor-Flow-Session-Run/3.png">
+<p>和之前不可改变的对象相比，我们可以通过tf.Variable()方法来建立一个变量，在机器学习中这个变量往往是我们需要优化的值，比如说weight w或者bias b，变量可以和Placeholder进行计算并且得到一个model，然后我们通过Optimize这个model来得到我们的目标模型。</p>
+]]></content>
       
         
         <tags>
@@ -1891,9 +1901,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> POLIMI </tag>
-            
             <tag> Algorithm </tag>
+            
+            <tag> POLIMI </tag>
             
             <tag> Parallel Programming </tag>
             
