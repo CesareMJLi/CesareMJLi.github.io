@@ -3,6 +3,24 @@
   
     
     <entry>
+      <title><![CDATA[3D Space Reconstruction]]></title>
+      <url>/2018/08/09/3D-Space-Reconstruction/</url>
+      <content type="html"><![CDATA[<h1 id="How-to-fulfill-the-function-of-3D-Space-Reconstruction-with-given-3-VIEW"><a href="#How-to-fulfill-the-function-of-3D-Space-Reconstruction-with-given-3-VIEW" class="headerlink" title="How to fulfill the function of 3D Space Reconstruction with given 3-VIEW"></a>How to fulfill the function of 3D Space Reconstruction with given 3-VIEW</h1>]]></content>
+      
+        
+        <tags>
+            
+            <tag> CNN </tag>
+            
+            <tag> AI </tag>
+            
+            <tag> Machine Learning </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Tensor Flow Session Run]]></title>
       <url>/2018/07/27/Tensor-Flow-Session-Run/</url>
       <content type="html"><![CDATA[<p><a href="https://www.tensorflow.org/api_docs/python/tf/Session" target="_blank" rel="noopener">Origianl TensorFlow.Session</a></p>
@@ -609,14 +627,15 @@
 </ul>
 <h2 id="Felzenswalb-Algorithm-in-image-segmentation"><a href="#Felzenswalb-Algorithm-in-image-segmentation" class="headerlink" title="Felzenswalb Algorithm in image segmentation"></a>Felzenswalb Algorithm in image segmentation</h2><p><a href="http://people.cs.uchicago.edu/~pff/papers/seg-ijcv.pdf" target="_blank" rel="noopener">Click here for the original paper text</a><br><a href="https://blog.csdn.net/ttransposition/article/details/38024557" target="_blank" rel="noopener">Click here for the Chinese comments</a></p>
 <p>本质上这种算法提供了图像分割的一种非AI的解决方法，对于图中的每一个像素进行考虑，设定超参数约束分割的granularity，然后得到一个分割后的图像，该算法的核心是图像中的颜色分布，所以就导致在其眼中分布是一块一块的，不能对一个对象进行有效的分割和识别。</p>
+<h1 id="Another-idea-for-EyePhone"><a href="#Another-idea-for-EyePhone" class="headerlink" title="Another idea for EyePhone"></a>Another idea for EyePhone</h1><p>Maybe we could choose the result of selective search as the input for the detection of some certain objects like <strong>Bicycle/Stairs/Trees or other Vertical Cylindrical Objects/Horizontal Cylindrical Objects/Box/</strong></p>
 ]]></content>
       
         
         <tags>
             
-            <tag> Machine Learning </tag>
-            
             <tag> CNN </tag>
+            
+            <tag> Machine Learning </tag>
             
             <tag> EyePhone </tag>
             
@@ -705,9 +724,9 @@ Require: 初始参数 θ
         
         <tags>
             
-            <tag> Deep Learning </tag>
-            
             <tag> CNN </tag>
+            
+            <tag> Deep Learning </tag>
             
             <tag> Optimization </tag>
             
@@ -899,13 +918,13 @@ Require: 初始参数 θ
         
         <tags>
             
+            <tag> Machine Learning </tag>
+            
             <tag> AlphaGo </tag>
             
             <tag> Reinforcement Learning </tag>
             
             <tag> Artificial Neural Network </tag>
-            
-            <tag> Machine Learning </tag>
             
         </tags>
         
@@ -1066,9 +1085,9 @@ Require: 初始参数 θ
             
             <tag> Machine Learning </tag>
             
-            <tag> KNN </tag>
-            
             <tag> SVM </tag>
+            
+            <tag> KNN </tag>
             
         </tags>
         
@@ -1901,9 +1920,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> Algorithm </tag>
-            
             <tag> POLIMI </tag>
+            
+            <tag> Algorithm </tag>
             
             <tag> Parallel Programming </tag>
             
@@ -1972,9 +1991,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> Python </tag>
-            
             <tag> Machine Learning </tag>
+            
+            <tag> Python </tag>
             
             <tag> Jupyter Notebook </tag>
             
