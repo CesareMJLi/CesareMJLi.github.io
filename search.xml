@@ -5,7 +5,25 @@
     <entry>
       <title><![CDATA[3D Space Reconstruction]]></title>
       <url>/2018/08/09/3D-Space-Reconstruction/</url>
-      <content type="html"><![CDATA[<h1 id="How-to-fulfill-the-function-of-3D-Space-Reconstruction-with-given-3-VIEW"><a href="#How-to-fulfill-the-function-of-3D-Space-Reconstruction-with-given-3-VIEW" class="headerlink" title="How to fulfill the function of 3D Space Reconstruction with given 3-VIEW"></a>How to fulfill the function of 3D Space Reconstruction with given 3-VIEW</h1>]]></content>
+      <content type="html"><![CDATA[<h1 id="How-to-fulfill-the-function-of-3D-Space-Reconstruction-with-given-3-VIEW"><a href="#How-to-fulfill-the-function-of-3D-Space-Reconstruction-with-given-3-VIEW" class="headerlink" title="How to fulfill the function of 3D Space Reconstruction with given 3-VIEW"></a>How to fulfill the function of 3D Space Reconstruction with given 3-VIEW</h1><h2 id="Model-Parameter"><a href="#Model-Parameter" class="headerlink" title="Model Parameter"></a>Model Parameter</h2><p>Input: 3-Input, each is one channel picture (3-VIEW)<br>Output: 3d Object geometry information</p>
+<h2 id="How-do-the-3d-objects-saved-as-a-file"><a href="#How-do-the-3d-objects-saved-as-a-file" class="headerlink" title="How do the 3d objects saved as a file"></a>How do the 3d objects saved as a file</h2><p><a href="https://all3dp.com/3d-file-format-3d-files-3d-printer-3d-cad-vrml-stl-obj/#geometry" target="_blank" rel="noopener">RELAITVE INFORMATION</a><br><a href="https://www.researchgate.net/publication/221129055_A_simple_and_efficient_approach_for_3D_mesh_approximate_convex_decomposition" target="_blank" rel="noopener">RELATIVE PAPER</a></p>
+<p>A 3D file is used for stored information about 3D models. The basic purpose of 3D file format is to store information about 3D models as plain text. They encode the 3D model’s <strong>geometry, appearance, scene, animations</strong>.</p>
+<p>Each 3D model has a unique geometry and the capability of encoding this geometry can be the most important and basic feature of 3D file format. There are three distinct ways of encoding surface geometry, they are known as <strong>approximate mesh, precise mesh, constructive solid geometry</strong>.</p>
+<blockquote>
+<p>THE APPROXIMATE MESH: The surface of a 3D model is covered with a mesh of tiny imaginary polygons. Triangles are the most commonly used shape. The vertices of the covering triangles and the outward normal verct to the triangles are stored in the file. The triangles approximate the smooth geometry of the surface, hence this is an approximate format.</p>
+<p>THE PRECISE MESH: Precise mesh could replace the approximate mesh in the industrial when it comes to a situation that very high resolution models are required. It use non-uniform-rotional BSpline pathes instead of polygons. These surface are smoother.</p>
+<p>CONSTRUCTIVE SOLID GEOMETRY (CSG): 3D shapes are built by performing boolean operations of primitive shapes like <strong>cubes, spheres, etc</strong>. This is more user friendly.</p>
+</blockquote>
+<p>In this research, though the approximate mesh could be one approperiate output (by some MonteCarlo methods, random sampling in the 3D space and select the vetices), however we need to consider the whole model, if we are going to build a model in a 3D space we are going to need an output of scale 10x10x10. This could be too large to train. So it maybe a better idea if we use CSG. The training set are the 3D object of basic shape, combination of basic spheres, cubes and cylinders and maybe with some degrees of ratation. Each object is saved as (<strong>absolute_location, shape_info, rotation</strong>).</p>
+<blockquote>
+<ol>
+<li>Absolute location: the center of the object in the space</li>
+<li>Shape Information: (<strong>shape, (length, width, height)/(radius)/(radius, height)</strong>)</li>
+<li>Rotation: (x,y,z)</li>
+</ol>
+</blockquote>
+<p>With these as the output, it would be far more easier to train the model. The input are still 3-VIEW.</p>
+]]></content>
       
         
         <tags>
@@ -1085,9 +1103,9 @@ Require: 初始参数 θ
             
             <tag> Machine Learning </tag>
             
-            <tag> SVM </tag>
-            
             <tag> KNN </tag>
+            
+            <tag> SVM </tag>
             
         </tags>
         
@@ -1920,9 +1938,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> POLIMI </tag>
-            
             <tag> Algorithm </tag>
+            
+            <tag> POLIMI </tag>
             
             <tag> Parallel Programming </tag>
             
