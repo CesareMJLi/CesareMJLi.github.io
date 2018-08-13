@@ -244,7 +244,7 @@
 
     
         <meta property="article:published_time" content="Wed May 02 2018 10:00:53 GMT+0800">
-        <meta property="article:modified_time" content="Thu Aug 09 2018 10:20:19 GMT+0800">
+        <meta property="article:modified_time" content="Mon Aug 13 2018 17:25:04 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://yoursite.com/2018/05/02/Papers-EyePhone/index.html",
     "headline": "EyePhone",
     "datePublished": "Wed May 02 2018 10:00:53 GMT+0800",
-    "dateModified": "Thu Aug 09 2018 10:20:19 GMT+0800",
+    "dateModified": "Mon Aug 13 2018 17:25:04 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Cesare (MINGJU LI)",
@@ -646,6 +646,11 @@
 <h2 id="Felzenswalb-Algorithm-in-image-segmentation"><a href="#Felzenswalb-Algorithm-in-image-segmentation" class="headerlink" title="Felzenswalb Algorithm in image segmentation"></a>Felzenswalb Algorithm in image segmentation</h2><p><a href="http://people.cs.uchicago.edu/~pff/papers/seg-ijcv.pdf" target="_blank" rel="noopener">Click here for the original paper text</a><br><a href="https://blog.csdn.net/ttransposition/article/details/38024557" target="_blank" rel="noopener">Click here for the Chinese comments</a></p>
 <p>本质上这种算法提供了图像分割的一种非AI的解决方法，对于图中的每一个像素进行考虑，设定超参数约束分割的granularity，然后得到一个分割后的图像，该算法的核心是图像中的颜色分布，所以就导致在其眼中分布是一块一块的，不能对一个对象进行有效的分割和识别。</p>
 <h1 id="Another-idea-for-EyePhone"><a href="#Another-idea-for-EyePhone" class="headerlink" title="Another idea for EyePhone"></a>Another idea for EyePhone</h1><p>Maybe we could choose the result of selective search as the input for the detection of some certain objects like <strong>Bicycle/Stairs/Trees or other Vertical Cylindrical Objects/Horizontal Cylindrical Objects/Box/</strong></p>
+<p>Here’s some further information about this modification. Now it could use selective search to output some potential areas for the object detection. We have two things to do:</p>
+<blockquote>
+<p><strong>Object detection:</strong> We have to detect the objects in the area, so we have two problems to solve here, first thing is that we are going to extract all the usefull information from the image. The SS method works quite well when we are trying to find the objects, and we could use BaiduCloud Recognition API to recognize the objects. </p>
+<p><strong>Distance calculation:</strong> The problem left is that we are going to set a set of principles for the model, to calculate the distance of the objects between the user and the objects. In the beginning I put some efforts on help the model to get the idea of building the sense of objects and space. While this requires tons of calculations which is not possible for the individual developers. Hence we have to take the plan B and set the rules by hand (of course this rule could be learned by the model as well. It only depends on whether we have enough trainning sets)</p>
+</blockquote>
 
         
     
