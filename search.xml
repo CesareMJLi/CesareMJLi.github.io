@@ -3,6 +3,43 @@
   
     
     <entry>
+      <title><![CDATA[Recommender Systems]]></title>
+      <url>/2018/10/29/Recommender-Systems/</url>
+      <content type="html"><![CDATA[<p>这是一个关于推荐系统领域的读书笔记，基于<em>Recommender System: An Introduction</em>。</p>
+<h1 id="General-Information"><a href="#General-Information" class="headerlink" title="General Information"></a>General Information</h1><p>广义上的，推荐系统可以分为两类：</p>
+<ol>
+<li>Personalized Recommendation:根据不同的用户的之前的一些记录进行分析并推荐（<em>例：如果一个人刚刚买了面包，我是不是应该向他推荐果酱？/如果一个人刚刚看完了哈利波特与密室，我是不是应该向他推荐哈利波特与阿兹卡班的囚徒？</em>）</li>
+<li>Popularity Recommendation:与用户本身信息无关的非个性化的推荐（<em>例：复仇者联盟3刚刚上映，我是不是应该面向所有的用户都推荐这部超级爆米花电影？</em>）</li>
+</ol>
+<p>而在本书之中，着重探讨Personalized Recommendation，而在具体的讨论之前，我们先讨论几个细节。</p>
+<p><strong>用户的信息</strong>：是隐式的获取还是显式的向用户索取？（<em>例：判断一个用户对于一部片子的喜好，不一定通过他对于电影的评分，如果他仅仅看了五分钟就关掉了电影，是不是也在某种意义上反映了用户对于这部电影的态度？</em>）</p>
+<h1 id="Basic-Models"><a href="#Basic-Models" class="headerlink" title="Basic Models"></a>Basic Models</h1><h2 id="Collaborative-Recommendation"><a href="#Collaborative-Recommendation" class="headerlink" title="Collaborative Recommendation"></a>Collaborative Recommendation</h2><p><strong>基本思想</strong>：如果用户在过去有相同的偏好，那么在未来他们也会有相似的偏好。</p>
+<p>例子：如果两个人通过我们的分析，判断Alice和Bob的观影经历非常重叠，并且他们的评分好恶也很接近，那么Alice最近看了星球大战，并且给出了很高的评分，那么我们有理由相信Bob有很大可能性会喜欢星球大战。</p>
+<p><strong>Pros</strong>：系统不需要知道任何有关被推荐物品本身的知识。</p>
+<h2 id="Content-Based-Recommendation"><a href="#Content-Based-Recommendation" class="headerlink" title="Content Based Recommendation"></a>Content Based Recommendation</h2><p><strong>基本思想</strong>：能够得到物品的描述和这些特征的重要记录。我们分析用户的行为和反馈，或者直接询问用户的兴趣和偏好。</p>
+<p>例子：我们对于存储电影的数据库是一张巨大的表格，每一行表示一部电影，而每一列表示这部电影的一个特征，如<em>科幻/汤姆克鲁斯/国产</em>等。我们可以基于这些数据进行推荐。Alice在注册之时显式的选择了<em>科幻</em>类电影的偏好，那么我们可以有侧重的向他推荐这类电影；而Bob跳过了选择偏好这一步，但是我们可以分析Bob似乎对于科幻类电影情有独钟（比如通过另一个表格，行表示用户，列表示每一个电影的特征），那么我们可以有侧重的<br>向他推荐这类电影。</p>
+<p><strong>Pros</strong>：不需要大规模的用户数据，而且一旦得到物品的属性就能立刻推荐新物品。</p>
+<h2 id="Knowledge-Based-Recommendation"><a href="#Knowledge-Based-Recommendation" class="headerlink" title="Knowledge Based Recommendation"></a>Knowledge Based Recommendation</h2><p><strong>基本思想</strong>：对于一些需要推荐的物品购买记录是不可靠的，我们需要有关当前用户以及被推荐物品的某些知识进行推荐。</p>
+<p>例子：Alice和Bob都准备购买相机，但是相机一买就是用好几年，所以他人的购买记录的参照价值就很低，我们需要抽象关于相机的知识（分辨率/价格/重量等），然后进行推荐。</p>
+<p><strong>Cons</strong>：知识库的抽象和维护。</p>
+<h2 id="Hybrid-Recommendation"><a href="#Hybrid-Recommendation" class="headerlink" title="Hybrid Recommendation"></a>Hybrid Recommendation</h2><h1 id="Collaborative-Recommendation-1"><a href="#Collaborative-Recommendation-1" class="headerlink" title="Collaborative Recommendation"></a>Collaborative Recommendation</h1><p>User Set: U = {u<sub>1</sub>,…,u<sub>n</sub>}</p>
+<p>Item Set: P = {p<sub>1</sub>,…,p<sub>m</sub>}</p>
+<p>User Rating Matrix: R<sub>n*m</sub></p>
+<p>Similarity between Alice and Bob - Peason Corralated Parameter (the cosine value between a normalized vector of A and B):</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Machine Learning </tag>
+            
+            <tag> Recommender Systems </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[3D Space Reconstruction]]></title>
       <url>/2018/08/09/3D-Space-Reconstruction/</url>
       <content type="html"><![CDATA[<h1 id="How-to-fulfill-the-function-of-3D-Space-Reconstruction-with-given-3-VIEW"><a href="#How-to-fulfill-the-function-of-3D-Space-Reconstruction-with-given-3-VIEW" class="headerlink" title="How to fulfill the function of 3D Space Reconstruction with given 3-VIEW"></a>How to fulfill the function of 3D Space Reconstruction with given 3-VIEW</h1><h2 id="Model-Parameter"><a href="#Model-Parameter" class="headerlink" title="Model Parameter"></a>Model Parameter</h2><p>Input: 3-Input, each is one channel picture (3-VIEW)<br>Output: 3d Object geometry information</p>
@@ -2014,9 +2051,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> Machine Learning </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Machine Learning </tag>
             
             <tag> Jupyter Notebook </tag>
             
@@ -2316,11 +2353,11 @@ end.
         
         <tags>
             
+            <tag> POLIMI </tag>
+            
             <tag> Graphs </tag>
             
             <tag> Network Flows </tag>
-            
-            <tag> POLIMI </tag>
             
             <tag> Algorithms </tag>
             
