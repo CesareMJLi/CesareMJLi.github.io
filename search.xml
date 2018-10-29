@@ -22,11 +22,7 @@
 <h2 id="Knowledge-Based-Recommendation"><a href="#Knowledge-Based-Recommendation" class="headerlink" title="Knowledge Based Recommendation"></a>Knowledge Based Recommendation</h2><p><strong>基本思想</strong>：对于一些需要推荐的物品购买记录是不可靠的，我们需要有关当前用户以及被推荐物品的某些知识进行推荐。</p>
 <p>例子：Alice和Bob都准备购买相机，但是相机一买就是用好几年，所以他人的购买记录的参照价值就很低，我们需要抽象关于相机的知识（分辨率/价格/重量等），然后进行推荐。</p>
 <p><strong>Cons</strong>：知识库的抽象和维护。</p>
-<h2 id="Hybrid-Recommendation"><a href="#Hybrid-Recommendation" class="headerlink" title="Hybrid Recommendation"></a>Hybrid Recommendation</h2><h1 id="Collaborative-Recommendation-1"><a href="#Collaborative-Recommendation-1" class="headerlink" title="Collaborative Recommendation"></a>Collaborative Recommendation</h1><p>User Set: U = {u<sub>1</sub>,…,u<sub>n</sub>}</p>
-<p>Item Set: P = {p<sub>1</sub>,…,p<sub>m</sub>}</p>
-<p>User Rating Matrix: R<sub>n*m</sub></p>
-<p>Similarity between Alice and Bob - Peason Corralated Parameter (the cosine value between a normalized vector of A and B):</p>
-]]></content>
+<h2 id="Hybrid-Recommendation"><a href="#Hybrid-Recommendation" class="headerlink" title="Hybrid Recommendation"></a>Hybrid Recommendation</h2>]]></content>
       
         
         <tags>
@@ -2051,9 +2047,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> Python </tag>
-            
             <tag> Machine Learning </tag>
+            
+            <tag> Python </tag>
             
             <tag> Jupyter Notebook </tag>
             
