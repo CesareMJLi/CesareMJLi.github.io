@@ -3,6 +3,50 @@
   
     
     <entry>
+      <title><![CDATA[Natural Language Processing]]></title>
+      <url>/2018/11/01/Natural-Language-Processing/</url>
+      <content type="html"><![CDATA[<p><strong>This is a note for the course of POLIMI Natural Language Processing. Natural Language Processing: Words/Syntax/Meaning/Discourse.</strong></p>
+<h1 id="Linguistic-Topics"><a href="#Linguistic-Topics" class="headerlink" title="Linguistic Topics"></a>Linguistic Topics</h1><h2 id="Lexical-and-Compositional-Semantics"><a href="#Lexical-and-Compositional-Semantics" class="headerlink" title="Lexical and Compositional Semantics"></a>Lexical and Compositional Semantics</h2><h3 id="Representing-Meanings-Linking-and-Roles"><a href="#Representing-Meanings-Linking-and-Roles" class="headerlink" title="Representing Meanings: Linking and Roles"></a>Representing Meanings: Linking and Roles</h3><p>每种语言都有一定的<em>subj-verb-complements</em>结构，比如“Someone wanting + want + something wanted”。</p>
+<p>而为了represent meanings，我们需要语言能够表达如下的内容：</p>
+<blockquote>
+<p>Meaning of Utterances[表达方式的含义]:Semantic Networks/Logics/Frame-based representations/…</p>
+<p>Meaning of Words[每个word的含义]:Lexical databases…</p>
+</blockquote>
+<h3 id="Semantic-Analysis"><a href="#Semantic-Analysis" class="headerlink" title="Semantic Analysis"></a>Semantic Analysis</h3><ol>
+<li>Syntax-driven semantics analysis[Domain Independent]: <em>Input: Parse Tree/Feature structures/Lexical Dependency Diagrams</em> 对于输入，首先进行syntactic analysis，从这一步得到syntactic structures(也就是方法中的Input)，将syntactic sturctures输入semantic analysis，得到最终的meaning representations。</li>
+<li>Semantic grammar[Domain Dependent]: Semantic grammars could solve the <strong>problem of mismatching</strong> in Syntax driven semantics analysis. However the reuse of these semantic grammar is really hard.</li>
+<li>Information extraction: Detect the relationships and events, and then FILL THE TEMPLATE.</li>
+</ol>
+<h3 id="Lexical-Semantics"><a href="#Lexical-Semantics" class="headerlink" title="Lexical Semantics"></a>Lexical Semantics</h3><p>LEXEME is the smallest unit of written form/spoken form/sense. LEXICON is a collection of LEMMAs. </p>
+<p>WordNet: Containing 150 000 terms(noun/verb/adj/…). 每个term都通过一系列的synset表示（比如对于beautiful这个term，它和gorgeous属于同一个synset），synsets之间又通过一些列的predefined relations来链接（比如beautiful所在的synset和ugly所在的synset通过一个<strong>反义词</strong>的relation链接）。</p>
+<blockquote>
+<p>Interal Structure of Words: </p>
+<p>Themantic roles (roles associated with verb meaning)</p>
+<p>Selectional restrictions (constraints decided by the words contraining the subj/obj): 比如动词【吃】，显然【桌子】不能作为吃这个动作的宾语。</p>
+</blockquote>
+<p>Word Sense Disambiguiation: Supervised Machine Learning/Naive Bayes</p>
+<h2 id="Word-Level-Processing"><a href="#Word-Level-Processing" class="headerlink" title="Word Level Processing"></a>Word Level Processing</h2><h3 id="Morphology"><a href="#Morphology" class="headerlink" title="Morphology"></a>Morphology</h3><p>English Morphology(英语的构词法研究)【stems+affixes】:可以分为两类，inflectional-规律的，derivational-不规律的。</p>
+<blockquote>
+<p>Finite State Transducers: 将一个语义的组合变成一个实际上书写正确的组合（cat+N+PL转化成cats）。</p>
+<p>Multi-Taped Machines: 处理比较复杂的情况，比如fox变复数需要加-es而不是-s。相当于是用多步骤进行翻译。</p>
+</blockquote>
+<h3 id="Error-Correction-Prediction-N-grams"><a href="#Error-Correction-Prediction-N-grams" class="headerlink" title="Error Correction/Prediction/N-grams"></a>Error Correction/Prediction/N-grams</h3><p>Bayes model for ERROR CORRECTION: 对单个单词进行correction</p>
+<p>N-grams: 根据输入的多个单词进行prediction</p>
+<p>Markov Assumption</p>
+<p>Shannon’s Method: 通过训练得到的model生成随机的句子，使其和trainset使用的句子有着类似的形式。</p>
+<p>Evaluation: Intrinsic/External</p>
+<h2 id="Syntactic-Processing"><a href="#Syntactic-Processing" class="headerlink" title="Syntactic Processing"></a>Syntactic Processing</h2><h2 id="Discourse-Processing"><a href="#Discourse-Processing" class="headerlink" title="Discourse Processing"></a>Discourse Processing</h2><h2 id="Discourse-Structure"><a href="#Discourse-Structure" class="headerlink" title="Discourse Structure"></a>Discourse Structure</h2><h1 id="Techniques"><a href="#Techniques" class="headerlink" title="Techniques"></a>Techniques</h1><h2 id="Regular-Languages"><a href="#Regular-Languages" class="headerlink" title="Regular Languages"></a>Regular Languages</h2><h2 id="Context-Free-Grammars"><a href="#Context-Free-Grammars" class="headerlink" title="Context Free Grammars"></a>Context Free Grammars</h2><h2 id="Finate-State-Methods"><a href="#Finate-State-Methods" class="headerlink" title="Finate State Methods"></a>Finate State Methods</h2><h2 id="Augmented-Grammars"><a href="#Augmented-Grammars" class="headerlink" title="Augmented Grammars"></a>Augmented Grammars</h2><h2 id="First-Order-Logic"><a href="#First-Order-Logic" class="headerlink" title="First Order Logic"></a>First Order Logic</h2><h2 id="Probability-Models"><a href="#Probability-Models" class="headerlink" title="Probability Models"></a>Probability Models</h2><h2 id="Supervised-Machine-Learning-Methods"><a href="#Supervised-Machine-Learning-Methods" class="headerlink" title="Supervised Machine Learning Methods"></a>Supervised Machine Learning Methods</h2><h2 id="Deep-Learning"><a href="#Deep-Learning" class="headerlink" title="Deep Learning"></a>Deep Learning</h2><h1 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h1><h2 id="Spelling-Correction"><a href="#Spelling-Correction" class="headerlink" title="Spelling Correction"></a>Spelling Correction</h2><h2 id="Information-Retrieval"><a href="#Information-Retrieval" class="headerlink" title="Information Retrieval"></a>Information Retrieval</h2><h2 id="Question-Answering"><a href="#Question-Answering" class="headerlink" title="Question Answering"></a>Question Answering</h2><h2 id="Conversational-Agents"><a href="#Conversational-Agents" class="headerlink" title="Conversational Agents"></a>Conversational Agents</h2><h2 id="Machine-Translation"><a href="#Machine-Translation" class="headerlink" title="Machine Translation"></a>Machine Translation</h2>]]></content>
+      
+        
+        <tags>
+            
+            <tag> Natural Language Processing </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Recommender Systems]]></title>
       <url>/2018/10/29/Recommender-Systems/</url>
       <content type="html"><![CDATA[<p>这是一个关于推荐系统领域的读书笔记，基于<em>Recommender System: An Introduction</em>。</p>
@@ -1141,9 +1185,9 @@ Require: 初始参数 θ
             
             <tag> Machine Learning </tag>
             
-            <tag> KNN </tag>
-            
             <tag> SVM </tag>
+            
+            <tag> KNN </tag>
             
         </tags>
         
@@ -1976,9 +2020,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> POLIMI </tag>
-            
             <tag> Algorithm </tag>
+            
+            <tag> POLIMI </tag>
             
             <tag> Parallel Programming </tag>
             
@@ -2152,9 +2196,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
             
             <tag> POLIMI </tag>
             
-            <tag> Foundations of Operations Research </tag>
-            
             <tag> Linear Programming </tag>
+            
+            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
@@ -2351,13 +2395,13 @@ end.
             
             <tag> POLIMI </tag>
             
+            <tag> Foundations of Operations Research </tag>
+            
             <tag> Graphs </tag>
             
             <tag> Network Flows </tag>
             
             <tag> Algorithms </tag>
-            
-            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
