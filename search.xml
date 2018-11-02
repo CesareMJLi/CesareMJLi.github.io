@@ -35,7 +35,59 @@
 <p>Markov Assumption</p>
 <p>Shannon’s Method: 通过训练得到的model生成随机的句子，使其和trainset使用的句子有着类似的形式。</p>
 <p>Evaluation: Intrinsic/External</p>
-<h2 id="Syntactic-Processing"><a href="#Syntactic-Processing" class="headerlink" title="Syntactic Processing"></a>Syntactic Processing</h2><h2 id="Discourse-Processing"><a href="#Discourse-Processing" class="headerlink" title="Discourse Processing"></a>Discourse Processing</h2><h2 id="Discourse-Structure"><a href="#Discourse-Structure" class="headerlink" title="Discourse Structure"></a>Discourse Structure</h2><h1 id="Techniques"><a href="#Techniques" class="headerlink" title="Techniques"></a>Techniques</h1><h2 id="Regular-Languages"><a href="#Regular-Languages" class="headerlink" title="Regular Languages"></a>Regular Languages</h2><h2 id="Context-Free-Grammars"><a href="#Context-Free-Grammars" class="headerlink" title="Context Free Grammars"></a>Context Free Grammars</h2><h2 id="Finate-State-Methods"><a href="#Finate-State-Methods" class="headerlink" title="Finate State Methods"></a>Finate State Methods</h2><h2 id="Augmented-Grammars"><a href="#Augmented-Grammars" class="headerlink" title="Augmented Grammars"></a>Augmented Grammars</h2><h2 id="First-Order-Logic"><a href="#First-Order-Logic" class="headerlink" title="First Order Logic"></a>First Order Logic</h2><h2 id="Probability-Models"><a href="#Probability-Models" class="headerlink" title="Probability Models"></a>Probability Models</h2><h2 id="Supervised-Machine-Learning-Methods"><a href="#Supervised-Machine-Learning-Methods" class="headerlink" title="Supervised Machine Learning Methods"></a>Supervised Machine Learning Methods</h2><h2 id="Deep-Learning"><a href="#Deep-Learning" class="headerlink" title="Deep Learning"></a>Deep Learning</h2><h1 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h1><h2 id="Spelling-Correction"><a href="#Spelling-Correction" class="headerlink" title="Spelling Correction"></a>Spelling Correction</h2><h2 id="Information-Retrieval"><a href="#Information-Retrieval" class="headerlink" title="Information Retrieval"></a>Information Retrieval</h2><h2 id="Question-Answering"><a href="#Question-Answering" class="headerlink" title="Question Answering"></a>Question Answering</h2><h2 id="Conversational-Agents"><a href="#Conversational-Agents" class="headerlink" title="Conversational Agents"></a>Conversational Agents</h2><h2 id="Machine-Translation"><a href="#Machine-Translation" class="headerlink" title="Machine Translation"></a>Machine Translation</h2>]]></content>
+<h2 id="Syntactic-Processing"><a href="#Syntactic-Processing" class="headerlink" title="Syntactic Processing"></a>Syntactic Processing</h2><h3 id="POS-Tagging-the-process-of-assigning-a-part-of-speech-or-lexical-class-marker-to-each-word-in-a-collection"><a href="#POS-Tagging-the-process-of-assigning-a-part-of-speech-or-lexical-class-marker-to-each-word-in-a-collection" class="headerlink" title="POS Tagging: the process of assigning a part of speech or lexical class marker to each word in a collection"></a>POS Tagging: the process of assigning a part of speech or lexical class marker to each word in a collection</h3><p>Closed/Open classes: whether new tag of POS could be created.</p>
+<blockquote>
+<p>POS:</p>
+<p>prepositions(on/over/…)</p>
+<p>determiners(a/an/the/…)</p>
+<p>pronouns(she/who/I/…)</p>
+<p>… …</p>
+</blockquote>
+<p>POS Tagging steps:</p>
+<ol>
+<li>Choosing sa standard Tagset to work with (a coarse tagset? Penn TreeBank tagset?…)</li>
+<li>Use the tagset to assign each word one tag.</li>
+</ol>
+<blockquote>
+<p>THE MOST IMPORTANT PROBLEM IN POS TAGGING - [words often have more than one POS]: 2 method - RULE BASED TAGGING(<em>write each rule by hand</em>)/STOCHASTIC(HMM/MEMMs)</p>
+</blockquote>
+<p>HMM[a special case of Bayesian inference]: Given an observation, find the tag sequences.</p>
+<h3 id="Formal-Grammars"><a href="#Formal-Grammars" class="headerlink" title="Formal Grammars"></a>Formal Grammars</h3><p>Constituency[Internal structure/ External behavior]: <strong>Noun Phrases</strong> 可以是apple也可以是the reason he comes to University.</p>
+<p>Context Free Grammars[Rules/Terminals/Non-terminals(<strong>the constituents in a language</strong>)]</p>
+<p>Head: the critical stuff.</p>
+<p>Dependency Parsing[Better performance, and catch the relationships of syntactic relations]</p>
+<h3 id="Parsing-with-BottomUp-TopDown"><a href="#Parsing-with-BottomUp-TopDown" class="headerlink" title="Parsing with BottomUp/TopDown"></a>Parsing with BottomUp/TopDown</h3><p>Parsing means assign proper trees to input strings. [find all admissible trees and select the correct one]</p>
+<p>表现并不好，因为对于一个句子，仅仅根据他的syntactic structure进行parsing可能得到多个正确的parsing tree，我们需要语义上的辅助，同时重复的parsing也带来一些问题。</p>
+<h3 id="Shallow-Parsing-Probabilistic-Parsing-Dependency-Parsing"><a href="#Shallow-Parsing-Probabilistic-Parsing-Dependency-Parsing" class="headerlink" title="Shallow Parsing/Probabilistic Parsing/Dependency Parsing"></a>Shallow Parsing/Probabilistic Parsing/Dependency Parsing</h3><p>Shallow Parsing(Finite State Parsing): Use subset of CFG without recursion(rules like NP-&gt;NPVP is not allowed) / L-shape sliding window.</p>
+<blockquote>
+<p>Pos Tagging output: My/PRP$ dog/NN likes/VBZ his/PRP$ food/NN ./.</p>
+<p>Chunking output: [NP My Dog] [VP likes] [NP his food]</p>
+</blockquote>
+<p>Probabilistic CFG: assign probabilities to parse trees. (Different rules, different probabilities)</p>
+<p>Lexicalized PCFG: lexical meaning with PCFG.</p>
+<p>Dependent Parsing: instead of constituent units, concentrate on the links from word to word.</p>
+<h2 id="Discourse-Processing"><a href="#Discourse-Processing" class="headerlink" title="Discourse Processing"></a>Discourse Processing</h2><h2 id="Discourse-Structure"><a href="#Discourse-Structure" class="headerlink" title="Discourse Structure"></a>Discourse Structure</h2><h1 id="Techniques"><a href="#Techniques" class="headerlink" title="Techniques"></a>Techniques</h1><h2 id="Regular-Languages"><a href="#Regular-Languages" class="headerlink" title="Regular Languages"></a>Regular Languages</h2><h2 id="Context-Free-Grammars"><a href="#Context-Free-Grammars" class="headerlink" title="Context Free Grammars"></a>Context Free Grammars</h2><h2 id="Finate-State-Methods"><a href="#Finate-State-Methods" class="headerlink" title="Finate State Methods"></a>Finate State Methods</h2><h2 id="Augmented-Grammars"><a href="#Augmented-Grammars" class="headerlink" title="Augmented Grammars"></a>Augmented Grammars</h2><h2 id="First-Order-Logic"><a href="#First-Order-Logic" class="headerlink" title="First Order Logic"></a>First Order Logic</h2><h2 id="Probability-Models"><a href="#Probability-Models" class="headerlink" title="Probability Models"></a>Probability Models</h2><h2 id="Supervised-Machine-Learning-Methods"><a href="#Supervised-Machine-Learning-Methods" class="headerlink" title="Supervised Machine Learning Methods"></a>Supervised Machine Learning Methods</h2><h2 id="Deep-Learning"><a href="#Deep-Learning" class="headerlink" title="Deep Learning"></a>Deep Learning</h2><p>Most current machine learning already works well, based on human designed representations and input features. However, it may be better to <strong>let the machine learn good features(representations)</strong>, which involves deep learning and neural networks.</p>
+<p>Single Artificial Neuron-&gt;A layer of neurons-&gt;NN-&gt;Deep NN(with hidden layer)-&gt;Softmax output layer</p>
+<p>Back propagation</p>
+<p>Word2Vec: models that produce word embeddings. (which means input a V-dimension vector and output a Q-dimension vector, Q&lt;&lt;V)</p>
+<p>N-gram language modelling</p>
+<p>RNN</p>
+<p>LSTM</p>
+<p>POS with Bidirectional LSTM</p>
+<p>RNN for parsing</p>
+<p>TTR &amp; ASR: WaveNet</p>
+<h1 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h1><h2 id="Spelling-Correction"><a href="#Spelling-Correction" class="headerlink" title="Spelling Correction"></a>Spelling Correction</h2><h2 id="Information-Retrieval-Summarization"><a href="#Information-Retrieval-Summarization" class="headerlink" title="Information Retrieval : Summarization"></a>Information Retrieval : Summarization</h2><ol>
+<li>Single Document/Mutiple Document</li>
+<li>Generic Summarization/Query-focused Summerization</li>
+<li>Abstract/Extract[Extract is far more easier]</li>
+</ol>
+<p>Methods:</p>
+<ol>
+<li>Content Selection: What’s important and what’s not important?</li>
+<li>Information Ordering: How to orgnize the informaiton? In what order so that the information I am going to represent is coherent?</li>
+<li>Sentence Realization: How to made our sentence readable and reasonable?</li>
+</ol>
+<h2 id="Question-Answering"><a href="#Question-Answering" class="headerlink" title="Question Answering"></a>Question Answering</h2><h2 id="Conversational-Agents"><a href="#Conversational-Agents" class="headerlink" title="Conversational Agents"></a>Conversational Agents</h2><h2 id="Machine-Translation"><a href="#Machine-Translation" class="headerlink" title="Machine Translation"></a>Machine Translation</h2>]]></content>
       
         
         <tags>
@@ -1185,9 +1237,9 @@ Require: 初始参数 θ
             
             <tag> Machine Learning </tag>
             
-            <tag> SVM </tag>
-            
             <tag> KNN </tag>
+            
+            <tag> SVM </tag>
             
         </tags>
         
@@ -2020,9 +2072,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> Algorithm </tag>
-            
             <tag> POLIMI </tag>
+            
+            <tag> Algorithm </tag>
             
             <tag> Parallel Programming </tag>
             
@@ -2196,9 +2248,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
             
             <tag> POLIMI </tag>
             
-            <tag> Linear Programming </tag>
-            
             <tag> Foundations of Operations Research </tag>
+            
+            <tag> Linear Programming </tag>
             
         </tags>
         
@@ -2395,13 +2447,13 @@ end.
             
             <tag> POLIMI </tag>
             
-            <tag> Foundations of Operations Research </tag>
-            
             <tag> Graphs </tag>
             
             <tag> Network Flows </tag>
             
             <tag> Algorithms </tag>
+            
+            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
