@@ -66,7 +66,121 @@
 <p>Probabilistic CFG: assign probabilities to parse trees. (Different rules, different probabilities)</p>
 <p>Lexicalized PCFG: lexical meaning with PCFG.</p>
 <p>Dependent Parsing: instead of constituent units, concentrate on the links from word to word.</p>
-<h2 id="Discourse-Processing"><a href="#Discourse-Processing" class="headerlink" title="Discourse Processing"></a>Discourse Processing</h2><h2 id="Discourse-Structure"><a href="#Discourse-Structure" class="headerlink" title="Discourse Structure"></a>Discourse Structure</h2><h1 id="Techniques"><a href="#Techniques" class="headerlink" title="Techniques"></a>Techniques</h1><h2 id="Regular-Languages"><a href="#Regular-Languages" class="headerlink" title="Regular Languages"></a>Regular Languages</h2><h2 id="Context-Free-Grammars"><a href="#Context-Free-Grammars" class="headerlink" title="Context Free Grammars"></a>Context Free Grammars</h2><h2 id="Finate-State-Methods"><a href="#Finate-State-Methods" class="headerlink" title="Finate State Methods"></a>Finate State Methods</h2><h2 id="Augmented-Grammars"><a href="#Augmented-Grammars" class="headerlink" title="Augmented Grammars"></a>Augmented Grammars</h2><h2 id="First-Order-Logic"><a href="#First-Order-Logic" class="headerlink" title="First Order Logic"></a>First Order Logic</h2><h2 id="Probability-Models"><a href="#Probability-Models" class="headerlink" title="Probability Models"></a>Probability Models</h2><h2 id="Supervised-Machine-Learning-Methods"><a href="#Supervised-Machine-Learning-Methods" class="headerlink" title="Supervised Machine Learning Methods"></a>Supervised Machine Learning Methods</h2><h2 id="Deep-Learning"><a href="#Deep-Learning" class="headerlink" title="Deep Learning"></a>Deep Learning</h2><p>Most current machine learning already works well, based on human designed representations and input features. However, it may be better to <strong>let the machine learn good features(representations)</strong>, which involves deep learning and neural networks.</p>
+<h2 id="VOICE"><a href="#VOICE" class="headerlink" title="VOICE:"></a>VOICE:</h2><h3 id="vowels-consonants-silence"><a href="#vowels-consonants-silence" class="headerlink" title="vowels / consonants / silence"></a>vowels / consonants / silence</h3><p>Prosody: 韵律学，研究人们说话的韵律和节奏等。(Intonation语调/Pauses停顿/Rhythm节奏/Stress重音/Duration延长声音)</p>
+<p>INFORMATION = PROSODY + LINGUISTIC INFORMATION</p>
+<p>Perception: human’s ability to have what you know interact with what you see and hear. [1-Sensing/ 2-Orgnizing/ 3 Identifying &amp; Recognizing]</p>
+<h3 id="General-Info-of-Automatic-Speech-Recognition-amp-Text-To-Speech"><a href="#General-Info-of-Automatic-Speech-Recognition-amp-Text-To-Speech" class="headerlink" title="General Info of Automatic Speech Recognition &amp; Text-To-Speech"></a>General Info of Automatic Speech Recognition &amp; Text-To-Speech</h3><p>Phonetics: study of phones (the units composing words)</p>
+<p>Phonology: study of phonemes (an abstraction of a set of phones, the smallest contrastive linguistic unit)</p>
+<blockquote>
+<p>Phonetics研究人能够发出的声音，而Phonology研究他们的声音在不同的语言中的不同的意义。所以在每一种语言的研究中phonology更重要。</p>
+</blockquote>
+<p>Formants: the spectral peaks of the sound frequency spectrum of the voice.</p>
+<h3 id="TTS-transforming-a-text-string-into-a-waveform"><a href="#TTS-transforming-a-text-string-into-a-waveform" class="headerlink" title="TTS: transforming a text string into a waveform"></a>TTS: transforming a text string into a waveform</h3><ol>
+<li>Text analysis: text string -&gt; phonetic representation</li>
+<li>Waveform synthesis: phonetic representation -&gt; waveform[这里phonetic represnetation类似于英语中的音标或者汉语中的拼音，只是音节的表示方式]</li>
+</ol>
+<p>Text Analysis: Text Normalization -&gt; Phonetics Analysis -&gt; Prosodic Analysis</p>
+<h3 id="ASR-Starting-from-a-recorder-vocal-signal-recognize-the-corresponding-sequence-of-words"><a href="#ASR-Starting-from-a-recorder-vocal-signal-recognize-the-corresponding-sequence-of-words" class="headerlink" title="ASR: Starting from a recorder vocal signal, recognize the corresponding sequence of words"></a>ASR: Starting from a recorder vocal signal, recognize the corresponding sequence of words</h3><p>Given a vocal signal, composed of M MFCC vectors(generate from windowing of vocal signal), compute the right sequence of M subphones <em>s</em></p>
+<p>Or we could use HMM for ASR, the input observations are MFCC vectors, while the output are subphone sequences.</p>
+<h2 id="Pragmatics-研究语言具体的使用-：take-turns-in-conversations-text-orgnization-presupposition-Discourse-Processing-Discourse-Structure"><a href="#Pragmatics-研究语言具体的使用-：take-turns-in-conversations-text-orgnization-presupposition-Discourse-Processing-Discourse-Structure" class="headerlink" title="Pragmatics[研究语言具体的使用]：take turns in conversations/text orgnization/presupposition]-Discourse Processing/Discourse Structure"></a>Pragmatics[研究语言具体的使用]：take turns in conversations/text orgnization/presupposition]-Discourse Processing/Discourse Structure</h2><h3 id="Dialog-and-conversational-agents-PART-1"><a href="#Dialog-and-conversational-agents-PART-1" class="headerlink" title="Dialog and conversational agents PART 1"></a>Dialog and conversational agents PART 1</h3><p>ELIZA: search and substitude using memory(some human-designed rules). </p>
+<blockquote>
+<p>A: Men are all alike</p>
+<p>ELIZA: [‘all’ detected, REPLY IN CERTAIN WAY] IN WHAT WAY</p>
+<p>A: My boyfriend made me came here.</p>
+<p>ELIZA: [‘my’ and ‘me’ detected, SUBSTITUTE] YOUR BOYFRIEND MADE YOU CAME HERE.</p>
+</blockquote>
+<p>HUMAN CONVERSATION</p>
+<ol>
+<li>Turn-taking:什么时候speaker知道应该轮到自己讲话了？[<em>An general example：current speaker A指定了一个next speaker B时，B speak next，如果没有指定next speaker，那么任何人都可以take next turn，如果没有人take next turn，那么current speaker A继续take next turn。</em>]</li>
+<li>Speech acts:[each utterance is 3 acts] LOCUTIONARY ACT(语言行为), ILLOCUTIONARY ACT(言外行为), PERLOCUTIONARY ACT(言后行为). [<em>An general example: “CAN I HAVE THE REST OF YOUR SANDWICH?” L-Question, IL-Request, Pre-“You give me sandwich.”, “I WANT THE REST OF YOUR SANDWICH!” L-Declarative, IL-Request, Pre-“You give me sandwich”</em>], ILLOCUTIONARY ACTS可以分成5类，Assertives(swearing, concluding, suggesting, …) /Directives(asking, ordering, …) /Commissives(promising, betting, …) /Expressives(thanking, welcoming, …)/Declarations</li>
+<li>Grounding: both speaker should achieve common ground (things mutually believed by both speaker).但是如何让speaker确认对方和自己有相同的共识呢？Continued attention, Relevant next contribution, Acknowledgement( mm-hmm ), Demonstration, Display. [ -“I need to travel in May.” -“What day <strong>in May</strong> did you want to travel?” 通过Display来表达已经知道了对方想要在五月出行的意愿]</li>
+<li>Conversational structure:将一段对话分为多个部分，比如一段日常对话的structure可能是Greetings-Daily talking-Saying Bye.</li>
+<li>Implicature:[例子：-“好的，请问您想定那一天的航班？” -“我在19日有一个会议…”] 4-GRICEAN-MAXIMS:在对话推断中的四个原则，原则1-relevant，我们在讨论航班的问题的时候我说我在19日有个会议这件事和我们讨论的航班日期时有关系的；原则2-quantity，假如对方告诉我现在有5个航班，在逻辑的角度出发，如果现在有更多的航班对方也可以这么回答，但是我们假设对方只会回答一个需要的数字，不多也不少；原则3-quality，对方说的事情时正确的，我们假设双方都不会对一个缺乏依据的事情进行评判；原则4-manner，我们假设双方都简明扼要，避免过度重复。</li>
+<li>*Coherence:这个本来不在这里，但是在后面的部分，我认为将这部分放在这里是合适的，这部分表示了在语言中我们常常使用Next，Thanks，OK，Last of all等词语来“润滑”我们的对话，而这在NLP中也是非常重要的。</li>
+</ol>
+<p>Speech Recognition-&gt;Natural Language Understanding-&gt;Dialogue Manager/Task Manager-&gt;Natural Language Generation-&gt;Text-to-speech Synthesis</p>
+<p>Speech Recognition: ASR-Input waveform, output strings of words</p>
+<p>Natural Language Understanding: NLU-for speech dialogue systems, FRAME AND SLOT SEMANTIC are wildly used. </p>
+<blockquote>
+<p>Frame and slot semantic</p>
+<p>“Show me the morning flights from Boston to LA on Tuesday”</p>
+<p>SHOW: </p>
+<p>  FLIGHTS:</p>
+<pre><code>  ORIGIN:
+
+      CITY: Boston
+
+      DATE: Tuesday
+
+      TIME: Morning
+
+  DESTINATION:
+
+      CITY: LA
+</code></pre><p>Analysis:这种方式我们通过采用一种semantic grammar，然后将这句话解析成上述形式，比如ORIGIN-&gt;from CITY, CITY-&gt;NY|Boston|LA，这种语法规则往往不是通用的，而是根据某一种特殊的工作需求建立的。</p>
+</blockquote>
+<p>Dialogue Manager: controls the architecture and structure of dialogue. [Finite State/Frame Based/Information State/AI Planning]</p>
+<blockquote>
+<p>System Initiative Dialogue: system controls the dialogue and asks the user a lot of questions. [Easy but limited]</p>
+<p>User Initiative Dialogue: user directs the system, asks a single question and system answers.</p>
+<p>Mixed Initiative Dialogue: conversational initiative can shift between user and system.[open prompts(“<em>How may I help you?</em>“) vs directive prompts(“<em>Say yes if you accept this call, otherwise please say no.</em>“), restrictive(strong constraints on the AST system, based on the dialogue state) vs non-restrictive grammar]</p>
+</blockquote>
+<p>Natural Language Generation: choose the concepts to express to user. Exprsss concepts in words and assign prosody.</p>
+<p>TTS: takes words and prosodic annotations, output waveform</p>
+<h3 id="Dialog-and-conversational-agents-PART-2"><a href="#Dialog-and-conversational-agents-PART-2" class="headerlink" title="Dialog and conversational agents PART 2"></a>Dialog and conversational agents PART 2</h3><p>We want the system better than just form filling.</p>
+<p>INFORMATION STATE: context/beliefs/user model/task context/…</p>
+<p>DIALOGUE ACTS: conversational moves, incorporates ideas of grounding.</p>
+<p>DIALOGUE ACTS AMBIGUITY:处理这种混淆是很复杂的，我们需要判断这一段对话属于什么部分，比如对一句话“你可以把她的微信给我嘛？”，表面上这是一个request动作，但是其实我们知道与其回答是或者否，这是一个directive动作，我们应该回答的是“这是她的微信号/她已经有男朋友了”。</p>
+<p>CONVERSATIONAL ACT TYPES: turn-taking, grounding, core speech acts, argumentation.</p>
+<p>DIALOGUE ACT INTERPRETER:</p>
+<p>DIALOGUE ACT GENERATOR: confirmation(explicit/implicit confirmation   -“I want to go to Berlin” - “You said you want to go to Berlin?”/“When do you want to go to Berlin?”)/rejection</p>
+<p>CORRECTION DETECTION:</p>
+<p>SET OF UPDATE RULES: update dialogue state as acts are interpreted, generate dialogue acts.</p>
+<p>CONTROL STRUCTURE TO SELECT WHICH UPDATE RULES TO APPLY</p>
+<blockquote>
+<p>对于一个特定的情景：订机票</p>
+<p>Dialogue Acts：THANK/GREET/INTRODUCE/REJECT/CLARIFY/…</p>
+</blockquote>
+<p>Dialogue System Evaluation</p>
+<blockquote>
+<p>MAXIMIZE USER SATISFACTION, which means MAXIMIZE TASK SUCCESS(take completed rate, correctness, …) and MINIMIZE COSTS. The COSTS here means EFFICIENCY MEASURES(time cost, turns taken, …) and QUALITY MEASURES (number of rejections, time-out prompts, concept accuracy, …). Use some kinds of questionair could help us know this information.</p>
+</blockquote>
+<h3 id="Dialog-and-conversational-agents-PART-2-1"><a href="#Dialog-and-conversational-agents-PART-2-1" class="headerlink" title="Dialog and conversational agents PART 2"></a>Dialog and conversational agents PART 2</h3><p>Modelling a dialogue system as a probabilistic agent <states set="" s,="" actions="" a,="" goal="" g=""> with a policy pi(when should I confirm? when should I ask a directive prompt?). Our goal here is USER SATISFACTION, while sometimes this is hard to evaluate, we need a more helpful metric. Hence we introduce UTILITY. UTILITY is a function, the input is a state or state sequence, and the output is a user satisfaction represented by a real number.</states></p>
+<p>Environment-&gt;”What the world is like”-&gt;”What it will be like if I do action A”-&gt;”How happy will the user be in such state”-&gt;”What the action I should do in conclusion”</p>
+<p>Markov Assumption comes in here(knowledge in the reinforcement learning)</p>
+<h3 id="Anaphora-Resolution-代词的解析（如it等）"><a href="#Anaphora-Resolution-代词的解析（如it等）" class="headerlink" title="Anaphora Resolution 代词的解析（如it等）"></a>Anaphora Resolution 代词的解析（如it等）</h3><blockquote>
+<p>CONSTAINTS ON COREFERENCE</p>
+<p>Number agreement:John has an Acura. It is red.</p>
+<p>Person and case agreement:John and Mary have Acuras. We love them (where We=John and Mary)<br>Gender agreement: John has an Acura. He/it/she is attractive.<br>Syntactic constraints: John bought himself a new Acura (himself=John)/John bought him a new Acura (him = not John)</p>
+</blockquote>
+<p>SOLUTION</p>
+<ol>
+<li>Collect the potential referents (up to 4 sentences back)</li>
+<li>Remove potential referents that do not agree in number or gender with the pronoun</li>
+<li>Remove potential references that do not pass syntactic coreference constraints</li>
+<li>Compute total salience value of referent from all factors, including, if applicable, role parallelism (+35) or cataphora (-175).</li>
+<li>Select referent with highest salience value. In case of tie, select closest.</li>
+</ol>
+<h3 id="Coherence-Discourse-Structure"><a href="#Coherence-Discourse-Structure" class="headerlink" title="Coherence - Discourse Structure"></a>Coherence - Discourse Structure</h3><blockquote>
+<p>John hid Bills car keys. He was drunk</p>
+<p>John hid Bills car keys. He likes spaghetti</p>
+</blockquote>
+<p>What makes a text coherent? </p>
+<ol>
+<li>Appropriate use of coherence relations between subparts of the discourse – rhetorical structure</li>
+<li>Appropriate sequencing of subparts of the discourse – discourse/topic structure</li>
+<li>Appropriate use of referring expressions</li>
+</ol>
+<p>Coherence Relations: </p>
+<ol>
+<li>Result: John bought an Acura. His father went quite angry about that</li>
+<li>Explanation: John hid Bills car keys. He was drunk</li>
+<li>Parallel: John bought an Acura. Bill leased a BMW.</li>
+<li>Elaboration: John bought an Acura this weekend. He purchased a beautiful new Integra for 20 thousand dollars at Bills dealership on Saturday afternoon.</li>
+<li>Occasion: Dorothy picked up the oil-can. She oiled the Tin Woodman’s joints</li>
+<li></li>
+</ol>
+<h1 id="Techniques"><a href="#Techniques" class="headerlink" title="Techniques"></a>Techniques</h1><h2 id="Regular-Languages"><a href="#Regular-Languages" class="headerlink" title="Regular Languages"></a>Regular Languages</h2><h2 id="Context-Free-Grammars"><a href="#Context-Free-Grammars" class="headerlink" title="Context Free Grammars"></a>Context Free Grammars</h2><h2 id="Finate-State-Methods"><a href="#Finate-State-Methods" class="headerlink" title="Finate State Methods"></a>Finate State Methods</h2><h2 id="Augmented-Grammars"><a href="#Augmented-Grammars" class="headerlink" title="Augmented Grammars"></a>Augmented Grammars</h2><h2 id="First-Order-Logic"><a href="#First-Order-Logic" class="headerlink" title="First Order Logic"></a>First Order Logic</h2><h2 id="Probability-Models"><a href="#Probability-Models" class="headerlink" title="Probability Models"></a>Probability Models</h2><h2 id="Supervised-Machine-Learning-Methods"><a href="#Supervised-Machine-Learning-Methods" class="headerlink" title="Supervised Machine Learning Methods"></a>Supervised Machine Learning Methods</h2><h2 id="Deep-Learning"><a href="#Deep-Learning" class="headerlink" title="Deep Learning"></a>Deep Learning</h2><p>Most current machine learning already works well, based on human designed representations and input features. However, it may be better to <strong>let the machine learn good features(representations)</strong>, which involves deep learning and neural networks.</p>
 <p>Single Artificial Neuron-&gt;A layer of neurons-&gt;NN-&gt;Deep NN(with hidden layer)-&gt;Softmax output layer</p>
 <p>Back propagation</p>
 <p>Word2Vec: models that produce word embeddings. (which means input a V-dimension vector and output a Q-dimension vector, Q&lt;&lt;V)</p>
