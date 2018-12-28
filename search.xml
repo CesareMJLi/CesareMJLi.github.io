@@ -115,7 +115,198 @@
 <p>The advantage of DFS is the space complexity. For a graph search, there is no advantage, but a depth-first tree search needs to store only a single path from the root to a leaf node, along with the remaining unexpanded sibling nodes for each node on the path. </p>
 <p>And DFS is complete, but not optimal assurance.</p>
 <h3 id="Depth-limited-search"><a href="#Depth-limited-search" class="headerlink" title="Depth-limited search"></a>Depth-limited search</h3><p>The embarrassing failure of depth-first search in infinite state spaces can be alleviated by supplying depth-first search with a predetermined depth limit l. That is, nodes at depth l are treated as if they have no successors. This approach is called depth-limited search. The depth limit solves the infinite-path problem.</p>
-<h3 id="Iterative-deepening-depth-first-search"><a href="#Iterative-deepening-depth-first-search" class="headerlink" title="Iterative deepening depth-first search"></a>Iterative deepening depth-first search</h3>]]></content>
+<h3 id="Iterative-deepening-depth-first-search"><a href="#Iterative-deepening-depth-first-search" class="headerlink" title="Iterative deepening depth-first search"></a>Iterative deepening depth-first search</h3><p>Iterative deepening search (or iterative deepening depth-first search) is a general strategy, often used in combination with depth-first tree search, that finds the best depth limit. It does this by gradually increasing the limit—first 0, then 1, then 2, and so on—until a goal is found. This will occur when the depth limit reaches d, the depth of the shallowest goal node. </p>
+<p> Like depth-first search, its memory requirements are modest: O(bd) to be precise. Like breadth-first search, it is complete when the branching factor is finite and optimal when the path cost is a nondecreasing function of the depth of the node.</p>
+<p>In general, iterative deepening is the preferred uninformed search method when the search space is large and the depth of the solution is not known.</p>
+<h3 id="Bidirectional-search"><a href="#Bidirectional-search" class="headerlink" title="Bidirectional search"></a>Bidirectional search</h3><p>The idea behind bidirectional search is to run two simultaneous searches—one forward from the initial state and the other backward from the goal—hoping that the two searches meet in the middle.</p>
+<img src="/2018/12/20/Artificial-Intelligence/1.png">
+<h2 id="3-5-Informed-Heuristic-Search-Strategies"><a href="#3-5-Informed-Heuristic-Search-Strategies" class="headerlink" title="3.5 Informed (Heuristic) Search Strategies"></a>3.5 Informed (Heuristic) Search Strategies</h2><p>This section shows how an informed search strategy—one that uses problem-specific knowledge beyond the definition of the problem itself—can find solutions more efficiently than can an uninformed strategy.</p>
+<p>The evaluation function f(n) is construed as a cost estimate, so the node with the lowest evaluation is expanded first. Which means that it is the cost from the initial state to the goal state, even if this cost is estimated a lot. </p>
+<p>The heuristic function h(n) is estimated cost of the cheapest path from the state at node n to a goal state.</p>
+<h3 id="Greedy-best-first-search"><a href="#Greedy-best-first-search" class="headerlink" title="Greedy best first search"></a>Greedy best first search</h3><p>Greedy best-first search tries to expand the node that is closest to the goal, on the grounds that this is likely to lead to a solution quickly. </p>
+<p>And here in this search f(n)=h(n). </p>
+<h3 id="A-search-Minimizing-the-total-estimated-solution-cost"><a href="#A-search-Minimizing-the-total-estimated-solution-cost" class="headerlink" title="A* search: Minimizing the total estimated solution cost"></a>A* search: Minimizing the total estimated solution cost</h3><p>The most widely used form of best-first search is called A<em> search. It evaluates nodes by combining <em>*g(n), the cost to reach the node, and h(n), the cost to get from the node to the goal</em></em>: f(n)=g(n)+h(n)</p>
+<p>And here <strong>f(n) = estimated cost of the cheapest solution through n</strong>. Thus if we are trying to find the cheapest solution, a reasonable thing is to find the lowest f(n).</p>
+<blockquote>
+<p>Conditions for optimality: Admissibility and consistency</p>
+<p>The first condition we require for optimality is that h(n) be an admissible heuristic. <strong>An admissible heuristic is one that never overestimates the cost to reach the goal</strong>. Because g(n) is the actual cost to reach n along the current path, and f (n) = g(n) + h(n), we have as an immediate consequence that f(n) never overestimates the true cost of a solution along the current path through n.</p>
+<p>A second, slightly stronger condition called consistency (or sometimes monotonicity) is required only for applications of A<em> to graph search. A heuristic h(n) is consistent if, for every node n1 and every successor n2 of n1 generated by any action a, the estimated cost of reaching the goal from n2 is no greater than the step cost of getting to n2 plus the estimated cost of reaching the goal from n1: <em>*h(n1) ≤ c(n1, a, n2) + h(n2)</em></em></p>
+</blockquote>
+<p>A<em> has the following properties: the tree-search version of A</em> is optimal if h(n) is admissible, while the graph-search version is optimal if h(n) is consistent.</p>
+<p>That A<em> search is complete, optimal, and optimally efficient among all such algorithms is rather satisfying. Unfortunately, it does not mean that A</em> is the answer to all our searching needs. The catch is that, for most problems, the number of states within the goal contour search space is still exponential in the length of the solution. And A<em> requires a high amount of space usage. This may be the biggest disadvantage of A</em>.</p>
+<h3 id="Memory-bounded-heuristic-search"><a href="#Memory-bounded-heuristic-search" class="headerlink" title="Memory-bounded heuristic search."></a>Memory-bounded heuristic search.</h3><p>The simplest way to reduce memory requirements for A<em> is to adapt the idea of iterative deepening to the heuristic search context, resulting in the iterative-deepening A</em> (IDA*) algorithm. </p>
+<p>The main difference between IDA<em> and standard iterative deepening is that the cutoff used is the f-cost (</em>g + h*) rather than the depth; at each iteration, the cutoff value is the smallest f-cost of any node that exceeded the cutoff on the previous iteration.</p>
+<h3 id="Learning-to-search-better"><a href="#Learning-to-search-better" class="headerlink" title="Learning to search better"></a>Learning to search better</h3><h2 id="3-6-Heuristic-Functions"><a href="#3-6-Heuristic-Functions" class="headerlink" title="3.6 Heuristic Functions"></a>3.6 Heuristic Functions</h2><p>In this part, we are going to discuss how to find a heuristic function and the importance of a good heuristic function.</p>
+<h2 id="3-7-SUMMARY"><a href="#3-7-SUMMARY" class="headerlink" title="3.7 SUMMARY"></a>3.7 SUMMARY</h2><p>Before an agent can start searching for solutions, a goal must be identified and a well- defined problem must be formulated.</p>
+<p>• A problem consists of five parts: the initial state, a set of actions, a transition model describing the results of those actions, a goal test function, and a path cost function. The environment of the problem is represented by a state space. A path through the state space from the initial state to a goal state is a solution.</p>
+<p>• Search algorithms treat states and actions as atomic: they do not consider any internal structure they might possess.</p>
+<p>• A general TREE-SEARCH algorithm considers all possible paths to find a solution, whereas a GRAPH-SEARCH algorithm avoids consideration of redundant paths.</p>
+<p>• Search algorithms are judged on the basis of completeness, optimality, time complexity, and space complexity. Complexity depends on b, the branching factor in the state space, and d, the depth of the shallowest solution.</p>
+<p>• Uninformed search methods have access only to the problem definition. The basic algorithms are as follows:</p>
+<ul>
+<li><p>Breadth-first search expands the shallowest nodes first; it is complete, optimal for unit step costs, but has exponential space complexity.</p>
+</li>
+<li><p>Uniform-cost search expands the node with lowest path cost, g(n), and is optimal for general step costs.</p>
+</li>
+<li><p>Depth-first search expands the deepest unexpanded node first. It is neither com- plete nor optimal, but has linear space complexity. Depth-limited search adds a depth bound.</p>
+</li>
+<li><p>Iterative deepening search calls depth-first search with increasing depth limits until a goal is found. It is complete, optimal for unit step costs, has time complexity comparable to breadth-first search, and has linear space complexity.</p>
+</li>
+<li><p>Bidirectional search can enormously reduce time complexity, but it is not always applicable and may require too much space.</p>
+</li>
+</ul>
+<p>• Informed search methods may have access to a heuristic function h(n) that estimates the cost of a solution from n.</p>
+<ul>
+<li><p>The generic best-first search algorithm selects a node for expansion according to an evaluation function.</p>
+</li>
+<li><p>Greedy best-first search expands nodes with minimal h(n). It is not optimal but is often efficient.</p>
+</li>
+<li><p>A∗ search expands nodes with minimal f (n) = g(n) + h(n). A∗ is complete and optimal, provided that h(n) is admissible (for TREE-SEARCH) or consistent (for GRAPH-SEARCH). The space complexity of A∗ is still prohibitive.</p>
+</li>
+<li><p>RBFS (recursive best-first search) and SMA∗ (simplified memory-bounded A∗) are robust, optimal search algorithms that use limited amounts of memory; given enough time, they can solve problems that A∗ cannot solve because it runs out of memory.</p>
+</li>
+</ul>
+<p>• The performance of heuristic search algorithms depends on the quality of the heuristic function. One can sometimes construct good heuristics by relaxing the problem defi- nition, by storing precomputed solution costs for subproblems in a pattern database, or by learning from experience with the problem class.</p>
+<h1 id="Chapter-V-ADVERSARIAL-SEARCH"><a href="#Chapter-V-ADVERSARIAL-SEARCH" class="headerlink" title="Chapter V: ADVERSARIAL SEARCH"></a>Chapter V: ADVERSARIAL SEARCH</h1><p>We try to plan ahead in a world where other agents are planning against us.</p>
+<h2 id="5-1-Games"><a href="#5-1-Games" class="headerlink" title="5.1 Games"></a>5.1 Games</h2><p>Games is a problem that each agents needs to consider the actions of other agents and how they affact itw own welfare. Due to the great search space, the search algorithms introduced in Chapter III may not be applicable.</p>
+<p>We begin with a definition of the optimal move and an algorithm for finding it. We then look at techniques for choosing a good move when time is limited. Pruning allows us to ignore portions of the search tree that make no difference to the final choice, and heuristic evaluation functions allow us to approximate the true utility of a state without doing a complete search. Section 5.5 discusses games such as backgammon that <strong>include an element of chance</strong>; we also discuss bridge, which <strong>includes elements of imperfect information</strong> because not all cards are visible to each player. Finally, we look at how state-of-the-art game-playing programs fare against human opposition and at directions for future developments.</p>
+<p>We first consider games with two palyer, whom we call MAX and MIN. MAX moves first and then they take turns until the game is over. </p>
+<blockquote>
+<p>In formal language, It could be described as</p>
+<p>S0: The initial state, which specifies how the game is set up at the start.<br>PLAYER(s): Defines which player has the move in state s.<br>ACTIONS(s): Returns the set of legal moves in state s.<br>RESULT(s,a): The transition model, which defines the result of a move, which is another state.<br>TERMINAL-TEST(s): A terminal test, which is true when the game is over and false otherwise. States where the game has ended are called terminal states.<br>UTILITY(s, p): A utility function (also called an objective function or payoff function), defines the final numeric value for a game that ends in terminal state s for a player p. <strong>In chess, the outcome is a win, loss, or draw, with values +1, 0, or 1</strong>. Some games have a wider variety of possible outcomes; Chess is zero-sum. “Constant-sum” would have been a better term, but zero-sum is traditional and makes sense if you imagine each player is charged an entry fee of 1/2, and end with 0 or 1.</p>
+</blockquote>
+<p>The formal definition above help us to build a tree, while in general games, this tree would be too large to build. And in fact the main idea is that <strong>we don’t need to know the complete tree, we just need to build tree examining enough nodes to make a smart move</strong>.</p>
+<h2 id="5-2-Opttimal-decisions-in-games"><a href="#5-2-Opttimal-decisions-in-games" class="headerlink" title="5.2 Opttimal decisions in games"></a>5.2 Opttimal decisions in games</h2><p>Given a game tree, the optimal strategy can be determined from the minimax value of each node n, which we write as MINIMAX(n). This values of a terminal state is just its utility. Furthermore, given a choice, MAX prefers to move to a state of maximum value, while MIN prefers a state of minimum value. </p>
+<img src="/2018/12/20/Artificial-Intelligence/2.png">
+<p>[Here in the above picture, s means node n]</p>
+<img src="/2018/12/20/Artificial-Intelligence/3.png">
+<h3 id="The-minimax-algorithm"><a href="#The-minimax-algorithm" class="headerlink" title="The minimax algorithm"></a>The minimax algorithm</h3><p>minimax algorithm为每个state s都计算其MINIMAX(s)，从最底下的ternimal states开始，首先通过terminal state计算utility，然后向上根据min或者max更新父节点的utility，直至更新完完整的树，这种方法虽然在实际中是行不通的，但是本章所有的方法其实都建立在minimax algorithm的基础上。</p>
+<h3 id="Mutipleplayer-games-gt-2"><a href="#Mutipleplayer-games-gt-2" class="headerlink" title="Mutipleplayer games (&gt;=2)"></a>Mutipleplayer games (&gt;=2)</h3><img src="/2018/12/20/Artificial-Intelligence/4.png">
+<p>Actually this is vaery same like the minimax algorithm, while in each nodes we assign a vector (length equal to the number of players). And each level we choose the max/min by the vectors due to the values in certain dimension.</p>
+<h2 id="5-3-Alpha-Beta-Pruning"><a href="#5-3-Alpha-Beta-Pruning" class="headerlink" title="5.3 Alpha-Beta Pruning"></a>5.3 Alpha-Beta Pruning</h2><p>minimax的问题在于game states的数量实在是过于庞大(exponential)，但、是其实我们可以通过pruning有效的减小树的规模，在adversial search中常用的方法是apha-beta pruning。对于一棵标准的minimax树，我们可以去除那些永远都不会影响到我们最终决定的子树。</p>
+<img src="/2018/12/20/Artificial-Intelligence/5.png">
+<p><a href="https://www.jianshu.com/p/3b464aeba078" target="_blank" rel="noopener">link1 for Alpha-Beta Pruning</a></p>
+<p><a href="http://inst.eecs.berkeley.edu/~cs61b/fa14/ta-materials/apps/ab_tree_practice/" target="_blank" rel="noopener">link2 for Alpha-Beta Pruning</a></p>
+<h2 id="5-4-Imperfect-Real-Time-Decisions"><a href="#5-4-Imperfect-Real-Time-Decisions" class="headerlink" title="5.4 Imperfect Real-Time Decisions"></a>5.4 Imperfect Real-Time Decisions</h2><p>在minimax算法中，我们需要创造一棵完整的树，尽管alpha-beta剪枝帮助我们缩减了这棵树的规模，但是通常情况下这棵树的深度依然过于庞大。所以在本节中，我们使用一个heuristic evaluation function来将那些non-terminal nodes转化成terminal leaves。</p>
+<img src="/2018/12/20/Artificial-Intelligence/6.png">
+<blockquote>
+<p>Evaluation function:evaluation function的作用是对于一个given position of game(state)，返回一个estimation of the expected utility。</p>
+</blockquote>
+<h2 id="5-5-Stochastic-Games"><a href="#5-5-Stochastic-Games" class="headerlink" title="5.5 Stochastic Games"></a>5.5 Stochastic Games</h2><p>在实际中，我们常常需要面对受概率影响的随机情况，因此我们无法像是在之前的情况中一样构建树，我们需要构建的是一棵随机树。</p>
+<img src="/2018/12/20/Artificial-Intelligence/7.png">
+<p>为了作出最优的决定，我们需要为每个nodes计算expecti-minimax values。换而言之，我们的策略可以概括为<strong>尽人事知天命</strong>。</p>
+<img src="/2018/12/20/Artificial-Intelligence/8.png">
+<h2 id="5-7-State-Of-The-Art-Game-Programs"><a href="#5-7-State-Of-The-Art-Game-Programs" class="headerlink" title="5.7 State Of The Art Game Programs"></a>5.7 State Of The Art Game Programs</h2><h2 id="5-8-Alternative-Approaches"><a href="#5-8-Alternative-Approaches" class="headerlink" title="5.8 Alternative Approaches"></a>5.8 Alternative Approaches</h2><p>精准的计算optimal decision在大部分的情况下是无法处理的，世纪钟所有的算法都或多或少的进行了一定程度的近似和假设。</p>
+<h2 id="5-9-Summary"><a href="#5-9-Summary" class="headerlink" title="5.9 Summary"></a>5.9 Summary</h2><p>• A game can be defined by the initial state (how the board is set up), the legal actions in each state, the result of each action, a terminal test (which says when the game is over), and a utility function that applies to terminal states.</p>
+<p>• In two-player zero-sum games with perfect information, the minimax algorithm can select optimal moves by a depth-first enumeration of the game tree.</p>
+<p>• The alpha–beta search algorithm computes the same optimal move as minimax, but achieves much greater efficiency by eliminating subtrees that are provably irrelevant.</p>
+<p>• Usually, it is not feasible to consider the whole game tree (even with alpha–beta), so we need to cut the search off at some point and apply a heuristic evaluation function that estimates the utility of a state.</p>
+<p>• Many game programs precompute tables of best moves in the opening and endgame so that they can look up a move rather than search.</p>
+<p>• Games of chance can be handled by an extension to the minimax algorithm that eval- uates a chance node by taking the average utility of all its children, weighted by the probability of each child.</p>
+<h1 id="Chapter-VI-CONSTRAINT-SATISFACTION-PROBLEMS"><a href="#Chapter-VI-CONSTRAINT-SATISFACTION-PROBLEMS" class="headerlink" title="Chapter VI: CONSTRAINT SATISFACTION PROBLEMS"></a>Chapter VI: CONSTRAINT SATISFACTION PROBLEMS</h1><p>This chapter describes a way to solve certain problems more efficiently. We used a factored representation for each state: a set of variables, each has a value. And a problem is solved when each variable has a value that satisfies all the constraints. A problem described this way is called a constraint satisfcation problem, CSP in short.</p>
+<p>CSP search algorithms take advantage of the structure of states and use general-purpose rather than problem-specific heuristics to enable the solution of complex problems. The main idea is to eliminate large portions of the search space all at once by identifying variable/value combinations that violate the constraints.</p>
+<h2 id="6-1-Defining-CSP"><a href="#6-1-Defining-CSP" class="headerlink" title="6.1 Defining CSP"></a>6.1 Defining CSP</h2><p>A constraint satisfaction problem consists of three components, X, D, and C : </p>
+<ol>
+<li>X is a set of variables, {X1,…,Xn}.</li>
+<li>D is a set of domains, {D1, . . . , Dn}, one for each variable.</li>
+<li>C is a set of constraints that specify allowable combinations of values.</li>
+</ol>
+<h2 id="6-2-Constraint-propagation-inference-in-CSPs"><a href="#6-2-Constraint-propagation-inference-in-CSPs" class="headerlink" title="6.2 Constraint propagation: inference in CSPs"></a>6.2 Constraint propagation: inference in CSPs</h2><p>In regular state-space search, an algorithm can do only one thing: search. In CSPs there is a choice: an algorithm can search (choose a new variable assignment from several possibilities) or do a specific type of inference called constraint propagation: using the constraints to reduce the number of legal values for a variable, which can reduce the legal values for another variables.</p>
+<p>THe key idea is <strong>local consistency</strong>, If we treat each variable as a node in a graph and each binary constraint as an arc, then the process of enforcing local consistency in each part of the graph causes inconsistent values to be eliminated throughout the graph. </p>
+<h3 id="Node-Consistency"><a href="#Node-Consistency" class="headerlink" title="Node Consistency"></a>Node Consistency</h3><p>A single variable (corresponding to a node in the CSP network) is node-consistent if all the values in the variable’s domain satisfy the variable’s unary constraints.</p>
+<h3 id="Arc-Consistency"><a href="#Arc-Consistency" class="headerlink" title="Arc Consistency"></a>Arc Consistency</h3><p>A variable in a CSP is arc-consistent if every value in its domain satisfies the variable’s binary constraints. More formally, Xi is arc-consistent with respect to another variable Xj if for every value in the current domain Di there is some value in the domain Dj that satisfies the binary constraint on the arc (Xi,Xj).</p>
+<p>The most popular algorithm for arc consistency is called AC-3. To make every variable arc-consistent, the AC-3 algorithm maintains a queue of arcs to consider.</p>
+<h3 id="Path-Consistency"><a href="#Path-Consistency" class="headerlink" title="Path Consistency"></a>Path Consistency</h3><p>Consider the map-coloring problem on Australia, but with only two colors allowed, red and blue. Arc consistency can do nothing because every variable is already arc consistent: each can be red with blue at the other end of the arc (or vice versa). But clearly there is no solution to the problem. we need at least three colors for them alone.</p>
+<p>To make progress on problems like map coloring, we need a stronger notion of consistency. Path consistency tightens the binary constraints by using implicit constraints that are inferred by looking at triples of variables.</p>
+<p>A two-variable set {Xi,Xj} is path-consistent with respect to a third variable Xm if, for every assignment {Xi = a, Xj = b} consistent with the constraints on {Xi , Xj }, there is an assignment to Xm that satisfies the constraints on {Xi , Xm } and {Xm , Xj }. This is called path consistency.</p>
+<h3 id="K-consistency"><a href="#K-consistency" class="headerlink" title="K-consistency"></a>K-consistency</h3><p>Stronger forms of propagation can be defined with the notion of k-consistency. A CSP is k-consistent if, for any set of k − 1 variables and for any consistent assignment to those variables, a consistent value can always be assigned to any kth variable.</p>
+<h3 id="Global-Constraints"><a href="#Global-Constraints" class="headerlink" title="Global Constraints"></a>Global Constraints</h3><p>Remember that a global constraint is one involving an arbitrary number of variables (but not necessarily all variables). Global constraints occur frequently in real problems and can be handled by special-purpose algorithms that are more efficient than the general-purpose methods described so far.</p>
+<h2 id="6-3-Backtracking-search-for-CSPs"><a href="#6-3-Backtracking-search-for-CSPs" class="headerlink" title="6.3 Backtracking search for CSPs"></a>6.3 Backtracking search for CSPs</h2><p>For a real Sudoku example, we could apply a standard depth limited search. While it is quite obvious that the states are too large to build.</p>
+<p>The term <strong>backtracking search</strong> is used for a DFS that chooses values for one variables at a time, and backtracks when a variable has no legal values left to assign. </p>
+<img src="/2018/12/20/Artificial-Intelligence/9.png">
+<p>Just like we improve uninformed search, we could apply some techniques to improve the performance of backtracking with following directions:</p>
+<ol>
+<li>Which variable should be assigned next (SELECT-UNASSIGNED-VARIABLE), and in what order should its values be tried (ORDER-DOMAIN-VALUES)?</li>
+<li>What inferences should be performed at each step in the search (INFERENCE)?</li>
+<li>When the search arrives at an assignment that violates a constraint, can the search avoid repeating this failure?</li>
+</ol>
+<h3 id="Value-and-value-ordering"><a href="#Value-and-value-ordering" class="headerlink" title="Value and value ordering"></a>Value and value ordering</h3><p>One of the most important step in Backtracking problems is that select unassigned variables and assign it certain values. </p>
+<p>One of the most important strategy is called the minimum remaining value (MRV) search. It is also called the most constraint variable heuristic. The general idea is to <strong>choose the variable with the fewest legal values</strong>.</p>
+<p>Another idea is known as degree heuristic. It attempts to <strong>select the variable that is involved in the largest number of constraints on other unassigned values</strong>.</p>
+<p>Once a variable has been selected, wthe algorithm has to decide on the order in which to examine values (constraints propagation). And the lest-constraining-value heuristic can be effective in some cases. It <strong>prefers the value that rule out/eliminate the fewest choices for the neighboring variables in the constraint graph</strong>.</p>
+<h3 id="Interleaving-search-and-inference"><a href="#Interleaving-search-and-inference" class="headerlink" title="Interleaving search and inference"></a>Interleaving search and inference</h3><p>So far we have seen how AC-3 and other algorithms can infer reductions in the domain of variables before we begin the search. But inference can be even more powerful in the course of a search: every time we make a choice of a value for a variable, we have a brand-new opportunity to infer new domain reductions on the neighboring variables.</p>
+<p>One of the simplest forms of inference is called forward checking. Whenever a variable X is assigned, the forward-checking process establishes arc consistency for it: for each unassigned variable Y that is connected to X by a constraint, delete from Y ’s domain any value that is inconsistent with the value chosen for X.</p>
+<img src="/2018/12/20/Artificial-Intelligence/10.png">
+<p>For many problems the search will be more effective if we combine the MRV heuristic with forward checking.</p>
+<p>Although forward checking detects many inconsistencies, it does not detect all of them. The problem is that it makes the current variable arc-consistent, but doesn’t look ahead and make all the other variables arc-consistent. For example, consider the third row of above picture. It shows that when WA is red and Q is green , both NT and SA are forced to be blue. Forward checking does not look far enough ahead to notice that this is an inconsistency: NT and SA are adjacent and so cannot have the same value.</p>
+<p>The algorithm called MAC (for Maintaining Arc Consistency (MAC)) detects this inconsistency. After a variable Xi is assigned a value, the INFERENCE procedure calls AC-3, but instead of a queue of all arcs in the CSP, we start with only the arcs (Xj,Xi) for all Xj that are unassigned variables that are neighbors of Xi. From there, AC-3 does constraint propagation in the usual way, and if any variable has its domain reduced to the empty set, the call to AC-3 fails and we know to backtrack immediately.</p>
+<h3 id="Intelligent-Backtracking-Looking-backward"><a href="#Intelligent-Backtracking-Looking-backward" class="headerlink" title="Intelligent Backtracking: Looking backward"></a>Intelligent Backtracking: Looking backward</h3><p>The BACKTRACKING-SEARCH algorithm in above picture has a very simple policy for what to do when a branch of the search fails: back up to the preceding variable and try a different value for it. This is called <strong>chronological backtracking</strong> because the most recent decision point is revisited. In this subsection, we consider better possibilities.</p>
+<p>A more intelligent approach to backtracking is to backtrack to a variable that might fix the problem—a variable that was responsible for making one of the possible values of SA impossible. To do this, we will keep track of a set of assignments that are in conflict with some value for SA. The set (in this case {Q=red,NSW =green,V =blue,}), is called the conflict set for SA. The backjumping method backtracks to the most recent assignment in the conflict set; in this case, backjumping would jump over Tasmania and try a new value for V . This method is easily implemented by a modification to BACKTRACK such that it accumulates the conflict set while checking for a legal value to assign. If no legal value is found, the algorithm should return the most recent element of the conflict set along with the failure indicator.</p>
+<h1 id="Chapter-VII-LOGICAL-AGENTS"><a href="#Chapter-VII-LOGICAL-AGENTS" class="headerlink" title="Chapter VII: LOGICAL AGENTS"></a>Chapter VII: LOGICAL AGENTS</h1><p>How the intelligence of humans is achieved—<strong>not by purely reflex mechanisms but by processes of reasoning that operate on internal representations of knowledge</strong>. In AI, this approach to intelligence is embodied in knowledge-based agents.</p>
+<h2 id="7-1-Knowledge-based-agents"><a href="#7-1-Knowledge-based-agents" class="headerlink" title="7.1 Knowledge-based agents"></a>7.1 Knowledge-based agents</h2><p>The central component of a knowledge-based agent is its knowledge base, or KB. A knowledge base is a set of sentences. Each sentence is expressed in a language called a <strong>knowledge representation language</strong> and represents some assertion about the world. Sometimes we dignify a sentence with the name axiom, when the sentence is taken as given without being derived from other sentences.</p>
+<p>There must be a way to add new sentences to the knowledge base and a way to query what is known. The standard names for these operations are TELL and ASK, respectively. Both operations may involve inference—that is, <strong>deriving new sentences from old</strong>. Inference must obey the requirement that when one ASKs a question of the knowledge base, the answer should follow from what has been told (or TELLed) to the knowledge base previously.</p>
+<p>Like every agents, a KB agents takes a percept as input and returns an action. The agent maintains a knowledge base KB, which is known as knowledge base.</p>
+<p>Each time the agent is called, it does 3 things:</p>
+<ol>
+<li>it tells the KB what it perceives.</li>
+<li>it asks the knowledge base what actions it should take</li>
+<li>it tells the KB which action has been chosen and executes the action.</li>
+</ol>
+<h2 id="7-3-Logic"><a href="#7-3-Logic" class="headerlink" title="7.3 Logic"></a>7.3 Logic</h2><p>syntax:语言必须要遵守的规则</p>
+<p>semantics:语句的实际含义(defines the truth of each sentence in the world)</p>
+<p>model: Informally, we may think of an example, having x men and y women sitting at a table playing bridge, and the sentence x + y = 4 is true when there are four people in total. Formally, the possible models are just all possible assignments of real numbers to the variables x and y. Each such assignment fixes the truth of any sentence of arithmetic whose variables are x and y. If a sentence α is true in model m, we say that m satisfies α or sometimes m is a model of α. We use the notation M(α) to mean the set of all models of α.</p>
+<p>logical entailment [α |= β]: α |= β if and only if, in every model in which α is true, β is also true. (α |= β iff M ( α ) ⊆ M ( β ) .)</p>
+<p><a href="https://math.stackexchange.com/questions/655457/when-do-we-use-entailment-vs-implication" target="_blank" rel="noopener">entailment vs inference</a>:In understanding entailment and inference, it might help to think of the set of all conse- quences of KB as a haystack and of α as a needle. Entailment is like the needle being in the haystack; inference is like finding it. </p>
+<blockquote>
+<p>Logical inference</p>
+<p>Model checking</p>
+</blockquote>
+<p>An inference algorithm that derives only entailed sentences is called sound or truth-preserving. Soundness is a highly desirable property. An unsound inference procedure es- sentially makes things up as it goes along—it announces the discovery of nonexistent needles.</p>
+<p>The property of completeness is also desirable: an inference algorithm is complete if it can derive any sentence that is entailed. For real haystacks, which are finite in extent, it seems obvious that a systematic examination can always decide whether the needle is in the haystack.</p>
+<h2 id="7-4-Propositional-Logic-A-very-simple-logic"><a href="#7-4-Propositional-Logic-A-very-simple-logic" class="headerlink" title="7.4 Propositional Logic: A very simple logic"></a>7.4 Propositional Logic: A very simple logic</h2><h3 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h3><p>The syntax of propositional logic defines the allowable sentences. The atomic sentences consist of a single proposition symbol. Each symbol stands for a propositional that can be true or false.</p>
+<p>Complex sentences are constructed from simpler sentences, by parentheses and logical connectives(¬,∧,∨,⇒,⇔).</p>
+<h3 id="Semantics"><a href="#Semantics" class="headerlink" title="Semantics"></a>Semantics</h3><img src="/2018/12/20/Artificial-Intelligence/11.png">
+<h2 id="7-5-Propositional-Theorem-Proving"><a href="#7-5-Propositional-Theorem-Proving" class="headerlink" title="7.5 Propositional Theorem Proving"></a>7.5 Propositional Theorem Proving</h2><p>So far, we have shown how to determine entailment by model checking: enumerating models and showing that the sentence must hold in all models. In this section, we show how entailment can be done by theorem proving: applying rules of inference directly to the sentences in our knowledge base to construct a proof of the desired sentence without consulting models.</p>
+<p><strong>Logical equivalence</strong>: two sentences α and β are logically equivalent if they are true in the same set of models.  [α≡β iff α|=β and β|=α]</p>
+<p><strong>Validity</strong>: A sentence is valid if it is true in all models. For example, the sentence P ∨ ¬P is valid. </p>
+<blockquote>
+<p>For any sentences α and β, α |= β if and only if the sentence (α ⇒ β) is valid.</p>
+</blockquote>
+<p><strong>Satisfiability</strong>: A sentence is satisfiable if it is true in, or satisfied by some model.</p>
+<h3 id="Inference-and-proof"><a href="#Inference-and-proof" class="headerlink" title="Inference and proof"></a>Inference and proof</h3><p><strong>Modus Ponens</strong>: α ⇒ β, α then β is true</p>
+<h3 id="Proof-by-resolution"><a href="#Proof-by-resolution" class="headerlink" title="Proof by resolution"></a>Proof by resolution</h3><p>The current section introduces a single inference rule, resolution, that yields a complete inference algorithm when coupled with any complete search algorithm.</p>
+<p><strong>Conjunctive normal form</strong>: a set of sentences connected by AND</p>
+<blockquote>
+<p>to show that KB |= α, we show that (KB ∧ ¬α) is unsatisfiable.</p>
+</blockquote>
+<h3 id="Forward-amp-Backward-chaining"><a href="#Forward-amp-Backward-chaining" class="headerlink" title="Forward&amp;Backward chaining"></a>Forward&amp;Backward chaining</h3><p>The forward-chaining algorithm determines if a single proposition symbol q is entailed by a knowledge base of definite clauses. It begins from known facts (positive literals) in the knowledge base. If all the premises of an implication are known, then its conclusion is added to the set of known facts. For example, if L1,1 and Breeze are known and (L1,1 ∧ Breeze) ⇒ B1,1 is in the knowledge base, then B1,1 can be added. </p>
+<p>It is easy to see that forward chaining is sound: every inference is essentially an application of Modus Ponens. Forward chaining is also complete: every entailed atomic sentence will be derived. Forward chaining is an example of the general concept of data-driven reasoning—that is, reasoning in which the focus of attention starts with the known data. </p>
+<p>The backward-chaining algorithm, as its name suggests, works backward from the query. If the query q is known to be true, then no work is needed. Otherwise, the algorithm finds those implications in the knowledge base whose conclusion is q. Backward chaining is a form of goal-directed reasoning. It is useful for answering specific questions such as “What shall I do now?” and “Where are my keys?”.</p>
+<h1 id="Chapter-X-CLASSICAL-PLANNING"><a href="#Chapter-X-CLASSICAL-PLANNING" class="headerlink" title="Chapter X: CLASSICAL PLANNING"></a>Chapter X: CLASSICAL PLANNING</h1><h2 id="10-1-Definition-of-classical-planning"><a href="#10-1-Definition-of-classical-planning" class="headerlink" title="10.1 Definition of classical planning"></a>10.1 Definition of classical planning</h2><p>The problem-solving agent of Chapter 3 can find sequences of actions that result in a goal state. But it deals with atomic representations of states and thus needs good domain-specific heuristics to perform well.</p>
+<p>The hybrid propositional logical agent of Chapter 7 can find plans without domain-specific heuristics because it uses domain-independent heuristics based on the logical structure of the problem. </p>
+<p>In response to this, planning researchers have settled on a factored representation — one in which a state of the world is represented by a collection of variables. We use a language called PDDL, the Planning Domain Definition Language.</p>
+<p>States: Each state is represented as a conjunction of fluents that are ground, functionless atoms. For example, a state in a package delivery problem might be At(Truck1,Melbourne) ∧ At(Truck2,Sydney). Database semantics is used: the closed-world assumption means that any fluents that are not mentioned are false, and the unique names assumption means that Truck1 and Truck2 are distinct.</p>
+<blockquote>
+<p>Closed world/ Open world assumption</p>
+</blockquote>
+<p>Actions: they are described by a set of action schema, for each action, it corresponds to one action schema, consists of Precondition and effect. For example, here is an example of flying a plane from one location to another:</p>
+<img src="/2018/12/20/Artificial-Intelligence/12.png">
+<p>We say that action a is applicable in state s if the preconditions are satisfied by s. </p>
+<p>The result of executing action a in state s is defined as a state s which is represented by the set of fluents formed by starting with s, removing the fluents that appear as negative literals in the action’s effects (what we call the delete list or DEL(a)), and adding the fluents that are positive literals in the action’s effects (what we call the add list or ADD(a)):</p>
+<blockquote>
+<p>RESULT(s, a) = (s − DEL(a)) ∪ ADD(a)</p>
+</blockquote>
+<p>For example, with the action Fly(F22,SFO,JFK), we would remove At(F22,SFO) and add At(F22,JFK).</p>
+<p><strong>Initial State</strong>: the initial state is a conjunction of ground atoms.</p>
+<h2 id="10-2-Algorithms-for-Planning-as-State-Space-Search"><a href="#10-2-Algorithms-for-Planning-as-State-Space-Search" class="headerlink" title="10.2 Algorithms for Planning as State-Space Search"></a>10.2 Algorithms for Planning as State-Space Search</h2><h3 id="Forward-progression-state-space-search"><a href="#Forward-progression-state-space-search" class="headerlink" title="Forward(progression) state-space search"></a>Forward(progression) state-space search</h3><p>Forward search is prone to exploring irrelevant actions. Consider the noble task of buying a copy of <em>AI: A Modern Approach</em> from an online bookseller. Suppose there is an action schema Buy(isbn) with effect Own(isbn). ISBNs are 10 digits, so this action schema represents 10 billion ground actions. An uninformed forward-search algorithm would have to start enumerating these 10 billion actions to find one that leads to the goal.</p>
+<h3 id="Backward-regression-relevant-states-search"><a href="#Backward-regression-relevant-states-search" class="headerlink" title="Backward(regression) relevant-states search"></a>Backward(regression) relevant-states search</h3><p>In regression search we start at the goal and apply the actions backward until we find a sequence of steps that reaches the initial state. It is called relevant-states search because we only consider actions that are relevant to the goal (or current state).</p>
+<h3 id="Heuristics-for-planning"><a href="#Heuristics-for-planning" class="headerlink" title="Heuristics for planning"></a>Heuristics for planning</h3><ol>
+<li>Ignore preconditions heuristic: drops all the preconditions from actions</li>
+<li>Ignore delete lists heuristic: create a relaxed version of original problem</li>
+<li>Decomposition: create a set of independent subgoals</li>
+</ol>
+<h2 id="10-4-Other-Classical-Planning-Approaches"><a href="#10-4-Other-Classical-Planning-Approaches" class="headerlink" title="10.4 Other Classical Planning Approaches"></a>10.4 Other Classical Planning Approaches</h2><p>Currently we have several solutions for classical planning, like translating into a Boolean satisfiability problem. And actually in the real practice we have more choices.</p>
+]]></content>
       
         
         <tags>
@@ -2381,9 +2572,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> Machine Learning </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Machine Learning </tag>
             
             <tag> Jupyter Notebook </tag>
             
