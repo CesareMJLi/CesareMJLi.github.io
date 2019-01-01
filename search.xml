@@ -2501,9 +2501,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> POLIMI </tag>
-            
             <tag> Algorithm </tag>
+            
+            <tag> POLIMI </tag>
             
             <tag> Parallel Programming </tag>
             
