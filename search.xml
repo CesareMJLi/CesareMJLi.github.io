@@ -2501,9 +2501,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> Algorithm </tag>
-            
             <tag> POLIMI </tag>
+            
+            <tag> Algorithm </tag>
             
             <tag> Parallel Programming </tag>
             
@@ -2572,9 +2572,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> Python </tag>
-            
             <tag> Machine Learning </tag>
+            
+            <tag> Python </tag>
             
             <tag> Jupyter Notebook </tag>
             
@@ -2677,9 +2677,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
             
             <tag> POLIMI </tag>
             
-            <tag> Foundations of Operations Research </tag>
-            
             <tag> Linear Programming </tag>
+            
+            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
@@ -2876,13 +2876,13 @@ end.
             
             <tag> POLIMI </tag>
             
+            <tag> Foundations of Operations Research </tag>
+            
             <tag> Graphs </tag>
             
             <tag> Network Flows </tag>
             
             <tag> Algorithms </tag>
-            
-            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
