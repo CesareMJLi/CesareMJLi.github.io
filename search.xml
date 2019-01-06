@@ -120,11 +120,11 @@
 <p>In general, iterative deepening is the preferred uninformed search method when the search space is large and the depth of the solution is not known.</p>
 <h3 id="Bidirectional-search"><a href="#Bidirectional-search" class="headerlink" title="Bidirectional search"></a>Bidirectional search</h3><p>The idea behind bidirectional search is to run two simultaneous searches—one forward from the initial state and the other backward from the goal—hoping that the two searches meet in the middle.</p>
 <img src="/2018/12/20/Artificial-Intelligence/1.png">
-<h2 id="3-5-Informed-Heuristic-Search-Strategies"><a href="#3-5-Informed-Heuristic-Search-Strategies" class="headerlink" title="3.5 Informed (Heuristic) Search Strategies"></a>3.5 Informed (Heuristic) Search Strategies</h2><p>This section shows how an informed search strategy—one that uses problem-specific knowledge beyond the definition of the problem itself—can find solutions more efficiently than can an uninformed strategy.</p>
+<h2 id="3-5-Informed-Heuristic-Search-Strategies"><a href="#3-5-Informed-Heuristic-Search-Strategies" class="headerlink" title="3.5 Informed (Heuristic) Search Strategies"></a>3.5 Informed (Heuristic) Search Strategies</h2><p>This section shows how an informed search strategy—one that uses problem-specific knowledge beyond the definition of the problem itself—can find solutions more efficiently than can an uninformed strategy.(尽管我们依然身在迷宫之中，但是我们已经知道迷宫的出口在东北方向，那么直觉上我们会觉得东北方的路会有更大的可能能够带我们走出迷宫。)</p>
 <p>The evaluation function f(n) is construed as a cost estimate, so the node with the lowest evaluation is expanded first. Which means that it is the cost from the initial state to the goal state, even if this cost is estimated a lot. </p>
 <p>The heuristic function h(n) is estimated cost of the cheapest path from the state at node n to a goal state.</p>
 <h3 id="Greedy-best-first-search"><a href="#Greedy-best-first-search" class="headerlink" title="Greedy best first search"></a>Greedy best first search</h3><p>Greedy best-first search tries to expand the node that is closest to the goal, on the grounds that this is likely to lead to a solution quickly. </p>
-<p>And here in this search f(n)=h(n). </p>
+<p>And here in this search f(n)=h(n). (这也就是Greedy Best Search与A*的最大区别，我们只考虑哪个next state是最优的，无论从当前的state到这个next state的path cost是多少。)</p>
 <h3 id="A-search-Minimizing-the-total-estimated-solution-cost"><a href="#A-search-Minimizing-the-total-estimated-solution-cost" class="headerlink" title="A* search: Minimizing the total estimated solution cost"></a>A* search: Minimizing the total estimated solution cost</h3><p>The most widely used form of best-first search is called A<em> search. It evaluates nodes by combining <em>*g(n), the cost to reach the node, and h(n), the cost to get from the node to the goal</em></em>: f(n)=g(n)+h(n)</p>
 <p>And here <strong>f(n) = estimated cost of the cheapest solution through n</strong>. Thus if we are trying to find the cheapest solution, a reasonable thing is to find the lowest f(n).</p>
 <blockquote>
@@ -135,7 +135,8 @@
 <p>A<em> has the following properties: the tree-search version of A</em> is optimal if h(n) is admissible, while the graph-search version is optimal if h(n) is consistent.</p>
 <p>That A<em> search is complete, optimal, and optimally efficient among all such algorithms is rather satisfying. Unfortunately, it does not mean that A</em> is the answer to all our searching needs. The catch is that, for most problems, the number of states within the goal contour search space is still exponential in the length of the solution. And A<em> requires a high amount of space usage. This may be the biggest disadvantage of A</em>.</p>
 <h3 id="Memory-bounded-heuristic-search"><a href="#Memory-bounded-heuristic-search" class="headerlink" title="Memory-bounded heuristic search."></a>Memory-bounded heuristic search.</h3><p>The simplest way to reduce memory requirements for A<em> is to adapt the idea of iterative deepening to the heuristic search context, resulting in the iterative-deepening A</em> (IDA*) algorithm. </p>
-<p>The main difference between IDA<em> and standard iterative deepening is that the cutoff used is the f-cost (</em>g + h*) rather than the depth; at each iteration, the cutoff value is the smallest f-cost of any node that exceeded the cutoff on the previous iteration.</p>
+<p>The main difference between IDA<em> and standard iterative deepening is that the cutoff used is the f-cost (</em>g + h*) rather than the depth; at each iteration, the cutoff value is the smallest f-cost of any node that exceeded the cutoff on the previous iteration. RBFS is a great example in this search method. </p>
+<p>RBFS is similar to that of a recursive depth-first search, but rather than continuing indefinitely down the current path, it uses the f limit variable to keep track of the f-value of the best alternative path available from any ancestor of the current node. If the current node exceeds this limit, the recursion unwinds back to the alternative path. As the recursion unwinds, RBFS replaces the f-value of each node along the path with a backed-up value—–the best f-value of its children. In this way, RBFS remembers the f-value of the best leaf in the forgotten subtree and can therefore decide whether it’s worth reexpanding the subtree at some later time. RBFS is somewhat more efficient than IDA<em>, but still suffers from excessive node re-generation. (RBFS的优点在于，A</em>是一种在结构上与BFS有某些相同之处的算法，在探索树的过程中，如果足够深的话将会需要存储O(b<sup>d</sup>的nodes，这往往超过了我们能够容忍的space complexity，故我们采用RBFS，因为RBFS按照相同的原理选择下一个探索的点，但是一旦RBFS发现当前的路线的cost不是最优，就会unwind(先朝向root的方向然后再向下找当前最优cost的位置)，到达当前的最优的node，这样似乎没有产生什么好处，但是恰恰相反，在unwind的过程中，RBFS会更新路径上的点的h，因为这些h欺骗了RBFS的感情，当前的路径并不是最优的！同时RBFS也并不储存哪些点已经被expand了，下次如果revisit了这个点，那么重新计算就是了，RBFS就是使用这种方法来牺牲time来换取space。)</p>
 <h3 id="Learning-to-search-better"><a href="#Learning-to-search-better" class="headerlink" title="Learning to search better"></a>Learning to search better</h3><h2 id="3-6-Heuristic-Functions"><a href="#3-6-Heuristic-Functions" class="headerlink" title="3.6 Heuristic Functions"></a>3.6 Heuristic Functions</h2><p>In this part, we are going to discuss how to find a heuristic function and the importance of a good heuristic function.</p>
 <h2 id="3-7-SUMMARY"><a href="#3-7-SUMMARY" class="headerlink" title="3.7 SUMMARY"></a>3.7 SUMMARY</h2><p>Before an agent can start searching for solutions, a goal must be identified and a well- defined problem must be formulated.</p>
 <p>• A problem consists of five parts: the initial state, a set of actions, a transition model describing the results of those actions, a goal test function, and a path cost function. The environment of the problem is represented by a state space. A path through the state space from the initial state to a goal state is a solution.</p>
@@ -183,7 +184,7 @@
 <h3 id="The-minimax-algorithm"><a href="#The-minimax-algorithm" class="headerlink" title="The minimax algorithm"></a>The minimax algorithm</h3><p>minimax algorithm为每个state s都计算其MINIMAX(s)，从最底下的ternimal states开始，首先通过terminal state计算utility，然后向上根据min或者max更新父节点的utility，直至更新完完整的树，这种方法虽然在实际中是行不通的，但是本章所有的方法其实都建立在minimax algorithm的基础上。</p>
 <h3 id="Mutipleplayer-games-gt-2"><a href="#Mutipleplayer-games-gt-2" class="headerlink" title="Mutipleplayer games (&gt;=2)"></a>Mutipleplayer games (&gt;=2)</h3><img src="/2018/12/20/Artificial-Intelligence/4.png">
 <p>Actually this is vaery same like the minimax algorithm, while in each nodes we assign a vector (length equal to the number of players). And each level we choose the max/min by the vectors due to the values in certain dimension.</p>
-<h2 id="5-3-Alpha-Beta-Pruning"><a href="#5-3-Alpha-Beta-Pruning" class="headerlink" title="5.3 Alpha-Beta Pruning"></a>5.3 Alpha-Beta Pruning</h2><p>minimax的问题在于game states的数量实在是过于庞大(exponential)，但、是其实我们可以通过pruning有效的减小树的规模，在adversial search中常用的方法是apha-beta pruning。对于一棵标准的minimax树，我们可以去除那些永远都不会影响到我们最终决定的子树。</p>
+<h2 id="5-3-Alpha-Beta-Pruning"><a href="#5-3-Alpha-Beta-Pruning" class="headerlink" title="5.3 Alpha-Beta Pruning"></a>5.3 Alpha-Beta Pruning</h2><p>minimax的问题在于game states的数量实在是过于庞大(exponential)，但、是其实我们可以通过pruning有效的减小树的规模，在adversial search中常用的方法是apha-beta pruning。对于一棵标准的minimax树，我们可以去除那些永远都不会影响到我们最终决定的子树。我们在上面的minmax的例子中不难看出，minimax的tree是我们需要每一个terminal state的utility，然后才得以建立的complete search tree。而alpha beta pruning的核心就是，假如我（MAX）目前的最好选择是3，那么某个action a3后如果对手有一种选择可能导致2，那么我们根本不需要考虑这个action a3，因为对手不是笨蛋，一定会做出那种让我们得到2的action a’，所以我们就将这个action a3给prune掉了（即不考虑掉了）。</p>
 <img src="/2018/12/20/Artificial-Intelligence/5.png">
 <p><a href="https://www.jianshu.com/p/3b464aeba078" target="_blank" rel="noopener">link1 for Alpha-Beta Pruning</a></p>
 <p><a href="http://inst.eecs.berkeley.edu/~cs61b/fa14/ta-materials/apps/ab_tree_practice/" target="_blank" rel="noopener">link2 for Alpha-Beta Pruning</a></p>
@@ -196,7 +197,7 @@
 <img src="/2018/12/20/Artificial-Intelligence/7.png">
 <p>为了作出最优的决定，我们需要为每个nodes计算expecti-minimax values。换而言之，我们的策略可以概括为<strong>尽人事知天命</strong>。</p>
 <img src="/2018/12/20/Artificial-Intelligence/8.png">
-<h2 id="5-7-State-Of-The-Art-Game-Programs"><a href="#5-7-State-Of-The-Art-Game-Programs" class="headerlink" title="5.7 State Of The Art Game Programs"></a>5.7 State Of The Art Game Programs</h2><h2 id="5-8-Alternative-Approaches"><a href="#5-8-Alternative-Approaches" class="headerlink" title="5.8 Alternative Approaches"></a>5.8 Alternative Approaches</h2><p>精准的计算optimal decision在大部分的情况下是无法处理的，世纪钟所有的算法都或多或少的进行了一定程度的近似和假设。</p>
+<h2 id="5-7-State-Of-The-Art-Game-Programs"><a href="#5-7-State-Of-The-Art-Game-Programs" class="headerlink" title="5.7 State Of The Art Game Programs"></a>5.7 State Of The Art Game Programs</h2><h2 id="5-8-Alternative-Approaches"><a href="#5-8-Alternative-Approaches" class="headerlink" title="5.8 Alternative Approaches"></a>5.8 Alternative Approaches</h2><p>精准的计算optimal decision在大部分的情况下是无法处理的，实际中所有的算法都或多或少的进行了一定程度的近似和假设。</p>
 <h2 id="5-9-Summary"><a href="#5-9-Summary" class="headerlink" title="5.9 Summary"></a>5.9 Summary</h2><p>• A game can be defined by the initial state (how the board is set up), the legal actions in each state, the result of each action, a terminal test (which says when the game is over), and a utility function that applies to terminal states.</p>
 <p>• In two-player zero-sum games with perfect information, the minimax algorithm can select optimal moves by a depth-first enumeration of the game tree.</p>
 <p>• The alpha–beta search algorithm computes the same optimal move as minimax, but achieves much greater efficiency by eliminating subtrees that are provably irrelevant.</p>
@@ -204,7 +205,7 @@
 <p>• Many game programs precompute tables of best moves in the opening and endgame so that they can look up a move rather than search.</p>
 <p>• Games of chance can be handled by an extension to the minimax algorithm that eval- uates a chance node by taking the average utility of all its children, weighted by the probability of each child.</p>
 <h1 id="Chapter-VI-CONSTRAINT-SATISFACTION-PROBLEMS"><a href="#Chapter-VI-CONSTRAINT-SATISFACTION-PROBLEMS" class="headerlink" title="Chapter VI: CONSTRAINT SATISFACTION PROBLEMS"></a>Chapter VI: CONSTRAINT SATISFACTION PROBLEMS</h1><p>This chapter describes a way to solve certain problems more efficiently. We used a factored representation for each state: a set of variables, each has a value. And a problem is solved when each variable has a value that satisfies all the constraints. A problem described this way is called a constraint satisfcation problem, CSP in short.</p>
-<p>CSP search algorithms take advantage of the structure of states and use general-purpose rather than problem-specific heuristics to enable the solution of complex problems. The main idea is to eliminate large portions of the search space all at once by identifying variable/value combinations that violate the constraints.</p>
+<p>CSP search algorithms take advantage of the structure of states and use general-purpose rather than problem-specific heuristics to enable the solution of complex problems.(我们不需要根据每一个问题去设计一个heuristic function，我们只需要使用general的least remaining values策略进行搜索即可) The main idea is to eliminate large portions of the search space all at once by identifying variable/value combinations that violate the constraints.</p>
 <h2 id="6-1-Defining-CSP"><a href="#6-1-Defining-CSP" class="headerlink" title="6.1 Defining CSP"></a>6.1 Defining CSP</h2><p>A constraint satisfaction problem consists of three components, X, D, and C : </p>
 <ol>
 <li>X is a set of variables, {X1,…,Xn}.</li>
@@ -1666,9 +1667,9 @@ Require: 初始参数 θ
             
             <tag> Machine Learning </tag>
             
-            <tag> KNN </tag>
-            
             <tag> SVM </tag>
+            
+            <tag> KNN </tag>
             
         </tags>
         
@@ -2501,9 +2502,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> POLIMI </tag>
-            
             <tag> Algorithm </tag>
+            
+            <tag> POLIMI </tag>
             
             <tag> Parallel Programming </tag>
             
@@ -2572,9 +2573,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> Machine Learning </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Machine Learning </tag>
             
             <tag> Jupyter Notebook </tag>
             
@@ -2677,9 +2678,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
             
             <tag> POLIMI </tag>
             
-            <tag> Linear Programming </tag>
-            
             <tag> Foundations of Operations Research </tag>
+            
+            <tag> Linear Programming </tag>
             
         </tags>
         
@@ -2876,13 +2877,13 @@ end.
             
             <tag> POLIMI </tag>
             
-            <tag> Foundations of Operations Research </tag>
-            
             <tag> Graphs </tag>
             
             <tag> Network Flows </tag>
             
             <tag> Algorithms </tag>
+            
+            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
