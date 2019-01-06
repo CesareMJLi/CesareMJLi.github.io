@@ -244,7 +244,7 @@
 
     
         <meta property="article:published_time" content="Thu Dec 20 2018 13:39:09 GMT+0100">
-        <meta property="article:modified_time" content="Fri Dec 28 2018 18:47:12 GMT+0100">
+        <meta property="article:modified_time" content="Sun Jan 06 2019 16:37:03 GMT+0100">
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://yoursite.com/2018/12/20/Artificial-Intelligence/index.html",
     "headline": "Artificial Intelligence",
     "datePublished": "Thu Dec 20 2018 13:39:09 GMT+0100",
-    "dateModified": "Fri Dec 28 2018 18:47:12 GMT+0100",
+    "dateModified": "Sun Jan 06 2019 16:37:03 GMT+0100",
     "author": {
         "@type": "Person",
         "name": "Cesare (MINGJU LI)",
@@ -557,9 +557,9 @@
 <p>agent = architecture + program</p>
 </blockquote>
 <ol>
-<li>Simple reflex agents: These agents select actions on the basis of the current percept, ignoring the rest of the percept history. </li>
-<li>Model-based reflex agents: The most effective way to handle partial observability is for the agent to keep track of the part of the world it can’t see now. That is, the agent should maintain some sort of internal state that depends on the percept history and thereby reflects at least some of the unobserved aspects of the current state. An agent that uses such a model is called a model-based agent.</li>
-<li>Goal-based agents: Knowing something about the current state of the environment is not always enough to decide what to do. The agent needs some sort of goal information that describes situations that are desirable.</li>
+<li>Simple reflex agents: These agents select actions on the basis of the current percept, ignoring the rest of the percept history. (e.g. 一个设计好的conversation agent，每当输入“你好”的时候，输出“你好”，但是这个机器人实际上并没有计算之前说了多少次你好，哪怕是输入一万次“你好”也会输出“你好”，而不是“你有完没完”。) </li>
+<li>Model-based reflex agents: The most effective way to handle partial observability is for the agent to keep track of the part of the world it can’t see now. That is, the agent should maintain some sort of internal state that depends on the percept history and thereby reflects at least some of the unobserved aspects of the current state. An agent that uses such a model is called a model-based agent.(e.g. 接上例提到的conversation agent，如果我们设计一个model—如一个FSA，当输入超过三次的“你好”后，会输出“你有完没完”，输入超过四次“你好”后输出null)</li>
+<li>Goal-based agents: Knowing something about the current state of the environment is not always enough to decide what to do. The agent needs some sort of goal information that describes situations that are desirable.(e.g. 比如设计一个用于解决推箱子问题的AI，它的goal是为了将所有的箱子按照一定的规则推到指定的位置)</li>
 <li>Utility-based agents: Goals alone are not enough to generate high-quality behavior in most environments. For example, many action sequences will get the taxi to its destination (thereby achieving the goal) but some are quicker, safer, more reliable, or cheaper than others. Goals just provide a crude binary distinction between “happy” and “unhappy” states. An agent’s utility function is essentially an internalization of the performance measure.</li>
 <li>Learning agents: Improving with experiencing</li>
 </ol>
@@ -592,10 +592,10 @@
 <li>Time complexity: How long does it take to find a solution?</li>
 <li>Space complexity: How much memory is needed to perform the search?</li>
 </ol>
-<h2 id="3-4-Uninformed-search-strategies"><a href="#3-4-Uninformed-search-strategies" class="headerlink" title="3.4 Uninformed search strategies"></a>3.4 Uninformed search strategies</h2><p>This section covers several search strategies that come under the heading of uninformed search (also called blind search). The term means that the strategies have no additional information about states beyond that provided in the problem definition. All they can do is generate successors and distinguish a goal state from a non-goal state.</p>
+<h2 id="3-4-Uninformed-search-strategies"><a href="#3-4-Uninformed-search-strategies" class="headerlink" title="3.4 Uninformed search strategies"></a>3.4 Uninformed search strategies</h2><p>This section covers several search strategies that come under the heading of uninformed search (also called blind search). The term means that the strategies have no additional information about states beyond that provided in the problem definition. All they can do is generate successors and distinguish a goal state from a non-goal state. (想象身处于一个迷宫之中，你知道这个迷宫是有一个出口的，但是你并不确定这个出口具体的方位，你能做的就是盲目的前后左右去探索迷宫直至找到出口为止。)</p>
 <h3 id="Breadth-first-search"><a href="#Breadth-first-search" class="headerlink" title="Breadth-first search"></a>Breadth-first search</h3><p>Breadth-first search is a simple strategy in which the root node is expanded first, then all the successors of the root node are expanded next, then their successors, and so on. In general, all the nodes are expanded at a given depth in the search tree before any nodes at the next level are expanded.</p>
 <p>Breadth-first search is optimal if the path cost is a nondecreasing function of the depth of the node. The most common such scenario is that all actions have the same cost. And of course it is complete.</p>
-<p>The memory requirements are a bigger problem for breadth-first search than is the execution time. One might wait 13 days for the solution to an important problem with search depth 12, but no personal computer has the petabyte of memory it would take. Fortunately, other strategies require less memory.</p>
+<p>The time complexity and space complexity for it are both O(b<sup>d</sup>), b means the branching factor for each node, and d means the depth of the solution found. The memory requirements are a bigger problem for breadth-first search than is the execution time. One might wait 13 days for the solution to an important problem with search depth 12, but no personal computer has the petabyte of memory it would take. Fortunately, other strategies require less memory.</p>
 <h3 id="Uniform-cost-search"><a href="#Uniform-cost-search" class="headerlink" title="Uniform cost search"></a>Uniform cost search</h3><p>When all step costs are equal, breadth-first search is optimal because it always expands the shallowest unexpanded node. By a simple extension, we can find an algorithm that is optimal with any step-cost function. Instead of expanding the shallowest node, <strong>uniform-cost search expands the node n with the lowest path cost g(n)</strong>. This is done by storing the frontier as a priority queue ordered by g. </p>
 <p>Accoring to this description, it is not difficult to reach the conclusion that uniform cost search is optimal and complete</p>
 <p>Uniform-cost search does not care about the number of steps a path has, but only about their total cost. Therefore, it will get stuck in an infinite loop if there is a path with an infinite sequence of zero-cost actions.</p>
@@ -653,7 +653,7 @@
 </li>
 <li><p>A∗ search expands nodes with minimal f (n) = g(n) + h(n). A∗ is complete and optimal, provided that h(n) is admissible (for TREE-SEARCH) or consistent (for GRAPH-SEARCH). The space complexity of A∗ is still prohibitive.</p>
 </li>
-<li><p>RBFS (recursive best-first search) and SMA∗ (simplified memory-bounded A∗) are robust, optimal search algorithms that use limited amounts of memory; given enough time, they can solve problems that A∗ cannot solve because it runs out of memory.</p>
+<li><p>RBFS (recursive best-first search) and SMA∗ (simplified memory-bounded A∗) are robust, optimal search algorithms that use limited amounts of memory; given enough time, they can solve problems that A∗ cannot solve because it runs out of memory. [<a href="https://www.slideshare.net/navidasadi1/an-example-of-using-rbfs-recursive-best-first-search-algorithm" target="_blank" rel="noopener">https://www.slideshare.net/navidasadi1/an-example-of-using-rbfs-recursive-best-first-search-algorithm</a>]</p>
 </li>
 </ul>
 <p>• The performance of heuristic search algorithms depends on the quality of the heuristic function. One can sometimes construct good heuristics by relaxing the problem defi- nition, by storing precomputed solution costs for subproblems in a pattern database, or by learning from experience with the problem class.</p>
