@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="en">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Numerical Analysis | 
+        
+        Cesare&#39;s Workshop
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/star.png">
+    <link rel="icon" href="/img/star.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)">
+    <meta name="keywords" content=",Numerical Analysis">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/vibrant-ink.min.css?e5E/qqGcGveS7VTH4M896w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Cesare&#39;s Workshop">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2019/01/12/Numerical-Analysis/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Cesare&#39;s Workshop">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/star.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com/2019/01/12/Numerical-Analysis/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Numerical Analysis | Cesare&#39;s Workshop">
+    <meta property="og:image" content="/img/star.png">
+    <meta property="og:description" content="Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)">
+    <meta property="og:article:tag" content="Numerical Analysis"> 
+
+    
+        <meta property="article:published_time" content="Sat Jan 12 2019 21:53:00 GMT+0100">
+        <meta property="article:modified_time" content="Sun Jan 13 2019 14:24:36 GMT+0100">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yoursite.com/2019/01/12/Numerical-Analysis/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yoursite.com/2019/01/12/Numerical-Analysis/index.html",
+    "headline": "Numerical Analysis",
+    "datePublished": "Sat Jan 12 2019 21:53:00 GMT+0100",
+    "dateModified": "Sun Jan 13 2019 14:24:36 GMT+0100",
+    "author": {
+        "@type": "Person",
+        "name": "Cesare (MINGJU LI)",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/cesare.jpg"
+        },
+        "description": "Each question has an answer.,Or, will have an answer."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Cesare&#39;s Workshop",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/star.png"
+        }
+    },
+    "keywords": ",Numerical Analysis",
+    "description": "Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+<link rel="stylesheet" href="/css/prism-duotone-space.css" type="text/css"><script src="/js/prism.js"></script></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Bisection-Newton-Fixed-Point"><span class="post-toc-number">1.</span> <span class="post-toc-text">Bisection/Newton/Fixed Point</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Bisection-二分法求零点"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Bisection 二分法求零点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Newton-牛顿法和modified牛顿法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Newton 牛顿法和modified牛顿法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Fixed-Point定点法"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Fixed Point定点法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Convergence-Order"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Convergence Order</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#LU分解"><span class="post-toc-number">2.</span> <span class="post-toc-text">LU分解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Backward-and-forward-substitution"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Backward and forward substitution</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#LU分解存在的条件"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">LU分解存在的条件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#General-LU-Decomposition"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">General LU Decomposition</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对于特殊的A进行特殊的LU分解-Cholesky分解"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">对于特殊的A进行特殊的LU分解-Cholesky分解</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对于特殊的A进行特殊的LU分解-Thomas-Algorithm"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">对于特殊的A进行特殊的LU分解-Thomas Algorithm</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#LU-with-pivoting"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">LU with pivoting</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Condition-Number"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">Condition Number</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Iterative-Methods-of-Linear-system"><span class="post-toc-number">3.</span> <span class="post-toc-text">Iterative Methods of Linear system</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Stationary-methods"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Stationary methods</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Jacobi-method-amp-Gauss-Seidel-method"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Jacobi method & Gauss Seidel method</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Richardson-method"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">Richardson method</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Gradient-method-此节不在考试范围内"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">Gradient method* 此节不在考试范围内</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Interpolation"><span class="post-toc-number">4.</span> <span class="post-toc-text">Interpolation</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#拉格朗日多项式插值"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">拉格朗日多项式插值</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分段线性插值"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">分段线性插值</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Spline插值"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">Spline插值</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Integral-积分"><span class="post-toc-number">5.</span> <span class="post-toc-text">Integral 积分</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Numerical Analysis
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/cesare.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Cesare (MINGJU LI)</strong>
+        <span>Jan 12, 2019</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Numerical-Analysis/">Numerical Analysis</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Numerical Analysis&url=http://yoursite.com/2019/01/12/Numerical-Analysis/index.html&pic=http://yoursite.com/img/star.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Weibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Numerical Analysis&url=http://yoursite.com/2019/01/12/Numerical-Analysis/index.html&via=Cesare (MINGJU LI)" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/01/12/Numerical-Analysis/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2019/01/12/Numerical-Analysis/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="Bisection-Newton-Fixed-Point"><a href="#Bisection-Newton-Fixed-Point" class="headerlink" title="Bisection/Newton/Fixed Point"></a>Bisection/Newton/Fixed Point</h1><h2 id="Bisection-二分法求零点"><a href="#Bisection-二分法求零点" class="headerlink" title="Bisection 二分法求零点"></a>Bisection 二分法求零点</h2><p>我们使用二分法求零点，根据函数的连续性，假如在一个函数在interval[a,b]上连续，而且在这个interval的两端取得不同的符号，那么显然我们在这个区间上至少有一个零点，如果函数是单调的，那么在这个interval上的零点唯一。</p>
+<p>我们可以用二分法进行求解，需要给定interval的两端[a,b]的值，以及tolerance的值，通过区间的长度和tolerance来计算需要迭代的次数n，然后进行n次迭代后输出。</p>
+<h2 id="Newton-牛顿法和modified牛顿法"><a href="#Newton-牛顿法和modified牛顿法" class="headerlink" title="Newton 牛顿法和modified牛顿法"></a>Newton 牛顿法和modified牛顿法</h2><p>二分法相当于只使用了函数interval两端的信息，但是我们可以有更快的选择。牛顿法是一种收敛速度比二分法更快的方法，可以描述为在x<sup>(k)</sup>上做一条与原函数相切的直线，将这条直线与x轴的焦点做为下次迭代的x<sup>(k+1)</sup>。</p>
+<p>和二分法不同，尽管牛顿法更快，但是牛顿法并不是全局收敛的，仅仅对于零点a附近某个区间内的点是收敛的，并且我们<strong>不能</strong>判断给定一个点x<sub>0</sub>以及对应的函数值导数值等，去判断能否从x<sub>0</sub>收敛到a。</p>
+<p>我们既然提到了牛顿法是收敛更快的算法，那么要快多少呢？二分法的收敛是线性的，因为我们可以视error为e<sup>(k)</sup>每次迭代都变为e<sup>(k+1)</sup>都是原来的一半。而牛顿法，如果零点a是simple的（即f’(a)不等于0），那么牛顿法是quadratically收敛的，如果零点a不是simple的，且m是a的multiplicity，则牛顿法的收敛为线性的，如果我们使用modified牛顿法（m对应multiplicity的值），此时modified牛顿法的收敛依然是quadratically的。</p>
+<blockquote>
+<p>如果f在interval[a,b]上是单调的，且f(a)和f(b)异号，那么对任何[a,b]上的x<sub>0</sub>，假如x<sub>0</sub>满足f(x<sub>0</sub>)*f’’(x<sub>0</sub>)&gt;0，那么牛顿法在x<sub>0</sub>上收敛。</p>
+</blockquote>
+<h2 id="Fixed-Point定点法"><a href="#Fixed-Point定点法" class="headerlink" title="Fixed Point定点法"></a>Fixed Point定点法</h2><p>定点法：x<sup>(k+1)</sup>=phi(x<sup>(k)</sup>)</p>
+<img src="/2019/01/12/Numerical-Analysis/1.png">
+<p>根据上图不难得出结论，假如a是phi的一个fixed point(即有a=phi(a))，lim e<sup>(k+1)</sup>/e<sup>(k)</sup> = phi’(a),我们希望error在这个迭代的过程中是不断递减的，那么必须有phi’(a)&lt;1。那么我们根据a的关于phi的导数，有如下三种情况</p>
+<ol>
+<li>|phi’(a)|<1 :存在一个r，对于任意的(a-0,a+0)中的x<sub="">0定点法收敛（注意，此处的定点法收敛指的是对于合适的x<sub>0</sub>定点法收敛）</1></li>
+<li>|phi’(a)|&gt;1 :存在至少1个x<sub>0</sub>不收敛到a（即定点法不收敛）</li>
+<li>|phi’(a)|=1 :可能收敛也可能不收敛</li>
+</ol>
+<blockquote>
+<p>对于phi，我们可以根据phi在fixed point a上的导数来判断收敛的速度，如果phi<sup>(i)</sup>=0, i=1,2…p-1，且phi<sup>(p)</sup>!=0，那么定点法x<sup>(k+1)</sup>=phi(x<sup>(k)</sup>)的order为p，即lim e<sup>(k+1)</sup>/(e<sup>(k)</sup>)<sup>p</sup>=constant。</p>
+</blockquote>
+<h2 id="Convergence-Order"><a href="#Convergence-Order" class="headerlink" title="Convergence Order"></a>Convergence Order</h2><p>判断convergence order，本质上就是判断constant=e<sup>(k+1)</sup>/(e<sup>(k)</sup>)<sup>p</sup>中p的值，如果p为1，则为线性的，如果p为2，则为quadratically的，以此类推。通过求log可以很快的得出结论并画出图像。</p>
+<h1 id="LU分解"><a href="#LU分解" class="headerlink" title="LU分解"></a>LU分解</h1><p>Ax=b, A是一个n*n矩阵，b是一个n维向量，求解x。</p>
+<h2 id="Backward-and-forward-substitution"><a href="#Backward-and-forward-substitution" class="headerlink" title="Backward and forward substitution"></a>Backward and forward substitution</h2><p>A=LU，L是一个下三角矩阵，而U是一个上三角矩阵，将这个式子和上面的式子连立起来，能得到Ly=b,Ux=y。</p>
+<p>这样做的好处是在正常情况下，为了求解x的值，需要令b右乘A的逆矩阵，即x=A<sup>-1</sup>b，但是求逆矩阵是非常复杂的，需要很高的computing power，为了避免求逆矩阵，我们就采用LU分解。</p>
+<p>L(U)是下(上)三角矩阵，对于L使用forward substitution，因为显然从方程的角度去看这个问题，我们有L<sub>1,1</sub> <em> y<sub>1</sub>=b<sub>1</sub>，从而可以一一解出y的值。   对于U使用backward substitution，解答的方法同上，但是由于我们是从U最下面的元素开始解出x的值的U<sub>n,n</sub> </em> x<sub>n</sub>=y<sub>n</sub>，所以将这个方法称为backward substitution。</p>
+<h2 id="LU分解存在的条件"><a href="#LU分解存在的条件" class="headerlink" title="LU分解存在的条件"></a>LU分解存在的条件</h2><p>不是每一个A都可以分解成LU的形式，那么什么样的矩阵可以分解为LU的形式呢？显然对于一个不可逆矩阵，是无法分解成LU的形式的，但是对于一个可逆矩阵，也可能出现无法分解成LU的情况。</p>
+<ol>
+<li>如果A是一个row/column对角线dominant的矩阵（即a对角线上的元素大于同一row/column中所有其他元素的绝对值之和），矩阵A能够LU分解。</li>
+<li>A是一个symmetric positve definite矩阵，则A能够进行LU分解。</li>
+</ol>
+<blockquote>
+<p>判断A是否是正定矩阵，我们可以通过eig(A)&gt;0来判断，eig(A)表示A的特征值，而正定矩阵的特征值是全正的。</p>
+</blockquote>
+<p>以上的两种情形是A能够进行LU分解的特殊情况，一个更general的条件是，<strong>给定矩阵A，其LU分解存在且唯一的充要条件是A对角线上的所有方阵A<sub>i</sub>都是非奇异矩阵(行列式不等于0)</strong></p>
+<h2 id="General-LU-Decomposition"><a href="#General-LU-Decomposition" class="headerlink" title="General LU Decomposition"></a>General LU Decomposition</h2><p>LU分解是将一个矩阵分解为L*U，其中L的对角线上的元素为1。具体的操作过程可以视为将其进行不断的transform，不断的进行每个row之间的数乘和加减。</p>
+<h2 id="对于特殊的A进行特殊的LU分解-Cholesky分解"><a href="#对于特殊的A进行特殊的LU分解-Cholesky分解" class="headerlink" title="对于特殊的A进行特殊的LU分解-Cholesky分解"></a>对于特殊的A进行特殊的LU分解-Cholesky分解</h2><p>如果A是一个symmetric positive definite的矩阵，那么A可以分解为H*H<sup>T</sup>，根据其对称的形式，可以很简单的用矩阵表示出H中的每个元素。</p>
+<h2 id="对于特殊的A进行特殊的LU分解-Thomas-Algorithm"><a href="#对于特殊的A进行特殊的LU分解-Thomas-Algorithm" class="headerlink" title="对于特殊的A进行特殊的LU分解-Thomas Algorithm"></a>对于特殊的A进行特殊的LU分解-Thomas Algorithm</h2><p>如果A是一个对称矩阵，并且只有三列对角线上的元素，那么我们可以用类似上面的general LU decomposition的方法进行分解，但是每一个value的表示形式会变得更加简便。</p>
+<blockquote>
+<p>建立一个对角线矩阵</p>
+<p>a = [1:10]’;</p>
+<p>c = [10:19]’;</p>
+<p>e = [102:111]’;</p>
+<p>n = length(a);</p>
+<p>A = spdiags([e a c], [−1 0 1], n, n)</p>
+</blockquote>
+<h2 id="LU-with-pivoting"><a href="#LU-with-pivoting" class="headerlink" title="LU with pivoting"></a>LU with pivoting</h2><p>Pivoting是一种改变改变矩阵的行的顺序的方法，使得一个不能进行LU分解的矩阵可以进行LU分解。表示为Ax=b,PA=LU。</p>
+<blockquote>
+<p>infinity norm of the error: norm(x-x1,inf)</p>
+<p>infinity norm of the <em>normalized</em> residual error: norm(b-A*x1, inf)/norm(b, inf)</p>
+</blockquote>
+<h2 id="Condition-Number"><a href="#Condition-Number" class="headerlink" title="Condition Number"></a>Condition Number</h2><p>P-norm: ||A||<sub>p</sub>=(SIGMA|x<sub>i</sub>|<sup>p</sup>)<sup>1/p<sup></sup></sup></p>
+<p>Condition number: K<sub>p(A)=||A||<sub>p</sub>*||A<sup>-1</sup>||<sub>p</sub></sub></p>
+<blockquote>
+<p>condition number: cond(A,n)</p>
+</blockquote>
+<p>K<sub>p(A)是衡量sensitivity的一个指标，即对于b的微小的扰动，x的扰动程度。如果K<sub>p(A)越小，表示A越well-conditioned。</sub></sub></p>
+<h1 id="Iterative-Methods-of-Linear-system"><a href="#Iterative-Methods-of-Linear-system" class="headerlink" title="Iterative Methods of Linear system"></a>Iterative Methods of Linear system</h1><p>Ax=b, A是一个n*n矩阵，b是一个n维向量，求解x。</p>
+<h2 id="Stationary-methods"><a href="#Stationary-methods" class="headerlink" title="Stationary methods"></a>Stationary methods</h2><p>x<sup>(k+1)</sup> = B*x<sup>(k)</sup>+g</p>
+<p>s.t. x<sup>*</sup> = B<em>x<sup>\</sup></em>+g</p>
+<p>我们设置stopping criterion为</p>
+<ol>
+<li>||x<sup>(k+1)</sup>-x<sup>(k)</sup>||&lt;=tolerance</li>
+<li>||b-Ax<sup>(k+1)</sup>||&lt;=tolerance</li>
+</ol>
+<blockquote>
+<p>这种方法收敛的充要条件是ρ(B)&lt;1，ρ(B)=max(|eig(B)|)。</p>
+</blockquote>
+<p>同时，为了估计当前迭代状态下的误差error ||x<sup>k</sup>-x<sup>*</sup>||，我们可以通过||x<sup>(k+1)</sup>-x<sup>k</sup>||来约束这个误差。</p>
+<p><strong>目标：构建一个A=P-(P-A)。</strong></p>
+<h2 id="Jacobi-method-amp-Gauss-Seidel-method"><a href="#Jacobi-method-amp-Gauss-Seidel-method" class="headerlink" title="Jacobi method &amp; Gauss Seidel method"></a>Jacobi method &amp; Gauss Seidel method</h2><img src="/2019/01/12/Numerical-Analysis/2.png">
+<h2 id="Richardson-method"><a href="#Richardson-method" class="headerlink" title="Richardson method"></a>Richardson method</h2><p>不难看出，其实Jacobi method和Gauss Seidel method都是Richardson method的特殊化的形式，就像是牛顿法本质上是定点法的特殊演绎一样。</p>
+<img src="/2019/01/12/Numerical-Analysis/3.png">
+<p>其中α的最佳选择α<sub>opt</sub>=2/(λ<sub>min</sub>+λ<sub>min</sub>)，λ<sub>min</sub>/λ<sub>min</sub>表示P<sup>-1</sup>A的最小/大的特征值。</p>
+<h2 id="Gradient-method-此节不在考试范围内"><a href="#Gradient-method-此节不在考试范围内" class="headerlink" title="Gradient method* 此节不在考试范围内"></a>Gradient method* 此节不在考试范围内</h2><img src="/2019/01/12/Numerical-Analysis/4.png">
+<h1 id="Interpolation"><a href="#Interpolation" class="headerlink" title="Interpolation"></a>Interpolation</h1><p>interpolation的直译结果为【插值】，但是其实在这门课所涉及到的地方，将其理解为【拟合】这个概念会更好理解一些，从原函数f(x)上取得一系列的点，然后根据这些点来设计一个新的函数f*(x)来近似这个原函数f(x)。</p>
+<img src="/2019/01/12/Numerical-Analysis/5.png">
+<h2 id="拉格朗日多项式插值"><a href="#拉格朗日多项式插值" class="headerlink" title="拉格朗日多项式插值"></a>拉格朗日多项式插值</h2><p>对于任意n个nodes{x<sub>i,y<sub>i}，存在唯一的一个多项式f<em>(x)，其degree小于等于n，且对于任何x<sub>i，都有f</sub></em>(x<sub>i)=y<sub>i。</sub></sub></sub></sub></p>
+<p>根据上面的公式，为了获取f<em>(x)的表达形式，我们设计φ<sub>k</sub>(x<sub>j</sub>)=1 if j=k, 0 else。然后求和φ<sub>k</sub>(x<sub>j</sub>) </em> f(x<sub>k</sub>)，得到f*(x)。</p>
+<img src="/2019/01/12/Numerical-Analysis/6.png">
+<h2 id="分段线性插值"><a href="#分段线性插值" class="headerlink" title="分段线性插值"></a>分段线性插值</h2><p>这种插值的方式就很好理解了，我们将函数分为很多段，然后将每一段用一条直线连接起来，相比于上面，虽然这样得到的f*(x)不是光滑的，但是也是原函数的一种近似的方式。</p>
+<img src="/2019/01/12/Numerical-Analysis/7.png">
+<img src="/2019/01/12/Numerical-Analysis/8.png">
+<h2 id="Spline插值"><a href="#Spline插值" class="headerlink" title="Spline插值"></a>Spline插值</h2><p>与分段式线性插值有一些类似，我们将函数分为很多段，但是我们还希望让我们的新的f*(x)是光滑的，在上面的近似方式中，不光滑的点仅仅存在在两个interval的连接处，那么我们在spline的方法中，对每个interval [x<sub>i</sub>,x<sub>j</sub>]都使用一个三次函数（注意！不再是上面的线性/一次函数了）进行近似，我们可以调整这个函数，使其不仅经过x<sub>i</sub>和x<sub>j</sub>对应的点，同时在这两个点上的导数与前一个以及后一个interval是相同的。</p>
+<h1 id="Integral-积分"><a href="#Integral-积分" class="headerlink" title="Integral 积分"></a>Integral 积分</h1><img src="/2019/01/12/Numerical-Analysis/9.png">
+<img src="/2019/01/12/Numerical-Analysis/10.png">
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/12/20/Artificial-Intelligence/" id="post_nav-older" class="next-content">
+            Older
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebarHeader.jpg);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/cesare.jpg" alt="Cesare (MINGJU LI)'s avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        cesareli1995@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="https://www.google.com/gmail/" target="_blank" title="Send Me An Email">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Send Me An Email
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                Home
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    Archives
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2019/01/">January 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/12/">December 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/11/">November 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/10/">October 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">August 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">July 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">June 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">May 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">April 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">March 2018<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/01/">January 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">December 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">November 2017<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                Categories
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="Tags">
+                
+                    <i class="material-icons sidebar-material-icons">done</i>
+                
+                Tags
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                Number of articles
+                <span class="sidebar-badge">34</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/cesare.lee.94" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://www.weibo.com/5646481908/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+        <a href="https://www.instagram.com/cesaretiramisu/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-instagram">
+                <span class="visuallyhidden">Instagram</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/CesareMJLi" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;2017&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Cesare's Workshop
+            
+                <br>
+                
+                    Any question please contact me.
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

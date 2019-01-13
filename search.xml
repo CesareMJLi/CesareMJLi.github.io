@@ -3,6 +3,104 @@
   
     
     <entry>
+      <title><![CDATA[Numerical Analysis]]></title>
+      <url>/2019/01/12/Numerical-Analysis/</url>
+      <content type="html"><![CDATA[<h1 id="Bisection-Newton-Fixed-Point"><a href="#Bisection-Newton-Fixed-Point" class="headerlink" title="Bisection/Newton/Fixed Point"></a>Bisection/Newton/Fixed Point</h1><h2 id="Bisection-二分法求零点"><a href="#Bisection-二分法求零点" class="headerlink" title="Bisection 二分法求零点"></a>Bisection 二分法求零点</h2><p>我们使用二分法求零点，根据函数的连续性，假如在一个函数在interval[a,b]上连续，而且在这个interval的两端取得不同的符号，那么显然我们在这个区间上至少有一个零点，如果函数是单调的，那么在这个interval上的零点唯一。</p>
+<p>我们可以用二分法进行求解，需要给定interval的两端[a,b]的值，以及tolerance的值，通过区间的长度和tolerance来计算需要迭代的次数n，然后进行n次迭代后输出。</p>
+<h2 id="Newton-牛顿法和modified牛顿法"><a href="#Newton-牛顿法和modified牛顿法" class="headerlink" title="Newton 牛顿法和modified牛顿法"></a>Newton 牛顿法和modified牛顿法</h2><p>二分法相当于只使用了函数interval两端的信息，但是我们可以有更快的选择。牛顿法是一种收敛速度比二分法更快的方法，可以描述为在x<sup>(k)</sup>上做一条与原函数相切的直线，将这条直线与x轴的焦点做为下次迭代的x<sup>(k+1)</sup>。</p>
+<p>和二分法不同，尽管牛顿法更快，但是牛顿法并不是全局收敛的，仅仅对于零点a附近某个区间内的点是收敛的，并且我们<strong>不能</strong>判断给定一个点x<sub>0</sub>以及对应的函数值导数值等，去判断能否从x<sub>0</sub>收敛到a。</p>
+<p>我们既然提到了牛顿法是收敛更快的算法，那么要快多少呢？二分法的收敛是线性的，因为我们可以视error为e<sup>(k)</sup>每次迭代都变为e<sup>(k+1)</sup>都是原来的一半。而牛顿法，如果零点a是simple的（即f’(a)不等于0），那么牛顿法是quadratically收敛的，如果零点a不是simple的，且m是a的multiplicity，则牛顿法的收敛为线性的，如果我们使用modified牛顿法（m对应multiplicity的值），此时modified牛顿法的收敛依然是quadratically的。</p>
+<blockquote>
+<p>如果f在interval[a,b]上是单调的，且f(a)和f(b)异号，那么对任何[a,b]上的x<sub>0</sub>，假如x<sub>0</sub>满足f(x<sub>0</sub>)*f’’(x<sub>0</sub>)&gt;0，那么牛顿法在x<sub>0</sub>上收敛。</p>
+</blockquote>
+<h2 id="Fixed-Point定点法"><a href="#Fixed-Point定点法" class="headerlink" title="Fixed Point定点法"></a>Fixed Point定点法</h2><p>定点法：x<sup>(k+1)</sup>=phi(x<sup>(k)</sup>)</p>
+<img src="/2019/01/12/Numerical-Analysis/1.png">
+<p>根据上图不难得出结论，假如a是phi的一个fixed point(即有a=phi(a))，lim e<sup>(k+1)</sup>/e<sup>(k)</sup> = phi’(a),我们希望error在这个迭代的过程中是不断递减的，那么必须有phi’(a)&lt;1。那么我们根据a的关于phi的导数，有如下三种情况</p>
+<ol>
+<li>|phi’(a)|<1 :存在一个r，对于任意的(a-0,a+0)中的x<sub="">0定点法收敛（注意，此处的定点法收敛指的是对于合适的x<sub>0</sub>定点法收敛）</1></li>
+<li>|phi’(a)|&gt;1 :存在至少1个x<sub>0</sub>不收敛到a（即定点法不收敛）</li>
+<li>|phi’(a)|=1 :可能收敛也可能不收敛</li>
+</ol>
+<blockquote>
+<p>对于phi，我们可以根据phi在fixed point a上的导数来判断收敛的速度，如果phi<sup>(i)</sup>=0, i=1,2…p-1，且phi<sup>(p)</sup>!=0，那么定点法x<sup>(k+1)</sup>=phi(x<sup>(k)</sup>)的order为p，即lim e<sup>(k+1)</sup>/(e<sup>(k)</sup>)<sup>p</sup>=constant。</p>
+</blockquote>
+<h2 id="Convergence-Order"><a href="#Convergence-Order" class="headerlink" title="Convergence Order"></a>Convergence Order</h2><p>判断convergence order，本质上就是判断constant=e<sup>(k+1)</sup>/(e<sup>(k)</sup>)<sup>p</sup>中p的值，如果p为1，则为线性的，如果p为2，则为quadratically的，以此类推。通过求log可以很快的得出结论并画出图像。</p>
+<h1 id="LU分解"><a href="#LU分解" class="headerlink" title="LU分解"></a>LU分解</h1><p>Ax=b, A是一个n*n矩阵，b是一个n维向量，求解x。</p>
+<h2 id="Backward-and-forward-substitution"><a href="#Backward-and-forward-substitution" class="headerlink" title="Backward and forward substitution"></a>Backward and forward substitution</h2><p>A=LU，L是一个下三角矩阵，而U是一个上三角矩阵，将这个式子和上面的式子连立起来，能得到Ly=b,Ux=y。</p>
+<p>这样做的好处是在正常情况下，为了求解x的值，需要令b右乘A的逆矩阵，即x=A<sup>-1</sup>b，但是求逆矩阵是非常复杂的，需要很高的computing power，为了避免求逆矩阵，我们就采用LU分解。</p>
+<p>L(U)是下(上)三角矩阵，对于L使用forward substitution，因为显然从方程的角度去看这个问题，我们有L<sub>1,1</sub> <em> y<sub>1</sub>=b<sub>1</sub>，从而可以一一解出y的值。   对于U使用backward substitution，解答的方法同上，但是由于我们是从U最下面的元素开始解出x的值的U<sub>n,n</sub> </em> x<sub>n</sub>=y<sub>n</sub>，所以将这个方法称为backward substitution。</p>
+<h2 id="LU分解存在的条件"><a href="#LU分解存在的条件" class="headerlink" title="LU分解存在的条件"></a>LU分解存在的条件</h2><p>不是每一个A都可以分解成LU的形式，那么什么样的矩阵可以分解为LU的形式呢？显然对于一个不可逆矩阵，是无法分解成LU的形式的，但是对于一个可逆矩阵，也可能出现无法分解成LU的情况。</p>
+<ol>
+<li>如果A是一个row/column对角线dominant的矩阵（即a对角线上的元素大于同一row/column中所有其他元素的绝对值之和），矩阵A能够LU分解。</li>
+<li>A是一个symmetric positve definite矩阵，则A能够进行LU分解。</li>
+</ol>
+<blockquote>
+<p>判断A是否是正定矩阵，我们可以通过eig(A)&gt;0来判断，eig(A)表示A的特征值，而正定矩阵的特征值是全正的。</p>
+</blockquote>
+<p>以上的两种情形是A能够进行LU分解的特殊情况，一个更general的条件是，<strong>给定矩阵A，其LU分解存在且唯一的充要条件是A对角线上的所有方阵A<sub>i</sub>都是非奇异矩阵(行列式不等于0)</strong></p>
+<h2 id="General-LU-Decomposition"><a href="#General-LU-Decomposition" class="headerlink" title="General LU Decomposition"></a>General LU Decomposition</h2><p>LU分解是将一个矩阵分解为L*U，其中L的对角线上的元素为1。具体的操作过程可以视为将其进行不断的transform，不断的进行每个row之间的数乘和加减。</p>
+<h2 id="对于特殊的A进行特殊的LU分解-Cholesky分解"><a href="#对于特殊的A进行特殊的LU分解-Cholesky分解" class="headerlink" title="对于特殊的A进行特殊的LU分解-Cholesky分解"></a>对于特殊的A进行特殊的LU分解-Cholesky分解</h2><p>如果A是一个symmetric positive definite的矩阵，那么A可以分解为H*H<sup>T</sup>，根据其对称的形式，可以很简单的用矩阵表示出H中的每个元素。</p>
+<h2 id="对于特殊的A进行特殊的LU分解-Thomas-Algorithm"><a href="#对于特殊的A进行特殊的LU分解-Thomas-Algorithm" class="headerlink" title="对于特殊的A进行特殊的LU分解-Thomas Algorithm"></a>对于特殊的A进行特殊的LU分解-Thomas Algorithm</h2><p>如果A是一个对称矩阵，并且只有三列对角线上的元素，那么我们可以用类似上面的general LU decomposition的方法进行分解，但是每一个value的表示形式会变得更加简便。</p>
+<blockquote>
+<p>建立一个对角线矩阵</p>
+<p>a = [1:10]’;</p>
+<p>c = [10:19]’;</p>
+<p>e = [102:111]’;</p>
+<p>n = length(a);</p>
+<p>A = spdiags([e a c], [−1 0 1], n, n)</p>
+</blockquote>
+<h2 id="LU-with-pivoting"><a href="#LU-with-pivoting" class="headerlink" title="LU with pivoting"></a>LU with pivoting</h2><p>Pivoting是一种改变改变矩阵的行的顺序的方法，使得一个不能进行LU分解的矩阵可以进行LU分解。表示为Ax=b,PA=LU。</p>
+<blockquote>
+<p>infinity norm of the error: norm(x-x1,inf)</p>
+<p>infinity norm of the <em>normalized</em> residual error: norm(b-A*x1, inf)/norm(b, inf)</p>
+</blockquote>
+<h2 id="Condition-Number"><a href="#Condition-Number" class="headerlink" title="Condition Number"></a>Condition Number</h2><p>P-norm: ||A||<sub>p</sub>=(SIGMA|x<sub>i</sub>|<sup>p</sup>)<sup>1/p<sup></sup></sup></p>
+<p>Condition number: K<sub>p(A)=||A||<sub>p</sub>*||A<sup>-1</sup>||<sub>p</sub></sub></p>
+<blockquote>
+<p>condition number: cond(A,n)</p>
+</blockquote>
+<p>K<sub>p(A)是衡量sensitivity的一个指标，即对于b的微小的扰动，x的扰动程度。如果K<sub>p(A)越小，表示A越well-conditioned。</sub></sub></p>
+<h1 id="Iterative-Methods-of-Linear-system"><a href="#Iterative-Methods-of-Linear-system" class="headerlink" title="Iterative Methods of Linear system"></a>Iterative Methods of Linear system</h1><p>Ax=b, A是一个n*n矩阵，b是一个n维向量，求解x。</p>
+<h2 id="Stationary-methods"><a href="#Stationary-methods" class="headerlink" title="Stationary methods"></a>Stationary methods</h2><p>x<sup>(k+1)</sup> = B*x<sup>(k)</sup>+g</p>
+<p>s.t. x<sup>*</sup> = B<em>x<sup>\</sup></em>+g</p>
+<p>我们设置stopping criterion为</p>
+<ol>
+<li>||x<sup>(k+1)</sup>-x<sup>(k)</sup>||&lt;=tolerance</li>
+<li>||b-Ax<sup>(k+1)</sup>||&lt;=tolerance</li>
+</ol>
+<blockquote>
+<p>这种方法收敛的充要条件是ρ(B)&lt;1，ρ(B)=max(|eig(B)|)。</p>
+</blockquote>
+<p>同时，为了估计当前迭代状态下的误差error ||x<sup>k</sup>-x<sup>*</sup>||，我们可以通过||x<sup>(k+1)</sup>-x<sup>k</sup>||来约束这个误差。</p>
+<p><strong>目标：构建一个A=P-(P-A)。</strong></p>
+<h2 id="Jacobi-method-amp-Gauss-Seidel-method"><a href="#Jacobi-method-amp-Gauss-Seidel-method" class="headerlink" title="Jacobi method &amp; Gauss Seidel method"></a>Jacobi method &amp; Gauss Seidel method</h2><img src="/2019/01/12/Numerical-Analysis/2.png">
+<h2 id="Richardson-method"><a href="#Richardson-method" class="headerlink" title="Richardson method"></a>Richardson method</h2><p>不难看出，其实Jacobi method和Gauss Seidel method都是Richardson method的特殊化的形式，就像是牛顿法本质上是定点法的特殊演绎一样。</p>
+<img src="/2019/01/12/Numerical-Analysis/3.png">
+<p>其中α的最佳选择α<sub>opt</sub>=2/(λ<sub>min</sub>+λ<sub>min</sub>)，λ<sub>min</sub>/λ<sub>min</sub>表示P<sup>-1</sup>A的最小/大的特征值。</p>
+<h2 id="Gradient-method-此节不在考试范围内"><a href="#Gradient-method-此节不在考试范围内" class="headerlink" title="Gradient method* 此节不在考试范围内"></a>Gradient method* 此节不在考试范围内</h2><img src="/2019/01/12/Numerical-Analysis/4.png">
+<h1 id="Interpolation"><a href="#Interpolation" class="headerlink" title="Interpolation"></a>Interpolation</h1><p>interpolation的直译结果为【插值】，但是其实在这门课所涉及到的地方，将其理解为【拟合】这个概念会更好理解一些，从原函数f(x)上取得一系列的点，然后根据这些点来设计一个新的函数f*(x)来近似这个原函数f(x)。</p>
+<img src="/2019/01/12/Numerical-Analysis/5.png">
+<h2 id="拉格朗日多项式插值"><a href="#拉格朗日多项式插值" class="headerlink" title="拉格朗日多项式插值"></a>拉格朗日多项式插值</h2><p>对于任意n个nodes{x<sub>i,y<sub>i}，存在唯一的一个多项式f<em>(x)，其degree小于等于n，且对于任何x<sub>i，都有f</sub></em>(x<sub>i)=y<sub>i。</sub></sub></sub></sub></p>
+<p>根据上面的公式，为了获取f<em>(x)的表达形式，我们设计φ<sub>k</sub>(x<sub>j</sub>)=1 if j=k, 0 else。然后求和φ<sub>k</sub>(x<sub>j</sub>) </em> f(x<sub>k</sub>)，得到f*(x)。</p>
+<img src="/2019/01/12/Numerical-Analysis/6.png">
+<h2 id="分段线性插值"><a href="#分段线性插值" class="headerlink" title="分段线性插值"></a>分段线性插值</h2><p>这种插值的方式就很好理解了，我们将函数分为很多段，然后将每一段用一条直线连接起来，相比于上面，虽然这样得到的f*(x)不是光滑的，但是也是原函数的一种近似的方式。</p>
+<img src="/2019/01/12/Numerical-Analysis/7.png">
+<img src="/2019/01/12/Numerical-Analysis/8.png">
+<h2 id="Spline插值"><a href="#Spline插值" class="headerlink" title="Spline插值"></a>Spline插值</h2><p>与分段式线性插值有一些类似，我们将函数分为很多段，但是我们还希望让我们的新的f*(x)是光滑的，在上面的近似方式中，不光滑的点仅仅存在在两个interval的连接处，那么我们在spline的方法中，对每个interval [x<sub>i</sub>,x<sub>j</sub>]都使用一个三次函数（注意！不再是上面的线性/一次函数了）进行近似，我们可以调整这个函数，使其不仅经过x<sub>i</sub>和x<sub>j</sub>对应的点，同时在这两个点上的导数与前一个以及后一个interval是相同的。</p>
+<h1 id="Integral-积分"><a href="#Integral-积分" class="headerlink" title="Integral 积分"></a>Integral 积分</h1><img src="/2019/01/12/Numerical-Analysis/9.png">
+<img src="/2019/01/12/Numerical-Analysis/10.png">
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Numerical Analysis </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Artificial Intelligence]]></title>
       <url>/2018/12/20/Artificial-Intelligence/</url>
       <content type="html"><![CDATA[<h1 id="General-Information"><a href="#General-Information" class="headerlink" title="General Information"></a>General Information</h1><p>This is a notes for the AI lesson of POLIMI 2018-2019.</p>
@@ -590,9 +688,9 @@
         
         <tags>
             
-            <tag> AI </tag>
-            
             <tag> CNN </tag>
+            
+            <tag> AI </tag>
             
             <tag> Machine Learning </tag>
             
@@ -1670,9 +1768,9 @@ Require: 初始参数 θ
             
             <tag> Machine Learning </tag>
             
-            <tag> SVM </tag>
-            
             <tag> KNN </tag>
+            
+            <tag> SVM </tag>
             
         </tags>
         
@@ -2576,9 +2674,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> Python </tag>
-            
             <tag> Machine Learning </tag>
+            
+            <tag> Python </tag>
             
             <tag> Jupyter Notebook </tag>
             
@@ -2641,9 +2739,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> Wechat </tag>
-            
             <tag> Game Development </tag>
+            
+            <tag> Wechat </tag>
             
         </tags>
         
