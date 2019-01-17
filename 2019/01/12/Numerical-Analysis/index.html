@@ -244,7 +244,7 @@
 
     
         <meta property="article:published_time" content="Sat Jan 12 2019 21:53:00 GMT+0100">
-        <meta property="article:modified_time" content="Sun Jan 13 2019 14:24:36 GMT+0100">
+        <meta property="article:modified_time" content="Thu Jan 17 2019 15:12:26 GMT+0100">
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://yoursite.com/2019/01/12/Numerical-Analysis/index.html",
     "headline": "Numerical Analysis",
     "datePublished": "Sat Jan 12 2019 21:53:00 GMT+0100",
-    "dateModified": "Sun Jan 13 2019 14:24:36 GMT+0100",
+    "dateModified": "Thu Jan 17 2019 15:12:26 GMT+0100",
     "author": {
         "@type": "Person",
         "name": "Cesare (MINGJU LI)",
@@ -499,7 +499,8 @@
 <p>我们可以用二分法进行求解，需要给定interval的两端[a,b]的值，以及tolerance的值，通过区间的长度和tolerance来计算需要迭代的次数n，然后进行n次迭代后输出。</p>
 <h2 id="Newton-牛顿法和modified牛顿法"><a href="#Newton-牛顿法和modified牛顿法" class="headerlink" title="Newton 牛顿法和modified牛顿法"></a>Newton 牛顿法和modified牛顿法</h2><p>二分法相当于只使用了函数interval两端的信息，但是我们可以有更快的选择。牛顿法是一种收敛速度比二分法更快的方法，可以描述为在x<sup>(k)</sup>上做一条与原函数相切的直线，将这条直线与x轴的焦点做为下次迭代的x<sup>(k+1)</sup>。</p>
 <p>和二分法不同，尽管牛顿法更快，但是牛顿法并不是全局收敛的，仅仅对于零点a附近某个区间内的点是收敛的，并且我们<strong>不能</strong>判断给定一个点x<sub>0</sub>以及对应的函数值导数值等，去判断能否从x<sub>0</sub>收敛到a。</p>
-<p>我们既然提到了牛顿法是收敛更快的算法，那么要快多少呢？二分法的收敛是线性的，因为我们可以视error为e<sup>(k)</sup>每次迭代都变为e<sup>(k+1)</sup>都是原来的一半。而牛顿法，如果零点a是simple的（即f’(a)不等于0），那么牛顿法是quadratically收敛的，如果零点a不是simple的，且m是a的multiplicity，则牛顿法的收敛为线性的，如果我们使用modified牛顿法（m对应multiplicity的值），此时modified牛顿法的收敛依然是quadratically的。</p>
+<p>我们既然提到了牛顿法是收敛更快的算法，那么要快多少呢？二分法的收敛是线性的，因为我们可以视error为e<sup>(k)</sup>每次迭代都变为e<sup>(k+1)</sup>都是原来的一半。而牛顿法，如果零点a是simple的（即f’(a)不等于0），那么牛顿法是quadratically收敛的。</p>
+<p>如果零点a不是simple的，且m是a的multiplicity，如果想让牛顿法收敛，我们需要确保x<sup>(0)</sup>的选择是合理的，且在interval上没有其他x使得f’(x)=0，此时牛顿法的收敛为线性的，如果我们使用modified牛顿法（m对应multiplicity的值），此时modified牛顿法的收敛依然是quadratically的。</p>
 <blockquote>
 <p>如果f在interval[a,b]上是单调的，且f(a)和f(b)异号，那么对任何[a,b]上的x<sub>0</sub>，假如x<sub>0</sub>满足f(x<sub>0</sub>)*f’’(x<sub>0</sub>)&gt;0，那么牛顿法在x<sub>0</sub>上收敛。</p>
 </blockquote>
@@ -579,6 +580,7 @@
 <h2 id="Spline插值"><a href="#Spline插值" class="headerlink" title="Spline插值"></a>Spline插值</h2><p>与分段式线性插值有一些类似，我们将函数分为很多段，但是我们还希望让我们的新的f*(x)是光滑的，在上面的近似方式中，不光滑的点仅仅存在在两个interval的连接处，那么我们在spline的方法中，对每个interval [x<sub>i</sub>,x<sub>j</sub>]都使用一个三次函数（注意！不再是上面的线性/一次函数了）进行近似，我们可以调整这个函数，使其不仅经过x<sub>i</sub>和x<sub>j</sub>对应的点，同时在这两个点上的导数与前一个以及后一个interval是相同的。</p>
 <h1 id="Integral-积分"><a href="#Integral-积分" class="headerlink" title="Integral 积分"></a>Integral 积分</h1><img src="/2019/01/12/Numerical-Analysis/9.png">
 <img src="/2019/01/12/Numerical-Analysis/10.png">
+<p>midpoint rule和trapezoidal rule都是order 1的，这意味着它们可以近似线性函数而没有任何误差，而Simpson rule的degree of exactness等于3，这意味着order低于3的function的积分值是准确的。</p>
 
         
     
