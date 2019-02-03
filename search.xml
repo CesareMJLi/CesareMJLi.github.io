@@ -3,6 +3,129 @@
   
     
     <entry>
+      <title><![CDATA[Advanced Recommender Systems]]></title>
+      <url>/2019/01/26/Advanced-Recommender-Systems/</url>
+      <content type="html"><![CDATA[<h1 id="Esimating-Rating-as-Optimization-Problem"><a href="#Esimating-Rating-as-Optimization-Problem" class="headerlink" title="Esimating Rating as Optimization Problem"></a>Esimating Rating as Optimization Problem</h1><p>SLIM(Sparse Linear Models) techniques:  a machine learning approach to ITEM-BASED COLLABORATIVE FILTERING.</p>
+<h2 id="Starting-from-IBCF"><a href="#Starting-from-IBCF" class="headerlink" title="Starting from IBCF"></a>Starting from IBCF</h2><p>The estimation formula can be generalized for the dot product between the URM(User rating matrix, numUsers*numItems) and ISM (Item similarity matrix, numItems*numItems), which return <strong>the matrix of all estimated ratings for all users and all items</strong>.</p>
+<h2 id="Minimize-the-estimation-error"><a href="#Minimize-the-estimation-error" class="headerlink" title="Minimize the estimation error"></a>Minimize the estimation error</h2><blockquote>
+<p>KEY IDEA: Machine Learning Method-write a formula that estimate the error, and minimize the error of model by adjusting the unknown parameters.</p>
+</blockquote>
+<p>In RS, the error is how different our estimation is from the actual ratings of the users, and the unknown parameters are the elements of the similarity matrix. </p>
+<p>Here we use the MSE (Mean Square Error). We find the item similarity matrix that minimize this MSE, thus giving the best performance for estimation of ratings.</p>
+<h2 id="Optimization-problem-setting"><a href="#Optimization-problem-setting" class="headerlink" title="Optimization problem setting"></a>Optimization problem setting</h2><p>Condiser MSE. If we have</p>
+<ol>
+<li>R: URM</li>
+<li>S: Item similarity matrix</li>
+</ol>
+<p>And we would like to minimize norm|R-R*S|. If S is the identity matrix, this norm would be 0. Since we would like to find an effective method to calculate S, we add constraint that the diagonal of S are all 0 elements.</p>
+<h1 id="2-Norm-amp-F-norm"><a href="#2-Norm-amp-F-norm" class="headerlink" title="2-Norm &amp; F-norm"></a>2-Norm &amp; F-norm</h1><p><a href="http://mathworld.wolfram.com/FrobeniusNorm.html" target="_blank" rel="noopener">F-norm</a></p>
+<p>If you measure the quality of your recommendation by using an <strong>accuracy metric</strong>, the experience is telling us that the F-norm leads to better quality recommendation. If, on the contrary, you measure the quality by using an <strong>error metric</strong>, such as Mean Square Error, it is better to use the 2-norm. </p>
+<blockquote>
+<p>这里我的理解是2-norm是对所有的URM的非零元素求MSE，F-norm对于URM中的所有元素求MSE。</p>
+</blockquote>
+<h1 id="Missing-as-negative-amp-Missing-as-random"><a href="#Missing-as-negative-amp-Missing-as-random" class="headerlink" title="Missing as negative &amp; Missing as random"></a>Missing as negative &amp; Missing as random</h1><h2 id="F-norm"><a href="#F-norm" class="headerlink" title="F-norm"></a>F-norm</h2><p>F-norm is assuming that, if an item in a URM is missing, the rating is zero. As F-norm if trying to convince your model to estimate a zero in URM as a zero, which is the missing as negative. </p>
+<h2 id="Quality-Metrics-for-ML"><a href="#Quality-Metrics-for-ML" class="headerlink" title="Quality Metrics for ML"></a>Quality Metrics for ML</h2><p>Typically in ML, we always minimize an error function. We apply accuracy metrics like <strong>precision, recall, fallout and so on</strong>.</p>
+<h2 id="Overfitting-and-Regularization-of-the-model"><a href="#Overfitting-and-Regularization-of-the-model" class="headerlink" title="Overfitting and Regularization of the model"></a>Overfitting and Regularization of the model</h2><p>One way to regularize overfitting is to reduce the number of unknown paramters, and we could add regularization terms to error function to achieve this result.</p>
+<blockquote>
+<p>The Regualtion Term: generally we minimize a function contains the sum of <strong>three terms</strong>: 1)the real error of our mdoel, 2) the 1-norm and 3) the 2-norm of S. By this we could control the sparsity of the matrix.</p>
+</blockquote>
+<h1 id="Stochastic-Gradient-Descent"><a href="#Stochastic-Gradient-Descent" class="headerlink" title="Stochastic Gradient Descent"></a>Stochastic Gradient Descent</h1><p>SGD is a general technique for solving optimization problems. </p>
+<blockquote>
+<p>SGD problem &amp; learning rate: SGD may stuck in locl minima, we could increase learning rate to solve this problem. But large learning rate brings other problem.</p>
+</blockquote>
+<h1 id="Rank"><a href="#Rank" class="headerlink" title="Rank"></a>Rank</h1><h2 id="The-learning-to-rank-approach"><a href="#The-learning-to-rank-approach" class="headerlink" title="The learning to rank approach"></a>The learning to rank approach</h2><p>Choosing an error function turned into a more general problem: <em>can we find an error function or can we solve a machine learnign problem, to solve the ranking instead of ratings</em>.</p>
+<blockquote>
+<p>Suppose there is a list of items ranked by users, and a list of items ranked by RS. Our goal is to create a list of items with the order defined by the users.</p>
+</blockquote>
+<h2 id="Ranking-error-metrics-list-wise-metric"><a href="#Ranking-error-metrics-list-wise-metric" class="headerlink" title="Ranking error metrics: list-wise metric"></a>Ranking error metrics: list-wise metric</h2><p>We could compare two lists and then compare all positions. (This is complex because it is diffcult to compute the gradient)</p>
+<h2 id="Ranking-error-metrics-point-wise-metric"><a href="#Ranking-error-metrics-point-wise-metric" class="headerlink" title="Ranking error metrics: point-wise metric"></a>Ranking error metrics: point-wise metric</h2><p>We measure exactly the position of an item in the list of users and the list of RS. We measure how much these are different,. (This is also hard to compute the gradient)</p>
+<h2 id="Ranking-error-metrics-pair-wise-metric"><a href="#Ranking-error-metrics-pair-wise-metric" class="headerlink" title="Ranking error metrics: pair-wise metric"></a>Ranking error metrics: pair-wise metric</h2><p>Take two items, we compare whether the relative order between 2 items are same in two lists. We could optimize the error function by this easily.</p>
+<h1 id="BPR-Bayesian-Probabilistic-Ranking"><a href="#BPR-Bayesian-Probabilistic-Ranking" class="headerlink" title="BPR: Bayesian Probabilistic Ranking"></a>BPR: Bayesian Probabilistic Ranking</h1><h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>Based on pairwise error metrics, BPR is the most famous one, usually works with SGD.</p>
+<blockquote>
+<p>SGD: Normally, when you want to compute the gradient of your error function, you compute the gradient for all the users and all the items in your data set: you compute it which is normally a big matrix and then you can use it to perform the down step, or the up step, depending if you are minimizing or maximizing. Stochastic Gradient Descent works in this way: it is a trick to reduce the computational complexity of each single step and, also, the overfitting risk. Its idea is that you randomly select one user and one item. You compute the gradient only for them. You update the data and, then, you randomly pick another user and another item, performing the same previous steps and so on.</p>
+</blockquote>
+<h2 id="BPR-with-implicit-ratings"><a href="#BPR-with-implicit-ratings" class="headerlink" title="BPR with implicit ratings"></a>BPR with implicit ratings</h2><p>We randomly take one user and two items of this user. The two items are item i, that user likes for sure, and item j that the user does not like.</p>
+<p>It is easy when deal with explicit ratings. While dealing with implicit items, we are not so sure. Actually we just select the unseen items, it may rise a questions that why <em>we can safely randomly select an item that the user didn’t click and we can bet money saying that the user does not like these items</em>. Actually, it just works, because if you randomly select an item that the user didn’t click, the probability that the user does like this item, is very low. So, in an implicit dataset, you’re going to select the items that the user picked interactively and an item that the user didn’t pick.</p>
+<h2 id="BPR-error-function"><a href="#BPR-error-function" class="headerlink" title="BPR error function"></a>BPR error function</h2><p>We want to estimate the rating of i (liked items) is much bigger than the rating of j (uninterested items). </p>
+<p>We would like to maximize the difference. The absolute value of this error function does not work well. Instead we take quantity error. It could be positive or negative. With the help of sigmoid function, we could restrict the error to [0,1]. </p>
+<h2 id="Explicit-rating-amp-Implicit-rating"><a href="#Explicit-rating-amp-Implicit-rating" class="headerlink" title="Explicit rating &amp; Implicit rating"></a>Explicit rating &amp; Implicit rating</h2><p>BPR works well with both, but better with implicit ratings. The problem of explicit ratings is the user bias.</p>
+<p>In explicit ratings, we select item i (liked items) by high rating items, and item j (uninterested items) by low rating items. We could select item j also those un-rated items. It makes BPR works perfect with explicit items.</p>
+<h1 id="Matrix-Factorization"><a href="#Matrix-Factorization" class="headerlink" title="Matrix Factorization"></a>Matrix Factorization</h1><p>MF is a family of Collaborative filtering techiniques. These techniques are useful when URM is sparse. MF usually work better than item-based or user-based collaborative filtering.</p>
+<blockquote>
+<p>KEY IDEA: For each user, we have a vector x which decribes their preference for each attribute k of an item, (the demension of this vector is smaller than the number of items!), and for each item we have a vector y that describes it.</p>
+</blockquote>
+<h2 id="Funk-SVD"><a href="#Funk-SVD" class="headerlink" title="Funk SVD"></a>Funk SVD</h2><p>We could estimate the rating as the dot product of the vector x and y. From a matrix point of view, we are decompositing URM to matrix X and Y. </p>
+<h2 id="Latent-factors"><a href="#Latent-factors" class="headerlink" title="Latent factors"></a>Latent factors</h2><p>The dimension of X and Y depends on the designer of the system. X is matrix of numUser*N, and Y is N*numItems. N is the number of latent facotrs.</p>
+<p>We usually have N of from 10 to 200. N too small, no useful at all. N too big, X and Y become too sparse.</p>
+<blockquote>
+<p>Avoid Overfitting: add regularization terms for X and Y on the error function. </p>
+</blockquote>
+<h1 id="SVD"><a href="#SVD" class="headerlink" title="SVD++"></a>SVD++</h1><p>We describe an improved version of funk SVD. Which works for URM with explicit ratings. We need to nornalize the URM, and contains two parts, the Global Effects and Funk SVD.</p>
+<p>It take user bias and item bias into consideration.</p>
+<h2 id="Assumption-on-zero-elements"><a href="#Assumption-on-zero-elements" class="headerlink" title="Assumption on zero elements"></a>Assumption on zero elements</h2><p>The classical formulation of SVD++ minimizes the error function on the non-zero elements. </p>
+<p>If the goal is to estimate the real value of the ratings of the user, this is a good appoach. While if the goal is to do a top-n recommendation and desire to have good precision, missing as negative would be better.</p>
+<h1 id="Adapting-SVD"><a href="#Adapting-SVD" class="headerlink" title="Adapting SVD++"></a>Adapting SVD++</h1><p>In order to avoid recomputing the estimated ratings from scratch for each new user, we need to improve SVD++. </p>
+<p>For new user, we would like to calculate the new latent factor. It is telling us how much this user like latent attribute k. </p>
+<blockquote>
+<p>We want to estimate how much user “u” likes latent feature “k” based on the ratings he gave to other items. Now we need something which is telling us if attribute “k” is present or not in item “j”. Y<sub>k,j</sub> telling us the information of attribute k in item j. Therefore, we can approximate X<sub>u,k</sub> as the dot product of the vector of ratings of the user and the latent factors for the corresponding items. </p>
+</blockquote>
+<h1 id="Matrix-formulation"><a href="#Matrix-formulation" class="headerlink" title="Matrix formulation"></a>Matrix formulation</h1><p>We obtain the matrix of estimated ratings R as the product of 2 terms.</p>
+<ol>
+<li>The URM, R</li>
+<li>The transpose of matrix Y times matrix Y (the dimension of Y is numLatentFactors*numItems), and this product is of shape numItems*numItems</li>
+</ol>
+<p>This is quite same to the IBCF. And we use the parameters in Y limit the overfitting problem</p>
+<h1 id="Asymmetric-SVD"><a href="#Asymmetric-SVD" class="headerlink" title="Asymmetric SVD"></a>Asymmetric SVD</h1><p>In Asymmetric SVD’s main advantage is that it allows us to overcome the main shortcoming of SVD++, which was that the algorithm is not model-based, thus needs recomputing everytime a new user is added in the system.</p>
+<p>With A-SVD, when new users are added into the system, we can start giving them relevant recommendations just by asking for a few of their favorite items.</p>
+<p>Instead of using vector x to represent user preferences directly, we introduce another matrix Q. Q multiplied the vector r of recorder user ratigns approximates the vector x. We could klearn Q by ML approaches. </p>
+<blockquote>
+<p>KEY IDEA: we solve how much a user likes a feature, than we solve how much a user likes an item.</p>
+</blockquote>
+<h1 id="Hybrid-RS"><a href="#Hybrid-RS" class="headerlink" title="Hybrid RS"></a>Hybrid RS</h1><p>Hybrid RS combine the results of two or more algorithms together. </p>
+<h2 id="Linear-Combination"><a href="#Linear-Combination" class="headerlink" title="Linear Combination"></a>Linear Combination</h2><p>The simplest hybridization, compute the estimated rating for user u and item i as the linear combination of the result of different RS. We could also combine lists.</p>
+<blockquote>
+<p>Disadvantages: the optimal values depends on the dataset. </p>
+</blockquote>
+<h2 id="Pipeline-Algorithms"><a href="#Pipeline-Algorithms" class="headerlink" title="Pipeline Algorithms"></a>Pipeline Algorithms</h2><p>We could use the result of one RS as the input of a second algorithm. It works better if we use a content based technique to enrich a collaborative techinique.</p>
+<blockquote>
+<p>Disadvantages: memory and computation problem.</p>
+</blockquote>
+<h2 id="Merging-models"><a href="#Merging-models" class="headerlink" title="Merging models"></a>Merging models</h2><p>Merge two algorithms, A and B together into one . For example, marge a content based method to calculate the item similarity matrix, and then we use IBCF to calculate another item similarity matrix, we could reach the very same conclusion.</p>
+<h1 id="S-SLIM-Side-Information"><a href="#S-SLIM-Side-Information" class="headerlink" title="S-SLIM: Side Information"></a>S-SLIM: Side Information</h1><p>S-SLIM merges collaborative filtering and content based approach.</p>
+<p>SLIM is a CF, and the target of CF and CBF are both calculating item similarity matrix.</p>
+<blockquote>
+<p>KEY-IDEA: combine two item similarity matrix together, and use an error function to find the best weights. And we need to constraint the result item similarity matrix have a diagonal with zero.</p>
+</blockquote>
+<h1 id="Context-Aware-RS"><a href="#Context-Aware-RS" class="headerlink" title="Context Aware RS"></a>Context Aware RS</h1><p>In some application, the RS depends on the external factors like the weather, the hour of the day. These information are called context.</p>
+<p>To represent context, we augment the URM to include them as new type of varaible. The URM is not 2d any more, it is 3D! For each rating, we record the rating in different context. </p>
+<h2 id="Tensor-Factorization"><a href="#Tensor-Factorization" class="headerlink" title="Tensor Factorization"></a>Tensor Factorization</h2><p>To use the tensor, we extend the matrix factorization to the tensor case. With MF we estimat the URM as product of two matrices, X and Y. In Tensor, we decomposite the 3-d tensor to product of X, Y and Z.</p>
+<ol>
+<li>X: how much the user like a latent feature.</li>
+<li>Y: how much the latent feature is important to describe the item.</li>
+<li>Z: how much the feature is relevant in the context.</li>
+</ol>
+<h1 id="Factorization-Machines"><a href="#Factorization-Machines" class="headerlink" title="Factorization Machines"></a>Factorization Machines</h1><p>FM is a new technique of collaborative filtering with side information. It looks like Matrix Factorization, but the technique is quite different.</p>
+<p><a href="https://www.cnblogs.com/pinard/p/6370127.html" target="_blank" rel="noopener">LINK 1</a><br><a href="https://www.jianshu.com/p/78628d1cc621" target="_blank" rel="noopener">LINK 2</a></p>
+<blockquote>
+<p>FM的原理是将所有的user，item都看作输入，将rating看作输出，我们通过这种方式将原本的RS问题转化成了一个regression问题。</p>
+</blockquote>
+<h2 id="FM-vs-CF"><a href="#FM-vs-CF" class="headerlink" title="FM vs CF"></a>FM vs CF</h2><p>FM is creating a table, and approximating each rating in the table with a formula and estimate the unknown parameters by minimizeing some error, it is just like collaborative filtering.</p>
+<h2 id="Advantages"><a href="#Advantages" class="headerlink" title="Advantages"></a>Advantages</h2><p>FM is more flexible with side information: just add new columns!</p>
+<h2 id="Disadvantages"><a href="#Disadvantages" class="headerlink" title="Disadvantages"></a>Disadvantages</h2><p>The computation cost is ahigh, and we need to regularize the overfitting problem.</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> POLIMI </tag>
+            
+            <tag> Recommender Systems </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Numerical Analysis]]></title>
       <url>/2019/01/12/Numerical-Analysis/</url>
       <content type="html"><![CDATA[<h1 id="Bisection-Newton-Fixed-Point"><a href="#Bisection-Newton-Fixed-Point" class="headerlink" title="Bisection/Newton/Fixed Point"></a>Bisection/Newton/Fixed Point</h1><h2 id="Bisection-二分法求零点"><a href="#Bisection-二分法求零点" class="headerlink" title="Bisection 二分法求零点"></a>Bisection 二分法求零点</h2><p>我们使用二分法求零点，根据函数的连续性，假如在一个函数在interval[a,b]上连续，而且在这个interval的两端取得不同的符号，那么显然我们在这个区间上至少有一个零点，如果函数是单调的，那么在这个interval上的零点唯一。</p>
@@ -961,9 +1084,9 @@
         
         <tags>
             
-            <tag> Machine Learning </tag>
-            
             <tag> Recommender Systems </tag>
+            
+            <tag> Machine Learning </tag>
             
         </tags>
         
@@ -995,11 +1118,11 @@
         
         <tags>
             
-            <tag> CNN </tag>
+            <tag> Machine Learning </tag>
             
             <tag> AI </tag>
             
-            <tag> Machine Learning </tag>
+            <tag> CNN </tag>
             
         </tags>
         
@@ -1623,9 +1746,9 @@
         
         <tags>
             
-            <tag> CNN </tag>
-            
             <tag> Machine Learning </tag>
+            
+            <tag> CNN </tag>
             
             <tag> EyePhone </tag>
             
@@ -1714,9 +1837,9 @@ Require: 初始参数 θ
         
         <tags>
             
-            <tag> CNN </tag>
-            
             <tag> Deep Learning </tag>
+            
+            <tag> CNN </tag>
             
             <tag> Optimization </tag>
             
@@ -1908,13 +2031,13 @@ Require: 初始参数 θ
         
         <tags>
             
-            <tag> Machine Learning </tag>
-            
             <tag> AlphaGo </tag>
             
             <tag> Reinforcement Learning </tag>
             
             <tag> Artificial Neural Network </tag>
+            
+            <tag> Machine Learning </tag>
             
         </tags>
         
