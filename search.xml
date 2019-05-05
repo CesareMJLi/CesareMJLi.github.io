@@ -3,6 +3,132 @@
   
     
     <entry>
+      <title><![CDATA[ROS学习笔记]]></title>
+      <url>/2019/05/05/ROS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+      <content type="html"><![CDATA[<h1 id="从小海龟说起"><a href="#从小海龟说起" class="headerlink" title="从小海龟说起"></a>从小海龟说起</h1><pre><code>roscore
+rosrun turtlesim turtlesim_node 
+rosrun turtlesim turtle_teleop_key
+</code></pre><p>使用三个terminal分别使用以上三个指令可以创造一个可以用键盘控制的小海龟，三个终端的目的是为了让三条指令同时运行，在ROS中，所有的软件都组织成为<strong>包（软件包/功能包）</strong>的形式。比如在前面的代码中，turtlesim是一个包，而turtlesim_node以及turtle_teleop_key是turtlesim包中的可执行文件。所有的ROS软件都是一个软件包的一部分。</p>
+<h1 id="查看软件包和定位软件包"><a href="#查看软件包和定位软件包" class="headerlink" title="查看软件包和定位软件包"></a>查看软件包和定位软件包</h1><pre><code>rospack list
+
+rospack list | wc -l      
+# 返回软件包的个数
+</code></pre><p>每个包由一个package.xml定义，该文件定义关于包的细节，包含package.xml的目录成为软件包目录，</p>
+<pre><code># rospack find package-name
+# 找到一个包的目录，包的名称也可以用Tab键补全
+rospack find turtlesim
+
+
+# rosls package-name 
+# 查看软件包目录下的文件
+rosls turtlesim
+rosls turtlesim/images
+
+# roscd package-name
+# 切换当前目录至此软件包目录下
+roscd turtlesim/images/
+eog box-turtle.png
+</code></pre><h1 id="节点管理"><a href="#节点管理" class="headerlink" title="节点管理"></a>节点管理</h1><p>ROS的目标是使来自不同的程序员设计的<strong>节点</strong>同时运行，他们彼此几乎相互独立，但是我们又要求他们能够彼此通信，ROS中实现通信的关键部分就是ROS节点管理器，要启动节点管理器，使用如下命令</p>
+<pre><code>roscore
+</code></pre><p>在turtlesim中我们使用过这个命令，不带任何参数，也无需任何配置。节点管理器应该在使用ROS的全部时间内保持运行，我们需要先在terminal启动roscore然后运行其他程序，在其他程序均完成后，在roscore的终端输出Ctrl+c停止节点管理器。</p>
+<h1 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h1><p>在turtlesim中，我们创建了两个节点</p>
+<ol>
+<li>节点一是turtlesim_node的实例化，这个节点创建turtlesim窗口和模拟海龟运动</li>
+<li>节点二使turtle_teleop_key的实例化，这个节点捕捉键盘事件，并转换为运动命令，然后将命令发送给turtle_sim节点</li>
+</ol>
+<p>启动节点使用如下命令</p>
+<pre><code># rosrun package-name executalbe-name
+rosrun turtlesim turtlesim_node 
+
+# 获得运行节点列表
+rosnode list
+# 该命令的输出为（在turtle_sim的例子下）
+/rosout
+/teleop_turtle
+/turtlesim
+# 其中rosout是一个特殊的节点，通过roscore自动启动，功能类似控制台程序中的标准输出
+
+# 查看节点
+# rosnode info node-name
+rosnode info /teleop_turtle
+
+# 终止节点
+# rosnode kill node-name
+rosnode kill /teleop_turtle
+</code></pre><h1 id="话题和消息"><a href="#话题和消息" class="headerlink" title="话题和消息"></a>话题和消息</h1><p>ROS中，消息有组织的存放在<strong>话题</strong>里，这个机制可以描述为：当一个节点想要分享信息时，它会发布消息到对应的一个或者多个话题，当一个节点要接受信息时，它就会订阅它所需要的一个或者过个话题。</p>
+<pre><code># 查看ros中的发布/订阅关系
+rqt_graph
+</code></pre><p>所有的节点都向话题/rosout发布消息，该话题由同名节点/rosout节点订阅。在turtlesim例中，当你按下一个键时，/teleop_turtle节点会以消息的形式将这些运 动控制命令发布到话题/turtle1/cmd_vel;与此同时，因为turtlesim_node订阅了该话题，因此它会接收到这个些消息，控制海龟按照该预定的速度移动。</p>
+<pre><code># 获得当前活跃话题
+rostopic list
+
+# 打印某个话题下的消息内容
+# rostopic echo topic-name
+rostopic echo /turtle1/cmd_vel
+
+# 测量某个话题发布频率以及占用贷款
+rostopic hz topic-name
+rostopic bw topic-name
+
+# 查看话题
+# rostopic info topic-name
+rostopic info /tutle1/color_sensor
+
+# 查看某种类型消息的详情
+#rosmsg show message-type-name
+rosmsg show turtlesim/Color
+rosmsg show geometry_msgs/Twist
+
+# 用命令行发布消息
+#rostopic pub –r rate-in-hz topic-name message-type message-content
+rostopic pub –r 1 /turtle1/cmd_vel geometry_msgs/Twist &#39;[2,0,0]&#39; &#39;[0,0,0]&#39;
+</code></pre><p>理解消息类型的命名：ROS中，每条消息类型都属于一个包，消息类型名总会包含一个斜杠，斜杠前的名字就是包含他的包，如turtlesim/Color</p>
+<h1 id="问题检查"><a href="#问题检查" class="headerlink" title="问题检查"></a>问题检查</h1><pre><code>roswtf
+</code></pre>]]></content>
+      
+        
+        <tags>
+            
+            <tag> POLIMI </tag>
+            
+            <tag> ROS </tag>
+            
+            <tag> Ubuntu/Linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[论文阅读笔记]]></title>
+      <url>/2019/04/01/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</url>
+      <content type="html"><![CDATA[<h1 id="Exploration-of-Indoor-Environments-Predicting-the-Layout-of-Partially-Observed-Rooms"><a href="#Exploration-of-Indoor-Environments-Predicting-the-Layout-of-Partially-Observed-Rooms" class="headerlink" title="Exploration of Indoor Environments - Predicting the Layout of Partially Observed Rooms"></a>Exploration of Indoor Environments - Predicting the Layout of Partially Observed Rooms</h1><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>文中讨论了<strong>an agent incrementally huilds the maos of initially unknown indoor environments</strong>。在这个情景中，agent需要不断的作出一系列的action的决定，如<em>下一步去探索哪里</em>等，而这些决定仅根据现在agent画出来的当前environment的map而决定。</p>
+<p>而文中的核心想法就是，利用agent现在对于环境的预测(a prediction of the geometric structure of the unknown parts of an environment)来选择下一个action。</p>
+<blockquote>
+<p>整个过程可以分为两步</p>
+<ol>
+<li><p>reconstruct the layout of the environment starting from a partial grid map and to predict the shape of partially observed rooms on the basis of geometric features【如何根据当前的partial observation有效的重建environment的layout】</p>
+</li>
+<li><p>use the predicted layout to estimate the amount of new area the agent would observe from candidate locations in order to inform the selection of the next best one【如何使用layout进行下一步预测的辅助】</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2>]]></content>
+      
+        
+        <tags>
+            
+            <tag> AI </tag>
+            
+            <tag> POLIMI </tag>
+            
+            <tag> Computer Science </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Advanced Recommender Systems]]></title>
       <url>/2019/01/26/Advanced-Recommender-Systems/</url>
       <content type="html"><![CDATA[<h1 id="Esimating-Rating-as-Optimization-Problem"><a href="#Esimating-Rating-as-Optimization-Problem" class="headerlink" title="Esimating Rating as Optimization Problem"></a>Esimating Rating as Optimization Problem</h1><p>SLIM(Sparse Linear Models) techniques:  a machine learning approach to ITEM-BASED COLLABORATIVE FILTERING.</p>
@@ -1084,9 +1210,9 @@
         
         <tags>
             
-            <tag> Recommender Systems </tag>
-            
             <tag> Machine Learning </tag>
+            
+            <tag> Recommender Systems </tag>
             
         </tags>
         
@@ -1118,11 +1244,11 @@
         
         <tags>
             
-            <tag> Machine Learning </tag>
+            <tag> CNN </tag>
             
             <tag> AI </tag>
             
-            <tag> CNN </tag>
+            <tag> Machine Learning </tag>
             
         </tags>
         
@@ -1746,9 +1872,9 @@
         
         <tags>
             
-            <tag> Machine Learning </tag>
-            
             <tag> CNN </tag>
+            
+            <tag> Machine Learning </tag>
             
             <tag> EyePhone </tag>
             
@@ -1837,9 +1963,9 @@ Require: 初始参数 θ
         
         <tags>
             
-            <tag> Deep Learning </tag>
-            
             <tag> CNN </tag>
+            
+            <tag> Deep Learning </tag>
             
             <tag> Optimization </tag>
             
@@ -2031,13 +2157,13 @@ Require: 初始参数 θ
         
         <tags>
             
+            <tag> Machine Learning </tag>
+            
             <tag> AlphaGo </tag>
             
             <tag> Reinforcement Learning </tag>
             
             <tag> Artificial Neural Network </tag>
-            
-            <tag> Machine Learning </tag>
             
         </tags>
         
@@ -3104,9 +3230,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
         
         <tags>
             
-            <tag> Python </tag>
-            
             <tag> Machine Learning </tag>
+            
+            <tag> Python </tag>
             
             <tag> Jupyter Notebook </tag>
             
