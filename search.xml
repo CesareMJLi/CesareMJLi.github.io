@@ -3,6 +3,87 @@
   
     
     <entry>
+      <title><![CDATA[Computer Graphics Assignment]]></title>
+      <url>/2019/06/13/Computer-Graphics-Assignment/</url>
+      <content type="html"><![CDATA[<p>Identity Matrix:<br>var I = [   [1.0, 0.0, 0.0, 0.0],<br>            [0.0, 1.0, 0.0, 0.0],<br>            [0.0, 0.0, 1.0, 0.0],<br>            [0.0, 0.0, 0.0, 1.0]]</p>
+<h1 id="Assignment-1-OK"><a href="#Assignment-1-OK" class="headerlink" title="Assignment 1 OK"></a>Assignment 1 OK</h1><h1 id="Assignment-2-OK"><a href="#Assignment-2-OK" class="headerlink" title="Assignment 2 OK"></a>Assignment 2 OK</h1><h2 id="Translate-of-3-on-x-axis-5-on-z-axis"><a href="#Translate-of-3-on-x-axis-5-on-z-axis" class="headerlink" title="Translate of +3 on x-axis, -5 on z axis"></a>Translate of +3 on x-axis, -5 on z axis</h2><p>var I = [  [1.0, 0.0, 0.0, 3.0],<br>            [0.0, 1.0, 0.0, 0.0],<br>            [0.0, 0.0, 1.0, -5.0],<br>            [0.0, 0.0, 0.0, 1.0]]</p>
+<h2 id="Rotate-of-30-on-the-y-axis"><a href="#Rotate-of-30-on-the-y-axis" class="headerlink" title="Rotate of 30 on the y-axis"></a>Rotate of 30 on the y-axis</h2><p>var I = [  [0.866, 0.0, 0.5, 3.0],<br>            [0.0, 1.0, 0.0, 0.0],<br>            [-0.5, 0.0, 0.866, -5.0],<br>            [0.0, 0.0, 0.0, 1.0]]</p>
+<h2 id="Make-the-starship-2-times-bigger"><a href="#Make-the-starship-2-times-bigger" class="headerlink" title="Make the starship 2 times bigger"></a>Make the starship 2 times bigger</h2><p>var I = [   [2.0, 0.0, 0.0, 0.0],<br>            [0.0, 2.0, 0.0, 0.0],<br>            [0.0, 0.0, 2.0, 0.0],<br>            [0.0, 0.0, 0.0, 1.0]]</p>
+<h2 id="Make-the-starship-1-5-times-longer-on-x-axis-half-on-the-other-axis"><a href="#Make-the-starship-1-5-times-longer-on-x-axis-half-on-the-other-axis" class="headerlink" title="Make the starship 1.5 times longer on x-axis, half on the other axis"></a>Make the starship 1.5 times longer on x-axis, half on the other axis</h2><p>var I = [   [1.5, 0.0, 0.0, 0.0],<br>            [0.0, 0.5, 0.0, 0.0],<br>            [0.0, 0.0, 0.5, 0.0],<br>            [0.0, 0.0, 0.0, 1.0]]</p>
+<h2 id="Mirror-over-yz-plane"><a href="#Mirror-over-yz-plane" class="headerlink" title="Mirror over yz-plane"></a>Mirror over yz-plane</h2><p>var I = [   [-1, 0.0, 0.0, 0.0],<br>            [0.0, 1.0, 0.0, 0.0],<br>            [0.0, 0.0, 1.0, 0.0],<br>            [0.0, 0.0, 0.0, 1.0]]</p>
+<h2 id="Mirror-over-yz-plane-1"><a href="#Mirror-over-yz-plane-1" class="headerlink" title="Mirror over yz-plane"></a>Mirror over yz-plane</h2><p>var I = [   [-1, 0.0, 0.0, 0.0],<br>            [0.0, 1.0, 0.0, 0.0],<br>            [0.0, 0.0, 1.0, 0.0],<br>            [0.0, 0.0, 0.0, 1.0]]</p>
+<h2 id="Flatten-over-zx-plane"><a href="#Flatten-over-zx-plane" class="headerlink" title="Flatten over zx-plane"></a>Flatten over zx-plane</h2><p>var I = [   [1.0, 0.0, 0.0, 0.0],<br>            [0.0, 0.0, 0.0, 0.0],<br>            [0.0, 0.0, 1.0, 0.0],<br>            [0.0, 0.0, 0.0, 1.0]]</p>
+<h2 id="Shear-along-the-x-axis-by-a-factor-of-1-along-the-y-axis"><a href="#Shear-along-the-x-axis-by-a-factor-of-1-along-the-y-axis" class="headerlink" title="Shear along the x-axis, by a factor of 1 along the y-axis"></a>Shear along the x-axis, by a factor of 1 along the y-axis</h2><p>var I = [   [1.0, 0.0, 0.0, 0.0],<br>            [1.0, 1.0, 0.0, 0.0],<br>            [0.0, 0.0, 1.0, 0.0],<br>            [0.0, 0.0, 0.0, 1.0]]</p>
+<h1 id="Assignment-3-OK"><a href="#Assignment-3-OK" class="headerlink" title="Assignment 3 OK"></a>Assignment 3 OK</h1><h2 id="Rotate-30-degrees-around-an-arbitrary-axis-passing-through-1-1-0-The-x-axis-can-be-aligned-to-the-arbitrary-axis-after-a-rotation-of-15-degrees-around-the-z-axis-and-then-45-degrees-around-the-y-axis"><a href="#Rotate-30-degrees-around-an-arbitrary-axis-passing-through-1-1-0-The-x-axis-can-be-aligned-to-the-arbitrary-axis-after-a-rotation-of-15-degrees-around-the-z-axis-and-then-45-degrees-around-the-y-axis" class="headerlink" title="Rotate 30 degrees around an arbitrary axis passing through (1,1,0). The x-axis can be aligned to the arbitrary axis after a rotation of 15 degrees around the z-axis, and then 45 degrees around the y-axis."></a>Rotate 30 degrees around an arbitrary axis passing through (1,1,0). The x-axis can be aligned to the arbitrary axis after a rotation of 15 degrees around the z-axis, and then 45 degrees around the y-axis.</h2><p>R1 =T(1,1,0)R(y,45)R(z,15)R(x,30)R(z,-15)R(y,-45)T(-1,-1,0)</p>
+<pre><code>var R1 =  [0.926,        0.365,        0.067,        -0.294,
+           -0.318,        0.875,        -0.365,        0.443,
+           -0.192,        0.318,        0.929,        -0.126,
+           0.0,        0.0,        0.0,        1.0];
+</code></pre><h2 id="Double-the-size-of-an-object-using-as-fixed-point-1-1-0"><a href="#Double-the-size-of-an-object-using-as-fixed-point-1-1-0" class="headerlink" title="Double the size of an object, using as fixed point (1,1,0)"></a>Double the size of an object, using as fixed point (1,1,0)</h2><p>S1 =T(1,1,0)S(2,2,2)T(-1,-1,0)</p>
+<pre><code>var S1 =  [1.0,        0.0,        0.0,        0.0,
+           0.0,        1.0,        0.0,        0.0,
+           0.0,        0.0,        1.0,        0.0,
+           0.0,        0.0,        0.0,        1.0];
+</code></pre><h2 id="Mirror-the-starship-along-a-plane-passing-through-1-2-0-and-obtained-rotating-38-degree-around-the-y-axis-the-xy-plane"><a href="#Mirror-the-starship-along-a-plane-passing-through-1-2-0-and-obtained-rotating-38-degree-around-the-y-axis-the-xy-plane" class="headerlink" title="Mirror the starship along a plane passing through (1,2,0), and obtained rotating 38 degree around the y axis the xy plane"></a>Mirror the starship along a plane passing through (1,2,0), and obtained rotating 38 degree around the y axis the xy plane</h2><p>S2 = T(1,2,0)R(y,38)Mirror(xy)R(y,-38)T(-1,-2,0)</p>
+<pre><code>var S2 =  [0.242,        0.0,        -0.970,        0.758,
+           0.0,        1.0,        0.0,        0.0,
+           -0.970,        0.0,        0.242,        0.970,
+           0.0,        0.0,        0.0,        1.0];
+</code></pre><h2 id="The-ship-has-been-doubled-in-size-rotated-45-degrees-around-the-x-axis-30-degrees-around-the-y-axis-and-moved-to-1-1-2-Return-the-ship-in-its-original-position"><a href="#The-ship-has-been-doubled-in-size-rotated-45-degrees-around-the-x-axis-30-degrees-around-the-y-axis-and-moved-to-1-1-2-Return-the-ship-in-its-original-position" class="headerlink" title="The ship has been doubled in size, rotated 45 degrees around the x axis, 30 degrees around the y axis, and moved to (1,1,-2). Return the ship in its original position"></a>The ship has been doubled in size, rotated 45 degrees around the x axis, 30 degrees around the y axis, and moved to (1,1,-2). Return the ship in its original position</h2><p>I1 = S(0.5,0.5,0.5)R(x,-45)R(y,-30)T(-1,-1,2)</p>
+<pre><code>var I1 =  [0.433,        0.0,        -0.25,        -0.933,
+           0.177,        0.354,        0.306,        0.082,
+           0.167,        -0.354,        0.306,        0.789,
+           0.0,        0.0,        0.0,        1.0];
+</code></pre><h1 id="Assignment-4-OK"><a href="#Assignment-4-OK" class="headerlink" title="Assignment 4 OK"></a>Assignment 4 OK</h1><h2 id="Parallel-By-the-given-information-in-the-assignment-below-calculate-by-w-a-f-n"><a href="#Parallel-By-the-given-information-in-the-assignment-below-calculate-by-w-a-f-n" class="headerlink" title="Parallel. By the given information in the assignment below. calculate by w,a,f,n"></a>Parallel. By the given information in the assignment below. calculate by w,a,f,n</h2><p>Other matrix are calculated by this matrix multiply with rotation</p>
+<pre><code>var A =  [0.025,    0.0,        0.0,        0.0,
+           0.0,        0.044,        0.0,        0.0,
+           0.0,        0.0,        -0.02,        -1.02,
+           0.0,        0.0,        0.0,        1.0];
+</code></pre><h2 id="Make-an-isometric-view-w-40-a-16-9-n-1-f-101"><a href="#Make-an-isometric-view-w-40-a-16-9-n-1-f-101" class="headerlink" title="Make an isometric view, w = 40, a = 16/9, n = 1, f = 101."></a>Make an isometric view, w = 40, a = 16/9, n = 1, f = 101.</h2><pre><code>var A1 =  [0.018,    0.0,        0.018,        0.0,
+           0.018,        0.036,        -0.018,        0.0,
+           0.012,        -0.012,        -0.012,        -1.02,
+           0.0,        0.0,        0.0,        1.0];
+</code></pre><h2 id="Make-a-dimetric-view-w-40-a-16-9-n-1-f-101-rotated-20-around-the-x-axis"><a href="#Make-a-dimetric-view-w-40-a-16-9-n-1-f-101-rotated-20-around-the-x-axis" class="headerlink" title="Make a dimetric view, w = 40, a = 16/9, n = 1, f = 101, rotated 20 around the x-axis"></a>Make a dimetric view, w = 40, a = 16/9, n = 1, f = 101, rotated 20 around the x-axis</h2><pre><code>var A2 =  [0.018,    0.0,        0.018,        0.0,
+           0.011,        0.041,        -0.011,        0.0,
+           0.0133,        -0.007,        -0.133,        -1.02,
+           0.0,        0.0,        0.0,        1.0];
+</code></pre><h2 id="Make-a-trimetric-view-w-40-a-16-9-n-1-f-101-rotated-30-around-the-x-axis-and-30-around-the-y-axis"><a href="#Make-a-trimetric-view-w-40-a-16-9-n-1-f-101-rotated-30-around-the-x-axis-and-30-around-the-y-axis" class="headerlink" title="Make a trimetric view, w = 40, a = 16/9, n = 1, f = 101, rotated -30 around the x-axis and 30 around the y-axis"></a>Make a trimetric view, w = 40, a = 16/9, n = 1, f = 101, rotated -30 around the x-axis and 30 around the y-axis</h2><pre><code>var A3 =  [0.022,    0.0,        0.0125,        0.0,
+           -0.011,        0.038,        0.019,        0.0,
+           0.009,        0.01,        -0.015,        -1.02,
+           0.0,        0.0,        0.0,        1.0];
+</code></pre><h2 id="Make-an-cavalier-projection-view-w-40-a-16-9-n-1-f-101-at-45-degrees-【Matrix-with-Sheer】"><a href="#Make-an-cavalier-projection-view-w-40-a-16-9-n-1-f-101-at-45-degrees-【Matrix-with-Sheer】" class="headerlink" title="Make an cavalier projection view, w = 40, a = 16/9, n = 1, f = 101, at 45 degrees 【Matrix with Sheer】"></a>Make an cavalier projection view, w = 40, a = 16/9, n = 1, f = 101, at 45 degrees 【Matrix with Sheer】</h2><pre><code>var O1 =  [0.025,    0.0,        -0.018,        0.0,
+           0.0,        0.044,        -0.031,        0.0,
+           0.0,        0.0,        -0.02,        -1.02,
+           0.0,        0.0,        0.0,        1.0];
+</code></pre><h2 id="Make-a-cabinet-projection-view-w-40-a-16-9-n-1-f-101-at-60-degrees"><a href="#Make-a-cabinet-projection-view-w-40-a-16-9-n-1-f-101-at-60-degrees" class="headerlink" title="Make a cabinet projection view, w = 40, a = 16/9, n = 1, f = 101, at 60 degrees"></a>Make a cabinet projection view, w = 40, a = 16/9, n = 1, f = 101, at 60 degrees</h2><pre><code>var O2 =  [0.025,    0.0,        -0.006,        0.0,
+           0.0,        0.044,        -0.019,        0.0,
+           0.0,        0.0,        -0.02,        -1.02,
+           0.0,        0.0,        0.0,        1.0];
+</code></pre><h1 id="Assignment-5-OK"><a href="#Assignment-5-OK" class="headerlink" title="Assignment 5 OK"></a>Assignment 5 OK</h1><h2 id="Build-a-Perspective-projection"><a href="#Build-a-Perspective-projection" class="headerlink" title="Build a Perspective projection"></a>Build a Perspective projection</h2><pre><code>var out = [1.0,        0.0,        0.0,        0.0,
+           0.0,        1.0,        0.0,        0.0,
+           0.0,        0.0,        -1.0,        -0.2,
+           0.0,        0.0,        -1.0,        0.0];
+</code></pre><h2 id="Build-a-perspective-projection-matrix-for-a-viewport-whose-size-is-determined-by-parameters-w-width-and-h-height-and-whose-fov-y-is-passed-in-parameter-fov-Near-plane-is-n-0-1-and-far-plane-f-100"><a href="#Build-a-perspective-projection-matrix-for-a-viewport-whose-size-is-determined-by-parameters-w-width-and-h-height-and-whose-fov-y-is-passed-in-parameter-fov-Near-plane-is-n-0-1-and-far-plane-f-100" class="headerlink" title="// Build a perspective projection matrix, for a viewport whose size is determined by parameters w (width) and h (height), and whose fov-y is passed in parameter fov. Near plane is n=0.1, and far plane f=100."></a>// Build a perspective projection matrix, for a viewport whose size is determined by parameters w (width) and h (height), and whose fov-y is passed in parameter fov. Near plane is n=0.1, and far plane f=100.</h2><p>Page-36</p>
+<pre><code>var out = [h/(w*Math.tan(Math.PI*fov/360)),        0.0,        0.0,        0.0,
+           0.0,        1.0/Math.tan(Math.PI*fov/360),        0.0,        0.0,
+           0.0,        0.0,        -1.0,        -0.2,
+           0.0,        0.0,        -1.0,        0.0];
+</code></pre><h1 id="Assignment-6-KO"><a href="#Assignment-6-KO" class="headerlink" title="Assignment 6 KO"></a>Assignment 6 KO</h1><h1 id="Assignment-7-OK"><a href="#Assignment-7-OK" class="headerlink" title="Assignment 7 OK"></a>Assignment 7 OK</h1><h1 id="Assignment-8-OK"><a href="#Assignment-8-OK" class="headerlink" title="Assignment 8 OK"></a>Assignment 8 OK</h1><h1 id="Assignment-9-OK"><a href="#Assignment-9-OK" class="headerlink" title="Assignment 9 OK"></a>Assignment 9 OK</h1><h1 id="Assignment-10-OK"><a href="#Assignment-10-OK" class="headerlink" title="Assignment 10 OK"></a>Assignment 10 OK</h1><h1 id="Assignment-11-OK"><a href="#Assignment-11-OK" class="headerlink" title="Assignment 11 OK"></a>Assignment 11 OK</h1><h1 id="Assignment-12-OK"><a href="#Assignment-12-OK" class="headerlink" title="Assignment 12 OK"></a>Assignment 12 OK</h1>]]></content>
+      
+        
+        <tags>
+            
+            <tag> POLIMI </tag>
+            
+            <tag> Computer Graphics </tag>
+            
+            <tag> Assignment </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[ROS学习笔记]]></title>
       <url>/2019/05/05/ROS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
       <content type="html"><![CDATA[<h1 id="从小海龟说起"><a href="#从小海龟说起" class="headerlink" title="从小海龟说起"></a>从小海龟说起</h1><pre><code>roscore
@@ -84,7 +165,12 @@ rosmsg show geometry_msgs/Twist
 rostopic pub –r 1 /turtle1/cmd_vel geometry_msgs/Twist &#39;[2,0,0]&#39; &#39;[0,0,0]&#39;
 </code></pre><p>理解消息类型的命名：ROS中，每条消息类型都属于一个包，消息类型名总会包含一个斜杠，斜杠前的名字就是包含他的包，如turtlesim/Color</p>
 <h1 id="问题检查"><a href="#问题检查" class="headerlink" title="问题检查"></a>问题检查</h1><pre><code>roswtf
-</code></pre>]]></content>
+</code></pre><h1 id="编写ROS程序"><a href="#编写ROS程序" class="headerlink" title="编写ROS程序"></a>编写ROS程序</h1><p>所有的ROS软件，都被组织成包，在编写之前，创建一个容纳功能包的工作区。然后创建一个功能包</p>
+<pre><code># 创建功能包
+# catkin_create_pkg package-name
+catkin_create_pkg agitr
+</code></pre><p>写一个这样的函数是简单的，但是我们必须要根据cpp文件的一些特定对其txt进行相应的配置，以使得该文件能够被正确的配置。</p>
+]]></content>
       
         
         <tags>
