@@ -5,8 +5,7 @@
     <entry>
       <title><![CDATA[Computer Graphics Assignment]]></title>
       <url>/2019/06/13/Computer-Graphics-Assignment/</url>
-      <content type="html"><![CDATA[<p>Identity Matrix:<br>var I = [   [1.0, 0.0, 0.0, 0.0],<br>            [0.0, 1.0, 0.0, 0.0],<br>            [0.0, 0.0, 1.0, 0.0],<br>            [0.0, 0.0, 0.0, 1.0]]</p>
-<h1 id="Assignment-1-OK"><a href="#Assignment-1-OK" class="headerlink" title="Assignment 1 OK"></a>Assignment 1 OK</h1><h1 id="Assignment-2-OK"><a href="#Assignment-2-OK" class="headerlink" title="Assignment 2 OK"></a>Assignment 2 OK</h1><h2 id="Translate-of-3-on-x-axis-5-on-z-axis"><a href="#Translate-of-3-on-x-axis-5-on-z-axis" class="headerlink" title="Translate of +3 on x-axis, -5 on z axis"></a>Translate of +3 on x-axis, -5 on z axis</h2><p>var I = [  [1.0, 0.0, 0.0, 3.0],<br>            [0.0, 1.0, 0.0, 0.0],<br>            [0.0, 0.0, 1.0, -5.0],<br>            [0.0, 0.0, 0.0, 1.0]]</p>
+      <content type="html"><![CDATA[<h1 id="Assignment-1-OK"><a href="#Assignment-1-OK" class="headerlink" title="Assignment 1 OK"></a>Assignment 1 OK</h1><h1 id="Assignment-2-OK"><a href="#Assignment-2-OK" class="headerlink" title="Assignment 2 OK"></a>Assignment 2 OK</h1><h2 id="Translate-of-3-on-x-axis-5-on-z-axis"><a href="#Translate-of-3-on-x-axis-5-on-z-axis" class="headerlink" title="Translate of +3 on x-axis, -5 on z axis"></a>Translate of +3 on x-axis, -5 on z axis</h2><p>var I = [  [1.0, 0.0, 0.0, 3.0],<br>            [0.0, 1.0, 0.0, 0.0],<br>            [0.0, 0.0, 1.0, -5.0],<br>            [0.0, 0.0, 0.0, 1.0]]</p>
 <h2 id="Rotate-of-30-on-the-y-axis"><a href="#Rotate-of-30-on-the-y-axis" class="headerlink" title="Rotate of 30 on the y-axis"></a>Rotate of 30 on the y-axis</h2><p>var I = [  [0.866, 0.0, 0.5, 3.0],<br>            [0.0, 1.0, 0.0, 0.0],<br>            [-0.5, 0.0, 0.866, -5.0],<br>            [0.0, 0.0, 0.0, 1.0]]</p>
 <h2 id="Make-the-starship-2-times-bigger"><a href="#Make-the-starship-2-times-bigger" class="headerlink" title="Make the starship 2 times bigger"></a>Make the starship 2 times bigger</h2><p>var I = [   [2.0, 0.0, 0.0, 0.0],<br>            [0.0, 2.0, 0.0, 0.0],<br>            [0.0, 0.0, 2.0, 0.0],<br>            [0.0, 0.0, 0.0, 1.0]]</p>
 <h2 id="Make-the-starship-1-5-times-longer-on-x-axis-half-on-the-other-axis"><a href="#Make-the-starship-1-5-times-longer-on-x-axis-half-on-the-other-axis" class="headerlink" title="Make the starship 1.5 times longer on x-axis, half on the other axis"></a>Make the starship 1.5 times longer on x-axis, half on the other axis</h2><p>var I = [   [1.5, 0.0, 0.0, 0.0],<br>            [0.0, 0.5, 0.0, 0.0],<br>            [0.0, 0.0, 0.5, 0.0],<br>            [0.0, 0.0, 0.0, 1.0]]</p>
@@ -138,7 +137,10 @@ function view(cx, cy, cz, alpha, beta, rho) {
 
     return out;
 }
-</code></pre><h1 id="Assignment-7-OK"><a href="#Assignment-7-OK" class="headerlink" title="Assignment 7 OK"></a>Assignment 7 OK</h1><h1 id="Assignment-8-OK"><a href="#Assignment-8-OK" class="headerlink" title="Assignment 8 OK"></a>Assignment 8 OK</h1><h1 id="Assignment-9-OK"><a href="#Assignment-9-OK" class="headerlink" title="Assignment 9 OK"></a>Assignment 9 OK</h1><h1 id="Assignment-10-OK"><a href="#Assignment-10-OK" class="headerlink" title="Assignment 10 OK"></a>Assignment 10 OK</h1><h1 id="Assignment-11-OK"><a href="#Assignment-11-OK" class="headerlink" title="Assignment 11 OK"></a>Assignment 11 OK</h1><h1 id="Assignment-12-OK"><a href="#Assignment-12-OK" class="headerlink" title="Assignment 12 OK"></a>Assignment 12 OK</h1>]]></content>
+</code></pre><h1 id="Assignment-7-KO"><a href="#Assignment-7-KO" class="headerlink" title="Assignment 7 KO"></a>Assignment 7 KO</h1><h1 id="Assignment-8-OK"><a href="#Assignment-8-OK" class="headerlink" title="Assignment 8 OK"></a>Assignment 8 OK</h1><p>GO TO THE SCRIPTS. TOO LONG TO PUT IT HERE.</p>
+<h1 id="Assignment-9-OK"><a href="#Assignment-9-OK" class="headerlink" title="Assignment 9 OK?"></a>Assignment 9 OK?</h1><p>BACK FACE CULLING! AND PROBLEMS WITH SPHERE.</p>
+<h1 id="Assignment-10-GG"><a href="#Assignment-10-GG" class="headerlink" title="Assignment 10 GG"></a>Assignment 10 GG</h1><h1 id="Assignment-11-OK"><a href="#Assignment-11-OK" class="headerlink" title="Assignment 11 OK"></a>Assignment 11 OK</h1><p>JUST LIKE ASSIGNMENT 9</p>
+<h1 id="Assignment-12-OK"><a href="#Assignment-12-OK" class="headerlink" title="Assignment 12 OK"></a>Assignment 12 OK</h1>]]></content>
       
         
         <tags>
@@ -3491,9 +3493,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
             
             <tag> POLIMI </tag>
             
-            <tag> Foundations of Operations Research </tag>
-            
             <tag> Linear Programming </tag>
+            
+            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
@@ -3690,13 +3692,13 @@ end.
             
             <tag> POLIMI </tag>
             
+            <tag> Foundations of Operations Research </tag>
+            
             <tag> Graphs </tag>
             
             <tag> Network Flows </tag>
             
             <tag> Algorithms </tag>
-            
-            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
