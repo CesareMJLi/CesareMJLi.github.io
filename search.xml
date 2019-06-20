@@ -67,7 +67,7 @@
            0.0,        1.0/Math.tan(Math.PI*fov/360),        0.0,        0.0,
            0.0,        0.0,        -1.0,        -0.2,
            0.0,        0.0,        -1.0,        0.0];
-</code></pre><h1 id="Assignment-6-OK"><a href="#Assignment-6-OK" class="headerlink" title="Assignment 6 OK"></a>Assignment 6 OK</h1><pre><code>function multiply(a,b){
+</code></pre><h1 id="Assignment-6-OK-飞船盘旋问题"><a href="#Assignment-6-OK-飞船盘旋问题" class="headerlink" title="Assignment 6 OK (飞船盘旋问题)"></a>Assignment 6 OK (飞船盘旋问题)</h1><pre><code>function multiply(a,b){
     var aNumRows = a.length, aNumCols = a[0].length;
     var bNumRows = b.length, bNumCols = b[0].length;
     var m = new Array(aNumRows);
@@ -137,10 +137,9 @@ function view(cx, cy, cz, alpha, beta, rho) {
 
     return out;
 }
-</code></pre><h1 id="Assignment-7-KO"><a href="#Assignment-7-KO" class="headerlink" title="Assignment 7 KO"></a>Assignment 7 KO</h1><h1 id="Assignment-8-OK"><a href="#Assignment-8-OK" class="headerlink" title="Assignment 8 OK"></a>Assignment 8 OK</h1><p>GO TO THE SCRIPTS. TOO LONG TO PUT IT HERE.</p>
-<h1 id="Assignment-9-OK"><a href="#Assignment-9-OK" class="headerlink" title="Assignment 9 OK?"></a>Assignment 9 OK?</h1><p>BACK FACE CULLING! AND PROBLEMS WITH SPHERE.</p>
-<h1 id="Assignment-10-GG"><a href="#Assignment-10-GG" class="headerlink" title="Assignment 10 GG"></a>Assignment 10 GG</h1><h1 id="Assignment-11-OK"><a href="#Assignment-11-OK" class="headerlink" title="Assignment 11 OK"></a>Assignment 11 OK</h1><p>JUST LIKE ASSIGNMENT 9</p>
-<h1 id="Assignment-12-OK"><a href="#Assignment-12-OK" class="headerlink" title="Assignment 12 OK"></a>Assignment 12 OK</h1>]]></content>
+</code></pre><h1 id="Assignment-7-KO-地球转动问题"><a href="#Assignment-7-KO-地球转动问题" class="headerlink" title="Assignment 7 KO (地球转动问题)"></a>Assignment 7 KO (地球转动问题)</h1><h1 id="Assignment-8-OK-赛车问题"><a href="#Assignment-8-OK-赛车问题" class="headerlink" title="Assignment 8 OK (赛车问题)"></a>Assignment 8 OK (赛车问题)</h1><p>GO TO THE SCRIPTS. TOO LONG TO PUT IT HERE.</p>
+<h1 id="Assignment-9-OK-Sprites问题"><a href="#Assignment-9-OK-Sprites问题" class="headerlink" title="Assignment 9 OK (Sprites问题)"></a>Assignment 9 OK (Sprites问题)</h1><p>BACK FACE CULLING! AND PROBLEMS WITH SPHERE.</p>
+<h1 id="Assignment-10-KO"><a href="#Assignment-10-KO" class="headerlink" title="Assignment 10 KO"></a>Assignment 10 KO</h1><h1 id="Assignment-11-KO"><a href="#Assignment-11-KO" class="headerlink" title="Assignment 11 KO"></a>Assignment 11 KO</h1><h1 id="Assignment-12-KO"><a href="#Assignment-12-KO" class="headerlink" title="Assignment 12 KO"></a>Assignment 12 KO</h1>]]></content>
       
         
         <tags>
@@ -3493,9 +3492,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
             
             <tag> POLIMI </tag>
             
-            <tag> Linear Programming </tag>
-            
             <tag> Foundations of Operations Research </tag>
+            
+            <tag> Linear Programming </tag>
             
         </tags>
         
@@ -3692,13 +3691,13 @@ end.
             
             <tag> POLIMI </tag>
             
-            <tag> Foundations of Operations Research </tag>
-            
             <tag> Graphs </tag>
             
             <tag> Network Flows </tag>
             
             <tag> Algorithms </tag>
+            
+            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
