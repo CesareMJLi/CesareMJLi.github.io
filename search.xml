@@ -3,6 +3,192 @@
   
     
     <entry>
+      <title><![CDATA[Design Pattern/设计模式: Part II]]></title>
+      <url>/2020/01/26/Design-Pattern-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-Part-II/</url>
+      <content type="html"><![CDATA[<h1 id="设计模式以及综述"><a href="#设计模式以及综述" class="headerlink" title="设计模式以及综述"></a>设计模式以及综述</h1><p>设计模式对于一名软件开发工程师来说可谓是必备的技能和知识，然而在程序员社区中也充斥着不少对于设计模式的反对之音。有人认为设计模式的知识对于工程开发至关重要，但也有许多经验丰富的程序员认为设计模式应当是长期的软件开发的积累所留下的不可名状的抽象艺术，对于市面上不少介绍设计模式的书籍嗤之以鼻。</p>
+<p>对于刚入门的软件开发工程师而言，你若问他（包括现在的我自己）“我们为什么要使用工厂模式？使用工厂模式能够带来什么好处？”之类的问题，他也是很难回答的。所以盲目的掌握设计模式中那些拗口的名称，或者干巴巴的“方便继承”之类的描述是没有意义的。</p>
+<p>这一系列的博客的目的并不是一蹴而就的讲解全部的设计模式知识，这样的知识没有日积月累的开发经验是很难去对其有深入的体会的。我只是希望能在这一系列的博客中，借助《图解设计模式》一书，跟随书中的顺序对其中的设计模式知识进行某种程度的理解和总结，以至于能够对诸君有所启迪，开发出更加优美和友好的代码。</p>
+<p>我的能力有限，若是文中出现什么谬误也请诸君不吝赐教，提前感谢。</p>
+<p>《图解设计模式》一书的作者是<strong>结城浩</strong>先生，全书共计十个部分，预计会分为十篇博客进行介绍。书中的代码为java所写，虽然java并不是我比较擅长的代码，但是为了不引起错误贻笑大方，所以还是按照书中的java进行讨论。本博客介绍其中的<em>第二部分：交给子类</em>。</p>
+<h1 id="Chapter-3-Template-Method模式–将具体处理交给子类"><a href="#Chapter-3-Template-Method模式–将具体处理交给子类" class="headerlink" title="Chapter 3: Template Method模式–将具体处理交给子类"></a>Chapter 3: Template Method模式–将具体处理交给子类</h1><p>模版这一词的原意是非常好理解的，玩RPG游戏的时候，一般都需要先选择种族，比如说人族，然后在人族这个模版下去选择魔法师、圣骑士等等。那么什么是Template Method模式呢，其实诸君大可以放松心情，因为这一章节介绍的这个Template Method的重点，就是我们最开始学习面向对象编程的时候需要了解的父类和子类的方法。</p>
+<p>模版的方法往往定义在父类之中，由于这些方法（往往）是抽象方法，那么只看父类的话我们是无从得知实现方法的具体的内容的，唯一能知道的就是父类如何调用这些方法，而抽象方法的具体的实现则是在子类之中。</p>
+<p>这里需要注意，在不同的子类中实现不同的抽象方法，当父类的模版方法被调用的时候程序的行为也会不同，但是不论子类的具体实现如何，处理的流程都会按照父类定义的进行。</p>
+<p><strong>在父类中定义处理流程的框架，在子类中实现具体处理</strong>的模式就称为<strong>Template Method模式</strong>。（听起来非常的高深，其实就是简单的面向对象编程啦！）</p>
+<blockquote>
+<p>例：这里我们要实现一个程序，使其能够将字符和字符串循环显示5次，并且使得字符和字符串的格式也不同，因为我们在这个示例程序中需要同时考虑字符串和字符的情况，所以我们使用两个子类（分别对应字符和字符串）来实现这个方法。</p>
+</blockquote>
+<img src="/2020/01/26/Design-Pattern-设计模式-Part-II/1.png">
+<pre><code>// AbstractDisplay.java: AbstractDisplay类
+public abstract class AbstractDisplay{
+    public abstract void open();
+    public abstract void print();
+    public abstract void close();
+    public final void display(){
+        open();
+        for(i=0;i&lt;5;i++){
+            print();
+        }
+        close();
+    }
+}
+// 定义了流程的框架！注意！是流程的框架！
+</code></pre><pre><code>// CharDisplay.java: CharDisplay类，也是AbstractDisplay类的子类
+public class CharDisplay extends AbstractDisplay{
+    private char ch;
+    public CharDisplay(char ch){
+        this.ch = ch;
+    }
+    public void open(){
+        System.out.print(&quot;&lt;&lt;&quot;);
+    }
+    public void print(){
+        System.out.print(ch);
+    }
+    public void close(){
+        System.out.print(&quot;&gt;&gt;&quot;);
+    }
+}
+</code></pre><pre><code>// StringDisplay.java: StringDisplay类，也是AbstractDisplay类的子类
+public class StringDisplay extends AbstractDisplay{
+    private String string;
+    private int width;
+
+    public StringDisplay(String string){
+        this.string = string;
+        this.width = string.getBytes().length;
+    }
+    public void open(){
+        printLine();
+    }
+    public void print(){
+        System.out.println(&quot;|&quot;+string+&quot;|&quot;);
+    }
+    public void close(){
+        printLine();
+    }
+    private void printLine(){
+        System.out.print(&quot;+&quot;);
+        for(int i=0;i&lt;width;i++){
+            System.out.print(&quot;-&quot;);
+        }
+        System.out.println(&quot;+&quot;);
+    }
+}
+</code></pre><pre><code>// Main.java: Main类
+public class Main(){
+    public static void main(String[] args){
+        AbstractDisplay d1 = new CharDisplay(&#39;H&#39;);
+        AbstractDisplay d2 = new StringDisplay(&quot;Hello World&quot;);
+        d1.display();
+        d2.display();
+    }
+}
+// 由于d1和d2都是AbstractDisplay类的子类，所以我们可以调用其集成的父类中的display的方法，实际的程序行为则依赖CharDisplay和StringDisplay的具体实现。
+</code></pre><h2 id="登场角色"><a href="#登场角色" class="headerlink" title="登场角色"></a>登场角色</h2><ol>
+<li>AbstractClass：由AbstractDisplay扮演此角色，不仅可以实现模版方法（display方法），还负责声明在模版方法中使用的抽象方法（open/print/close），而这些抽象方法具体实现则是在子类中。</li>
+<li>ConcreteClass：由CharPrint和StringPrint扮演此角色，实现具体的方法</li>
+</ol>
+<img src="/2020/01/26/Design-Pattern-设计模式-Part-II/2.png">
+<p>这里我们可以深入理解一下使用Template Method的好处，我们在父类的模版方法中编写了算法（也就是AbstractDisplay类中的display方法），而如果我们没有使用这种Template Method的方法的话，一旦对代码进行改动，我们可能就不得不去修改每一个类来解决问题。</p>
+<p>这里要注意一点，父类和子类之间的关系是非常紧密的，如果希望在Template Method下写出能够正常工作的代码，那么必须要理解这些代码在（父类的）抽象方法、流程的框架是如何运行的。因此如果看不到父类的代码，去实现子类几乎是不可能的。</p>
+<blockquote>
+<p>在本例中的AbstractDisplay中，我们设计到了抽象类的概念，抽象类是无法生成实例的。</p>
+<p>父类和子类相互协作在软件工程中是非常常见的，但是作为一名程序员，在拿出键盘之前往往需要去平衡父类和子类。父类中包含的方法太多会降低子类的灵活性，而父类中如果包含的方法太少，那么子类中可能又会过于臃肿。</p>
+</blockquote>
+<h1 id="Chapter-4-Factory-Method模式–将实例的生成交给子类"><a href="#Chapter-4-Factory-Method模式–将实例的生成交给子类" class="headerlink" title="Chapter 4: Factory Method模式–将实例的生成交给子类"></a>Chapter 4: Factory Method模式–将实例的生成交给子类</h1><p>在上一章中的Template Method中，我们在父类中规定了处理的流程（display方法），而在子类中实现具体的处理（open/print/close），如果我们将这个模式用于生成实例，那么就是我们本章中要学习的Factory Method模式，我们不妨来直接看例子。</p>
+<blockquote>
+<p>例：我们要设计一个程序，使其能够制作身份证。为了解决这个问题，我们使用如下的五个类来解决问题。Product类和Factory类属于framework包，组成了生成实例的框架。IDCard类和IDCardFactory类负责类的实际的加工和处理，属于idcard包。Main类则是主程序。</p>
+</blockquote>
+<img src="/2020/01/26/Design-Pattern-设计模式-Part-II/3.png">
+<img src="/2020/01/26/Design-Pattern-设计模式-Part-II/4.png">
+<pre><code>// Product.java: Project类，仅仅声明了use抽象方法
+package framework;
+
+public abstract class Product{
+    public abstract void use();
+}
+</code></pre><pre><code>// Factory.java:Factory类我们使用Template Method模式，这个类声明了用于生产产品的createProduct抽象方法和用于注册产品的registerProduct抽象方法，而具体的生产产品和注册产品的处理交给了Factory类的子类负责，这里create方法的作用就类似于上一章中的display方法。
+
+package framework;
+public abstract class Factory{
+    public final Product create(String owner){
+        Product p = createProduct(owner);
+        registerProduct(p);
+        return(p);
+    }
+
+    protected abstract Product createProduct(String owner);
+    protected abstract void registerProduct(Product product);
+
+}
+</code></pre><pre><code>// IDCard.java: IDCard类负责具体的加工处理
+package idcard;
+import framework.*;
+
+public class IDCard extends Product{
+    private String owner;
+    IDCard(String owner){
+        System.out.println(&quot;Create the ID card of &quot;+owner);
+        this.owner = owner;
+    }
+    public void use(){
+        System.out.println(&quot;Use the ID card of &quot;+owner);
+    }
+    public String getOwner(){
+        return owner;
+    }
+}
+</code></pre><pre><code>// IDCardFactory.java: IDCardFactory类，实现了createProduct方法和RegisterProduct方法，使得父类中的create方法能够正常的运行
+
+package idcard;
+import framework.*;
+import java.util.*;
+
+public class IDCardFactory extends Factory{
+    private List owners = new ArrayList();
+    protected Product createProduct(String owner){
+        return new IDCard(owner);
+    }
+    protected void registerProduct(Product product){
+        owners.add(((IDCard)product).getOwner());
+    }
+    public List getOwners(){
+        return owners;
+    }
+}
+</code></pre><pre><code>//Main.java
+import framework.*;
+import idcard.*;
+
+public class Main{
+    public static void main(String[] args){
+        Factory factory = new IDCardFactory();
+        Product idcard1 = factory.create(&quot;Alice&quot;);
+        Product idcard2 = factory.create(&quot;Bobby&quot;);
+        idcard1.use();
+        idcard2.use();
+    }
+}
+</code></pre><h2 id="登场角色-1"><a href="#登场角色-1" class="headerlink" title="登场角色"></a>登场角色</h2><ol>
+<li>Product:由Product类扮演此角色，定义了生成的实例所持有的API（接口）</li>
+<li>Creator:由Factory类扮演此角色，它对于ConcreateCreator角色一无所知，只定义了生成的流程。</li>
+<li>ConcreteProduct:由IDCard类扮演此角色，继承Product类，决定了具体的产品</li>
+<li>ConcreteCreator:由IDCardFactory类扮演此角色，继承Creator类，负责生成具体的产品</li>
+</ol>
+<p>在这个设计模式中，父类会决定实例的生成的方法，但并不决定所要生成的类，这样就可以将生成实例的框架（framework包）和实际负责生成实例的类（idcard包）解耦。</p>
+<p>使用多个类无疑使得代码的耦合度更低，但是我们这样的举措也确确实实的使得代码的可读性变得更差，我们为了了解一个包的行为，将会不得不去阅读父类中所定义的框架和里面使用的方法。在实际的生产中，这样的代价偶尔会导致得不偿失，当然了，这也就像我们最开始就讨论的那样，一定不要强行去套用设计模式，而是希望你今天阅读玩这样的内容之后可以在以后的代码开发中，能够灵光一闪，将其恰当的运用。</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Design Pattern </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Design Pattern/设计模式: Introduction & Part I]]></title>
       <url>/2020/01/26/Design-Pattern-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-Introduction-Part-I/</url>
       <content type="html"><![CDATA[<h1 id="设计模式以及综述"><a href="#设计模式以及综述" class="headerlink" title="设计模式以及综述"></a>设计模式以及综述</h1><p>设计模式对于一名软件开发工程师来说可谓是必备的技能和知识，然而在程序员社区中也充斥着不少对于设计模式的反对之音。有人认为设计模式的知识对于工程开发至关重要，但也有许多经验丰富的程序员认为设计模式应当是长期的软件开发的积累所留下的不可名状的抽象艺术，对于市面上不少介绍设计模式的书籍嗤之以鼻。</p>
@@ -213,6 +399,20 @@ public class PrintBanner extends Print{
 <p>注意一点：当Adaptee角色和Target角色的功能完全不同时，Adapter模式是无法使用的。</p>
 </blockquote>
 ]]></content>
+      
+        
+        <tags>
+            
+            <tag> Design Pattern </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Design Pattern/设计模式 INDEX]]></title>
+      <url>/2020/01/26/Design-Pattern-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-INDEX/</url>
+      <content type="html"><![CDATA[<h1 id="PART-I"><a href="#PART-I" class="headerlink" title="PART I"></a>PART I</h1><h2 id="Chapter-1-Iterator模式-解耦遍历器和遍历角色"><a href="#Chapter-1-Iterator模式-解耦遍历器和遍历角色" class="headerlink" title="Chapter 1: Iterator模式-解耦遍历器和遍历角色"></a>Chapter 1: Iterator模式-解耦遍历器和遍历角色</h2><h2 id="Chapter-2-Adapter模式-如何根据现有的代码来适配新的要求"><a href="#Chapter-2-Adapter模式-如何根据现有的代码来适配新的要求" class="headerlink" title="Chapter 2: Adapter模式-如何根据现有的代码来适配新的要求"></a>Chapter 2: Adapter模式-如何根据现有的代码来适配新的要求</h2><h1 id="PART-II"><a href="#PART-II" class="headerlink" title="PART II"></a>PART II</h1><h2 id="Chapter-3-Template-Method模式-一个父类，一个流程，多个子类，多种实现"><a href="#Chapter-3-Template-Method模式-一个父类，一个流程，多个子类，多种实现" class="headerlink" title="Chapter 3: Template Method模式-一个父类，一个流程，多个子类，多种实现"></a>Chapter 3: Template Method模式-一个父类，一个流程，多个子类，多种实现</h2><h2 id="Chapter-4-Factory-Method模式-一对抽象的“工厂-产品”继承他们的“工厂-产品”"><a href="#Chapter-4-Factory-Method模式-一对抽象的“工厂-产品”继承他们的“工厂-产品”" class="headerlink" title="Chapter 4: Factory Method模式-一对抽象的“工厂+产品”继承他们的“工厂+产品”"></a>Chapter 4: Factory Method模式-一对抽象的“工厂+产品”继承他们的“工厂+产品”</h2>]]></content>
       
         
         <tags>
@@ -440,9 +640,9 @@ catkin_create_pkg agitr
         
         <tags>
             
-            <tag> Recommender Systems </tag>
-            
             <tag> POLIMI </tag>
+            
+            <tag> Recommender Systems </tag>
             
         </tags>
         
@@ -1407,9 +1607,9 @@ catkin_create_pkg agitr
         
         <tags>
             
-            <tag> Recommender Systems </tag>
-            
             <tag> Machine Learning </tag>
+            
+            <tag> Recommender Systems </tag>
             
         </tags>
         
