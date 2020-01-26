@@ -3,6 +3,227 @@
   
     
     <entry>
+      <title><![CDATA[Design Pattern/设计模式: Introduction & Part I]]></title>
+      <url>/2020/01/26/Design-Pattern-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-Introduction-Part-I/</url>
+      <content type="html"><![CDATA[<h1 id="设计模式以及综述"><a href="#设计模式以及综述" class="headerlink" title="设计模式以及综述"></a>设计模式以及综述</h1><p>设计模式对于一名软件开发工程师来说可谓是必备的技能和知识，然而在程序员社区中也充斥着不少对于设计模式的反对之音。有人认为设计模式的知识对于工程开发至关重要，但也有许多经验丰富的程序员认为设计模式应当是长期的软件开发的积累所留下的不可名状的抽象艺术，对于市面上不少介绍设计模式的书籍嗤之以鼻。</p>
+<p>对于刚入门的软件开发工程师而言，你若问他（包括现在的我自己）“我们为什么要使用工厂模式？使用工厂模式能够带来什么好处？”之类的问题，他也是很难回答的。所以盲目的掌握设计模式中那些拗口的名称，或者干巴巴的“方便继承”之类的描述是没有意义的。</p>
+<p>这一系列的博客的目的并不是一蹴而就的讲解全部的设计模式知识，这样的知识没有日积月累的开发经验是很难去对其有深入的体会的。我只是希望能在这一系列的博客中，借助《图解设计模式》一书，跟随书中的顺序对其中的设计模式知识进行某种程度的理解和总结，以至于能够对诸君有所启迪，开发出更加优美和友好的代码。</p>
+<p>我的能力有限，若是文中出现什么谬误也请诸君不吝赐教，提前感谢。</p>
+<p>《图解设计模式》一书的作者是<strong>结城浩</strong>先生，全书共计十个部分，预计会分为十篇博客进行介绍。书中的代码为java所写，虽然java并不是我比较擅长的代码，但是为了不引起错误贻笑大方，所以还是按照书中的java进行讨论。本博客介绍其中的<em>第一部分：适应设计模式</em>。</p>
+<h1 id="Chapter-1-Iterator模式–一个一个遍历"><a href="#Chapter-1-Iterator模式–一个一个遍历" class="headerlink" title="Chapter 1: Iterator模式–一个一个遍历"></a>Chapter 1: Iterator模式–一个一个遍历</h1><p>不管是哪种语言，都会有for/while之类的语句进行循环的判断和操作，如在java中，如下的用法来输出数组中的每个元素是非常常见的用法：</p>
+<pre><code>for (int i=0; i&lt;arr.length; i++){
+    System.out.println(arr[i])
+}
+</code></pre><p>那么我们为什么还要探讨这样的一个设计模式呢？稍微聊的远一点，我不知道除了我以外的人有没有在学习任何以中编程语言的时候思考过这样的问题，那就是为什么在几乎任何一门语言中，我们都有也几乎只有<em>for/while/switch/if/…</em>之类的关键字？在我的研究生期间学习编译器和正则语言的时候，我们经常面对的一个问题就是“设计一个功能如do_twice”之类的关键字的汇编实现（当然如何解决这个问题在博客中就不多描述了），但是其中的道理是很简单的，就如同人民币只有一元五角之类的一样，我们难道需要“三角钱”这样的设计吗？我认为语言中的那些关键字的设计也是这样的道理。</p>
+<p>但是为了更好的更好的理解Iterator这样的模式，在这里只得请诸君暂且抛弃<em>for/while/switch/if/…</em>这样的想法，将其解体来去深入理解其中的含义。《图解设计模式》一书中对Iterator模式的解释是这样的，“将这里（博客作者注：这里指上述代码块）的循环变量i的作用抽象化、通用化后形成的模式，在设计模式中成为Iterator模式”。当然了，对于相当一部分读者来说这句话有些让人不解，具体的含义我们可以在下面的例子中去理解。</p>
+<blockquote>
+<p>例：我们希望设计一个程序，能够将书（Book）放进书架中（Bookshelf），并且将书的名字按顺序显示出来</p>
+</blockquote>
+<img src="/2020/01/26/Design-Pattern-设计模式-Introduction-Part-I/1.png">
+<pre><code>// Aggregate接口---Aggregate.java
+public interface Aggregate{
+    public abstract Iterator iterator();
+}
+// 在这个接口中声明iterator方法，想要遍历元素的时候，可以调用iterator的方法来生成一个实现了Iterator接口的实例
+</code></pre><pre><code>// Iterator接口---Iterator.java
+public  interface Iterator{
+    public abstract boolean hasNext();
+    public abstract Object next()
+}
+// Iterator接口用于遍历集合中的元素，作用相当于循环语句中的循环遍历i。在这里我们编写了最简单的Iterator接口
+</code></pre><pre><code>// Book类---Book.java
+public class Book{
+    private String name;
+    public Book(String name){
+        this.name=name;
+    }
+    public String getName(){
+        return name;
+    }
+}
+</code></pre><pre><code>// BookShelf类---BookShelf.java
+public class BookShelf implements Aggregate{
+    private Book[] books;
+    private int last = 0;
+    public BookShelf(int maxsize){
+        this.books = new Book[maxsize];
+    }
+    public Book getBookAt(int index){
+        return books[index];
+    }
+    public void appendBook(Book book){
+        this.books[last] = book;
+        last++;
+    }
+    public int getLength(){
+        return last
+    }
+    public Iterator iterator(){
+        return new BookShelfIterator(this);
+    }
+}
+// 本例中值得引起注意的是iterator方法，在这个方法会返回一个Iterator接口，这一点需要仔细的理解。在java中函数的返回值可以是一个接口，但是实际上这种语法表述的含义是返回一个此实现此接口的类。在本示例中，该方法会生成并返回一个BookShelfIterator类的实例作为Iterator，当外部要遍历这个书架时就会调用这个方法
+</code></pre><pre><code>// BookShelfIterator类---BookShelfIterator.java
+public class BookShelfIterator implements Iterator{
+    private BookShelf bookShelf;
+    private int index;
+    public BookShelfIterator(BookShelf bookShelf){
+        this.bookShelf=bookShelf;
+        this.index=0;
+    }
+    public boolean hasNext(){
+        if (index&lt;bookShelf.getLength()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public Oject next(){
+        Book book = bookShelf.getBookAt(index);
+        index++;
+        return book;
+    }
+}
+</code></pre><pre><code>// Main类---Main.java
+public class Main{
+    public static void main(String[] args){
+        BookShelf bookShelf = new BookShelf(4);
+        bookShelf.appendBook(new Book(&quot;Harry Potter I&quot;));
+        bookShelf.appendBook(new Book(&quot;Harry Potter II&quot;));
+        bookShelf.appendBook(new Book(&quot;Harry Potter III&quot;));
+        bookShelf.appendBook(new Book(&quot;Harry Potter IV&quot;));
+        Iterator it = bookShelf.iterator();
+        while(it.hasNext()){
+            Book book = (Book)it.next();
+            System.out.println(book.getName());
+        }
+    }
+}
+</code></pre><h2 id="登场角色"><a href="#登场角色" class="headerlink" title="登场角色"></a>登场角色</h2><p>我们先来理解一下Iterator模式下的抽象角色</p>
+<ol>
+<li>[Interface]Iterator：由Iterator接口扮演此角色，定义了hasNext和next两个方法，是负责按顺序逐个遍历元素的接口</li>
+<li>[Class]ConcrateIterator：由BookShelfIterator类扮演此角色，包含了遍历结合所需要的信息（在示例中将BookShelf类的实例保存在bookShelf中，将被指对象的下标保存在index中），负责实现Iterator角色定义的接口</li>
+<li>[Interface]Aggregate：由Aggregate接口扮演此角色，定义iterator方法</li>
+<li>[Class]ConcreteAggregate：由BookShelf类扮演此角色，创建具体的Iterator角色（即ConcreteIterator角色），在示例中BookShelf类扮演这个角色，实现了iterator方法</li>
+</ol>
+<img src="/2020/01/26/Design-Pattern-设计模式-Introduction-Part-I/2.png">
+<blockquote>
+<p>接口：对于许多像我一样没有接触过实际的工业化的软件编程的人来说，对于接口有一些深入的了解是相当必要的。在java中，接口是一个抽象方法的集合，而一个类通过继承接口的方式来继承接口的抽象方法。接口不是类，也不能够去实例化一个对象，而且接口只负责定义方法，不负责实现方法，实现方法是继承了此接口的类的责任。</p>
+</blockquote>
+<p>看到这里，像我一样刚开始学习设计模式的人可能还是会有些迷惑，为什么需要使用这种繁复的设计呢？在我们的第一个例子中，我们看到使用for循环语句就可以进行遍历的处理，而在这个地方引入Iterator角色的原因又是如何呢？书中对此的解释是“<strong>引入Iterator后可以将遍历与实现分离开来，使得while循环不依赖于BookShelf的实现</strong>”</p>
+<pre><code>while(it.hasNext()){
+    Book book = (Book)it.next();
+    System.out.println(book.getName());
+}
+</code></pre><p>以上的这段代码（来自于示例中的main.java）使用了Iterator的hasNext和next方法，而没有调用BookShelf的方法，如果BookShelf的开发人员决定放弃使用数组（BookShelf.java中的books）来管理书本，而是使用java.util.Vector取而代之，只要BookShelf的iterator方法能够正确的返回Iterator的实例，，即使不对main.java中的while循环做任何修改，代码都可以正常工作。</p>
+<p>这里我们就要注意一点了，使用这样的设计模式带来的好处是当BookShelf中的一些属性发生了变化，对于BookShelf的调用者（在本例中是main.java）来说，只要iterator还能够正确的运行，那么他们不需要去修改main.java中的任何代码。在我第一次理解此处的时候我有一些迷惑，前面的这句话意味着BookShelf变化之后，我们需要修改ConcreteIterator（也就是BookShelfIterator.java）中的代码即可。既然都要修改代码，为什么不修改main.java中的代码呢？我认为，作为一名有职业素养的程序员，除了女装和脱发以外，我们必须要能够生产出“友好”的代码，这样的代码对于其他调用我们生产的代码的人（写main.java的其他程序员）来说，应该是非常轻量的，去耦合的，换而言之，能麻烦我们自己的时候不要去麻烦调用我们代码的人。当你写下每一段代码的时候，不妨在心里问一问自己，如果我要在这里进行一些变化，调用我这段代码的人是否也不得不修改他们的代码？当你的答案是是的时候，我们可能要重新考虑这段代码有没有更好的写法，如果你的答案是否，那么恭喜你，就放心大胆地commit你的代码吧！</p>
+<p>这一章的内容就到结尾了，我个人认为结城浩先生将这一章节作为全书的第一章是一个深思熟虑的决定。因为上面的例子的原理相对比较简单，而且也可以帮助我们更好的理解抽象类和接口。一些新手程序员可能会使用ConcreteAggregate类和ConcreteIterator类进行编程，但是这样具体的类会导致类之间的强耦合，这些类也难以再次利用，为了弱化类之间的耦合，我们需要引入抽象类和接口。不同的语言中对于抽象类和接口的定义、使用方式也是不见得完全一致的，这里我们主要关注java中的用法，但是诸君看到这里请别忘了，这不是一篇介绍java语言的文章，这篇文章的中心意义一直是，如何抽象诸君的代码！</p>
+<h1 id="Chapter-2-Adapter模式–加个“适配器”以便复用"><a href="#Chapter-2-Adapter模式–加个“适配器”以便复用" class="headerlink" title="Chapter 2: Adapter模式–加个“适配器”以便复用"></a>Chapter 2: Adapter模式–加个“适配器”以便复用</h1><p>Adapter的含义相信很多有过留学过的同学都知道，北美也好欧洲也好，我们从国内带过去的电器插头的规格往往是不一样的。我们需要买诸如欧标插头之类的转换器才能正常的使用（不过我的XBOX是在欧洲买的，但是很神奇的可以在中国带来的插座上直接使用，想必这应该是一个例外了），而这样的转换器，就是我们此章标题中的Adapter。Adapter模式有两种，类Adapter模式（使用继承的Adapter）和对象Adapter模式（使用委托的Adapter）。</p>
+<blockquote>
+<p>Adapter模式在某些地方也被成为Wrapper模式，但两者的含义相同。</p>
+</blockquote>
+<h2 id="类Adapter模式：使用继承的Adapter"><a href="#类Adapter模式：使用继承的Adapter" class="headerlink" title="类Adapter模式：使用继承的Adapter"></a>类Adapter模式：使用继承的Adapter</h2><blockquote>
+<p>例：我们希望实现一个程序，将输入的字符如Hello输出为(Hello)或是*Hello* （假设目前在Banner类中，我们已经有了可以将字符串用括号括起来的showWithParen方法和用*括起来的showWithAster方法，我们假设这是我们国内的插头。假设目前在Print接口中声明了两种方法，即可以将字符串用括号括起来的printWeak方法和用*括起来的printStrong方法，这个接口那么就是我们要转换成的欧标的插座。那么我们的目标就是使用Banner类编写一个实现了Print接口的PrintBanner类，也就是实现这样的一个欧标插头的功能）</p>
+</blockquote>
+<pre><code>// 已经写好的Banner类现在的实际情况---Banner.java
+public class Banner{
+    private String string;
+    public Banner(String string){
+        this.string = string;
+    }
+    public void showWithParen(){
+        System.out.println(&quot;(&quot;+string+&quot;)&quot;);
+    }
+    public void showWithAster(){
+        System.out.println(&quot;*&quot;+string+&quot;*&quot;);
+    }
+}
+</code></pre><pre><code>// 已经写好的Print接口现在的实际情况---Print.java
+public interface Print{
+    public abstract void printWeak();
+    public abstract void printStrong();
+}
+</code></pre><pre><code>// PrintBanner类---PrintBanner.java
+public class PrintBanner extends Banner implements Print{
+    public PrintBanner(String string){
+        super(string);
+    }
+    public void printWeak(){
+        showWithParen();
+    }
+    public void printStrong(){
+        showWithAster();
+    }
+}
+</code></pre><pre><code>// Main.java
+public class Main{
+    public static void main(String[] args){
+        Print p = new PrintBanner(&quot;Hello&quot;);
+        p.printWeak();
+        p.printStrong();
+    }
+}
+</code></pre><img src="/2020/01/26/Design-Pattern-设计模式-Introduction-Part-I/3.png">
+<p>注意一点，在刚刚第一章我们简单提到了，接口是不可以实例化变量的，但是这里却用Print接口来声明了一个变量，我们可以在这里发现实例化和声明的微妙的区别，在java语言中，使用接口声明一个变量，可以得到一个实现了该接口的对象。这里我们将PrintBanner类的实例保存在了Print类型的变量中。在Main.java中，我们使用Print接口定义的printWeak和printStrong方法进行编程，对于Main.java而言，Banner类（以及类中的showWithParen和showWithAster方法被完全隐藏起来了），这就好像我们从中国带过来的电器依然是在220V的电压下工作，它不知道插座的已经变成了欧标一样。这样给我们带来的好处就是我们可以在不用对Main.java进行修改的前提下改变PrintBanner类的具体实现。</p>
+<p>这一章节的标题是<strong>类Adapter模式：使用继承的Adapter</strong>，回过头来我们可以回味一下这个标题，我们例子中的代码就是使用继承Banner的方式来实现此Adapter的，我们可以在下一章结束的时候仔细对比两个Adapter模式的区别。</p>
+<h2 id="对象Adapter模式：使用委托的Adapter"><a href="#对象Adapter模式：使用委托的Adapter" class="headerlink" title="对象Adapter模式：使用委托的Adapter"></a>对象Adapter模式：使用委托的Adapter</h2><p>这一部分我们来看看委托的Adapter模式，关于委托其实我在准备校招的面试的时候无数次的和他打过交道（那个时候主要是C#的委托），委托的核心思想则是非常朴实的，说白了就是“交给其他人”，在java中，委托是指将某个方法中的实际处理交给其他实例的思想。而在其实现的过程中，我们也无意使用C#中那样复杂的语法，我们仅仅用比较朴素的方式来实现委托。</p>
+<p>这里Main类和Banner类与前面示例完全相同，但是这里我们假设Print不是接口而是类。也就是说，我们想要利用Banner类实现一个PrintBanner类（PrintBanner类不一定要继承Banner哦！），PrintBanner类的方法和Print类的方法相同。但因为java中每一个类都不能同时继承两个类，所以我们必须去想到一个优美的方法来设计这一段代码。</p>
+<pre><code>// 已经写好的Banner类现在的实际情况---Banner.java
+public class Banner{
+    private String string;
+    public Banner(String string){
+        this.string = string;
+    }
+    public void showWithParen(){
+        System.out.println(&quot;(&quot;+string+&quot;)&quot;);
+    }
+    public void showWithAster(){
+        System.out.println(&quot;*&quot;+string+&quot;*&quot;);
+    }
+}
+</code></pre><pre><code>// Print类---Print.java
+public abstract class Print{
+    public abstract void printWeak();
+    public abstract void printStrong();
+}
+</code></pre><pre><code>// PrintBanner类---PrintBanner.java
+public class PrintBanner extends Print{
+    private Banner banner;
+    public PrintBanner(String string){
+        this.banner = new Banner(string);
+    }
+    public void printWeak(){
+        banner.showWithParen();
+    }
+    public void printStrong(){
+        banner.showWithAster();
+    }
+}
+</code></pre><p>这里不难看出，在PrintBanner类中，我们用banner属性保存了一个Banner类的示例，然后通过printWeak和printStrong的方法来调用Banner类中的showWithParen和showWithAster的方法。这里我们将这种模式称为使用委托的Adapter是因为PrintBanner类通过banner属性来调用这两个方法，这样就形成了一种委托对关系，不是PrintBanner类自己进行处理，而是交给了其他的实例（Banner类的实例）进行处理。</p>
+<img src="/2020/01/26/Design-Pattern-设计模式-Introduction-Part-I/4.png">
+<h2 id="登场角色-1"><a href="#登场角色-1" class="headerlink" title="登场角色"></a>登场角色</h2><ol>
+<li>Target：Print接口（使用继承时）/Print类（使用委托时）扮演此角色，负责定义所需的方法（注意，在这个实际模式中，Print接口只负责定义不负责实现，实现需要交给Adaptee来完成）</li>
+<li>Client：Main类扮演此角色，负责使用Target角色所定义的方法进行处理</li>
+<li>Adaptee：Banner类扮演此角色，包含了实际的需要被Adapt的方法，也</li>
+<li>Adapter：PrintBanner类扮演此角色，使用Adaptee角色的方法来满足Target角色的需求</li>
+</ol>
+<p>关于Adapter模式背后的意义其实就是软件工程中所强调的“复用性”。在实际的软件开发中，我们往往需要在程序中使用已经设计好的、经过多次测试的、现成的类，但是并不是每一个类都是“完美的现成”，我们往往需要对其中的一些特性进行一些微小的调整。然而这一步中我们需要注意的一点是，一旦我们要修改“现成的类”中的内容的话，我们不可避免的需要对这个类重新进行测试。在这种情境下，Adapter模式有实践上的参考意义，我们可以在完全不改变“现成的类”的内容的前提下，使代码适配于新的接口。</p>
+<p>在工程实践中，除了上面描述的这种代码服用的情况以外，Adapter模式在版本升级和解决版本兼容性中也有重要的意义。对于开发人员来说，同时维护多个版本的内容是非常困难的，但是我们可能又不能放弃对于旧版本的支持，那么这个时候，让新版本扮演Adaptee角色而让旧版本扮演Target角色，接着编写一个Adapter角色就可以完成这样的人物。</p>
+<blockquote>
+<p>注意一点：当Adaptee角色和Target角色的功能完全不同时，Adapter模式是无法使用的。</p>
+</blockquote>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Design Pattern </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[ROS学习笔记]]></title>
       <url>/2019/05/05/ROS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
       <content type="html"><![CDATA[<h1 id="从小海龟说起"><a href="#从小海龟说起" class="headerlink" title="从小海龟说起"></a>从小海龟说起</h1><pre><code>roscore
@@ -219,9 +440,9 @@ catkin_create_pkg agitr
         
         <tags>
             
-            <tag> POLIMI </tag>
-            
             <tag> Recommender Systems </tag>
+            
+            <tag> POLIMI </tag>
             
         </tags>
         
