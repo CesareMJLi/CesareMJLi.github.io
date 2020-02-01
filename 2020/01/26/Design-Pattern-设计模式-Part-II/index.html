@@ -244,7 +244,7 @@
 
     
         <meta property="article:published_time" content="Sun Jan 26 2020 12:43:44 GMT+0100">
-        <meta property="article:modified_time" content="Sun Jan 26 2020 16:02:03 GMT+0100">
+        <meta property="article:modified_time" content="Sat Feb 01 2020 08:57:00 GMT+0100">
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://yoursite.com/2020/01/26/Design-Pattern-设计模式-Part-II/index.html",
     "headline": "Design Pattern/设计模式: Part II",
     "datePublished": "Sun Jan 26 2020 12:43:44 GMT+0100",
-    "dateModified": "Sun Jan 26 2020 16:02:03 GMT+0100",
+    "dateModified": "Sat Feb 01 2020 08:57:00 GMT+0100",
     "author": {
         "@type": "Person",
         "name": "Cesare (MINGJU LI)",
@@ -499,7 +499,7 @@
 <p>对于刚入门的软件开发工程师而言，你若问他（包括现在的我自己）“我们为什么要使用工厂模式？使用工厂模式能够带来什么好处？”之类的问题，他也是很难回答的。所以盲目的掌握设计模式中那些拗口的名称，或者干巴巴的“方便继承”之类的描述是没有意义的。</p>
 <p>这一系列的博客的目的并不是一蹴而就的讲解全部的设计模式知识，这样的知识没有日积月累的开发经验是很难去对其有深入的体会的。我只是希望能在这一系列的博客中，借助《图解设计模式》一书，跟随书中的顺序对其中的设计模式知识进行某种程度的理解和总结，以至于能够对诸君有所启迪，开发出更加优美和友好的代码。</p>
 <p>我的能力有限，若是文中出现什么谬误也请诸君不吝赐教，提前感谢。</p>
-<p>《图解设计模式》一书的作者是<strong>结城浩</strong>先生，全书共计十个部分，预计会分为十篇博客进行介绍。书中的代码为java所写，虽然java并不是我比较擅长的代码，但是为了不引起错误贻笑大方，所以还是按照书中的java进行讨论。本博客介绍其中的<em>第二部分：交给子类</em>。</p>
+<p>《图解设计模式》一书的作者是<strong>结城浩</strong>先生，全书共计十个部分，预计会分为十篇博客进行介绍。书中的代码为java所写，虽然java并不是我比较擅长的代码，但是为了不引起错误贻笑大方，所以还是按照书中的java进行讨论。本博客介绍其中的<em>第二部分：交给子类</em>。因为每一章节中代码都占据了比较多的部分，为了更好地理解相关概念，建议阅读代码优先从Main.java的部分开始。</p>
 <h1 id="Chapter-3-Template-Method模式–将具体处理交给子类"><a href="#Chapter-3-Template-Method模式–将具体处理交给子类" class="headerlink" title="Chapter 3: Template Method模式–将具体处理交给子类"></a>Chapter 3: Template Method模式–将具体处理交给子类</h1><p>模版这一词的原意是非常好理解的，玩RPG游戏的时候，一般都需要先选择种族，比如说人族，然后在人族这个模版下去选择魔法师、圣骑士等等。那么什么是Template Method模式呢，其实诸君大可以放松心情，因为这一章节介绍的这个Template Method的重点，就是我们最开始学习面向对象编程的时候需要了解的父类和子类的方法。</p>
 <p>模版的方法往往定义在父类之中，由于这些方法（往往）是抽象方法，那么只看父类的话我们是无从得知实现方法的具体的内容的，唯一能知道的就是父类如何调用这些方法，而抽象方法的具体的实现则是在子类之中。</p>
 <p>这里需要注意，在不同的子类中实现不同的抽象方法，当父类的模版方法被调用的时候程序的行为也会不同，但是不论子类的具体实现如何，处理的流程都会按照父类定义的进行。</p>
@@ -687,6 +687,14 @@ public class Main{
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
+        <a href="/2020/02/01/Design-Pattern-设计模式-Part-III/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Newer
+        </a>
+    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
@@ -785,7 +793,7 @@ public class Main{
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2020/01/">January 2020<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/05/">May 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/01/">January 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/12/">December 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/11/">November 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/10/">October 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">June 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">May 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">April 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">March 2018<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/01/">January 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">December 2017<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/archives/2020/02/">February 2020<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/01/">January 2020<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/05/">May 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/01/">January 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/12/">December 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/11/">November 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/10/">October 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">June 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">May 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">April 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">March 2018<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/01/">January 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">December 2017<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         
@@ -827,7 +835,7 @@ public class Main{
         <li>
             <a href="/archives">
                 Number of articles
-                <span class="sidebar-badge">31</span>
+                <span class="sidebar-badge">35</span>
             </a>
         </li>
         

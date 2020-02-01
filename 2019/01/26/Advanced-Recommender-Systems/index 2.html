@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="en">
+    <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Advanced Recommender Systems | 
+        
+        Cesare&#39;s Workshop
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/star.png">
+    <link rel="icon" href="/img/star.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)">
+    <meta name="keywords" content=",POLIMI,Recommender Systems">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/vibrant-ink.min.css?e5E/qqGcGveS7VTH4M896w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Cesare&#39;s Workshop">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2019/01/26/Advanced-Recommender-Systems/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Cesare&#39;s Workshop">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/star.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com/2019/01/26/Advanced-Recommender-Systems/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Advanced Recommender Systems | Cesare&#39;s Workshop">
+    <meta property="og:image" content="/img/star.png">
+    <meta property="og:description" content="Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)">
+    <meta property="og:article:tag" content="POLIMI"> <meta property="og:article:tag" content="Recommender Systems"> 
+
+    
+        <meta property="article:published_time" content="Sat Jan 26 2019 15:35:13 GMT+0100">
+        <meta property="article:modified_time" content="Wed Jan 30 2019 16:51:44 GMT+0100">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yoursite.com/2019/01/26/Advanced-Recommender-Systems/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yoursite.com/2019/01/26/Advanced-Recommender-Systems/index.html",
+    "headline": "Advanced Recommender Systems",
+    "datePublished": "Sat Jan 26 2019 15:35:13 GMT+0100",
+    "dateModified": "Wed Jan 30 2019 16:51:44 GMT+0100",
+    "author": {
+        "@type": "Person",
+        "name": "Cesare (MINGJU LI)",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/cesare.jpg"
+        },
+        "description": "Each question has an answer.,Or, will have an answer."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Cesare&#39;s Workshop",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/star.png"
+        }
+    },
+    "keywords": ",POLIMI,Recommender Systems",
+    "description": "Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+<link rel="stylesheet" href="/css/prism-duotone-space.css" type="text/css"><script src="/js/prism.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Esimating-Rating-as-Optimization-Problem"><span class="post-toc-number">1.</span> <span class="post-toc-text">Esimating Rating as Optimization Problem</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Starting-from-IBCF"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Starting from IBCF</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Minimize-the-estimation-error"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Minimize the estimation error</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Optimization-problem-setting"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Optimization problem setting</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-Norm-amp-F-norm"><span class="post-toc-number">2.</span> <span class="post-toc-text">2-Norm & F-norm</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Missing-as-negative-amp-Missing-as-random"><span class="post-toc-number">3.</span> <span class="post-toc-text">Missing as negative & Missing as random</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#F-norm"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">F-norm</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Quality-Metrics-for-ML"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Quality Metrics for ML</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Overfitting-and-Regularization-of-the-model"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">Overfitting and Regularization of the model</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Stochastic-Gradient-Descent"><span class="post-toc-number">4.</span> <span class="post-toc-text">Stochastic Gradient Descent</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Rank"><span class="post-toc-number">5.</span> <span class="post-toc-text">Rank</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#The-learning-to-rank-approach"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">The learning to rank approach</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Ranking-error-metrics-list-wise-metric"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">Ranking error metrics: list-wise metric</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Ranking-error-metrics-point-wise-metric"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">Ranking error metrics: point-wise metric</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Ranking-error-metrics-pair-wise-metric"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">Ranking error metrics: pair-wise metric</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#BPR-Bayesian-Probabilistic-Ranking"><span class="post-toc-number">6.</span> <span class="post-toc-text">BPR: Bayesian Probabilistic Ranking</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Definition"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">Definition</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#BPR-with-implicit-ratings"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">BPR with implicit ratings</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#BPR-error-function"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">BPR error function</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Explicit-rating-amp-Implicit-rating"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">Explicit rating & Implicit rating</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Matrix-Factorization"><span class="post-toc-number">7.</span> <span class="post-toc-text">Matrix Factorization</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Funk-SVD"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">Funk SVD</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Latent-factors"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">Latent factors</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SVD"><span class="post-toc-number">8.</span> <span class="post-toc-text">SVD++</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Assumption-on-zero-elements"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">Assumption on zero elements</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Adapting-SVD"><span class="post-toc-number">9.</span> <span class="post-toc-text">Adapting SVD++</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Matrix-formulation"><span class="post-toc-number">10.</span> <span class="post-toc-text">Matrix formulation</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Asymmetric-SVD"><span class="post-toc-number">11.</span> <span class="post-toc-text">Asymmetric SVD</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Hybrid-RS"><span class="post-toc-number">12.</span> <span class="post-toc-text">Hybrid RS</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Linear-Combination"><span class="post-toc-number">12.1.</span> <span class="post-toc-text">Linear Combination</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Pipeline-Algorithms"><span class="post-toc-number">12.2.</span> <span class="post-toc-text">Pipeline Algorithms</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Merging-models"><span class="post-toc-number">12.3.</span> <span class="post-toc-text">Merging models</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#S-SLIM-Side-Information"><span class="post-toc-number">13.</span> <span class="post-toc-text">S-SLIM: Side Information</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Context-Aware-RS"><span class="post-toc-number">14.</span> <span class="post-toc-text">Context Aware RS</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Tensor-Factorization"><span class="post-toc-number">14.1.</span> <span class="post-toc-text">Tensor Factorization</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Factorization-Machines"><span class="post-toc-number">15.</span> <span class="post-toc-text">Factorization Machines</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#FM-vs-CF"><span class="post-toc-number">15.1.</span> <span class="post-toc-text">FM vs CF</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Advantages"><span class="post-toc-number">15.2.</span> <span class="post-toc-text">Advantages</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Disadvantages"><span class="post-toc-number">15.3.</span> <span class="post-toc-text">Disadvantages</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Advanced Recommender Systems
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/cesare.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Cesare (MINGJU LI)</strong>
+        <span>Jan 26, 2019</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/POLIMI/">POLIMI</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Recommender-Systems/">Recommender Systems</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Advanced Recommender Systems&url=http://yoursite.com/2019/01/26/Advanced-Recommender-Systems/index.html&pic=http://yoursite.com/img/star.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Weibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Advanced Recommender Systems&url=http://yoursite.com/2019/01/26/Advanced-Recommender-Systems/index.html&via=Cesare (MINGJU LI)" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/01/26/Advanced-Recommender-Systems/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2019/01/26/Advanced-Recommender-Systems/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="Esimating-Rating-as-Optimization-Problem"><a href="#Esimating-Rating-as-Optimization-Problem" class="headerlink" title="Esimating Rating as Optimization Problem"></a>Esimating Rating as Optimization Problem</h1><p>SLIM(Sparse Linear Models) techniques:  a machine learning approach to ITEM-BASED COLLABORATIVE FILTERING.</p>
+<h2 id="Starting-from-IBCF"><a href="#Starting-from-IBCF" class="headerlink" title="Starting from IBCF"></a>Starting from IBCF</h2><p>The estimation formula can be generalized for the dot product between the URM(User rating matrix, numUsers*numItems) and ISM (Item similarity matrix, numItems*numItems), which return <strong>the matrix of all estimated ratings for all users and all items</strong>.</p>
+<h2 id="Minimize-the-estimation-error"><a href="#Minimize-the-estimation-error" class="headerlink" title="Minimize the estimation error"></a>Minimize the estimation error</h2><blockquote>
+<p>KEY IDEA: Machine Learning Method-write a formula that estimate the error, and minimize the error of model by adjusting the unknown parameters.</p>
+</blockquote>
+<p>In RS, the error is how different our estimation is from the actual ratings of the users, and the unknown parameters are the elements of the similarity matrix. </p>
+<p>Here we use the MSE (Mean Square Error). We find the item similarity matrix that minimize this MSE, thus giving the best performance for estimation of ratings.</p>
+<h2 id="Optimization-problem-setting"><a href="#Optimization-problem-setting" class="headerlink" title="Optimization problem setting"></a>Optimization problem setting</h2><p>Condiser MSE. If we have</p>
+<ol>
+<li>R: URM</li>
+<li>S: Item similarity matrix</li>
+</ol>
+<p>And we would like to minimize norm|R-R*S|. If S is the identity matrix, this norm would be 0. Since we would like to find an effective method to calculate S, we add constraint that the diagonal of S are all 0 elements.</p>
+<h1 id="2-Norm-amp-F-norm"><a href="#2-Norm-amp-F-norm" class="headerlink" title="2-Norm &amp; F-norm"></a>2-Norm &amp; F-norm</h1><p><a href="http://mathworld.wolfram.com/FrobeniusNorm.html" target="_blank" rel="noopener">F-norm</a></p>
+<p>If you measure the quality of your recommendation by using an <strong>accuracy metric</strong>, the experience is telling us that the F-norm leads to better quality recommendation. If, on the contrary, you measure the quality by using an <strong>error metric</strong>, such as Mean Square Error, it is better to use the 2-norm. </p>
+<blockquote>
+<p>这里我的理解是2-norm是对所有的URM的非零元素求MSE，F-norm对于URM中的所有元素求MSE。</p>
+</blockquote>
+<h1 id="Missing-as-negative-amp-Missing-as-random"><a href="#Missing-as-negative-amp-Missing-as-random" class="headerlink" title="Missing as negative &amp; Missing as random"></a>Missing as negative &amp; Missing as random</h1><h2 id="F-norm"><a href="#F-norm" class="headerlink" title="F-norm"></a>F-norm</h2><p>F-norm is assuming that, if an item in a URM is missing, the rating is zero. As F-norm if trying to convince your model to estimate a zero in URM as a zero, which is the missing as negative. </p>
+<h2 id="Quality-Metrics-for-ML"><a href="#Quality-Metrics-for-ML" class="headerlink" title="Quality Metrics for ML"></a>Quality Metrics for ML</h2><p>Typically in ML, we always minimize an error function. We apply accuracy metrics like <strong>precision, recall, fallout and so on</strong>.</p>
+<h2 id="Overfitting-and-Regularization-of-the-model"><a href="#Overfitting-and-Regularization-of-the-model" class="headerlink" title="Overfitting and Regularization of the model"></a>Overfitting and Regularization of the model</h2><p>One way to regularize overfitting is to reduce the number of unknown paramters, and we could add regularization terms to error function to achieve this result.</p>
+<blockquote>
+<p>The Regualtion Term: generally we minimize a function contains the sum of <strong>three terms</strong>: 1)the real error of our mdoel, 2) the 1-norm and 3) the 2-norm of S. By this we could control the sparsity of the matrix.</p>
+</blockquote>
+<h1 id="Stochastic-Gradient-Descent"><a href="#Stochastic-Gradient-Descent" class="headerlink" title="Stochastic Gradient Descent"></a>Stochastic Gradient Descent</h1><p>SGD is a general technique for solving optimization problems. </p>
+<blockquote>
+<p>SGD problem &amp; learning rate: SGD may stuck in locl minima, we could increase learning rate to solve this problem. But large learning rate brings other problem.</p>
+</blockquote>
+<h1 id="Rank"><a href="#Rank" class="headerlink" title="Rank"></a>Rank</h1><h2 id="The-learning-to-rank-approach"><a href="#The-learning-to-rank-approach" class="headerlink" title="The learning to rank approach"></a>The learning to rank approach</h2><p>Choosing an error function turned into a more general problem: <em>can we find an error function or can we solve a machine learnign problem, to solve the ranking instead of ratings</em>.</p>
+<blockquote>
+<p>Suppose there is a list of items ranked by users, and a list of items ranked by RS. Our goal is to create a list of items with the order defined by the users.</p>
+</blockquote>
+<h2 id="Ranking-error-metrics-list-wise-metric"><a href="#Ranking-error-metrics-list-wise-metric" class="headerlink" title="Ranking error metrics: list-wise metric"></a>Ranking error metrics: list-wise metric</h2><p>We could compare two lists and then compare all positions. (This is complex because it is diffcult to compute the gradient)</p>
+<h2 id="Ranking-error-metrics-point-wise-metric"><a href="#Ranking-error-metrics-point-wise-metric" class="headerlink" title="Ranking error metrics: point-wise metric"></a>Ranking error metrics: point-wise metric</h2><p>We measure exactly the position of an item in the list of users and the list of RS. We measure how much these are different,. (This is also hard to compute the gradient)</p>
+<h2 id="Ranking-error-metrics-pair-wise-metric"><a href="#Ranking-error-metrics-pair-wise-metric" class="headerlink" title="Ranking error metrics: pair-wise metric"></a>Ranking error metrics: pair-wise metric</h2><p>Take two items, we compare whether the relative order between 2 items are same in two lists. We could optimize the error function by this easily.</p>
+<h1 id="BPR-Bayesian-Probabilistic-Ranking"><a href="#BPR-Bayesian-Probabilistic-Ranking" class="headerlink" title="BPR: Bayesian Probabilistic Ranking"></a>BPR: Bayesian Probabilistic Ranking</h1><h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>Based on pairwise error metrics, BPR is the most famous one, usually works with SGD.</p>
+<blockquote>
+<p>SGD: Normally, when you want to compute the gradient of your error function, you compute the gradient for all the users and all the items in your data set: you compute it which is normally a big matrix and then you can use it to perform the down step, or the up step, depending if you are minimizing or maximizing. Stochastic Gradient Descent works in this way: it is a trick to reduce the computational complexity of each single step and, also, the overfitting risk. Its idea is that you randomly select one user and one item. You compute the gradient only for them. You update the data and, then, you randomly pick another user and another item, performing the same previous steps and so on.</p>
+</blockquote>
+<h2 id="BPR-with-implicit-ratings"><a href="#BPR-with-implicit-ratings" class="headerlink" title="BPR with implicit ratings"></a>BPR with implicit ratings</h2><p>We randomly take one user and two items of this user. The two items are item i, that user likes for sure, and item j that the user does not like.</p>
+<p>It is easy when deal with explicit ratings. While dealing with implicit items, we are not so sure. Actually we just select the unseen items, it may rise a questions that why <em>we can safely randomly select an item that the user didn’t click and we can bet money saying that the user does not like these items</em>. Actually, it just works, because if you randomly select an item that the user didn’t click, the probability that the user does like this item, is very low. So, in an implicit dataset, you’re going to select the items that the user picked interactively and an item that the user didn’t pick.</p>
+<h2 id="BPR-error-function"><a href="#BPR-error-function" class="headerlink" title="BPR error function"></a>BPR error function</h2><p>We want to estimate the rating of i (liked items) is much bigger than the rating of j (uninterested items). </p>
+<p>We would like to maximize the difference. The absolute value of this error function does not work well. Instead we take quantity error. It could be positive or negative. With the help of sigmoid function, we could restrict the error to [0,1]. </p>
+<h2 id="Explicit-rating-amp-Implicit-rating"><a href="#Explicit-rating-amp-Implicit-rating" class="headerlink" title="Explicit rating &amp; Implicit rating"></a>Explicit rating &amp; Implicit rating</h2><p>BPR works well with both, but better with implicit ratings. The problem of explicit ratings is the user bias.</p>
+<p>In explicit ratings, we select item i (liked items) by high rating items, and item j (uninterested items) by low rating items. We could select item j also those un-rated items. It makes BPR works perfect with explicit items.</p>
+<h1 id="Matrix-Factorization"><a href="#Matrix-Factorization" class="headerlink" title="Matrix Factorization"></a>Matrix Factorization</h1><p>MF is a family of Collaborative filtering techiniques. These techniques are useful when URM is sparse. MF usually work better than item-based or user-based collaborative filtering.</p>
+<blockquote>
+<p>KEY IDEA: For each user, we have a vector x which decribes their preference for each attribute k of an item, (the demension of this vector is smaller than the number of items!), and for each item we have a vector y that describes it.</p>
+</blockquote>
+<h2 id="Funk-SVD"><a href="#Funk-SVD" class="headerlink" title="Funk SVD"></a>Funk SVD</h2><p>We could estimate the rating as the dot product of the vector x and y. From a matrix point of view, we are decompositing URM to matrix X and Y. </p>
+<h2 id="Latent-factors"><a href="#Latent-factors" class="headerlink" title="Latent factors"></a>Latent factors</h2><p>The dimension of X and Y depends on the designer of the system. X is matrix of numUser*N, and Y is N*numItems. N is the number of latent facotrs.</p>
+<p>We usually have N of from 10 to 200. N too small, no useful at all. N too big, X and Y become too sparse.</p>
+<blockquote>
+<p>Avoid Overfitting: add regularization terms for X and Y on the error function. </p>
+</blockquote>
+<h1 id="SVD"><a href="#SVD" class="headerlink" title="SVD++"></a>SVD++</h1><p>We describe an improved version of funk SVD. Which works for URM with explicit ratings. We need to nornalize the URM, and contains two parts, the Global Effects and Funk SVD.</p>
+<p>It take user bias and item bias into consideration.</p>
+<h2 id="Assumption-on-zero-elements"><a href="#Assumption-on-zero-elements" class="headerlink" title="Assumption on zero elements"></a>Assumption on zero elements</h2><p>The classical formulation of SVD++ minimizes the error function on the non-zero elements. </p>
+<p>If the goal is to estimate the real value of the ratings of the user, this is a good appoach. While if the goal is to do a top-n recommendation and desire to have good precision, missing as negative would be better.</p>
+<h1 id="Adapting-SVD"><a href="#Adapting-SVD" class="headerlink" title="Adapting SVD++"></a>Adapting SVD++</h1><p>In order to avoid recomputing the estimated ratings from scratch for each new user, we need to improve SVD++. </p>
+<p>For new user, we would like to calculate the new latent factor. It is telling us how much this user like latent attribute k. </p>
+<blockquote>
+<p>We want to estimate how much user “u” likes latent feature “k” based on the ratings he gave to other items. Now we need something which is telling us if attribute “k” is present or not in item “j”. Y<sub>k,j</sub> telling us the information of attribute k in item j. Therefore, we can approximate X<sub>u,k</sub> as the dot product of the vector of ratings of the user and the latent factors for the corresponding items. </p>
+</blockquote>
+<h1 id="Matrix-formulation"><a href="#Matrix-formulation" class="headerlink" title="Matrix formulation"></a>Matrix formulation</h1><p>We obtain the matrix of estimated ratings R as the product of 2 terms.</p>
+<ol>
+<li>The URM, R</li>
+<li>The transpose of matrix Y times matrix Y (the dimension of Y is numLatentFactors*numItems), and this product is of shape numItems*numItems</li>
+</ol>
+<p>This is quite same to the IBCF. And we use the parameters in Y limit the overfitting problem</p>
+<h1 id="Asymmetric-SVD"><a href="#Asymmetric-SVD" class="headerlink" title="Asymmetric SVD"></a>Asymmetric SVD</h1><p>In Asymmetric SVD’s main advantage is that it allows us to overcome the main shortcoming of SVD++, which was that the algorithm is not model-based, thus needs recomputing everytime a new user is added in the system.</p>
+<p>With A-SVD, when new users are added into the system, we can start giving them relevant recommendations just by asking for a few of their favorite items.</p>
+<p>Instead of using vector x to represent user preferences directly, we introduce another matrix Q. Q multiplied the vector r of recorder user ratigns approximates the vector x. We could klearn Q by ML approaches. </p>
+<blockquote>
+<p>KEY IDEA: we solve how much a user likes a feature, than we solve how much a user likes an item.</p>
+</blockquote>
+<h1 id="Hybrid-RS"><a href="#Hybrid-RS" class="headerlink" title="Hybrid RS"></a>Hybrid RS</h1><p>Hybrid RS combine the results of two or more algorithms together. </p>
+<h2 id="Linear-Combination"><a href="#Linear-Combination" class="headerlink" title="Linear Combination"></a>Linear Combination</h2><p>The simplest hybridization, compute the estimated rating for user u and item i as the linear combination of the result of different RS. We could also combine lists.</p>
+<blockquote>
+<p>Disadvantages: the optimal values depends on the dataset. </p>
+</blockquote>
+<h2 id="Pipeline-Algorithms"><a href="#Pipeline-Algorithms" class="headerlink" title="Pipeline Algorithms"></a>Pipeline Algorithms</h2><p>We could use the result of one RS as the input of a second algorithm. It works better if we use a content based technique to enrich a collaborative techinique.</p>
+<blockquote>
+<p>Disadvantages: memory and computation problem.</p>
+</blockquote>
+<h2 id="Merging-models"><a href="#Merging-models" class="headerlink" title="Merging models"></a>Merging models</h2><p>Merge two algorithms, A and B together into one . For example, marge a content based method to calculate the item similarity matrix, and then we use IBCF to calculate another item similarity matrix, we could reach the very same conclusion.</p>
+<h1 id="S-SLIM-Side-Information"><a href="#S-SLIM-Side-Information" class="headerlink" title="S-SLIM: Side Information"></a>S-SLIM: Side Information</h1><p>S-SLIM merges collaborative filtering and content based approach.</p>
+<p>SLIM is a CF, and the target of CF and CBF are both calculating item similarity matrix.</p>
+<blockquote>
+<p>KEY-IDEA: combine two item similarity matrix together, and use an error function to find the best weights. And we need to constraint the result item similarity matrix have a diagonal with zero.</p>
+</blockquote>
+<h1 id="Context-Aware-RS"><a href="#Context-Aware-RS" class="headerlink" title="Context Aware RS"></a>Context Aware RS</h1><p>In some application, the RS depends on the external factors like the weather, the hour of the day. These information are called context.</p>
+<p>To represent context, we augment the URM to include them as new type of varaible. The URM is not 2d any more, it is 3D! For each rating, we record the rating in different context. </p>
+<h2 id="Tensor-Factorization"><a href="#Tensor-Factorization" class="headerlink" title="Tensor Factorization"></a>Tensor Factorization</h2><p>To use the tensor, we extend the matrix factorization to the tensor case. With MF we estimat the URM as product of two matrices, X and Y. In Tensor, we decomposite the 3-d tensor to product of X, Y and Z.</p>
+<ol>
+<li>X: how much the user like a latent feature.</li>
+<li>Y: how much the latent feature is important to describe the item.</li>
+<li>Z: how much the feature is relevant in the context.</li>
+</ol>
+<h1 id="Factorization-Machines"><a href="#Factorization-Machines" class="headerlink" title="Factorization Machines"></a>Factorization Machines</h1><p>FM is a new technique of collaborative filtering with side information. It looks like Matrix Factorization, but the technique is quite different.</p>
+<p><a href="https://www.cnblogs.com/pinard/p/6370127.html" target="_blank" rel="noopener">LINK 1</a><br><a href="https://www.jianshu.com/p/78628d1cc621" target="_blank" rel="noopener">LINK 2</a></p>
+<blockquote>
+<p>FM的原理是将所有的user，item都看作输入，将rating看作输出，我们通过这种方式将原本的RS问题转化成了一个regression问题。</p>
+</blockquote>
+<h2 id="FM-vs-CF"><a href="#FM-vs-CF" class="headerlink" title="FM vs CF"></a>FM vs CF</h2><p>FM is creating a table, and approximating each rating in the table with a formula and estimate the unknown parameters by minimizeing some error, it is just like collaborative filtering.</p>
+<h2 id="Advantages"><a href="#Advantages" class="headerlink" title="Advantages"></a>Advantages</h2><p>FM is more flexible with side information: just add new columns!</p>
+<h2 id="Disadvantages"><a href="#Disadvantages" class="headerlink" title="Disadvantages"></a>Disadvantages</h2><p>The computation cost is ahigh, and we need to regularize the overfitting problem.</p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2019/05/05/ROS学习笔记/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Newer
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2019/01/12/Numerical-Analysis/" id="post_nav-older" class="next-content">
+            Older
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebarHeader.jpg);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/cesare.jpg" alt="Cesare (MINGJU LI)'s avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        cesareli1995@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="https://www.google.com/gmail/" target="_blank" title="Send Me An Email">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Send Me An Email
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                Home
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    Archives
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2020/01/">January 2020<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/05/">May 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/01/">January 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/12/">December 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/11/">November 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/10/">October 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">June 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">May 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">April 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">March 2018<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/01/">January 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">December 2017<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                Categories
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="Tags">
+                
+                    <i class="material-icons sidebar-material-icons">done</i>
+                
+                Tags
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                Number of articles
+                <span class="sidebar-badge">31</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/cesare.lee.94" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://www.weibo.com/5646481908/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+        <a href="https://www.instagram.com/cesaretiramisu/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-instagram">
+                <span class="visuallyhidden">Instagram</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/CesareMJLi" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;2017&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Cesare's Workshop
+            
+                <br>
+                
+                    Any question please contact me.
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+        </body>
+    
+</html>

@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="en">
+    <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Advanced Computer Architectures | 
+        
+        Cesare&#39;s Workshop
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/star.png">
+    <link rel="icon" href="/img/star.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)">
+    <meta name="keywords" content=",POLIMI,Advanced Computer Architectures">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/vibrant-ink.min.css?e5E/qqGcGveS7VTH4M896w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Cesare&#39;s Workshop">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/05/16/Advanced-Computer-Architectures/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Cesare&#39;s Workshop">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/star.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com/2018/05/16/Advanced-Computer-Architectures/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Advanced Computer Architectures | Cesare&#39;s Workshop">
+    <meta property="og:image" content="/img/star.png">
+    <meta property="og:description" content="Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)">
+    <meta property="og:article:tag" content="POLIMI"> <meta property="og:article:tag" content="Advanced Computer Architectures"> 
+
+    
+        <meta property="article:published_time" content="Wed May 16 2018 14:50:06 GMT+0200">
+        <meta property="article:modified_time" content="Thu May 17 2018 21:28:55 GMT+0200">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yoursite.com/2018/05/16/Advanced-Computer-Architectures/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yoursite.com/2018/05/16/Advanced-Computer-Architectures/index.html",
+    "headline": "Advanced Computer Architectures",
+    "datePublished": "Wed May 16 2018 14:50:06 GMT+0200",
+    "dateModified": "Thu May 17 2018 21:28:55 GMT+0200",
+    "author": {
+        "@type": "Person",
+        "name": "Cesare (MINGJU LI)",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/cesare.jpg"
+        },
+        "description": "Each question has an answer.,Or, will have an answer."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Cesare&#39;s Workshop",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/star.png"
+        }
+    },
+    "keywords": ",POLIMI,Advanced Computer Architectures",
+    "description": "Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+<link rel="stylesheet" href="/css/prism-duotone-space.css" type="text/css"><script src="/js/prism.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#L00-Intro"><span class="post-toc-number">1.</span> <span class="post-toc-text">L00 Intro</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#L01-Pipelining-Basic-Concepts"><span class="post-toc-number">2.</span> <span class="post-toc-text">L01 Pipelining: Basic Concepts</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MIPS"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">MIPS</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Pipelining"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Pipelining</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Pipeline-Hazards"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">Pipeline Hazards</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Performance-Metrics-in-Pipelining"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">Performance Metrics in Pipelining</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#L02-Branch-Prediction-Techiniques"><span class="post-toc-number">3.</span> <span class="post-toc-text">L02 Branch Prediction Techiniques</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Branch-Hazards-Solution"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Branch Hazards Solution</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Branch-Prediction-Techniques"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Branch Prediction Techniques</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Static-Branch-Prediction-Techniques"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">Static Branch Prediction Techniques</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Dynamic-Branch-Prediction-Techniques"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">Dynamic Branch Prediction Techniques</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#L03-Instruction-Level-Parallelism-Part-I-Introduction"><span class="post-toc-number">4.</span> <span class="post-toc-text">L03 Instruction Level Parallelism Part I - Introduction</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Dependencies"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">Dependencies</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Multi-cycles-Basic-Assumptions"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">Multi-cycles: Basic Assumptions</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Two-Strategies-to-support-ILP-Dynamic-Scheduling-Static-Scheduling"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">Two Strategies to support ILP: Dynamic Scheduling/Static Scheduling</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Dynamic-Scheduling-Superscalar-Processor-Expensive"><span class="post-toc-number">4.3.1.</span> <span class="post-toc-text">Dynamic Scheduling: Superscalar Processor [Expensive]</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Static-Scheduling-VLIW"><span class="post-toc-number">4.3.2.</span> <span class="post-toc-text">Static Scheduling: VLIW</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#L04-Instruction-Level-Parallelism-Part-II-Scoreboard"><span class="post-toc-number">5.</span> <span class="post-toc-text">L04 Instruction Level Parallelism Part II - Scoreboard</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Scoreboard-Pipeline-in-order-issue-but-out-of-order-execution-completion"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">Scoreboard Pipeline: in-order issue but out-of-order execution/completion</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#L05-Instruction-Level-Parallelism-Part-III-Tomasulo"><span class="post-toc-number">6.</span> <span class="post-toc-text">L05 Instruction Level Parallelism Part III - Tomasulo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Scheme"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">Scheme</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#L06-Instruction-Level-Parallelism-Part-IV-Register-Renaming"><span class="post-toc-number">7.</span> <span class="post-toc-text">L06 Instruction Level Parallelism Part IV - Register Renaming</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Implicit-Register-Renaming"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">Implicit Register Renaming</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Explicit-Register-Renaming"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">Explicit Register Renaming</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#L07-Instruction-Level-Parallelism-Part-V-VLIW"><span class="post-toc-number">8.</span> <span class="post-toc-text">L07 Instruction Level Parallelism Part V - VLIW</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#VLIW"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">VLIW</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Dependencies-1"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">Dependencies</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#L08-VLIW-Code-Scheduling"><span class="post-toc-number">9.</span> <span class="post-toc-text">L08 VLIW Code Scheduling</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Dependence-Graph"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">Dependence Graph</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Ready-List"><span class="post-toc-number">9.2.</span> <span class="post-toc-text">Ready List</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#L09-Reorder-Buffer"><span class="post-toc-number">10.</span> <span class="post-toc-text">L09 Reorder Buffer</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ReOrder-Buffer-ROB"><span class="post-toc-number">10.1.</span> <span class="post-toc-text">ReOrder Buffer (ROB)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Four-Steps-of-Speculative-Tomasulo-Algorithm"><span class="post-toc-number">10.2.</span> <span class="post-toc-text">Four Steps of Speculative Tomasulo Algorithm</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#L10-Beyond-ILP-Multithreading"><span class="post-toc-number">11.</span> <span class="post-toc-text">L10 Beyond ILP Multithreading</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#L11-Memory-Hierarchy"><span class="post-toc-number">12.</span> <span class="post-toc-text">L11 Memory Hierarchy</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Main-Goal"><span class="post-toc-number">12.1.</span> <span class="post-toc-text">Main Goal</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Locality"><span class="post-toc-number">12.2.</span> <span class="post-toc-text">Locality</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Basic-Concepts"><span class="post-toc-number">12.3.</span> <span class="post-toc-text">Basic Concepts</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Cache-Structure"><span class="post-toc-number">12.4.</span> <span class="post-toc-text">Cache Structure</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Cache-Architecture"><span class="post-toc-number">12.5.</span> <span class="post-toc-text">Cache Architecture</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Advanced Computer Architectures
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/cesare.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Cesare (MINGJU LI)</strong>
+        <span>May 16, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Advanced-Computer-Architectures/">Advanced Computer Architectures</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/POLIMI/">POLIMI</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Advanced Computer Architectures&url=http://yoursite.com/2018/05/16/Advanced-Computer-Architectures/index.html&pic=http://yoursite.com/img/star.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Weibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Advanced Computer Architectures&url=http://yoursite.com/2018/05/16/Advanced-Computer-Architectures/index.html&via=Cesare (MINGJU LI)" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/05/16/Advanced-Computer-Architectures/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/05/16/Advanced-Computer-Architectures/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>A note for the course of <em>Advanced Computer Architectures</em>.</p>
+<h1 id="L00-Intro"><a href="#L00-Intro" class="headerlink" title="L00 Intro"></a>L00 Intro</h1><h1 id="L01-Pipelining-Basic-Concepts"><a href="#L01-Pipelining-Basic-Concepts" class="headerlink" title="L01 Pipelining: Basic Concepts"></a>L01 Pipelining: Basic Concepts</h1><h2 id="MIPS"><a href="#MIPS" class="headerlink" title="MIPS"></a>MIPS</h2><ul>
+<li>ALU Instructions: add $s1, $s2, $s3</li>
+<li>Load/Store Instructions: lw/sw $s1 offset($s2)</li>
+<li>Branch Instructions: beq/bne $s1, $s2, L1</li>
+</ul>
+<p>R-Format for Instructions</p>
+<img src="/2018/05/16/Advanced-Computer-Architectures/1.png">
+<p>Phase of execution of MIPS Instructions:</p>
+<ol>
+<li>Instruction Fetch</li>
+<li>Instruction Decode and Register Read</li>
+<li>Execution</li>
+<li>Memory Access</li>
+<li>Write Back Cycle</li>
+</ol>
+<p>Different type of Instructions(R/I/J) may require different execution phase. In an ALU R-Instruction, there is no needs for the memory access.</p>
+<h2 id="Pipelining"><a href="#Pipelining" class="headerlink" title="Pipelining"></a>Pipelining</h2><p><strong>Basic idea</strong>: The execution of an instruction is divided into different phases (pipelines stages), requiring a fraction of the time necessary to complete the instruction.</p>
+<blockquote>
+<p><strong>The pipeline stages must besynchronized</strong>: the duration of a clock cycle is defined by the time requested by the slower stage of the pipeline.The goal is to balance the length of each pipeline stage.</p>
+<p>一个MIPS Instruction可能需要8ns，但是为了在宏观上实现pipelining，我们把5个阶段分开，并且将最长事件的阶段作为一个clock cycle，虽然每一个Instruction花费的时间变多了，但是由于pipelining，整体的output提高了。</p>
+</blockquote>
+<img src="/2018/05/16/Advanced-Computer-Architectures/2.png">
+<h2 id="Pipeline-Hazards"><a href="#Pipeline-Hazards" class="headerlink" title="Pipeline Hazards"></a>Pipeline Hazards</h2><ol>
+<li>Structural Hazards: Use the same resource from different instructions simultaneously</li>
+<li>Data Hazards: Attempt to use a result before it is ready</li>
+<li>Control Hazards: Attempt to make a decision on the next instruction to execute before the condition is evaluated.</li>
+</ol>
+<blockquote>
+<p>No s-hazards in MIPS<br>While d-hazard in very possible (RAW)<br>WAW/WAR occur more easily when instructions are executed out-of-order.</p>
+</blockquote>
+<p>Data Hazards Solution:</p>
+<ol>
+<li>Insertion of nop</li>
+<li>Rescheduling to avoid correlating instruction too close</li>
+<li>Insertion of stalls</li>
+<li>data forward or bypassing (uses temporary results stored in the pipeline registers instead of waiting for the write back of results in the RF)</li>
+</ol>
+<blockquote>
+<p>The differnce between nop and stalls is that nop is an instruction, while stalls is only stalled for one clk</p>
+<p>Forwarding Paths<br>EX/EX path<br>MEM/EX path<br>MEM/ID path<br>MEM/MEM path (for load/stores)</p>
+<p>To avoid the read/write RF in one clk, we assume the RF read occurs in the second half of clock cycle and the RF write in the first half of clock cycle.</p>
+</blockquote>
+<h2 id="Performance-Metrics-in-Pipelining"><a href="#Performance-Metrics-in-Pipelining" class="headerlink" title="Performance Metrics in Pipelining"></a>Performance Metrics in Pipelining</h2><p>IC = Instruction Cound</p>
+<p>Clk Cycles = IC + #Stalls + 4</p>
+<p>CPI = Clk Cycles/IC</p>
+<p>MIPS = f<sub>clock</sub>/(CPI*10<sup>6</sup>)</p>
+<p>The ideal CPI on a pipelined processor would be 1, but stalls cause the pipeline performance to degrade form the ideal performance.</p>
+<h1 id="L02-Branch-Prediction-Techiniques"><a href="#L02-Branch-Prediction-Techiniques" class="headerlink" title="L02 Branch Prediction Techiniques"></a>L02 Branch Prediction Techiniques</h1><p>Control hazards: Attempt to make a decision on the next instruction to fetch before the branch condition is evaluated.</p>
+<h2 id="Branch-Hazards-Solution"><a href="#Branch-Hazards-Solution" class="headerlink" title="Branch Hazards Solution"></a>Branch Hazards Solution</h2><p><strong>Conservative Assumption</strong>: stall the pipeline until the branch decision is taken, and then fetch the correct instruction.</p>
+<p><strong>Conservative Assumption with Forwarding</strong></p>
+<p><strong>Early Evaluation of the PC</strong>: get the result of the branch prediction in the end of ID state.</p>
+<h2 id="Branch-Prediction-Techniques"><a href="#Branch-Prediction-Techniques" class="headerlink" title="Branch Prediction Techniques"></a>Branch Prediction Techniques</h2><h3 id="Static-Branch-Prediction-Techniques"><a href="#Static-Branch-Prediction-Techniques" class="headerlink" title="Static Branch Prediction Techniques"></a>Static Branch Prediction Techniques</h3><p>The actions for a branch are fixed for each branch during the entire execution. The actions are fixed at compile time.</p>
+<ol>
+<li>Branch Always Not Taken: if the branch is actually taken, make the fetched instruction a nop.</li>
+<li>Branch Always Taken</li>
+<li>Backward Taken Forward Not Taken: backward-going branches are predicted as taken, while forward-going branches are predicted as not taken.</li>
+<li>Profile-Driven Prediction</li>
+<li>Delayed Branch: The MIPS compiler always schedules a branch independent instruction after the branch. (there are 4 ways in Delayed Branch: From Before/From Target/From fall-throuogh/From After)</li>
+</ol>
+<h3 id="Dynamic-Branch-Prediction-Techniques"><a href="#Dynamic-Branch-Prediction-Techniques" class="headerlink" title="Dynamic Branch Prediction Techniques"></a>Dynamic Branch Prediction Techniques</h3><p>The decision causing the branch prediction can dynamically change during the program execution.</p>
+<p>Schemes:</p>
+<blockquote>
+<p>Branch Outcome Predictor<br>Branch Target Predictor/Branch Target Buffer</p>
+</blockquote>
+<ol>
+<li>Branch History Table</li>
+<li>Correlating Branch Predictor: Branch predictors that use the behavior of other branches to make a prediction are called Correlating Predictors or 2-level Predictors.</li>
+<li>Two-level Adaptive Branch Predictor: The first level history is recorded in one (or more) k-bit shift register called Branch History Register (BHR), which records the outcomes of the k most recent branches. The second level history is recorded in one (or more) tables called Pattern History Table (PHT) of two-bit saturating counters.</li>
+<li>Branch Target Buffer</li>
+</ol>
+<h1 id="L03-Instruction-Level-Parallelism-Part-I-Introduction"><a href="#L03-Instruction-Level-Parallelism-Part-I-Introduction" class="headerlink" title="L03 Instruction Level Parallelism Part I - Introduction"></a>L03 Instruction Level Parallelism Part I - Introduction</h1><h2 id="Dependencies"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies</h2><ol>
+<li>Data Dependencies(True Data Dependences): RAW-data dependence/WAR-anti dependence/WAW-output dependence</li>
+<li>Name Dependencies: 2 instructions use the same register or memory location, but there are no flow of data between the instruction associated with that name.</li>
+<li>Control Dependencies</li>
+</ol>
+<h2 id="Multi-cycles-Basic-Assumptions"><a href="#Multi-cycles-Basic-Assumptions" class="headerlink" title="Multi-cycles: Basic Assumptions"></a>Multi-cycles: Basic Assumptions</h2><ul>
+<li>We consider single-issue processors.</li>
+<li>Instructions are then issued in-order.</li>
+<li>Execution stage might require multiple cycles, depending on the operation type.</li>
+<li>Memory stage might require multiple cycles access time due to data cache misses.</li>
+</ul>
+<blockquote>
+<p>ILP = Exploit potential overlap of execution among unrelated instructions<br>While overlapping possible only if: NO structural/RAW/WAR/WAW/Control hazards</p>
+</blockquote>
+<p>In a multiple-issue pipelined processor, the ideal CPI would be CPI ideal &lt; 1. (Dual issue means there are two lanes to execute the two pipeline simutanously)</p>
+<p>The <strong>issue width</strong> is the number of instructions that can be issued in a single cycle by a multiple issue processor</p>
+<h2 id="Two-Strategies-to-support-ILP-Dynamic-Scheduling-Static-Scheduling"><a href="#Two-Strategies-to-support-ILP-Dynamic-Scheduling-Static-Scheduling" class="headerlink" title="Two Strategies to support ILP: Dynamic Scheduling/Static Scheduling"></a>Two Strategies to support ILP: Dynamic Scheduling/Static Scheduling</h2><p>Hazards due to data dependences that cannot be solved by forwarding cause stalls of the pipeline: no new instructions are fetched nor issued even if they are not data dependent.</p>
+<p><strong>Solution</strong>: Allow data independent instructions behind a stall to proceed. (Enables out-of-order execution and completion/commit)</p>
+<h3 id="Dynamic-Scheduling-Superscalar-Processor-Expensive"><a href="#Dynamic-Scheduling-Superscalar-Processor-Expensive" class="headerlink" title="Dynamic Scheduling: Superscalar Processor [Expensive]"></a>Dynamic Scheduling: Superscalar Processor [Expensive]</h3><p>Dynamic Scheduling: The hardware reorder dynamically the instruction execution to reduce pipeline stalls while maintaining data flow and exception behavior.</p>
+<ul>
+<li>Basically: Instructions are fetched and issued in program order (in-order-issue)</li>
+<li>Execution begins as soon as operands are available – possibly, out of order execution – note: possible even with pipelined scalar architectures.</li>
+<li>Out-of order execution introduces possibility of WAR and WAW data hazards.</li>
+<li>Out-of order execution implies out of order completion unless there is a re-order buffer to get in- order completion</li>
+</ul>
+<h3 id="Static-Scheduling-VLIW"><a href="#Static-Scheduling-VLIW" class="headerlink" title="Static Scheduling: VLIW"></a>Static Scheduling: VLIW</h3><p>VLIW (Very Long Instruction Word) processors expect dependency-free code generated by the compiler</p>
+<h1 id="L04-Instruction-Level-Parallelism-Part-II-Scoreboard"><a href="#L04-Instruction-Level-Parallelism-Part-II-Scoreboard" class="headerlink" title="L04 Instruction Level Parallelism Part II - Scoreboard"></a>L04 Instruction Level Parallelism Part II - Scoreboard</h1><blockquote>
+<p>Basic Assumptions<br>Single Issue processors<br>IF might fetch either into an IR or into a queue of pending instructions<br>Instructions are then issued from the IR or from the queue<br>EX stage may require multiple cycles<br>MEM stage may require multiple cycles</p>
+</blockquote>
+<h2 id="Scoreboard-Pipeline-in-order-issue-but-out-of-order-execution-completion"><a href="#Scoreboard-Pipeline-in-order-issue-but-out-of-order-execution-completion" class="headerlink" title="Scoreboard Pipeline: in-order issue but out-of-order execution/completion"></a>Scoreboard Pipeline: in-order issue but out-of-order execution/completion</h2><p>Due to out-of-order completion WAR and WAW hazards can occur.</p>
+<p>Scoreboard has 4 stages</p>
+<ul>
+<li>Issue (decode and check no WAW) [INORDER]</li>
+<li>Read Operands (wait until no RAW) } [OUT OF ORDER]</li>
+<li>Execution [OUT OF ORDER]</li>
+<li>Write result (check no WAR) [OUT OF ORDER]</li>
+</ul>
+<blockquote>
+<p>Optimisations:<br>check for WAW postponed in WRITE Stage instead of in ISSUE Stage<br>forwarding</p>
+</blockquote>
+<h1 id="L05-Instruction-Level-Parallelism-Part-III-Tomasulo"><a href="#L05-Instruction-Level-Parallelism-Part-III-Tomasulo" class="headerlink" title="L05 Instruction Level Parallelism Part III - Tomasulo"></a>L05 Instruction Level Parallelism Part III - Tomasulo</h1><h2 id="Scheme"><a href="#Scheme" class="headerlink" title="Scheme"></a>Scheme</h2><ul>
+<li>ISSUE: [IN ORDER] check for structural hazards in RESERVATION STATIONS (not in FU)</li>
+<li>EXECUTION: [OUT OF ORDER] When operands ready (Check for RAW hazards solved)/When FU available (Check for structural hazards in FU)</li>
+<li><p>WRITE RESULT: [OUT OF ORDER] Execution completion depends on latency of FUs</p>
+</li>
+<li><p>REGISTER RENAMING based on Reservation Stations to avoid WAR and WAW hazards</p>
+</li>
+<li>Results dispatched to RESERVATION STATIONS and to RF through the Common Data Bus</li>
+<li>Control is distributed on Reservation Stations</li>
+<li>Reservation Stations offer a sort of data forwarding!</li>
+</ul>
+<h1 id="L06-Instruction-Level-Parallelism-Part-IV-Register-Renaming"><a href="#L06-Instruction-Level-Parallelism-Part-IV-Register-Renaming" class="headerlink" title="L06 Instruction Level Parallelism Part IV - Register Renaming"></a>L06 Instruction Level Parallelism Part IV - Register Renaming</h1><p>Tomasulo: Implicit Register Renaming<br>Explicit Register Renaming</p>
+<h2 id="Implicit-Register-Renaming"><a href="#Implicit-Register-Renaming" class="headerlink" title="Implicit Register Renaming"></a>Implicit Register Renaming</h2><p>Register renaming provided by Reservation Stations (which buffer the operands of instructions) to eliminate WAR and WAW hazards</p>
+<p>Out-of-order commit really messes up our chance to get precise exceptions!</p>
+<h2 id="Explicit-Register-Renaming"><a href="#Explicit-Register-Renaming" class="headerlink" title="Explicit Register Renaming"></a>Explicit Register Renaming</h2><p>Use physical register file that is larger than number of registers specified by the ISA.</p>
+<p>对于每一个Function Unit由于其可能具有潜在的WAW等可能性，故我们可以分配一个新的Register给他，比如两个连续的指令:</p>
+<blockquote>
+<p>DIVD F10 F0 F6<br>ADDD F6 F8 F2<br>由于下面的指令很可能在上面的完成前就完成了，我们为了避免WAR，我们讲ADDD的结果储存在P42中（假设原来的F6是在P32），这就解决了WAR问题。</p>
+</blockquote>
+<h1 id="L07-Instruction-Level-Parallelism-Part-V-VLIW"><a href="#L07-Instruction-Level-Parallelism-Part-V-VLIW" class="headerlink" title="L07 Instruction Level Parallelism Part V - VLIW"></a>L07 Instruction Level Parallelism Part V - VLIW</h1><p>Single-Issue Processors: Scalar processors that fetch and issue max one operation in each clock cycle.</p>
+<p>Multiple-Issue Processors require: Fetching more instructions in a cycle (higher bandwidth from the instruction cache) </p>
+<p>Multiple-Issue Processors can be: </p>
+<ul>
+<li>Dynamically scheduled (issue a varying number of instructions at each clock cycle).</li>
+<li>Statically scheduled (issue a fixed number of instructions at each clock cycle).</li>
+</ul>
+<h2 id="VLIW"><a href="#VLIW" class="headerlink" title="VLIW"></a>VLIW</h2><p>VLIW approach advantages:</p>
+<ul>
+<li>Simpler hardware because the complexity of the control unit is moved to the compiler</li>
+<li>Low power consumption</li>
+<li>Good performance through extensive compiler optimization</li>
+</ul>
+<p>VLIW approach disadvantages:</p>
+<ul>
+<li>Early VLIWs were quite rigid in the instruction format and they required recompilation of programs for different versions of the hardware</li>
+</ul>
+<h2 id="Dependencies-1"><a href="#Dependencies-1" class="headerlink" title="Dependencies"></a>Dependencies</h2><ul>
+<li><p>RAW Hazards: Scalars/superscalars generate NOPs/stalls or execute successive instructions (dynamic scheduling or instruction reordering)</p>
+</li>
+<li><p>WAR and WAW Hazards: they are statically solved by the compiler by correctly selecting temporal slots for the operations or by register renaming.</p>
+</li>
+<li><p>Structural hazards: they are also solved by the compiler.</p>
+</li>
+<li><p>Control hazards are solved dynamically by the hardware by flushing the execution of instructions due to a mispredicted branch.</p>
+</li>
+</ul>
+<h1 id="L08-VLIW-Code-Scheduling"><a href="#L08-VLIW-Code-Scheduling" class="headerlink" title="L08 VLIW Code Scheduling"></a>L08 VLIW Code Scheduling</h1><h2 id="Dependence-Graph"><a href="#Dependence-Graph" class="headerlink" title="Dependence Graph"></a>Dependence Graph</h2><h2 id="Ready-List"><a href="#Ready-List" class="headerlink" title="Ready List"></a>Ready List</h2><h1 id="L09-Reorder-Buffer"><a href="#L09-Reorder-Buffer" class="headerlink" title="L09 Reorder Buffer"></a>L09 Reorder Buffer</h1><h2 id="ReOrder-Buffer-ROB"><a href="#ReOrder-Buffer-ROB" class="headerlink" title="ReOrder Buffer (ROB)"></a>ReOrder Buffer (ROB)</h2><ul>
+<li>Buffer to hold the results of instructions that have finished execution but non committed</li>
+<li>Buffer to pass results among instructions that can be speculated</li>
+<li>Support out-of-order execution but in-order commit</li>
+</ul>
+<h2 id="Four-Steps-of-Speculative-Tomasulo-Algorithm"><a href="#Four-Steps-of-Speculative-Tomasulo-Algorithm" class="headerlink" title="Four Steps of Speculative Tomasulo Algorithm"></a>Four Steps of Speculative Tomasulo Algorithm</h2><ol>
+<li>Issue — get instruction from FP Op Queue: If reservation station and ROB slot free, issue instr &amp; send operands &amp; ROB no. for destination(this stage sometimes called “dispatch”)</li>
+<li>Execution — operate on operands (EX): When both operands ready then execute; if not ready, watch CDB for result; when both operands in reservation station, execute; checks RAW (sometimes called “issue”)</li>
+<li>Write result — finish execution (WB) Write on Common Data Bus to all awaiting FUs &amp; ROB; mark reservation station available.</li>
+<li>Commit — update register with ROB resultWhen instr. at head of ROB &amp; result present, update register with result (or store to memory) and remove instr from ROB. Mispredicted branch flushes ROB (sometimes called “graduation”)</li>
+</ol>
+<blockquote>
+<p>3 different possible sequences in COMMIT</p>
+<ol>
+<li>Normal Commit</li>
+<li>Store Commit</li>
+<li>Instruction is a branch with incorrect prediction</li>
+</ol>
+</blockquote>
+<h1 id="L10-Beyond-ILP-Multithreading"><a href="#L10-Beyond-ILP-Multithreading" class="headerlink" title="L10 Beyond ILP Multithreading"></a>L10 Beyond ILP Multithreading</h1><h1 id="L11-Memory-Hierarchy"><a href="#L11-Memory-Hierarchy" class="headerlink" title="L11 Memory Hierarchy"></a>L11 Memory Hierarchy</h1><h2 id="Main-Goal"><a href="#Main-Goal" class="headerlink" title="Main Goal"></a>Main Goal</h2><p>To increase the performance of a computer through the memory system in order to:</p>
+<ul>
+<li>Provide the user the illusion to use a memory that is simultaneously large and fast</li>
+<li>Provide the data to the processor at high frequency</li>
+</ul>
+<h2 id="Locality"><a href="#Locality" class="headerlink" title="Locality"></a>Locality</h2><ul>
+<li>Temporal Locality: when there is a reference to one memory element, the trend is to refer again to the same memory element soon (i.e., instruction and data reused in loop bodies)</li>
+<li>Spatial Locality: when there is a reference to one memory element, the trend is to refer soon at other memory elements whose addresses are close by (i.e., sequence of instructions or accesses to data organized as arrays or matrices)</li>
+</ul>
+<p>– Exploit temporal locality by keeping the contents of recently accessed locations.<br>– Exploit spatial locality by fetching blocks of data around recently accessed locations.</p>
+<p>Levels of memory hierarchy: Registers-&gt;L1 Cache-&gt;L2 Cache-&gt; Main Memory</p>
+<h2 id="Basic-Concepts"><a href="#Basic-Concepts" class="headerlink" title="Basic Concepts"></a>Basic Concepts</h2><p>The memory hierarchy is composed of several levels, but data are copied between two adjacent levels. Let us consider two levels: cache and main memory</p>
+<p>The cache level is smaller, faster and more expensive</p>
+<p>The minimum chunk of data that can be copied in the cache is the <strong>block</strong> or <strong>cache line</strong>.</p>
+<p>Cache hit/miss: whether the requested data is found in the one of the cache blocks</p>
+<blockquote>
+<p><strong>Hit Rate</strong>: Number of memory accesses that find the data in the upper level with respect to the total number of memory accesses[Hit Rate=#hits/#memory access]<br><strong>Hit Time</strong>: time to access the data in the upper level of the hierarchy, including the time needed to decide if the attempt of access will result in a hit or miss<br><strong>Miss Rate</strong>: number of memory accesses not finding the data in the upper level with respect to the total number of memory accesses[Miss Rate=#misses/#memory accesses]<br><strong>Miss Penalty</strong>: time needed to access the lower level and to replace the block in the upper level<br><strong>Miss Time</strong>: miss time= hit time+ miss penalty[typically hit time《miss penalty]<br><strong>Average Memory Access Time/AMAT</strong>: AMAT = HitRate<em>HitTime+MissRate</em>MissTime<br><strong>Average Memory Access Time/AMAT</strong>: AMAT = HitTime+MissRate*MissPenalty</p>
+</blockquote>
+<h2 id="Cache-Structure"><a href="#Cache-Structure" class="headerlink" title="Cache Structure"></a>Cache Structure</h2><ol>
+<li>Valid bit: indicate if this position contains valid data or not. At the bootstrap, all the entries in the cache are marked as INVALID</li>
+<li>Cache Tag: contains the value that uniquelly identifies the memory address corresponding to the stored data.</li>
+<li>Cache Data: contains a copy of data (block or cache line)</li>
+</ol>
+<h2 id="Cache-Architecture"><a href="#Cache-Architecture" class="headerlink" title="Cache Architecture"></a>Cache Architecture</h2><ol>
+<li>Direct Mapped Cache</li>
+<li>Fully Associative Cache</li>
+<li>n-way Set-Associative Cache</li>
+</ol>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/06/30/Computer-Security-Web-Network/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Newer
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/05/06/SVM/" id="post_nav-older" class="next-content">
+            Older
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebarHeader.jpg);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/cesare.jpg" alt="Cesare (MINGJU LI)'s avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        cesareli1995@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="https://www.google.com/gmail/" target="_blank" title="Send Me An Email">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Send Me An Email
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                Home
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    Archives
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2020/01/">January 2020<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/05/">May 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/01/">January 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/12/">December 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/11/">November 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/10/">October 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">June 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">May 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">April 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">March 2018<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/01/">January 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">December 2017<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                Categories
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="Tags">
+                
+                    <i class="material-icons sidebar-material-icons">done</i>
+                
+                Tags
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                Number of articles
+                <span class="sidebar-badge">31</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/cesare.lee.94" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://www.weibo.com/5646481908/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+        <a href="https://www.instagram.com/cesaretiramisu/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-instagram">
+                <span class="visuallyhidden">Instagram</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/CesareMJLi" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;2017&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Cesare's Workshop
+            
+                <br>
+                
+                    Any question please contact me.
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+        </body>
+    
+</html>
