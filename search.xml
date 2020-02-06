@@ -3,6 +3,955 @@
   
     
     <entry>
+      <title><![CDATA[Design Pattern/设计模式: Introduction & Part X]]></title>
+      <url>/2020/02/06/Design-Pattern-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-Introduction-Part-X/</url>
+      <content type="html"><![CDATA[<h1 id="设计模式以及综述"><a href="#设计模式以及综述" class="headerlink" title="设计模式以及综述"></a>设计模式以及综述</h1><p>设计模式对于一名软件开发工程师来说可谓是必备的技能和知识，然而在程序员社区中也充斥着不少对于设计模式的反对之音。有人认为设计模式的知识对于工程开发至关重要，但也有许多经验丰富的程序员认为设计模式应当是长期的软件开发的积累所留下的不可名状的抽象艺术，对于市面上不少介绍设计模式的书籍嗤之以鼻。</p>
+<p>对于刚入门的软件开发工程师而言，你若问他（包括现在的我自己）“我们为什么要使用工厂模式？使用工厂模式能够带来什么好处？”之类的问题，他也是很难回答的。所以盲目的掌握设计模式中那些拗口的名称，或者干巴巴的“方便继承”之类的描述是没有意义的。</p>
+<p>这一系列的博客的目的并不是一蹴而就的讲解全部的设计模式知识，这样的知识没有日积月累的开发经验是很难去对其有深入的体会的。我只是希望能在这一系列的博客中，借助《图解设计模式》一书，跟随书中的顺序对其中的设计模式知识进行某种程度的理解和总结，以至于能够对诸君有所启迪，开发出更加优美和友好的代码。</p>
+<p>我的能力有限，若是文中出现什么谬误也请诸君不吝赐教，提前感谢。</p>
+<p>《图解设计模式》一书的作者是<strong>结城浩</strong>先生，全书共计十个部分，预计会分为十篇博客进行介绍。书中的代码为java所写，虽然java并不是我比较擅长的代码，但是为了不引起错误贻笑大方，所以还是按照书中的java进行讨论。本博客介绍其中的<em>第十部分：用类来表现</em>。因为每一章节中代码都占据了比较多的部分，为了更好地理解相关概念，建议阅读代码优先从Main.java的部分开始。</p>
+<h1 id="Chapter-22-Command模式–命令也是类"><a href="#Chapter-22-Command模式–命令也是类" class="headerlink" title="Chapter 22: Command模式–命令也是类"></a>Chapter 22: Command模式–命令也是类</h1><p>在一个类的工作的过程中，我们会调用自己或是其他类的方法，虽然调用结果会反映在对象的状态中，但是这并不会留下工作的记录或者日志。如果我们有一个类来表示“进行这项工作”的<strong>命令</strong>即可，我们称这样的思想为Command模式。</p>
+<p>这个模式的关键就是定义三个角色</p>
+<ol>
+<li>使用命令对象的入口-invoker</li>
+<li>命令-command</li>
+<li>命令的执行对象-receiver</li>
+</ol>
+<blockquote>
+<p>例：我们首先创建作为命令的接口Order(command)，然后创建作为请求的Stock类(invoker)。实体命令类BuyStock(concretecCommand1)和SellStock(concreteCommand2)，实现了Order接口，将执行实际的命令处理。创建作为调用对象的类Broker(receiver)，它接受订单并能下订单。Broker对象使用命令模式，基于命令的类型确定哪个对象执行哪个命令。Main类使用Broker类来演示命令模式。</p>
+</blockquote>
+<pre><code>public interface Order {
+    void execute();
+}
+</code></pre><pre><code>// Receiver
+public class Stock { 
+    private String name = &quot;ABC&quot;;
+    private int quantity = 10;
+
+    public void buy(){
+        System.out.println(&quot;Stock [ Name: &quot;+name+&quot;, Quantity: &quot; + quantity +&quot; ] bought&quot;);
+    }
+    public void sell(){
+        System.out.println(&quot;Stock [ Name: &quot;+name+&quot;, Quantity: &quot; + quantity +&quot; ] sold&quot;);
+    }
+}
+</code></pre><pre><code>// Command 1
+public class BuyStock implements Order {
+    private Stock abcStock;
+    public BuyStock(Stock abcStock){
+        this.abcStock = abcStock;
+    }
+    public void execute() {
+        abcStock.buy();
+    }
+}
+</code></pre><pre><code>// Command2
+public class BuyStock implements Order {
+    private Stock abcStock;
+    public BuyStock(Stock abcStock){
+        this.abcStock = abcStock;
+    }
+    public void execute() {
+        abcStock.buy();
+    }
+}
+</code></pre><pre><code>// Invoker
+import java.util.ArrayList;
+import java.util.List;
+
+public class Broker {
+   private List&lt;Order&gt; orderList = new ArrayList&lt;Order&gt;(); 
+
+   public void takeOrder(Order order){
+      orderList.add(order);      
+   }
+
+   public void placeOrders(){
+      for (Order order : orderList) {
+         order.execute();
+      }
+      orderList.clear();
+   }
+}
+</code></pre><pre><code>public class Main {
+    public static void main(String[] args) {
+        Stock abcStock = new Stock();
+
+        BuyStock buyStockOrder = new BuyStock(abcStock);
+        SellStock sellStockOrder = new SellStock(abcStock);
+
+        Broker broker = new Broker();
+        //实际的命令执行者
+        System.out.println(&quot;------LINE 1------&quot;);
+
+        broker.takeOrder(buyStockOrder);
+        broker.takeOrder(sellStockOrder);
+        System.out.println(&quot;------LINE 2------&quot;);
+        broker.placeOrders();
+    }
+}
+</code></pre><pre><code>//OUTPUT
+------LINE 1------
+------LINE 2------
+Stock [ Name: ABC, Quantity: 10 ] bought
+Stock [ Name: ABC, Quantity: 10 ] sold
+</code></pre><h1 id="Chapter-23-Interpreter模式–语法规则也是类"><a href="#Chapter-23-Interpreter模式–语法规则也是类" class="headerlink" title="Chapter 23: Interpreter模式–语法规则也是类"></a>Chapter 23: Interpreter模式–语法规则也是类</h1><p>相比于前几种设计模式，Interpreter模式要更加的复杂。在这个模式中，程序需要解决的问题会被一些比较简单的“迷你语言”表示出来，而我们要编写一段“翻译程序”使其能够理解迷你语言，并且解释和运行迷你程序，这段翻译程序也被成为解释器，这样的话当我们需要解决什么问题的时候，不需要修改我们编写的翻译程序本身，而是修改迷你语言程序即可！</p>
+<blockquote>
+<p>想象用java来实现MySQL！</p>
+<p>例：我们将创建一个接口Expression和实现了Expression接口的实体类。定义作为上下文中主要解释器的TerminalExpression类。其他的类OrExpression、AndExpression用于创建组合式表达式。Main类使用Expression类创建规则和演示表达式的解析。</p>
+</blockquote>
+<pre><code>public interface Expression {
+    public boolean interpret(String context);
+}
+</code></pre><pre><code>// 翻译结果是true/false---表示context含有/不含data
+public class TerminalExpression implements Expression { 
+    private String data;
+    public TerminalExpression(String data){
+        this.data = data; 
+    }
+
+    @Override
+    public boolean interpret(String context) {
+        if(context.contains(data)){
+            return true;
+        }
+        return false;
+    }
+}
+</code></pre><pre><code>// 翻译结果是expr1 OR expr2的结果
+public class OrExpression implements Expression {
+    private Expression expr1 = null;
+    private Expression expr2 = null;
+
+    public OrExpression(Expression expr1, Expression expr2) { 
+        this.expr1 = expr1;
+        this.expr2 = expr2;
+    }
+
+    @Override
+    public boolean interpret(String context) {      
+        return expr1.interpret(context) || expr2.interpret(context);
+    }
+}
+</code></pre><pre><code>// 翻译结果是expr1 AND expr2的结果
+public class AndExpression implements Expression {
+    private Expression expr1 = null;
+    private Expression expr2 = null;
+
+    public AndExpression(Expression expr1, Expression expr2) { 
+        this.expr1 = expr1;
+        this.expr2 = expr2;
+    }
+
+    @Override
+    public boolean interpret(String context) {      
+        return expr1.interpret(context) &amp;&amp; expr2.interpret(context);
+    }
+}
+</code></pre><pre><code>public class InterpreterPatternDemo {
+    //规则：Robert 和 John 是男性
+    public static Expression getMaleExpression(){
+        Expression robert = new TerminalExpression(&quot;Robert&quot;);
+        Expression john = new TerminalExpression(&quot;John&quot;);
+        return new OrExpression(robert, john);    
+    }
+
+    //规则：Julie 是一个已婚的女性
+    public static Expression getMarriedWomanExpression(){
+        Expression julie = new TerminalExpression(&quot;Julie&quot;);
+        Expression married = new TerminalExpression(&quot;Married&quot;);
+        return new AndExpression(julie, married);    
+    }
+
+    public static void main(String[] args) {
+        Expression isMale = getMaleExpression();
+        Expression isMarriedWoman = getMarriedWomanExpression();
+        System.out.println(&quot;John is male? &quot; + isMale.interpret(&quot;John&quot;));
+        System.out.println(&quot;Julie is a married women? &quot; + isMarriedWoman.interpret(&quot;Married Julie&quot;));
+    }
+}
+</code></pre><pre><code>// OUTPUT
+John is male? true
+Julie is a married women? true
+</code></pre>]]></content>
+      
+        
+        <tags>
+            
+            <tag> Design Pattern </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Design Pattern/设计模式: Introduction & Part IX]]></title>
+      <url>/2020/02/06/Design-Pattern-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-Introduction-Part-IX/</url>
+      <content type="html"><![CDATA[<h1 id="设计模式以及综述"><a href="#设计模式以及综述" class="headerlink" title="设计模式以及综述"></a>设计模式以及综述</h1><p>设计模式对于一名软件开发工程师来说可谓是必备的技能和知识，然而在程序员社区中也充斥着不少对于设计模式的反对之音。有人认为设计模式的知识对于工程开发至关重要，但也有许多经验丰富的程序员认为设计模式应当是长期的软件开发的积累所留下的不可名状的抽象艺术，对于市面上不少介绍设计模式的书籍嗤之以鼻。</p>
+<p>对于刚入门的软件开发工程师而言，你若问他（包括现在的我自己）“我们为什么要使用工厂模式？使用工厂模式能够带来什么好处？”之类的问题，他也是很难回答的。所以盲目的掌握设计模式中那些拗口的名称，或者干巴巴的“方便继承”之类的描述是没有意义的。</p>
+<p>这一系列的博客的目的并不是一蹴而就的讲解全部的设计模式知识，这样的知识没有日积月累的开发经验是很难去对其有深入的体会的。我只是希望能在这一系列的博客中，借助《图解设计模式》一书，跟随书中的顺序对其中的设计模式知识进行某种程度的理解和总结，以至于能够对诸君有所启迪，开发出更加优美和友好的代码。</p>
+<p>我的能力有限，若是文中出现什么谬误也请诸君不吝赐教，提前感谢。</p>
+<p>《图解设计模式》一书的作者是<strong>结城浩</strong>先生，全书共计十个部分，预计会分为十篇博客进行介绍。书中的代码为java所写，虽然java并不是我比较擅长的代码，但是为了不引起错误贻笑大方，所以还是按照书中的java进行讨论。本博客介绍其中的<em>第九部分：避免浪费</em>。因为每一章节中代码都占据了比较多的部分，为了更好地理解相关概念，建议阅读代码优先从Main.java的部分开始。</p>
+<h1 id="Chapter-20-Flyweight模式–共享对象，避免浪费"><a href="#Chapter-20-Flyweight模式–共享对象，避免浪费" class="headerlink" title="Chapter 20: Flyweight模式–共享对象，避免浪费"></a>Chapter 20: Flyweight模式–共享对象，避免浪费</h1><p>在有大量对象时，有可能会造成内存溢出，我们把其中共同的部分抽象出来，如果有相同的业务请求，直接返回在内存中已有的对象，避免重新创建。享元模式（Flyweight Pattern）主要用于减少创建对象的数量，以减少内存占用和提高性能。它提供了减少对象数量从而改善应用所需的对象结构的方式，一言以蔽之，享元模式就是“通过尽量共享实例来避免new出实例”。</p>
+<blockquote>
+<p>当需要某个实例时，并不总是通过new关键字来生成实例，而是尽量共用已存在的实例，这就是Flyweight模式的核心内容。享元模式尝试重用现有的同类对象，如果未找到匹配的对象，则创建新对象。</p>
+<p>例：我们将通过创建5个对象来画出20个分布于不同位置的圆来演示这种模式。由于只有5种可用的颜色，所以color属性被用来检查现有的Circle对象。</p>
+</blockquote>
+<pre><code>public interface Shape {
+    void draw();
+}
+</code></pre><pre><code>public class Circle implements Shape {
+    private String color;
+    private int x;
+    private int y;
+    private int radius;
+
+    public Circle(String color){
+        this.color = color;     
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void setRadius(int radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public void draw() {
+        System.out.println(&quot;Circle: Draw() [Color : &quot; + color +&quot;, x : &quot; + x +&quot;, y :&quot; + y +&quot;, radius :&quot; + radius);
+    }
+}
+</code></pre><pre><code>// The factory could get 
+import java.util.HashMap;
+
+public class ShapeFactory {
+    private static final HashMap&lt;String, Shape&gt; circleMap = new HashMap&lt;&gt;();
+    // circleMap这个HashMap中最多只有五个元素，因为我们假设在本例中只有五个颜色
+    public static Shape getCircle(String color) {
+        Circle circle = (Circle)circleMap.get(color);
+        if(circle == null) {
+            circle = new Circle(color);
+            circleMap.put(color, circle);
+            System.out.println(&quot;Creating circle of color : &quot; + color);
+        }
+        return circle;
+    }
+}
+</code></pre><pre><code>public class Main {
+    private static final String colors[] = { &quot;Red&quot;, &quot;Green&quot;, &quot;Blue&quot;, &quot;White&quot;, &quot;Black&quot; };
+    public static void main(String[] args) {
+        for(int i=0; i &lt; 20; ++i) {
+            Circle circle = (Circle)ShapeFactory.getCircle(getRandomColor());
+            circle.setX(getRandomX());
+            circle.setY(getRandomY());
+            circle.setRadius(100);
+            circle.draw();
+        }
+    }
+    private static String getRandomColor() {
+        return colors[(int)(Math.random()*colors.length)];
+    }
+    private static int getRandomX() {
+        return (int)(Math.random()*100 );
+    }
+    private static int getRandomY() {
+        return (int)(Math.random()*100);
+    }
+}
+// 注意，在这里我们只使用了不超过5个circle对象，就完成了20次对于circle的操作，节省了大量的空间
+</code></pre><pre><code>// 输出
+Creating circle of color : Black
+Circle: Draw() [Color : Black, x : 36, y :71, radius :100
+Creating circle of color : Green
+Circle: Draw() [Color : Green, x : 27, y :27, radius :100
+Creating circle of color : White
+Circle: Draw() [Color : White, x : 64, y :10, radius :100
+Creating circle of color : Red
+Circle: Draw() [Color : Red, x : 15, y :44, radius :100
+Circle: Draw() [Color : Green, x : 19, y :10, radius :100
+Circle: Draw() [Color : Green, x : 94, y :32, radius :100
+Circle: Draw() [Color : White, x : 69, y :98, radius :100
+Creating circle of color : Blue
+Circle: Draw() [Color : Blue, x : 13, y :4, radius :100
+Circle: Draw() [Color : Green, x : 21, y :21, radius :100
+Circle: Draw() [Color : Blue, x : 55, y :86, radius :100
+Circle: Draw() [Color : White, x : 90, y :70, radius :100
+Circle: Draw() [Color : Green, x : 78, y :3, radius :100
+Circle: Draw() [Color : Green, x : 64, y :89, radius :100
+Circle: Draw() [Color : Blue, x : 3, y :91, radius :100
+Circle: Draw() [Color : Blue, x : 62, y :82, radius :100
+Circle: Draw() [Color : Green, x : 97, y :61, radius :100
+Circle: Draw() [Color : Green, x : 86, y :12, radius :100
+Circle: Draw() [Color : Green, x : 38, y :93, radius :100
+Circle: Draw() [Color : Red, x : 76, y :82, radius :100
+Circle: Draw() [Color : Blue, x : 95, y :82, radius :100
+</code></pre><h1 id="Chapter-21-Proxy模式–只在必要时生成实例"><a href="#Chapter-21-Proxy模式–只在必要时生成实例" class="headerlink" title="Chapter 21: Proxy模式–只在必要时生成实例"></a>Chapter 21: Proxy模式–只在必要时生成实例</h1><p>在面向对象编程中，一个常用的情况就是“代理人”和“本人”都是对象，而当“本人”太忙了，无法自己完成，就将其交给“代理人”负责。我们常常使用一个类代表另一个类的功能，具体实现起来的话就是创建现有类的对象，以便向外界提供功能。</p>
+<blockquote>
+<p>我们将创建一个Image接口和实现了Image接口的实体类。ProxyImage是一个代理类，减少RealImage对象加载的内存占用。Main类使用 ProxyImage 来获取要加载的 Image 对象，并按照需求进行显示。</p>
+</blockquote>
+<pre><code>public interface Image {
+    void display();
+}
+</code></pre><pre><code>// RealImage: 我们在本例中希望尽可能减少RealImage的使用
+public class RealImage implements Image {
+    private String fileName;
+
+    public RealImage(String fileName){
+        this.fileName = fileName;
+        loadFromDisk(fileName);
+    }
+
+    @Override
+    public void display() {
+        System.out.println(&quot;Displaying &quot; + fileName);
+    }
+
+    private void loadFromDisk(String fileName){
+        System.out.println(&quot;Loading &quot; + fileName);
+    }
+}
+</code></pre><pre><code>// 虽然可以看到ProxyImage和RealImage内部类的结构由非常大的不同，但是他们都继承了Image接口，这也就使得他们对于外界显示的接口是统一的，一致的。
+public class ProxyImage implements Image{
+    private RealImage realImage;
+    private String fileName;
+
+    public ProxyImage(String fileName){
+        this.fileName = fileName;
+    }
+
+    @Override
+    public void display() {
+        if(realImage == null){
+            realImage = new RealImage(fileName);
+        }
+        realImage.display();
+    }
+    }
+</code></pre><pre><code>public class Main {
+    public static void main(String[] args) {
+        Image image = new ProxyImage(&quot;test_10mb.jpg&quot;);
+        // 图像将从磁盘加载
+        image.display(); 
+        System.out.println(&quot;&quot;);
+        // 图像不需要从磁盘加载
+        image.display();  
+    }
+}
+</code></pre><pre><code>//输出
+Loading test_10mb.jpg
+Displaying test_10mb.jpg
+
+Displaying test_10mb.jpg
+</code></pre>]]></content>
+      
+        
+        <tags>
+            
+            <tag> Design Pattern </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Design Pattern/设计模式: Introduction & Part VIII]]></title>
+      <url>/2020/02/06/Design-Pattern-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-Introduction-Part-VIII/</url>
+      <content type="html"><![CDATA[<h1 id="设计模式以及综述"><a href="#设计模式以及综述" class="headerlink" title="设计模式以及综述"></a>设计模式以及综述</h1><p>设计模式对于一名软件开发工程师来说可谓是必备的技能和知识，然而在程序员社区中也充斥着不少对于设计模式的反对之音。有人认为设计模式的知识对于工程开发至关重要，但也有许多经验丰富的程序员认为设计模式应当是长期的软件开发的积累所留下的不可名状的抽象艺术，对于市面上不少介绍设计模式的书籍嗤之以鼻。</p>
+<p>对于刚入门的软件开发工程师而言，你若问他（包括现在的我自己）“我们为什么要使用工厂模式？使用工厂模式能够带来什么好处？”之类的问题，他也是很难回答的。所以盲目的掌握设计模式中那些拗口的名称，或者干巴巴的“方便继承”之类的描述是没有意义的。</p>
+<p>这一系列的博客的目的并不是一蹴而就的讲解全部的设计模式知识，这样的知识没有日积月累的开发经验是很难去对其有深入的体会的。我只是希望能在这一系列的博客中，借助《图解设计模式》一书，跟随书中的顺序对其中的设计模式知识进行某种程度的理解和总结，以至于能够对诸君有所启迪，开发出更加优美和友好的代码。</p>
+<p>我的能力有限，若是文中出现什么谬误也请诸君不吝赐教，提前感谢。</p>
+<p>《图解设计模式》一书的作者是<strong>结城浩</strong>先生，全书共计十个部分，预计会分为十篇博客进行介绍。书中的代码为java所写，虽然java并不是我比较擅长的代码，但是为了不引起错误贻笑大方，所以还是按照书中的java进行讨论。本博客介绍其中的<em>第八部分：管理状态</em>。因为每一章节中代码都占据了比较多的部分，为了更好地理解相关概念，建议阅读代码优先从Main.java的部分开始。</p>
+<h1 id="Chapter-17-Observer模式–发送状态变化通知"><a href="#Chapter-17-Observer模式–发送状态变化通知" class="headerlink" title="Chapter 17: Observer模式–发送状态变化通知"></a>Chapter 17: Observer模式–发送状态变化通知</h1><p>在Observer模式（观察者模式）中，当被观察对象的状态发生变化时，会通知给观察者。</p>
+<p>当对象间存在一对多的关系时，我们可以使用观察者模式，这样当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并且被自动更新。</p>
+<pre><code>// Subject.java: 被观察的对象
+import java.util.ArrayList;
+import java.util.List;
+
+public class Subject {
+    private List&lt;Observer&gt; observers = new ArrayList&lt;Observer&gt;();
+    private int state;
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+        notifyAllObservers();
+    }
+
+    public void attach(Observer observer){
+        observers.add(observer);      
+    }
+
+    public void notifyAllObservers(){
+        for (Observer observer : observers) {
+            observer.update();
+        }
+    }  
+}
+</code></pre><pre><code>// Observer.java: 所有Observer的抽象类
+public abstract class Observer {
+   protected Subject subject;
+   // 对于每一个Observer来说都有一个被观察的对象
+   public abstract void update();
+}
+</code></pre><pre><code>// BinaryObserver.java: Observer 1
+public class BinaryObserver extends Observer{
+    public BinaryObserver(Subject subject){
+        this.subject = subject;
+        this.subject.attach(this);
+        // 把该观察者放进此被观察对象的列表里
+    }
+
+    @Override
+    public void update() {
+        System.out.println( &quot;Binary String: &quot; 
+        + Integer.toBinaryString(subject.getState())); 
+    }
+}
+</code></pre><pre><code>// OctalObserver.java: Observer 2
+public class OctalObserver extends Observer{
+    public OctalObserver(Subject subject){
+        this.subject = subject;
+        this.subject.attach(this);
+    }
+
+    @Override
+    public void update() {
+        System.out.println( &quot;Octal String: &quot; 
+        + Integer.toOctalString( subject.getState() ) ); 
+    }
+}
+</code></pre><pre><code>// HexaObserver.java: Observer 3
+public class HexaObserver extends Observer{
+    public HexaObserver(Subject subject){
+        this.subject = subject;
+        this.subject.attach(this);
+    }
+
+    @Override
+    public void update() {
+        System.out.println( &quot;Hex String: &quot; 
+        + Integer.toHexString( subject.getState() ).toUpperCase() ); 
+    }
+}
+</code></pre><pre><code>public class Main {
+   public static void main(String[] args) {
+      Subject subject = new Subject();
+
+      new HexaObserver(subject);
+      new OctalObserver(subject);
+      new BinaryObserver(subject);
+
+      System.out.println(&quot;First state change: 15&quot;);   
+      subject.setState(15);
+      System.out.println(&quot;Second state change: 10&quot;);  
+      subject.setState(10);
+   }
+}
+</code></pre><h1 id="Chapter-18-Memento模式–保存对象状态"><a href="#Chapter-18-Memento模式–保存对象状态" class="headerlink" title="Chapter 18: Memento模式–保存对象状态"></a>Chapter 18: Memento模式–保存对象状态</h1><p>我们在使用各种软件的时候，最常见的快捷键之一就是Ctrl+Z，表示撤销的操作。在大部分的软件中这个操作都是如此的重要，在我们不小心犯下某些错误的时候使我们能够快速的恢复至之前的情况。使用面向对象编程的方式我们也可以实现类似的“撤销”的功能，我们可以事先保存实例的相关信息，然后在撤销时根据保存的信息将实例恢复至原来的状态。</p>
+<p>而要能够这么做的话，我们需要一个能够自由访问实例内部结构的权限，但是这样会导致被妥善封装的类的封装性遭到破坏。而备忘录模式（Memento Pattern）通过引入表示实例状态的角色，可以在保存和恢复实例时有效的防止对象的封装性遭到破坏（在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态）。</p>
+<p>Memento模式可以实现以下功能</p>
+<ol>
+<li>Undo</li>
+<li>Redo</li>
+<li>History</li>
+<li>Snapshot</li>
+</ol>
+<blockquote>
+<p>例：备忘录模式使用三个类Memento、Originator和CareTaker。Memento包含了要被恢复的对象的状态。Originator创建并在Memento对象中存储状态。Caretaker对象负责从Memento中恢复对象的状态。Main类使用CareTaker和Originator对象来显示对象的状态恢复。</p>
+</blockquote>
+<pre><code>// Memento
+public class Memento {
+    private String state;
+
+    public Memento(String state){
+        this.state = state;
+    }
+
+    public String getState(){
+        return state;
+    }  
+}
+</code></pre><pre><code>public class Originator {
+    private String state;
+    public void setState(String state){
+        this.state = state;
+    }
+    public String getState(){
+        return state;
+    }
+    public Memento saveStateToMemento(){
+        return new Memento(state);
+    }
+    public void getStateFromMemento(Memento Memento){
+        state = Memento.getState();
+    }
+}
+</code></pre><pre><code>import java.util.ArrayList;
+import java.util.List;
+
+public class CareTaker {
+    private List&lt;Memento&gt; mementoList = new ArrayList&lt;Memento&gt;();
+
+    public void add(Memento state){
+        mementoList.add(state);
+    }
+
+    public Memento get(int index){
+        return mementoList.get(index);
+    }
+}
+</code></pre><pre><code>public class Main {
+    public static void main(String[] args) {
+        Originator originator = new Originator();
+        CareTaker careTaker = new CareTaker();
+        originator.setState(&quot;State #1&quot;);
+        originator.setState(&quot;State #2&quot;);
+        careTaker.add(originator.saveStateToMemento());
+        originator.setState(&quot;State #3&quot;);
+        careTaker.add(originator.saveStateToMemento());
+        originator.setState(&quot;State #4&quot;);
+
+        System.out.println(&quot;Current State: &quot; + originator.getState());    
+        originator.getStateFromMemento(careTaker.get(0));
+        System.out.println(&quot;First saved State: &quot; + originator.getState());
+        originator.getStateFromMemento(careTaker.get(1));
+        System.out.println(&quot;Second saved State: &quot; + originator.getState());
+    }
+}
+</code></pre><h1 id="Chapter-19-State模式–用类表示状态"><a href="#Chapter-19-State模式–用类表示状态" class="headerlink" title="Chapter 19: State模式–用类表示状态"></a>Chapter 19: State模式–用类表示状态</h1><p>在面向对象编程中，我们往往是用类表示对象的。但是事实上我们要面对的情况往往要复杂的多，并不是每个类都是含义清晰明了的具体对象，在之前的学习中，不难发现我们有很多的类扮演了比较抽象的角色。而这一章节中我们要使用类来表示状态。这样我们就能通过切换类来方便的改变对象的状态。</p>
+<blockquote>
+<p>我们将创建一个State接口和实现了State接口的实体状态类。Context是一个带有某个状态的类（这个类具有多种状态，但是每一时刻只有一个状态）。Main类使用Context和状态对象来演示Context在状态改变时的行为变化。</p>
+</blockquote>
+<pre><code>// State.java
+public interface State {
+    public void doAction(Context context);
+}
+</code></pre><pre><code>// StartState.java: State1
+public class StartState implements State {
+    public void doAction(Context context) {
+        System.out.println(&quot;Player is in start state&quot;);
+        context.setState(this); 
+    }
+
+    public String toString(){
+        return &quot;Start State&quot;;
+    }
+}
+</code></pre><pre><code>// StartState.java: State2
+public class StopState implements State {
+    public void doAction(Context context) {
+        System.out.println(&quot;Player is in stop state&quot;);
+        context.setState(this); 
+    }
+
+    public String toString(){
+        return &quot;Stop State&quot;;
+    }
+}
+</code></pre><pre><code>// Context.java: have 2 states-Start and Stop
+public class Context {
+    private State state;
+
+    public Context(){
+        state = null;
+    }
+
+    public void setState(State state){
+        this.state = state;     
+    }
+
+    public State getState(){
+        return state;
+    }
+}
+</code></pre><pre><code>public class Main {
+    public static void main(String[] args) {
+        Context context = new Context();
+
+        StartState startState = new StartState();
+        startState.doAction(context);
+
+        System.out.println(context.getState().toString());
+
+        StopState stopState = new StopState();
+        stopState.doAction(context);
+
+        System.out.println(context.getState().toString());
+    }
+}
+</code></pre>]]></content>
+      
+        
+        <tags>
+            
+            <tag> Design Pattern </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Design Pattern/设计模式: Introduction & Part VII]]></title>
+      <url>/2020/02/06/Design-Pattern-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-Introduction-Part-VII/</url>
+      <content type="html"><![CDATA[<h1 id="设计模式以及综述"><a href="#设计模式以及综述" class="headerlink" title="设计模式以及综述"></a>设计模式以及综述</h1><p>设计模式对于一名软件开发工程师来说可谓是必备的技能和知识，然而在程序员社区中也充斥着不少对于设计模式的反对之音。有人认为设计模式的知识对于工程开发至关重要，但也有许多经验丰富的程序员认为设计模式应当是长期的软件开发的积累所留下的不可名状的抽象艺术，对于市面上不少介绍设计模式的书籍嗤之以鼻。</p>
+<p>对于刚入门的软件开发工程师而言，你若问他（包括现在的我自己）“我们为什么要使用工厂模式？使用工厂模式能够带来什么好处？”之类的问题，他也是很难回答的。所以盲目的掌握设计模式中那些拗口的名称，或者干巴巴的“方便继承”之类的描述是没有意义的。</p>
+<p>这一系列的博客的目的并不是一蹴而就的讲解全部的设计模式知识，这样的知识没有日积月累的开发经验是很难去对其有深入的体会的。我只是希望能在这一系列的博客中，借助《图解设计模式》一书，跟随书中的顺序对其中的设计模式知识进行某种程度的理解和总结，以至于能够对诸君有所启迪，开发出更加优美和友好的代码。</p>
+<p>我的能力有限，若是文中出现什么谬误也请诸君不吝赐教，提前感谢。</p>
+<p>《图解设计模式》一书的作者是<strong>结城浩</strong>先生，全书共计十个部分，预计会分为十篇博客进行介绍。书中的代码为java所写，虽然java并不是我比较擅长的代码，但是为了不引起错误贻笑大方，所以还是按照书中的java进行讨论。本博客介绍其中的<em>第七部分：简单化</em>。因为每一章节中代码都占据了比较多的部分，为了更好地理解相关概念，建议阅读代码优先从Main.java的部分开始。</p>
+<h1 id="Chapter-15-Facade模式–简单窗口"><a href="#Chapter-15-Facade模式–简单窗口" class="headerlink" title="Chapter 15 Facade模式–简单窗口"></a>Chapter 15 Facade模式–简单窗口</h1><p>一个程序总是会随着时间的推移、项目周期的演进而变得愈加复杂，我们需要面对复杂的类和接口，而且令人头痛的是这些接口和类之间的关系盘根错节，导致程序的结构和调用顺序都非常令人困惑和难以理解。而为了解决这个问题，我们就可以使用Facade模式。</p>
+<p>Facade是法语里的窗口的意思，这个模式致力于隐藏系统的复杂性，并向客户提供一个可以访问（复杂）系统的接口，这样我们就不必单独的关注系统中的每一个类了，只需简单的对Facade（接口）提出请求即可。这个Facade接口需要为相互关联在一起的错综复杂的类整理出高层接口，其中的Facade角色会考虑到系统内部各个类之间的责任关系和依赖观其，使其能够以正确的顺序调用各个类。</p>
+<blockquote>
+<p>例：我们将创建一个Shape接口和实现了Shape接口的类，下一步是定义一个外观类（Facade）ShapeMaker。ShapeMaker类将会使用实体类来代表用户对这些类进行调用，Main使用ShapeMaker类来显示结果。</p>
+</blockquote>
+<pre><code>// Shape.java
+public interface Shape{
+    void draw();
+}
+</code></pre><pre><code>// Rectangle.java: (错综复杂的)类1
+public class Rectangle extends Shape{
+    @Overrider
+    public void draw(){
+        SYstem.out.println(&quot;DRAW RECTANGLE&quot;);
+    }
+}
+</code></pre><pre><code>// Square.java: (错综复杂的)类2
+public class Square extends Shape{
+    @Overrider
+    public void draw(){
+        SYstem.out.println(&quot;DRAW SQUARE&quot;);
+    }
+}
+</code></pre><pre><code>// Circle.java: (错综复杂的)类3
+public class Circle extends Shape{
+    @Overrider
+    public void draw(){
+        SYstem.out.println(&quot;DRAW CIRCLE&quot;);
+    }
+}
+</code></pre><pre><code>// ShapeMaker.java: 外观类/窗口类
+public class ShapeMaker{
+    private Shape circle;
+    private Shape rectangle;
+    private Shape square;
+    //  这里对于Main我们隐藏了Cirle类等他们之间的关系，我们相信ShapeMaker可以提供正确的调用，而这一点对于Main来说就已经足够了
+
+    public ShapeMaker() {
+        circle = new Circle();
+        rectangle = new Rectangle();
+        square = new Square();
+    }
+
+    public void drawCircle(){
+        circle.draw();
+    }
+    public void drawRectangle(){
+        rectangle.draw();
+    }
+    public void drawSquare(){
+        square.draw();
+    }
+}
+</code></pre><pre><code>public class Main {
+    public static void main(String[] args) {
+        ShapeMaker shapeMaker = new ShapeMaker();
+
+        shapeMaker.drawCircle();
+        shapeMaker.drawRectangle();
+        shapeMaker.drawSquare();      
+    }
+}
+</code></pre><h1 id="Chapter-16-Mediator模式–只有一个仲裁者"><a href="#Chapter-16-Mediator模式–只有一个仲裁者" class="headerlink" title="Chapter 16 Mediator模式–只有一个仲裁者"></a>Chapter 16 Mediator模式–只有一个仲裁者</h1><p>关于Mediator模式，书中形象的介绍到：就像是一个乱糟糟的开发小组协同工作，如果没有仲裁者可能就四个和尚没水喝。所以我们选一个角色成为中介者/仲裁者，所有的组员向中介者报告，中介者向组员下达指示，而组员之间不再相互询问和相互指示。</p>
+<p>中介者模式（Mediator Pattern）用来降低多个对象和类之间的通信复杂性。这种模式提供了一个中介类，该类通常处理不同类之间的通信，并支持松耦合，使类之间的“网状结构”分离成为“星状结构”，更易于维护。</p>
+<blockquote>
+<p>我们通过聊天室实例来演示中介者模式。实例中，多个用户可以向聊天室发送消息，聊天室向所有的用户显示消息。我们将创建两个类,ChatRoom和User。User对象使用ChatRoom方法来分享他们的消息。Main类使用User对象来显示他们之间的通信。</p>
+</blockquote>
+<pre><code>// ChatRoom.java: 中介类
+import java.util.Date;
+
+public class ChatRoom {
+    public static void showMessage(User user, String message){
+        System.out.println(new Date().toString()
+            + &quot; [&quot; + user.getName() +&quot;] : &quot; + message);
+    }
+}
+</code></pre><pre><code>// User.java
+public class User {
+    private String name;
+    public User(String name){
+        this.name  = name;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void sendMessage(String message){
+        ChatRoom.showMessage(this,message);
+    }
+}
+</code></pre><p>public class MediatorPatternDemo {<br>    public static void main(String[] args) {<br>        User robert = new User(“Robert”);<br>        User john = new User(“John”);</p>
+<pre><code>    robert.sendMessage(&quot;Hi! John!&quot;);
+    john.sendMessage(&quot;Hello! Robert!&quot;);
+}
+</code></pre><p>}</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Design Pattern </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Design Pattern/设计模式: Introduction & Part VI]]></title>
+      <url>/2020/02/06/Design-Pattern-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-Introduction-Part-VI/</url>
+      <content type="html"><![CDATA[<h1 id="设计模式以及综述"><a href="#设计模式以及综述" class="headerlink" title="设计模式以及综述"></a>设计模式以及综述</h1><p>设计模式对于一名软件开发工程师来说可谓是必备的技能和知识，然而在程序员社区中也充斥着不少对于设计模式的反对之音。有人认为设计模式的知识对于工程开发至关重要，但也有许多经验丰富的程序员认为设计模式应当是长期的软件开发的积累所留下的不可名状的抽象艺术，对于市面上不少介绍设计模式的书籍嗤之以鼻。</p>
+<p>对于刚入门的软件开发工程师而言，你若问他（包括现在的我自己）“我们为什么要使用工厂模式？使用工厂模式能够带来什么好处？”之类的问题，他也是很难回答的。所以盲目的掌握设计模式中那些拗口的名称，或者干巴巴的“方便继承”之类的描述是没有意义的。</p>
+<p>这一系列的博客的目的并不是一蹴而就的讲解全部的设计模式知识，这样的知识没有日积月累的开发经验是很难去对其有深入的体会的。我只是希望能在这一系列的博客中，借助《图解设计模式》一书，跟随书中的顺序对其中的设计模式知识进行某种程度的理解和总结，以至于能够对诸君有所启迪，开发出更加优美和友好的代码。</p>
+<p>我的能力有限，若是文中出现什么谬误也请诸君不吝赐教，提前感谢。</p>
+<p>《图解设计模式》一书的作者是<strong>结城浩</strong>先生，全书共计十个部分，预计会分为十篇博客进行介绍。书中的代码为java所写，虽然java并不是我比较擅长的代码，但是为了不引起错误贻笑大方，所以还是按照书中的java进行讨论。本博客介绍其中的<em>第六部分：访问数据结构</em>。因为每一章节中代码都占据了比较多的部分，为了更好地理解相关概念，建议阅读代码优先从Main.java的部分开始。</p>
+<h1 id="Chapter-13-Visitor模式–访问数据结构并处理数据"><a href="#Chapter-13-Visitor模式–访问数据结构并处理数据" class="headerlink" title="Chapter 13: Visitor模式–访问数据结构并处理数据"></a>Chapter 13: Visitor模式–访问数据结构并处理数据</h1><p>在数据结构中通常保存着许多的元素，我们会根据程序的需要对这些元素进行各种各样的“处理”，这样的“处理”的代码放在哪里就成了一个值得思考的问题。通常的做法是把他们放在表示数据结构的类中，但是如果处理有许多种呢？</p>
+<p>通常情况下我们不希望去修改表示数据结构的类，为了解决这个问题，我们使用Visitor模式，将数据结构和处理分离开来。具体的方式是编写一个<strong>访问者类</strong>来访问数据结构中的元素，并且把对元素的处理交给访问者类，当需要增加新的处理时，我们只需要编写新的访问者，并使得数据结构可以接受访问者的访问即可。</p>
+<p>通常情况下使用这种设计模式适用于一下两种情况：</p>
+<ol>
+<li>对象结构中对象对应的类很少改变，但经常需要在此对象结构上定义新的操作。</li>
+<li>需要对一个对象结构中的对象进行很多不同的并且不相关的操作，而需要避免让这些操作”污染”这些对象的类，也不希望在增加新操作时修改这些类。</li>
+</ol>
+<blockquote>
+<p>例：我们将创建一个定义接受操作的ComputerPart接口。Keyboard、Mouse、Monitor和Computer是实现了ComputerPart接口的实体类。我们将定义另一个接口ComputerPartVisitor，它定义了访问者类的操作。Computer使用实体访问者来执行相应的动作。我们的Main类使用Computer、ComputerPartVisitor类来演示访问者模式的用法。</p>
+</blockquote>
+<pre><code>// ComputerPart.java: Interface
+public interface ComputerPart {
+   public void accept(ComputerPartVisitor computerPartVisitor);
+}
+</code></pre><pre><code>// Keyboard.java: Class 1
+public class Keyboard implements ComputerPart {
+   @Override
+   public void accept(ComputerPartVisitor computerPartVisitor) {
+      computerPartVisitor.visit(this);
+   }
+}
+</code></pre><pre><code>// Monitor.java: Class 2
+public class Monitor implements ComputerPart {
+   @Override
+   public void accept(ComputerPartVisitor computerPartVisitor) {
+      computerPartVisitor.visit(this);
+   }
+}
+</code></pre><pre><code>// Mouse.java: Class 3
+public class Mouse  implements ComputerPart {
+   @Override
+   public void accept(ComputerPartVisitor computerPartVisitor) {
+      computerPartVisitor.visit(this);
+   }
+}
+</code></pre><pre><code>// Computer.java: Class 4
+public class Computer implements ComputerPart {
+
+    ComputerPart[] parts;
+
+    public Computer(){
+        parts = new ComputerPart[] {new Mouse(), new Keyboard(), new Monitor()};      
+    } 
+
+    @Override
+    public void accept(ComputerPartVisitor computerPartVisitor) {
+        for (int i = 0; i &lt; parts.length; i++) {
+            parts[i].accept(computerPartVisitor);
+        }
+        computerPartVisitor.visit(this);
+    }
+}
+</code></pre><blockquote>
+<p>这里Class 1/2/3/4表述的是我们前文中所述的数据结构，也就是我们不希望经常对其进行修改的部分</p>
+</blockquote>
+<pre><code>// Visitor interface
+public interface ComputerPartVisitor {
+   public void visit(Computer computer);
+   public void visit(Mouse mouse);
+   public void visit(Keyboard keyboard);
+   public void visit(Monitor monitor);
+}
+</code></pre><pre><code>// The real visitor
+public class ComputerPartDisplayVisitor implements ComputerPartVisitor {
+    @Override
+    public void visit(Computer computer) {
+        System.out.println(&quot;Displaying Computer.&quot;);
+    }
+
+    @Override
+    public void visit(Mouse mouse) {
+        System.out.println(&quot;Displaying Mouse.&quot;);
+    }
+
+    @Override
+    public void visit(Keyboard keyboard) {
+        System.out.println(&quot;Displaying Keyboard.&quot;);
+    }
+
+    @Override
+    public void visit(Monitor monitor) {
+        System.out.println(&quot;Displaying Monitor.&quot;);
+    }
+}
+</code></pre><blockquote>
+<p>这里的ComputerPartDisplayVisitor就是Visitor的类，不难看出，如果我们希望改变处理的方式，只需要在visit函数中进行修改即可，比如对于Monitor来说，可以定义一个returnArea(Monitor monitor)，其内容为return monitor.length*monitor.width，而不必要修改Monitor的类。同理我们也可以新进一个新的实现了ComputerPartVisitor接口的类作为新的Visitor，定义不同的“处理”，以此类推，举一反三。</p>
+</blockquote>
+<pre><code>public class Main {
+    public static void main(String[] args) {
+        ComputerPart computer = new Computer();
+        computer.accept(new ComputerPartDisplayVisitor());
+    }
+}
+</code></pre><h1 id="Chapter-14-Chain-of-Responsibility模式–推卸责任"><a href="#Chapter-14-Chain-of-Responsibility模式–推卸责任" class="headerlink" title="Chapter 14: Chain of Responsibility模式–推卸责任"></a>Chapter 14: Chain of Responsibility模式–推卸责任</h1><p>我们经常去政府机关办理业务的时候碰到一个情况，在前台可能会让我们去户政科，去了户政科让我们去人力资源办公室等到。我们不断地被一个又一个的踢皮球（当然了，此类情况在今日之中国已经是改变了好多的），这就是我们在本章节中所要学习的Chain of Responsibility模式。</p>
+<p>对其下个定义就是将多个对象组成一条职责链，然后按照这条职责链的顺序一个又一个的找出到底应该谁来负责处理，这种模式称为Chain of Responsibility模式。通过使用这种模式，我们避免了请求发送者与接收者耦合在一起，使得双方都成为可以独立复用的组件，让多个对象都有可能接收请求。在工作的时候将这些对象连接成一条链，并且沿着这条链传递请求，直到有对象处理它为止。</p>
+<blockquote>
+<p>当一个人被要求做什么事儿的时候，如果可以做就（必须）自己做，如果不能做就将此要求转给另外一个人，下一个人如果可以自己做就（必须）自己做，如果不能就将此要求转给下一个人…</p>
+<p>我们这里看一个例子，我们设计一些列的类，有的类解决编号小于指定编号的问题，有的类解决奇数编号的问题…对于一个问题，它会按照某种顺序被一一处理。</p>
+</blockquote>
+<pre><code>// Trouble.java：要被Chain of responsibility处理的“问题”类
+public class Trouble{
+    private int number;
+    public Trouble(int number){
+        this.number = number;
+    }
+    public int getNumber(){
+        return number;
+    }
+    public String toString(){
+        return &quot;TROUBLE NO. &quot;+number;
+    }
+}
+</code></pre><pre><code>// Support.java: 组成Chain of responsibility的处理问题的类，是这个例子中最核心的部分
+public abstract class Support{
+    private String name;
+    private Support next;
+    public Support(String name){
+        this.name = name;
+    }
+    public Support setNext(Support next){
+        this.next = next;
+        return next;
+    }
+    public final void support(Trouble trouble){
+        if(resolve(trouble)){
+            done(trouble);
+        }else if (next!=null){
+            next.support(trouble);
+        }else{
+            fail(trouble);
+        }
+    }
+
+    public String toString(){
+        return name;
+    }
+
+    protected abstract boolean resolve(Trouble trouble);
+
+    protected void done(Trouble trouble){
+        System.out.println(trouble+&quot; is resolved by &quot;+this);
+    }
+
+    protected void fail(Trouble trouble){
+        System.out.println(trouble+&quot; cannot be solved&quot;);
+    }
+
+}
+</code></pre><pre><code>// NoSupport.java
+public class NoSupport extends Support{
+    public NoSupport(String name){
+        super(name);
+    }
+    protected boolean resolve(Trouble trouble){
+        return false;
+    }
+}
+</code></pre><pre><code>// LimitSupport.java：只解决编号小于limit的问题
+public class LimitSupport extends Support{
+    private int limit;
+    public LimitSupport(String name, int limit){
+        super(name);
+        this.limit = limit;
+    }
+    protected boolean resolve(Trouble trouble){
+        if (trouble.getNumber()&lt;limit){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
+</code></pre><pre><code>// OddSupport.java: 只解决编号为奇数的问题
+public class OddSupport extends Support{
+    public OddSupport(String name){
+        super(name);
+    }
+    protected boolean resolve(Trouble trouble){
+        if(trouble.getNumer()%2==1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
+</code></pre><pre><code>// SpecialSupport.java：只解决编号为number的问题
+public class LimitSupport extends Support{
+    private int number;
+    public LimitSupport(String name, int number){
+        super(name);
+        this.number = number;
+    }
+    protected boolean resolve(Trouble trouble){
+        if (trouble.getNumber()==number){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
+</code></pre><pre><code>// Main.java
+public class Main{
+    public static void main(String[] args){
+        Support A = new NoSupport(&quot;A&quot;);
+        Support B = new LimitSupport(&quot;B&quot;,100);
+        Support C = new SpecialSupport(&quot;C&quot;,429);
+        Support D = new LimitSupport(&quot;D&quot;,200);
+        Support E = new OddSupport(&quot;E&quot;);
+        Support F = new LimitSupport(&quot;F&quot;,300);
+
+        A.setNext(B).setNext(C).setNext(D).setNext(E).setNext(F);
+
+        for(int i = 0; i&lt;500; i+=33){
+            A.support(new Trouble(i));
+        }
+    }
+}
+</code></pre>]]></content>
+      
+        
+        <tags>
+            
+            <tag> Design Pattern </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Design Pattern/设计模式: Part V]]></title>
       <url>/2020/02/01/Design-Pattern-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-Part-V/</url>
       <content type="html"><![CDATA[<h1 id="设计模式以及综述"><a href="#设计模式以及综述" class="headerlink" title="设计模式以及综述"></a>设计模式以及综述</h1><p>设计模式对于一名软件开发工程师来说可谓是必备的技能和知识，然而在程序员社区中也充斥着不少对于设计模式的反对之音。有人认为设计模式的知识对于工程开发至关重要，但也有许多经验丰富的程序员认为设计模式应当是长期的软件开发的积累所留下的不可名状的抽象艺术，对于市面上不少介绍设计模式的书籍嗤之以鼻。</p>
@@ -2584,9 +3533,9 @@ catkin_create_pkg agitr
         
         <tags>
             
-            <tag> Machine Learning </tag>
-            
             <tag> Recommender Systems </tag>
+            
+            <tag> Machine Learning </tag>
             
         </tags>
         
@@ -4523,9 +5472,9 @@ void insertion_sort(std::vector&lt;int&gt; &amp;A)
             
             <tag> POLIMI </tag>
             
-            <tag> Foundations of Operations Research </tag>
-            
             <tag> Linear Programming </tag>
+            
+            <tag> Foundations of Operations Research </tag>
             
         </tags>
         
@@ -4722,13 +5671,13 @@ end.
             
             <tag> POLIMI </tag>
             
+            <tag> Foundations of Operations Research </tag>
+            
             <tag> Graphs </tag>
             
             <tag> Network Flows </tag>
             
             <tag> Algorithms </tag>
-            
-            <tag> Foundations of Operations Research </tag>
             
         </tags>
         

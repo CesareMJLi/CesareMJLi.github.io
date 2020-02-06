@@ -43,7 +43,7 @@
     
     <title>
         
-            Deep Learning V Recurrent Neural Network &amp; Other Methods | 
+            Design Pattern/设计模式: Introduction &amp; Part VII | 
         
         Cesare&#39;s Workshop
     </title>
@@ -54,7 +54,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)">
-    <meta name="keywords" content=",Deep Learning,Recurrent Neural Network,RNN,Machine Learning Methods">
+    <meta name="keywords" content=",Design Pattern">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -220,7 +220,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Cesare&#39;s Workshop">
-    <meta name="msapplication-starturl" content="http://yoursite.com/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2020/02/06/Design-Pattern-设计模式-Introduction-Part-VII/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Cesare&#39;s Workshop">
@@ -235,16 +235,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/">
+    <meta property="og:url" content="http://yoursite.com/2020/02/06/Design-Pattern-设计模式-Introduction-Part-VII/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Deep Learning V Recurrent Neural Network &amp; Other Methods | Cesare&#39;s Workshop">
+    <meta property="og:title" content="Design Pattern/设计模式: Introduction &amp; Part VII | Cesare&#39;s Workshop">
     <meta property="og:image" content="/img/star.png">
     <meta property="og:description" content="Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)">
-    <meta property="og:article:tag" content="Deep Learning"> <meta property="og:article:tag" content="Recurrent Neural Network"> <meta property="og:article:tag" content="RNN"> <meta property="og:article:tag" content="Machine Learning Methods"> 
+    <meta property="og:article:tag" content="Design Pattern"> 
 
     
-        <meta property="article:published_time" content="Sun Apr 22 2018 19:49:46 GMT+0200">
-        <meta property="article:modified_time" content="Sun Apr 22 2018 20:47:00 GMT+0200">
+        <meta property="article:published_time" content="Thu Feb 06 2020 17:31:13 GMT+0100">
+        <meta property="article:modified_time" content="Thu Feb 06 2020 17:36:33 GMT+0100">
     
 
     <!-- The Twitter Card protocol -->
@@ -252,7 +252,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2020/02/06/Design-Pattern-设计模式-Introduction-Part-VII/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -264,10 +264,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yoursite.com/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/index.html",
-    "headline": "Deep Learning V Recurrent Neural Network & Other Methods",
-    "datePublished": "Sun Apr 22 2018 19:49:46 GMT+0200",
-    "dateModified": "Sun Apr 22 2018 20:47:00 GMT+0200",
+    "mainEntityOfPage": "http://yoursite.com/2020/02/06/Design-Pattern-设计模式-Introduction-Part-VII/index.html",
+    "headline": "Design Pattern/设计模式: Introduction & Part VII",
+    "datePublished": "Thu Feb 06 2020 17:31:13 GMT+0100",
+    "dateModified": "Thu Feb 06 2020 17:36:33 GMT+0100",
     "author": {
         "@type": "Person",
         "name": "Cesare (MINGJU LI)",
@@ -285,7 +285,7 @@
             "url": "/img/star.png"
         }
     },
-    "keywords": ",Deep Learning,Recurrent Neural Network,RNN,Machine Learning Methods",
+    "keywords": ",Design Pattern",
     "description": "Graduate with double degrees of Tongji University and Polytechnic of Milan. Now doing master in Europe.:)",
 }
 </script>
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#RNN"><span class="post-toc-number">1.</span> <span class="post-toc-text">RNN</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Intro"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Intro</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#展开计算图"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">展开计算图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#循环神经网络"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">循环神经网络</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#导师驱动过程和输出循环网络（设计模式2）"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">导师驱动过程和输出循环网络（设计模式2）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#神经网络梯度计算"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">神经网络梯度计算</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#双向RNN"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">双向RNN</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基于编码-解码的序列到序列架构"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">基于编码-解码的序列到序列架构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#深度循环网络"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">深度循环网络</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#递归神经网络"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">递归神经网络</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#实践方法论"><span class="post-toc-number">2.</span> <span class="post-toc-text">实践方法论</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#性能度量"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">性能度量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#默认基准模型"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">默认基准模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#更多数据？"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">更多数据？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#超参数选择"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">超参数选择</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#相关应用"><span class="post-toc-number">3.</span> <span class="post-toc-text">相关应用</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#设计模式以及综述"><span class="post-toc-number">1.</span> <span class="post-toc-text">设计模式以及综述</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Chapter-15-Facade模式–简单窗口"><span class="post-toc-number">2.</span> <span class="post-toc-text">Chapter 15 Facade模式–简单窗口</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Chapter-16-Mediator模式–只有一个仲裁者"><span class="post-toc-number">3.</span> <span class="post-toc-text">Chapter 16 Mediator模式–只有一个仲裁者</span></a></li></ol>
     </ul>
     
 
@@ -383,7 +383,7 @@
         
     
             <p class="article-headline-p">
-                Deep Learning V Recurrent Neural Network & Other Methods
+                Design Pattern/设计模式: Introduction & Part VII
             </p>
         </div>
 
@@ -402,7 +402,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Cesare (MINGJU LI)</strong>
-        <span>Apr 22, 2018</span>
+        <span>Feb 06, 2020</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -426,7 +426,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Deep-Learning/">Deep Learning</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Machine-Learning-Methods/">Machine Learning Methods</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/RNN/">RNN</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Recurrent-Neural-Network/">Recurrent Neural Network</a>
+        <a class="post_tag-link" href="/tags/Design-Pattern/">Design Pattern</a>
     </ul>
     
 
@@ -443,7 +443,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Deep Learning V Recurrent Neural Network &amp; Other Methods&url=http://yoursite.com/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/index.html&pic=http://yoursite.com/img/star.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Design Pattern/设计模式: Introduction &amp; Part VII&url=http://yoursite.com/2020/02/06/Design-Pattern-设计模式-Introduction-Part-VII/index.html&pic=http://yoursite.com/img/star.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 Share to Weibo
             </li>
@@ -452,7 +452,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Deep Learning V Recurrent Neural Network &amp; Other Methods&url=http://yoursite.com/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/index.html&via=Cesare (MINGJU LI)" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Design Pattern/设计模式: Introduction &amp; Part VII&url=http://yoursite.com/2020/02/06/Design-Pattern-设计模式-Introduction-Part-VII/index.html&via=Cesare (MINGJU LI)" target="_blank">
             <li class="mdl-menu__item">
                 Share to Twitter
             </li>
@@ -461,7 +461,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/02/06/Design-Pattern-设计模式-Introduction-Part-VII/index.html" target="_blank">
             <li class="mdl-menu__item">
                 Share to Facebook
             </li>
@@ -470,7 +470,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2020/02/06/Design-Pattern-设计模式-Introduction-Part-VII/index.html" target="_blank">
             <li class="mdl-menu__item">
                 Share to Google+
             </li>
@@ -495,34 +495,109 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h1><h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>循环神经网络(recurrent neural network)或 RNN (Rumelhart et al., 1986c) 是一类用于处理序列数据的神经网络。就像卷积网络是专门用于处理网格化数据 X (如一个图像)的神经网络，循环神经网络是专门用于处理序列 x(1),…,x(τ) 的神 经网络。正如卷积网络可以很容易地扩展到具有很大宽度和高度的图像，以及处理 大小可变的图像，循环网络可以扩展到更长的序列(比不基于序列的特化网络长得多)。大多数循环网络也能处理可变长度的序列。</p>
-<h2 id="展开计算图"><a href="#展开计算图" class="headerlink" title="展开计算图"></a>展开计算图</h2><img src="/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/1.png">
-<p>当训练循环网络根据过去预测未来时，网络通常要学会使用 h(t) 作为过去序列 (直到 t)与任务相关方面的有损摘要。此摘要一般而言一定是有损的，因为其映射 任意长度的序列 (x(t), x(t−1), x(t−2), . . . , x(2), x(1)) 到一固定长度的向量 h(t)。根据不 同的训练准则，摘要可能选择性地精确保留过去序列的某些方面。例如，如果在统 计语言建模中使用的 RNN，通常给定前一个词预测下一个词，可能没有必要存储时 刻 t 前输入序列中的所有信息;而仅仅存储足够预测句子其余部分的信息。最苛刻 的情况是我们要求 h(t) 足够丰富，并能大致恢复输入序列。</p>
-<img src="/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/2.png">
-<h2 id="循环神经网络"><a href="#循环神经网络" class="headerlink" title="循环神经网络"></a>循环神经网络</h2><blockquote>
-<p>通用设计模式</p>
-<p>其中h表示激活函数，其中包含了输入的加权过程，o表示非标准化对数概率，y表示标准化输出</p>
-<img src="/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/6.png">
-<ol>
-<li>每个时间步都有输出，并且隐藏单元之间有循环连接的循环网络</li>
-</ol>
-<img src="/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/3.png">
-<ol>
-<li>每个时间步都产生一个输出，只有当前时刻的输出到下个时刻的隐藏单元之间有循环连接的循环网络</li>
-</ol>
-<img src="/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/4.png">
-<ol>
-<li>隐藏单元之间存在循环连接，但读取整个序列后产生单个输出的循环网络</li>
-</ol>
-<img src="/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/5.png">
+        <h1 id="设计模式以及综述"><a href="#设计模式以及综述" class="headerlink" title="设计模式以及综述"></a>设计模式以及综述</h1><p>设计模式对于一名软件开发工程师来说可谓是必备的技能和知识，然而在程序员社区中也充斥着不少对于设计模式的反对之音。有人认为设计模式的知识对于工程开发至关重要，但也有许多经验丰富的程序员认为设计模式应当是长期的软件开发的积累所留下的不可名状的抽象艺术，对于市面上不少介绍设计模式的书籍嗤之以鼻。</p>
+<p>对于刚入门的软件开发工程师而言，你若问他（包括现在的我自己）“我们为什么要使用工厂模式？使用工厂模式能够带来什么好处？”之类的问题，他也是很难回答的。所以盲目的掌握设计模式中那些拗口的名称，或者干巴巴的“方便继承”之类的描述是没有意义的。</p>
+<p>这一系列的博客的目的并不是一蹴而就的讲解全部的设计模式知识，这样的知识没有日积月累的开发经验是很难去对其有深入的体会的。我只是希望能在这一系列的博客中，借助《图解设计模式》一书，跟随书中的顺序对其中的设计模式知识进行某种程度的理解和总结，以至于能够对诸君有所启迪，开发出更加优美和友好的代码。</p>
+<p>我的能力有限，若是文中出现什么谬误也请诸君不吝赐教，提前感谢。</p>
+<p>《图解设计模式》一书的作者是<strong>结城浩</strong>先生，全书共计十个部分，预计会分为十篇博客进行介绍。书中的代码为java所写，虽然java并不是我比较擅长的代码，但是为了不引起错误贻笑大方，所以还是按照书中的java进行讨论。本博客介绍其中的<em>第七部分：简单化</em>。因为每一章节中代码都占据了比较多的部分，为了更好地理解相关概念，建议阅读代码优先从Main.java的部分开始。</p>
+<h1 id="Chapter-15-Facade模式–简单窗口"><a href="#Chapter-15-Facade模式–简单窗口" class="headerlink" title="Chapter 15 Facade模式–简单窗口"></a>Chapter 15 Facade模式–简单窗口</h1><p>一个程序总是会随着时间的推移、项目周期的演进而变得愈加复杂，我们需要面对复杂的类和接口，而且令人头痛的是这些接口和类之间的关系盘根错节，导致程序的结构和调用顺序都非常令人困惑和难以理解。而为了解决这个问题，我们就可以使用Facade模式。</p>
+<p>Facade是法语里的窗口的意思，这个模式致力于隐藏系统的复杂性，并向客户提供一个可以访问（复杂）系统的接口，这样我们就不必单独的关注系统中的每一个类了，只需简单的对Facade（接口）提出请求即可。这个Facade接口需要为相互关联在一起的错综复杂的类整理出高层接口，其中的Facade角色会考虑到系统内部各个类之间的责任关系和依赖观其，使其能够以正确的顺序调用各个类。</p>
+<blockquote>
+<p>例：我们将创建一个Shape接口和实现了Shape接口的类，下一步是定义一个外观类（Facade）ShapeMaker。ShapeMaker类将会使用实体类来代表用户对这些类进行调用，Main使用ShapeMaker类来显示结果。</p>
 </blockquote>
-<p>通常情况下设计模式1为最常用的设计模式。</p>
-<h3 id="导师驱动过程和输出循环网络（设计模式2）"><a href="#导师驱动过程和输出循环网络（设计模式2）" class="headerlink" title="导师驱动过程和输出循环网络（设计模式2）"></a>导师驱动过程和输出循环网络（设计模式2）</h3><img src="/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/7.png">
-<p>这种方式使训练过程可以并行的进行，因为我们不需要每次都将上次的train得到的o输入到下一层，而是将正确的y输入，故很大程度的减小了梯度下降的难度。</p>
-<h3 id="神经网络梯度计算"><a href="#神经网络梯度计算" class="headerlink" title="神经网络梯度计算"></a>神经网络梯度计算</h3><h2 id="双向RNN"><a href="#双向RNN" class="headerlink" title="双向RNN"></a>双向RNN</h2><img src="/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/8.png">
-<h2 id="基于编码-解码的序列到序列架构"><a href="#基于编码-解码的序列到序列架构" class="headerlink" title="基于编码-解码的序列到序列架构"></a>基于编码-解码的序列到序列架构</h2><p>我们经常将RNN的输入称为”上下文”。我们希望产生此上下文的表示C。这个上下文C可能是一个概括输入序列 X = (x(1) , . . . , x(n)) 的向量或者向量序列。</p>
-<img src="/2018/04/22/Deep-Learning-V-Recurrent-Neural-Network-Other-Methods/9.png">
-<h2 id="深度循环网络"><a href="#深度循环网络" class="headerlink" title="深度循环网络"></a>深度循环网络</h2><h2 id="递归神经网络"><a href="#递归神经网络" class="headerlink" title="递归神经网络"></a>递归神经网络</h2><h1 id="实践方法论"><a href="#实践方法论" class="headerlink" title="实践方法论"></a>实践方法论</h1><h2 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h2><h2 id="默认基准模型"><a href="#默认基准模型" class="headerlink" title="默认基准模型"></a>默认基准模型</h2><h2 id="更多数据？"><a href="#更多数据？" class="headerlink" title="更多数据？"></a>更多数据？</h2><h2 id="超参数选择"><a href="#超参数选择" class="headerlink" title="超参数选择"></a>超参数选择</h2><h1 id="相关应用"><a href="#相关应用" class="headerlink" title="相关应用"></a>相关应用</h1>
+<pre><code>// Shape.java
+public interface Shape{
+    void draw();
+}
+</code></pre><pre><code>// Rectangle.java: (错综复杂的)类1
+public class Rectangle extends Shape{
+    @Overrider
+    public void draw(){
+        SYstem.out.println(&quot;DRAW RECTANGLE&quot;);
+    }
+}
+</code></pre><pre><code>// Square.java: (错综复杂的)类2
+public class Square extends Shape{
+    @Overrider
+    public void draw(){
+        SYstem.out.println(&quot;DRAW SQUARE&quot;);
+    }
+}
+</code></pre><pre><code>// Circle.java: (错综复杂的)类3
+public class Circle extends Shape{
+    @Overrider
+    public void draw(){
+        SYstem.out.println(&quot;DRAW CIRCLE&quot;);
+    }
+}
+</code></pre><pre><code>// ShapeMaker.java: 外观类/窗口类
+public class ShapeMaker{
+    private Shape circle;
+    private Shape rectangle;
+    private Shape square;
+    //  这里对于Main我们隐藏了Cirle类等他们之间的关系，我们相信ShapeMaker可以提供正确的调用，而这一点对于Main来说就已经足够了
+
+    public ShapeMaker() {
+        circle = new Circle();
+        rectangle = new Rectangle();
+        square = new Square();
+    }
+
+    public void drawCircle(){
+        circle.draw();
+    }
+    public void drawRectangle(){
+        rectangle.draw();
+    }
+    public void drawSquare(){
+        square.draw();
+    }
+}
+</code></pre><pre><code>public class Main {
+    public static void main(String[] args) {
+        ShapeMaker shapeMaker = new ShapeMaker();
+
+        shapeMaker.drawCircle();
+        shapeMaker.drawRectangle();
+        shapeMaker.drawSquare();      
+    }
+}
+</code></pre><h1 id="Chapter-16-Mediator模式–只有一个仲裁者"><a href="#Chapter-16-Mediator模式–只有一个仲裁者" class="headerlink" title="Chapter 16 Mediator模式–只有一个仲裁者"></a>Chapter 16 Mediator模式–只有一个仲裁者</h1><p>关于Mediator模式，书中形象的介绍到：就像是一个乱糟糟的开发小组协同工作，如果没有仲裁者可能就四个和尚没水喝。所以我们选一个角色成为中介者/仲裁者，所有的组员向中介者报告，中介者向组员下达指示，而组员之间不再相互询问和相互指示。</p>
+<p>中介者模式（Mediator Pattern）用来降低多个对象和类之间的通信复杂性。这种模式提供了一个中介类，该类通常处理不同类之间的通信，并支持松耦合，使类之间的“网状结构”分离成为“星状结构”，更易于维护。</p>
+<blockquote>
+<p>我们通过聊天室实例来演示中介者模式。实例中，多个用户可以向聊天室发送消息，聊天室向所有的用户显示消息。我们将创建两个类,ChatRoom和User。User对象使用ChatRoom方法来分享他们的消息。Main类使用User对象来显示他们之间的通信。</p>
+</blockquote>
+<pre><code>// ChatRoom.java: 中介类
+import java.util.Date;
+
+public class ChatRoom {
+    public static void showMessage(User user, String message){
+        System.out.println(new Date().toString()
+            + &quot; [&quot; + user.getName() +&quot;] : &quot; + message);
+    }
+}
+</code></pre><pre><code>// User.java
+public class User {
+    private String name;
+    public User(String name){
+        this.name  = name;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void sendMessage(String message){
+        ChatRoom.showMessage(this,message);
+    }
+}
+</code></pre><p>public class MediatorPatternDemo {<br>    public static void main(String[] args) {<br>        User robert = new User(“Robert”);<br>        User john = new User(“John”);</p>
+<pre><code>    robert.sendMessage(&quot;Hi! John!&quot;);
+    john.sendMessage(&quot;Hello! Robert!&quot;);
+}
+</code></pre><p>}</p>
+
         
     
 
@@ -542,7 +617,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/05/02/Papers-EyePhone/" id="post_nav-newer" class="prev-content">
+        <a href="/2020/02/06/Design-Pattern-设计模式-Introduction-Part-VIII/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -556,7 +631,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2018/04/19/Deep-Learning-IV-Optimization-CNN/" id="post_nav-older" class="next-content">
+        <a href="/2020/02/06/Design-Pattern-设计模式-Introduction-Part-VI/" id="post_nav-older" class="next-content">
             Older
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
@@ -648,7 +723,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2020/01/">January 2020<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/05/">May 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/01/">January 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/12/">December 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/11/">November 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/10/">October 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">June 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">May 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">April 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">March 2018<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/01/">January 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">December 2017<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/archives/2020/02/">February 2020<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/01/">January 2020<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/05/">May 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/01/">January 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/12/">December 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/11/">November 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/10/">October 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">June 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">May 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">April 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">March 2018<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/01/">January 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">December 2017<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         
@@ -690,7 +765,7 @@
         <li>
             <a href="/archives">
                 Number of articles
-                <span class="sidebar-badge">31</span>
+                <span class="sidebar-badge">40</span>
             </a>
         </li>
         
